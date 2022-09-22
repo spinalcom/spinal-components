@@ -33,7 +33,7 @@
             :subtitle="'Aujourd\'hui'"
         ></stats-card>
       </div>
-      <paginated-table :table-data="tableData"></paginated-table>
+      <paginated-table class="ma-2" :table-data="tableData" :height="tableHeight"></paginated-table>
     </v-main>
   </v-app>
 </template>
@@ -69,9 +69,9 @@ export default {
       { label: "je ne sais pas", value: 42 },
       { label: "joker", value: 52 },
       { label: "plus tard", value: 64 },
-      { label: "je m'en fous", value: 58 },
-      { label: "serieux", value: 60 },
-      { label: "Qui t'as dit ça", value: 69 }
+      { label: "je m'en moque", value: 58 },
+      { label: "serieux ?", value: 60 },
+      { label: "Qui as dit ça ?", value: 69 }
     ],
     barLabels: ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],
     barDatas: [
@@ -85,6 +85,9 @@ export default {
   }),
 
   computed: {
+    tableHeight() {
+      return window.innerHeight * 0.295
+    },
     tableData() {
       return this.table;
     }
@@ -127,43 +130,7 @@ export default {
         b:1,
         c:11,
         d:10
-      },
-      {
-        a:0,
-        b:1,
-        c:11,
-        d:10
-      },
-      {
-        a:0,
-        b:1,
-        c:11,
-        d:10
-      },
-      {
-        a:0,
-        b:1,
-        c:11,
-        d:10
-      },
-      {
-        a:0,
-        b:1,
-        c:11,
-        d:10
-      },
-      {
-        a:0,
-        b:1,
-        c:11,
-        d:10
-      },
-      {
-        a:0,
-        b:1,
-        c:11,
-        d:10
-      },
+      }
     ], 6000)
   }
 }
@@ -179,8 +146,5 @@ export default {
 }
 .stat-card {
   width: 25%;
-}
-.table-card {
-  height: 30%;
 }
 </style>
