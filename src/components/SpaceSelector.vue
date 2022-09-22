@@ -184,7 +184,6 @@ export default {
   },
   data: () => ({
     path: {},
-    privateRootElement: {},
     rootButton: false,
     root: false,
     buildingStructure: [],
@@ -193,6 +192,16 @@ export default {
     expand: true,
     dropDown: false,
   }),
+  computed: {
+    privateRootElement() {
+      const el = this.rootElement;
+      el["level"] = 0;
+      el["isOpen"] = false;
+      el["doNotDraw"] = [];
+      el["loading"] = false;
+      return el;
+    }
+  },
   methods: {
     select(item) {
       this.dive(item);
@@ -286,13 +295,6 @@ export default {
   },
   created() {
     for (let i = 0; i <= this.maxDepth; i++) this.$set(this.path, i, "");
-  },
-  mounted() {
-    this.privateRootElement = this.rootElement;
-    this.privateRootElement["level"] = 0;
-    this.privateRootElement["isOpen"] = false;
-    this.privateRootElement["doNotDraw"] = [];
-    this.privateRootElement["loading"] = false;
   },
   watch: {
     dropDown(v1) {

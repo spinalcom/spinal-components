@@ -1,5 +1,5 @@
-<template id="table-card">
-  <v-card class="d-flex flex-column table-card pa-2 ma-2 rounded-lg" elevation="5" outlined>
+<template>
+  <v-card class="d-flex flex-column table-card pa-2 ma-2 rounded-lg" elevation="5" :style="{ height: height }" outlined>
     <div ref="test">
       <div ref="selected">
         <span class="card-header-text pt-8 pl-3">{{ title }}</span>
@@ -48,6 +48,11 @@ export default {
     tableData: {
       type: Array,
       required: true
+    },
+
+    height: {
+      type: Number,
+      required: true,
     }
   },
 
@@ -61,12 +66,10 @@ export default {
       return this.tableData.length > 0
     },
     headers() {
-      return this.loaded ? Object.keys(this.tableData[0]) : []
+      return this.loaded ? Object.keys(this.tableData[0]).map(e => ({ text: e[0].toUpperCase() + e.substring(1), value: e })) : []
     },
     dataHeight() {
-      const card = document.querySelector('#table-card')
-      const foot = document.querySelector('.v-data-footer')
-      return card ? card.clientHeight - foot.clientHeight : 165;
+      return this.height * 0.68;
     }
   }
 }
