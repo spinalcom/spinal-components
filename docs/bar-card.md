@@ -30,3 +30,5 @@ export default {
 }
 </script>
 ```
+
+[< pie card](pie-card.md) | [Home](documentation.md)

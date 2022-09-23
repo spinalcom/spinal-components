@@ -37,3 +37,5 @@ export default {
 }
 </script>
 ```
+
+[< paginated table](paginated-table.md) | [Home](documentation.md) | [pie card >](pie-card.md)

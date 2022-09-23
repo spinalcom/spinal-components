@@ -36,3 +36,5 @@ export default {
 }
 </script>
 ```
+
+[< download button](download-button.md) | [Home](documentation.md) | [stat card >](stad-card.md)

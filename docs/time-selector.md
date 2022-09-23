@@ -24,3 +24,5 @@ export default {
 }
 </script>
 ```
+
+[Home](documentation.md) | [space selector >](space-selector.md)

@@ -1,6 +1,6 @@
 # spinal-components
 
-To use as a component library see the [documentation](public/docs/documentation.md)
+To use as a component library see the [documentation](docs/documentation.md)
 
 ## Project setup
 ```

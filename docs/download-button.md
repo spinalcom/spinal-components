@@ -28,3 +28,5 @@ The props for the button are:
   }
 </script>
 ```
+
+[< spinal navigator](spinal-navigator.md) | [Home](documentation.md) | [paginated table >](paginated-table.md)

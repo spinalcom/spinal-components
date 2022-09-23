@@ -30,3 +30,5 @@ export default {
 }
 </script>
 ```
+
+[< stat card](stad-card.md) | [Home](documentation.md) | [bar card >](bar-card.md)
