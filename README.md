@@ -1,5 +1,7 @@
 # spinal-components
 
+To use as a component library see the [documentation](public/docs/documentation.md)
+
 ## Project setup
 ```
 npm install
