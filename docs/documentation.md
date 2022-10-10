@@ -14,8 +14,8 @@ import 'spinal-components/dist/spinal-components.css'
 Vue.use(SpinalComponents, {})
 ```
 
-If your app use typescript instead of javascript you might to add the declaration of the module.
-create a file name named ```spinal-components.d.ts``` which will contain the code
+If your app use typescript instead of javascript you might need to add the declaration of the module.
+Create a file name named ```spinal-components.d.ts``` which will contain the code
 ```typescript
 declare module 'spinal-components';
 ```

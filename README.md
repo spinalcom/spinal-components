@@ -27,5 +27,11 @@ npm run build
 npm run lint
 ```
 
+## Testing your components
+In the project used to test the library
+```
+npm install <path of the library>
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
