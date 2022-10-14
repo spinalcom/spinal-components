@@ -10203,13 +10203,13 @@ const VCardTitle = createSimpleFunctional('v-card__title');
   }
 });
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=d4a9bee2&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=ba88ed1a&scoped=true&
 
 
 
-var PieCardvue_type_template_id_d4a9bee2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Pie',{staticClass:"pie-height",attrs:{"chart-data":_vm.pieData,"chart-id":'2',"chart-options":_vm.pieChartOptions}})],1)
+var PieCardvue_type_template_id_ba88ed1a_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Pie',{staticClass:"pie-height",attrs:{"chart-data":_vm.pieData,"chart-id":'2',"chart-options":_vm.pieChartOptions}})],1)
 }
-var PieCardvue_type_template_id_d4a9bee2_scoped_true_staticRenderFns = []
+var PieCardvue_type_template_id_ba88ed1a_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/chart.js/dist/chunks/helpers.segment.mjs
@@ -23596,8 +23596,7 @@ const registerables = [
 
 
 
-;// CONCATENATED MODULE: ./node_modules/vue-chartjs/dist/index.js
-
+;// CONCATENATED MODULE: ./node_modules/vue-chartjs/legacy/index.js
 
 
 var ChartEmits;
@@ -23678,10 +23677,11 @@ function compareData(newData, oldData) {
     );
 }
 const templateError = "Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components";
-const chartUpdateError = "Update ERROR: chart instance not found";
 
-const generateChart = (chartId, chartType, chartController)=>{
-    return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
+const ANNOTATION_PLUGIN_KEY = "annotation";
+function generateChart(chartId, chartType, chartController) {
+    let _chartRef = null;
+    return {
         props: {
             chartData: {
                 type: Object,
@@ -23720,122 +23720,153 @@ const generateChart = (chartId, chartType, chartController)=>{
                 default: ()=>[]
             }
         },
-        setup (props, context) {
+        data () {
+            return {
+                _chart: null
+            };
+        },
+        computed: {
+            hasAnnotationPlugin () {
+                var ref, ref1;
+                const pluginSettings = (ref = this.chartOptions) === null || ref === void 0 ? void 0 : (ref1 = ref.plugins) === null || ref1 === void 0 ? void 0 : ref1[ANNOTATION_PLUGIN_KEY];
+                return typeof pluginSettings !== "undefined";
+            }
+        },
+        created () {
             Chart.register(chartController);
-            const _chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.shallowRef)(null);
-            const canvasEl = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)(null);
-            function renderChart(data, options) {
-                if (_chart.value !== null) {
-                    chartDestroy((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(_chart.value), context);
+        },
+        mounted () {
+            _chartRef = {
+                current: null
+            };
+            if ("datasets" in this.chartData && this.chartData.datasets.length > 0) {
+                chartCreate(this.renderChart, this.chartData, this.chartOptions);
+                this.$emit(ChartEmits.ChartRendered);
+            }
+        },
+        watch: {
+            chartData: {
+                handler: function(newValue, oldValue) {
+                    this.chartDataHandler(newValue, oldValue);
+                },
+                deep: true
+            },
+            chartOptions: {
+                handler: function(newValue) {
+                    this.chartOptionsHandler(newValue);
+                },
+                deep: true
+            }
+        },
+        methods: {
+            renderChart (data, options) {
+                const currentChart = this.getCurrentChart();
+                if (currentChart !== null) {
+                    chartDestroy(currentChart);
+                    this.$emit(ChartEmits.ChartDestroyed);
                 }
-                if (canvasEl.value === null) {
+                if (!this.$refs.canvas) {
                     throw new Error(templateError);
                 } else {
-                    const chartData = getChartData(data, props.datasetIdKey);
-                    const canvasEl2DContext = canvasEl.value.getContext("2d");
+                    const chartData = getChartData(data, this.datasetIdKey);
+                    const canvasEl2DContext = this.$refs.canvas.getContext("2d");
                     if (canvasEl2DContext !== null) {
-                        _chart.value = new Chart(canvasEl2DContext, {
+                        this.setCurrentChart(new Chart(canvasEl2DContext, {
                             type: chartType,
-                            data: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.isProxy)(data) ? new Proxy(chartData, {}) : chartData,
+                            data: chartData,
                             options,
-                            plugins: props.plugins
-                        });
+                            plugins: this.plugins
+                        }));
                     }
                 }
-            }
-            function chartDataHandler(newValue, oldValue) {
-                const newData = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.isProxy)(newValue) ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(newValue) : {
+            },
+            chartDataHandler (newValue, oldValue) {
+                const newData = {
                     ...newValue
                 };
-                const oldData = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.isProxy)(oldValue) ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(oldValue) : {
+                const oldData = {
                     ...oldValue
                 };
+                const currentChart = this.getCurrentChart();
                 if (Object.keys(oldData).length > 0) {
-                    const chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(_chart.value);
                     const isEqualLabelsAndDatasetsLength = compareData(newData, oldData);
-                    if (isEqualLabelsAndDatasetsLength && chart !== null) {
-                        setChartDatasets(chart === null || chart === void 0 ? void 0 : chart.data, newData, props.datasetIdKey);
+                    if (isEqualLabelsAndDatasetsLength && currentChart !== null) {
+                        setChartDatasets(currentChart.data, newData, this.datasetIdKey);
                         if (newData.labels !== undefined) {
-                            setChartLabels(chart, newData.labels, context);
+                            setChartLabels(currentChart, newData.labels);
+                            this.$emit(ChartEmits.LabelsUpdated);
                         }
-                        updateChart();
+                        this.updateChart();
+                        this.$emit(ChartEmits.ChartUpdated);
                     } else {
-                        if (chart !== null) {
-                            chartDestroy(chart, context);
+                        if (currentChart !== null) {
+                            chartDestroy(currentChart);
+                            this.$emit(ChartEmits.ChartDestroyed);
                         }
-                        chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                        chartCreate(this.renderChart, this.chartData, this.chartOptions);
+                        this.$emit(ChartEmits.ChartRendered);
                     }
                 } else {
-                    if (_chart.value !== null) {
-                        chartDestroy((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(_chart.value), context);
+                    if (currentChart !== null) {
+                        chartDestroy(currentChart);
+                        this.$emit(ChartEmits.ChartDestroyed);
                     }
-                    chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                    chartCreate(this.renderChart, this.chartData, this.chartOptions);
+                    this.$emit(ChartEmits.ChartRendered);
                 }
-            }
-            function chartOptionsHandler(options) {
-                const chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(_chart.value);
-                if (chart !== null) {
-                    setChartOptions(chart, options);
-                    updateChart();
+            },
+            chartOptionsHandler (options) {
+                const currentChart = this.getCurrentChart();
+                if (currentChart !== null) {
+                    setChartOptions(currentChart, options);
+                    this.updateChart();
                 } else {
-                    chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                    chartCreate(this.renderChart, this.chartData, this.chartOptions);
                 }
+            },
+            updateChart () {
+                const currentChart = this.getCurrentChart();
+                chartUpdate(currentChart);
+            },
+            getCurrentChart () {
+                return this.hasAnnotationPlugin ? _chartRef.current : this.$data._chart;
+            },
+            setCurrentChart (chart) {
+                this.hasAnnotationPlugin ? _chartRef.current = chart : this.$data._chart = chart;
             }
-            function updateChart() {
-                const chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(_chart.value);
-                if (chart !== null) {
-                    chartUpdate(chart, context);
-                } else {
-                    console.error(chartUpdateError);
-                }
+        },
+        beforeDestroy () {
+            const currentChart = this.getCurrentChart();
+            if (currentChart !== null) {
+                chartDestroy(currentChart);
+                this.$emit(ChartEmits.ChartDestroyed);
             }
-            (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(()=>props.chartData
-            , (newValue, oldValue)=>chartDataHandler(newValue, oldValue)
-            , {
-                deep: true
-            });
-            (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(()=>props.chartOptions
-            , (newValue)=>chartOptionsHandler(newValue)
-            , {
-                deep: true
-            });
-            (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onMounted)(()=>{
-                if ("datasets" in props.chartData && props.chartData.datasets.length > 0) {
-                    chartCreate(renderChart, props.chartData, props.chartOptions, context);
-                }
-            });
-            (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onBeforeUnmount)(()=>{
-                if (_chart.value !== null) {
-                    chartDestroy((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toRaw)(_chart.value), context);
-                }
-            });
-            context.expose({
-                chart: _chart,
-                updateChart
-            });
-            return ()=>(0,external_commonjs_vue_commonjs2_vue_root_Vue_.h)("div", {
-                    style: props.styles,
-                    class: props.cssClasses
-                }, [
-                    (0,external_commonjs_vue_commonjs2_vue_root_Vue_.h)("canvas", {
-                        id: props.chartId,
-                        width: props.width,
-                        height: props.height,
-                        ref: canvasEl
-                    })
-                ])
-            ;
+        },
+        render: function(createElement) {
+            return createElement("div", {
+                style: this.styles,
+                class: this.cssClasses
+            }, [
+                createElement("canvas", {
+                    attrs: {
+                        id: this.chartId,
+                        width: this.width,
+                        height: this.height
+                    },
+                    ref: "canvas"
+                })
+            ]);
         }
-    });
-};
-const Bar = /* #__PURE__ */ generateChart("bar-chart", "bar", BarController);
-const Doughnut = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("doughnut-chart", "doughnut", DoughnutController)));
-const Line = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("line-chart", "line", LineController)));
-const Pie = /* #__PURE__ */ generateChart("pie-chart", "pie", PieController);
-const PolarArea = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("polar-chart", "polarArea", PolarAreaController)));
-const Radar = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("radar-chart", "radar", RadarController)));
-const Bubble = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("bubble-chart", "bubble", BubbleController)));
-const Scatter = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("scatter-chart", "scatter", ScatterController)));
+    };
+}
+/** @type Object */ const Bar = /* #__PURE__ */ generateChart("bar-chart", "bar", BarController);
+/** @type Object */ const Doughnut = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("doughnut-chart", "doughnut", DoughnutController)));
+/** @type Object */ const Line = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("line-chart", "line", LineController)));
+/** @type Object */ const Pie = /* #__PURE__ */ generateChart("pie-chart", "pie", PieController);
+/** @type Object */ const PolarArea = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("polar-chart", "polarArea", PolarAreaController)));
+/** @type Object */ const Radar = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("radar-chart", "radar", RadarController)));
+/** @type Object */ const Bubble = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("bubble-chart", "bubble", BubbleController)));
+/** @type Object */ const Scatter = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("scatter-chart", "scatter", ScatterController)));
 
 
 //# sourceMappingURL=index.js.map
@@ -24044,10 +24075,10 @@ Chart.register(ArcElement, plugin_legend)
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PieCardvue_type_script_lang_js_ = (PieCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=d4a9bee2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=ba88ed1a&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=d4a9bee2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=ba88ed1a&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue
 
@@ -24060,23 +24091,23 @@ Chart.register(ArcElement, plugin_legend)
 
 var PieCard_component = normalizeComponent(
   components_PieCardvue_type_script_lang_js_,
-  PieCardvue_type_template_id_d4a9bee2_scoped_true_render,
-  PieCardvue_type_template_id_d4a9bee2_scoped_true_staticRenderFns,
+  PieCardvue_type_template_id_ba88ed1a_scoped_true_render,
+  PieCardvue_type_template_id_ba88ed1a_scoped_true_staticRenderFns,
   false,
   null,
-  "d4a9bee2",
+  "ba88ed1a",
   null
   
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=3e43a342&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=3ec6d430&scoped=true&
 
 
 
-var BarCardvue_type_template_id_3e43a342_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-2 ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Bar',{staticClass:"bar-height white",attrs:{"chart-data":_vm.barChartData,"chart-id":'1',"chart-options":_vm.barChartOptions}})],1)
+var BarCardvue_type_template_id_3ec6d430_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-2 ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Bar',{staticClass:"bar-height white",attrs:{"chart-data":_vm.barChartData,"chart-id":'1',"chart-options":_vm.barChartOptions}})],1)
 }
-var BarCardvue_type_template_id_3e43a342_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_3ec6d430_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -24139,10 +24170,10 @@ Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale)
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=3e43a342&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=3ec6d430&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=3e43a342&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=3ec6d430&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -24155,11 +24186,11 @@ Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale)
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_3e43a342_scoped_true_render,
-  BarCardvue_type_template_id_3e43a342_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_3ec6d430_scoped_true_render,
+  BarCardvue_type_template_id_3ec6d430_scoped_true_staticRenderFns,
   false,
   null,
-  "3e43a342",
+  "3ec6d430",
   null
   
 )

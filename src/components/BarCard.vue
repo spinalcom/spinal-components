@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Bar } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs/legacy'
 import { Legend, BarElement, LinearScale, CategoryScale, Chart as ChartJS } from "chart.js";
 
 ChartJS.register(Legend, BarElement, CategoryScale, LinearScale)

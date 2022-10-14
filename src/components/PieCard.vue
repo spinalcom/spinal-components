@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Pie } from 'vue-chartjs'
+import { Pie } from 'vue-chartjs/legacy'
 import { Legend, ArcElement, Chart as ChartJS } from "chart.js";
 import { singleColorGradiant } from "@/colors";
 
