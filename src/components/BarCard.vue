@@ -14,9 +14,9 @@
 
 <script>
 import { Bar } from 'vue-chartjs/legacy'
-import { Legend, BarElement, LinearScale, CategoryScale, Chart as ChartJS } from "chart.js";
+import { Legend, BarElement, LinearScale, CategoryScale, LogarithmicScale, Chart as ChartJS } from "chart.js";
 
-ChartJS.register(Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(Legend, BarElement, CategoryScale, LinearScale, LogarithmicScale)
 
 export default {
   name: "bar-card",
@@ -35,6 +35,11 @@ export default {
     datasets: {
       type: Array,
       required: true
+    },
+
+    scaleType: {
+      type: String,
+      default: 'linear'
     }
   },
 
@@ -42,31 +47,43 @@ export default {
     Bar
   },
 
-  data: () => ({
-    barChartOptions: {
-      maintainAspectRatio: false,
-      borderRadius: 4,
-      barThickness: 20,
-      plugins: {
-        legend: {
-          align: "start",
-          labels: {
-            boxWidth: 7,
-            boxHeight: 15,
-          },
-        },
-      },
-    },
-  }),
-
   computed: {
     barChartData() {
       return {
         labels: this.labels,
         datasets: this.datasets
       }
+    },
+
+    barChartOptions() {
+      return  {
+        maintainAspectRatio: false,
+        responsive: true,
+        borderRadius: 8,
+        barThickness: 20,
+        borderWidth: 2,
+        borderColor: '#fff',
+        scales: {
+          y: {
+            type: this.scaleType
+          }
+        },
+        plugins: {
+          legend: {
+            align: "start",
+            labels: {
+              boxWidth: 10,
+              boxHeight: 20,
+            },
+            font: {
+              family: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+              size: 14
+            }
+          },
+        },
+      }
     }
-  }
+  },
 }
 </script>
 

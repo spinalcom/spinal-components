@@ -7,13 +7,14 @@
     <v-flex class="d-flex flex-row fill-height">
       <v-flex
           class="d-flex flex-column justify-center text-center stat-value"
-      >{{ value }}
+          :style="{ color: color}"
+      >{{ shortNumberCall(value) }}
       </v-flex>
       <v-flex
           class="d-flex flex-column justify-center justify-start stat-text"
       >
         <div>
-                    <span class="black--text">{{ unit + "  " }}</span
+                    <span :style="{ color: color }">{{ unit + "  " }}</span
                     >{{ title }}
         </div>
         <div v-if="type === 'comparison'" class="stat-subtitle">
@@ -57,7 +58,23 @@ export default {
     subtitle: {
       type: String,
       required: true
+    },
+    color: {
+      type: String,
+      default: '#14202c'
     }
+  },
+
+  methods: {
+    shortNumberCall (n) {
+      if(Math.abs(n)>=1000000000)
+        return Math.round(n/100000000) / 10+'B';
+      if(Math.abs(n)>=1000000)
+        return Math.round(n/100000) / 10+'M';
+      if(Math.abs(n)>=1000)
+        return Math.round(n/100) / 10+'K';
+      return n;
+    },
   }
 }
 </script>
@@ -72,7 +89,7 @@ export default {
 }
 
 .stat-text {
-  width: 80%;
+  width: 60%;
   color: #949da6;
 }
 </style>

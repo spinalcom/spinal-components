@@ -9,10 +9,11 @@
       </div>
       <div class="d-flex flex-row">
         <stats-card
-            :value="25"
+            :value="-255500"
             :unit="'Km'"
             :title="'parcourus'"
             :subtitle="'Aujourd\'hui'"
+            :color="'#956518'"
         ></stats-card>
         <stats-card
             :value="25"
@@ -79,6 +80,11 @@ export default {
         label: 'Km parcourus',
         backgroundColor: '#153284',
         data: [15, 12, 13, 10, 18, 8, 2]
+      },
+      {
+        label: 'Km marchés',
+        backgroundColor: '#ff0',
+        data: [10, 6, 11, 8, 18, 1, 0]
       }
     ],
     table: []

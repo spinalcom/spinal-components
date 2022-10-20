@@ -24101,13 +24101,13 @@ var PieCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=3ec6d430&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=99201e9c&scoped=true&
 
 
 
-var BarCardvue_type_template_id_3ec6d430_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-2 ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Bar',{staticClass:"bar-height white",attrs:{"chart-data":_vm.barChartData,"chart-id":'1',"chart-options":_vm.barChartOptions}})],1)
+var BarCardvue_type_template_id_99201e9c_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-2 ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Bar',{staticClass:"bar-height white",attrs:{"chart-data":_vm.barChartData,"chart-id":'1',"chart-options":_vm.barChartOptions}})],1)
 }
-var BarCardvue_type_template_id_3ec6d430_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_99201e9c_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -24115,7 +24115,7 @@ var BarCardvue_type_template_id_3ec6d430_scoped_true_staticRenderFns = []
 
 
 
-Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale)
+Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale, LogarithmicScale)
 
 /* harmony default export */ var BarCardvue_type_script_lang_js_ = ({
   name: "bar-card",
@@ -24134,6 +24134,11 @@ Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale)
     datasets: {
       type: Array,
       required: true
+    },
+
+    scaleType: {
+      type: String,
+      default: 'linear'
     }
   },
 
@@ -24141,39 +24146,51 @@ Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale)
     Bar: Bar
   },
 
-  data: () => ({
-    barChartOptions: {
-      maintainAspectRatio: false,
-      borderRadius: 4,
-      barThickness: 20,
-      plugins: {
-        legend: {
-          align: "start",
-          labels: {
-            boxWidth: 7,
-            boxHeight: 15,
-          },
-        },
-      },
-    },
-  }),
-
   computed: {
     barChartData() {
       return {
         labels: this.labels,
         datasets: this.datasets
       }
+    },
+
+    barChartOptions() {
+      return  {
+        maintainAspectRatio: false,
+        responsive: true,
+        borderRadius: 8,
+        barThickness: 20,
+        borderWidth: 2,
+        borderColor: '#fff',
+        scales: {
+          y: {
+            type: this.scaleType
+          }
+        },
+        plugins: {
+          legend: {
+            align: "start",
+            labels: {
+              boxWidth: 10,
+              boxHeight: 20,
+            },
+            font: {
+              family: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+              size: 14
+            }
+          },
+        },
+      }
     }
-  }
+  },
 });
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=3ec6d430&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=99201e9c&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=3ec6d430&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=99201e9c&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -24186,11 +24203,11 @@ Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale)
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_3ec6d430_scoped_true_render,
-  BarCardvue_type_template_id_3ec6d430_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_99201e9c_scoped_true_render,
+  BarCardvue_type_template_id_99201e9c_scoped_true_staticRenderFns,
   false,
   null,
-  "3ec6d430",
+  "99201e9c",
   null
   
 )
@@ -32019,13 +32036,13 @@ function VGrid(name) {
 
 /* harmony default export */ var VFlex = (VGrid('flex'));
 //# sourceMappingURL=VFlex.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=77f27c4e&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=0ee4d792&scoped=true&
 
 
 
-var StatsCardvue_type_template_id_77f27c4e_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value"},[_vm._v(_vm._s(_vm.value)+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.unit + " "))]),_vm._v(_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")])])],1)],1)
+var StatsCardvue_type_template_id_0ee4d792_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color})},[_vm._v(_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]),_vm._v(_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")])])],1)],1)
 }
-var StatsCardvue_type_template_id_77f27c4e_scoped_true_staticRenderFns = []
+var StatsCardvue_type_template_id_0ee4d792_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=script&lang=js&
@@ -32056,16 +32073,32 @@ var StatsCardvue_type_template_id_77f27c4e_scoped_true_staticRenderFns = []
     subtitle: {
       type: String,
       required: true
+    },
+    color: {
+      type: String,
+      default: '#14202c'
     }
+  },
+
+  methods: {
+    shortNumberCall (n) {
+      if(Math.abs(n)>=1000000000)
+        return Math.round(n/100000000) / 10+'B';
+      if(Math.abs(n)>=1000000)
+        return Math.round(n/100000) / 10+'M';
+      if(Math.abs(n)>=1000)
+        return Math.round(n/100) / 10+'K';
+      return n;
+    },
   }
 });
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_StatsCardvue_type_script_lang_js_ = (StatsCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=77f27c4e&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=0ee4d792&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=77f27c4e&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=0ee4d792&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue
 
@@ -32078,11 +32111,11 @@ var StatsCardvue_type_template_id_77f27c4e_scoped_true_staticRenderFns = []
 
 var StatsCard_component = normalizeComponent(
   components_StatsCardvue_type_script_lang_js_,
-  StatsCardvue_type_template_id_77f27c4e_scoped_true_render,
-  StatsCardvue_type_template_id_77f27c4e_scoped_true_staticRenderFns,
+  StatsCardvue_type_template_id_0ee4d792_scoped_true_render,
+  StatsCardvue_type_template_id_0ee4d792_scoped_true_staticRenderFns,
   false,
   null,
-  "77f27c4e",
+  "0ee4d792",
   null
   
 )
