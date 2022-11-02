@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="glass" v-show="dropDown" @click="dropDown=false"></div>
     <v-card
       elevation="2"
       color="#14202C"
@@ -11,7 +12,7 @@
       <div
         @click="dropDown = !dropDown"
         id="selected"
-        style="border-radius: 0px; height: 64px; background-color: #14202c"
+        style="border-radius: 0px; height: 64px; background-color: #14202c;"
       >
         <p
           style="
@@ -20,7 +21,7 @@
             font-size: 30px;
           "
         >
-          {{ privateRootElement.title }}
+          <span class="text-uppercase">{{ title }}</span>
           <v-icon
             style="color: #bfbfbf; float: left; padding: 10px; font-size: 30px"
             class="rotate-disabled"
@@ -104,7 +105,7 @@
               ></div>
               <div
                 class="parent-link"
-                v-for="depth in item.level - 1"
+                v-for="depth in item.level -1"
                 :key="depth"
                 v-show="canDraw(item, depth)"
                 :style="{ 'margin-left': '-' + (depth * 20 + 11) + 'px' }"
@@ -112,7 +113,6 @@
               <div
                 class="colored-square"
                 :style="{ 'background-color': item.color }"
-                @click="logFunction()"
               ></div>
               <div
                 class="d-flex flex-row"
@@ -173,7 +173,7 @@ export default {
     onopen: {
       type: Function,
     },
-    rootElement: {
+    value: {
       type: Object,
       required: true,
     },
@@ -181,9 +181,12 @@ export default {
       type: Number,
       required: true,
     },
+    path: {
+      type: Object,
+      default: () => ({})
+    }
   },
   data: () => ({
-    path: {},
     rootButton: false,
     root: false,
     buildingStructure: [],
@@ -194,22 +197,28 @@ export default {
   }),
   computed: {
     privateRootElement() {
-      const el = this.rootElement;
+      const el = this.value;
       el["level"] = 0;
       el["isOpen"] = false;
       el["doNotDraw"] = [];
       el["loading"] = false;
       return el;
-    }
+    },
+    title() {
+      return this.value.title.length > 20
+          ? this.value.title.substring(0, 19) + '...'
+          : this.value.title;
+    },
   },
   methods: {
     select(item) {
       this.dive(item);
-      if(item.level > 0) this.$emit("input", item.name);
+      if(item.level > 0) this.$emit("input", { name: this.value.name, title: item.name, dynamicId: item.dynamicId, color: item.color });
     },
     dive(item) {
-      this.path[item.level] = item.name;
-      for(let i = item.level + 1; i <= this.maxDepth; i++) this.path[i] = "";
+      /*this.path[item.level] = item.dynamicId;*/ this.$set(this.path, item.level, item.dynamicId)
+      for(let i = item.level + 1; i <= this.maxDepth; i++) /*this.path[i] = null;*/ this.$set(this.path, i, null)
+      this.$emit("update:path", this.path)
     },
     expandCollapse(item) {
       const nextDepth = item.level + 1;
@@ -219,7 +228,7 @@ export default {
           a[a.length - 1]["isLast"] = true;
           a[a.length - 1]["isLastInGroup"] = true;
           const newForbidden = item.doNotDraw.map((x) => x + 1);
-          if (item.isLast && item.isLast == true) newForbidden.unshift(1);
+          if (item.isLast && item.isLast == true) newForbidden.unshift(0);
           a = a.map((obj) => {
             obj["level"] = nextDepth;
             obj["isOpen"] = false;
@@ -230,17 +239,42 @@ export default {
         }
         return a;
       };
-      let index = this.buildingStructure.indexOf(item);
-      this.buildingStructure[index].isLastInGroup = false;
+      item.isLastInGroup = false;
       if (!item.isOpen) {
-        this.buildingStructure[index].loading = true;
+        const to_close = this.buildingStructure.filter(x => x.level === item.level && x.dynamicId !== item.dynamicId && x.isOpen)
+        console.log(to_close)
+        to_close.forEach(x => {
+          const local_index = this.buildingStructure.indexOf(x)
+          this.buildingStructure[local_index].isLastInGroup = false;
+          const elementByLevel = (i) => i.level <= x.level;
+          const removeBlock = this.buildingStructure
+              .slice(local_index + 1, this.buildingStructure.length)
+              .findIndex(elementByLevel);
+
+          switch (removeBlock) {
+            case 0:
+              break;
+            case -1:
+              this.buildingStructure.splice(
+                  local_index + 1,
+                  this.buildingStructure.length
+              );
+              break;
+            default:
+              this.buildingStructure.splice(local_index + 1, removeBlock);
+              break;
+          }
+          x.isOpen = !x.isOpen
+        })
+        item.loading = true;
         this.onopen(item)
           .then((r) => {
-            this.buildingStructure.splice(index + 1, 0, ...doCall(r));
+            this.buildingStructure.splice(this.buildingStructure.indexOf(item) + 1, 0, ...doCall(r));
             this.rootButton = false;
           })
-          .then(() => (this.buildingStructure[index].loading = false));
+          .then(() => (item.loading = false));
       } else {
+        let index = this.buildingStructure.indexOf(item);
         const elementByLevel = (i) => i.level <= item.level;
         const removeBlock = this.buildingStructure
           .slice(index + 1, this.buildingStructure.length)
@@ -260,8 +294,7 @@ export default {
             break;
         }
       }
-      this.buildingStructure[index].isOpen =
-        !this.buildingStructure[index].isOpen;
+      item.isOpen = !item.isOpen;
     },
     canDraw(element, depth) {
       if (element.doNotDraw.includes(depth)) return false;
@@ -283,18 +316,12 @@ export default {
     reset() {
       document.getElementById("selected").scrollIntoView();
     },
-    logFunction() {
-      console.log("hit");
-    },
     enter: function (el, done) {
       Velocity(el, "fadeIn", { complete: done, duration: 200 });
     },
     leave: function (el, done) {
       Velocity(el, "fadeOut", { complete: done, duration: 200 });
     },
-  },
-  created() {
-    for (let i = 0; i <= this.maxDepth; i++) this.$set(this.path, i, "");
   },
   watch: {
     dropDown(v1) {

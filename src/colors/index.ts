@@ -22,23 +22,6 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-function updateRGB(rgb: number[], index: number, step: number[]) {
-  if (rgb[(index - 1) % 3] < step[0]) {
-    step[0] -= rgb[(index - 1) % 3];
-    rgb[(index - 1) % 3] = 0;
-    const possible = 255 - rgb[(index + 1) % 3];
-    if (step[0] < possible) {
-      rgb[(index + 1) % 3] += step[0];
-      step[0] = 0;
-    } else {
-      rgb[(index + 1) % 3] = 255;
-      step[0] -= possible;
-    }
-  } else {
-    rgb[(index - 1) % 3] -= step[0];
-  }
-}
-
 export function gradiant(size: number) {
   const colors = [];
   if (size > 0) {

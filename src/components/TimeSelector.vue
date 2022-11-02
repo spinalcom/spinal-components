@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="glass" v-show="dropDown" @click="dropDown=false"></div>
     <v-card
       elevation="2"
       color="#14202C"
@@ -16,12 +17,11 @@
         <p
           style="
             font-weight: 400;
-            position: fixed;
             padding: 4px;
             font-size: 30px;
           "
         >
-          {{ rootElement.name }}
+          {{ value.name }}
           <v-icon
             style="color: #bfbfbf; float: left; padding: 10px; font-size: 30px"
             class="rotate-disabled"
@@ -70,9 +70,8 @@
 
 export default {
   name: "time-selector",
-
   props: {
-    rootElement: {
+    value: {
       type: Object,
       required: true,
     },

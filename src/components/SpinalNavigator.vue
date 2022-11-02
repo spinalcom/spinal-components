@@ -1,15 +1,14 @@
 <template>
   <div>
     <space-selector
-      v-model="current_data"
+      v-model="element"
+      :path.sync="cur_path"
       class="d-inline"
       :max-depth="maxDepth"
-      :root-element="current_element"
       :onopen="expandSelector"
     ></space-selector>
     <time-selector
       class="d-inline"
-      :root-element="current_period"
       v-model="period"
     ></time-selector>
   </div>
@@ -25,11 +24,7 @@ export default {
   components: { SpaceSelector, TimeSelector },
 
   props: {
-    current_element: {
-      type: Object,
-      required: true,
-    },
-    current_period: {
+    value: {
       type: Object,
       required: true,
     },
@@ -41,22 +36,30 @@ export default {
       type: Number,
       required: true,
     },
+    path: {
+      type: Object,
+      default: () =>({})
+    }
   },
 
   data() {
     return {
-      current_data: this.current_element.title,
-      period: this.current_period,
+      element: this.value.element,
+      period: this.value.period,
+      cur_path: this.path
     };
   },
 
   watch: {
     current_data() {
-      this.$emit("input", { spatial: this.current_data, time: this.period });
+      this.$emit("input", { spatial: this.element, time: this.period });
     },
     period() {
-      this.$emit("input", { spatial: this.current_data, time: this.period });
+      this.$emit("input", { spatial: this.element, time: this.period });
     },
+    cur_path() {
+      this.$emit("update:path", this.cur_path)
+    }
   },
 };
 </script>

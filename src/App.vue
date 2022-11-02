@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-main>
-      <space-selector class="ma-2" :root-element="el" :max-depth="3" :onopen="onopen"></space-selector>
+    <spinal-navigator class="ma-2 pa-1" v-model="nav" :path.sync="path" :max-depth="2" :expand-selector="onopen"></spinal-navigator>
+    <v-main v-if="loaded" style="position: absolute; width: 100%">
       <download-button :file-name="'fichier test'" :data="table" class="ma-2"></download-button>
       <div class="d-flex flex-row">
         <pie-card :title="'Test'" :pie-chart-data="pie"></pie-card>
@@ -35,7 +35,23 @@
         ></stats-card>
       </div>
       <paginated-table class="ma-2" :table-data="tableData" :height="tableHeight"></paginated-table>
+
+      <double-stat-card
+          style="width: 25%"
+          :first-value="25550"
+          :first-unit="'Km'"
+          :first-title="'parcourus'"
+          :first-subtitle="'Aujourd\'hui'"
+          :second-value="1000"
+          :second-unit="'Km'"
+          :second-title="'marchés'"
+          :second-type="'comparison'"
+          :second-compared="'4%'"
+          :second-subtitle="'par rapport à la distance totale'"
+          :second-color="'#125684'"
+      ></double-stat-card>
     </v-main>
+    <loading-page v-else></loading-page>
   </v-app>
 </template>
 
@@ -47,12 +63,19 @@ import StatsCard from "@/components/StatsCard.vue";
 import DownloadButton from "@/components/DownloadButton.vue";
 import PaginatedTable from "@/components/PaginatedTable.vue";
 import SpaceSelector from "@/components/SpaceSelector";
-
+import SpinalNavigator from "@/components/SpinalNavigator";
+import DoubleStatCard from "@/components/DoubleStatCard";
+import LoadingPage from "@/components/LoadingPage";
+let i = 0;
 export default {
   name: 'App',
 
   components: {
-    SpaceSelector,
+    LoadingPage,
+    DoubleStatCard,
+    SpinalNavigator,
+    //TimeSelector,
+    //SpaceSelector,
     PaginatedTable,
     DownloadButton,
     StatsCard,
@@ -61,6 +84,12 @@ export default {
   },
 
   data: () => ({
+    loaded: false,
+    path: {},
+    nav: {
+      element: { name: "Liste", title: "Titre", dynamicId: 0, color: '#f00' },
+      period: { name: "SEMAINE", value: "week" },
+    },
     el: { name: "Liste", title: "Titre", dynamicId: 0, color: '#f00' },
     time: { name: "SEMAINE", value: "week" },
     pie: [
@@ -96,22 +125,22 @@ export default {
     },
     tableData() {
       return this.table;
-    }
+    },
   },
 
   methods: {
-    async onopen(item) {
+    async onopen() {
       return [
-        { name: "aiud", color: '#f56', dynamicId: 1 },
-        { name: "bhsb", color: '#f56', dynamicId: 2 },
-        { name: "oisqjx", color: '#f56', dynamicId: 3 },
-        { name: "bhvfu", color: '#f56', dynamicId: 4 },
-        { name: "dscgf", color: '#f56', dynamicId: 5 },
+        { name: "étiquette rouge plutot rose", color: '#f56', dynamicId: ++i },
+        { name: "étiquette verte", color: '#6f5', dynamicId: ++i },
+        { name: "étiquette bleue", color: '#56f', dynamicId: ++i }
       ]
+
     }
   },
 
   mounted() {
+    setTimeout(() => this.loaded = true, 5000)
     setTimeout(() => this.table = [
       {
         a:0,
