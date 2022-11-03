@@ -76,6 +76,10 @@ export default {
 </script>
 
 <style scoped>
+.v-card {
+  background-color: #f9f9f9;
+}
+
 .progress-bar {
   margin-left: -16px;
   width: calc(100% + 32px);

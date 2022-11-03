@@ -76,6 +76,10 @@ export function HSVtoRGB(h: any, s: any, v: any) {
   };
 }
 
+export function RGBtoHSV() {
+ return 100;
+}
+
 export function singleColorGradiant(size: number, color: number) {
   if (size === 0) return [];
   const colors = [];
@@ -107,4 +111,15 @@ export function setColors(from: any[], to: any[]) {
     }
   }
   return to;
+}
+
+function hexaToRGB(color: string) {
+  let col = color[1] + color[2];
+  const red = parseInt(col, 10)
+  col = color[3] + color[4];
+  const green = parseInt(col, 10)
+  col = color[5] + color[6];
+  const blue = parseInt(col, 10)
+
+  return { r: red, g: green, b: blue}
 }

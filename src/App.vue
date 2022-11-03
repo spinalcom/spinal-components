@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <spinal-navigator class="ma-2 pa-1" v-model="nav" :path.sync="path" :max-depth="2" :expand-selector="onopen"></spinal-navigator>
-    <v-main v-if="loaded" style="position: absolute; width: 100%">
+    <v-main v-if="loaded" style="position: absolute; width: 100%; bottom: 0; top: 0">
       <download-button :file-name="'fichier test'" :data="table" class="ma-2"></download-button>
       <div class="d-flex flex-row">
         <pie-card :title="'Test'" :pie-chart-data="pie"></pie-card>
@@ -173,6 +173,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-main {
+  background: transparent linear-gradient(121deg, #F8FAFA 0%, #D6E2E6 100%) 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
 .pie-card {
   width: 30%;
 }

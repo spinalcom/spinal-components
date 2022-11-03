@@ -86,6 +86,10 @@ export default {
 </script>
 
 <style scoped>
+.v-card {
+  background-color: #f9f9f9;
+}
+
 .card-title {
   height: 20%;
 }
