@@ -1,7 +1,7 @@
 <template>
   <div>
     <space-selector
-      v-model="element"
+      v-model="navigator.element"
       :path.sync="cur_path"
       class="d-inline"
       :max-depth="maxDepth"
@@ -9,7 +9,7 @@
     ></space-selector>
     <time-selector
       class="d-inline"
-      v-model="period"
+      v-model="navigator.period"
     ></time-selector>
   </div>
 </template>
@@ -44,18 +44,14 @@ export default {
 
   data() {
     return {
-      element: this.value.element,
-      period: this.value.period,
+      navigator: this.value,
       cur_path: this.path
     };
   },
 
   watch: {
-    current_data() {
-      this.$emit("input", { spatial: this.element, time: this.period });
-    },
-    period() {
-      this.$emit("input", { spatial: this.element, time: this.period });
+    navigator() {
+      this.$emit("input", this.navigator)
     },
     cur_path() {
       this.$emit("update:path", this.cur_path)

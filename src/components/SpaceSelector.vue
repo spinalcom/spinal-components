@@ -242,7 +242,6 @@ export default {
       item.isLastInGroup = false;
       if (!item.isOpen) {
         const to_close = this.buildingStructure.filter(x => x.level === item.level && x.dynamicId !== item.dynamicId && x.isOpen)
-        console.log(to_close)
         to_close.forEach(x => {
           const local_index = this.buildingStructure.indexOf(x)
           this.buildingStructure[local_index].isLastInGroup = false;
