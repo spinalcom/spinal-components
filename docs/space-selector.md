@@ -7,25 +7,23 @@ The notable props for this component are:
   - name
   - dynamicId
   - color (hexa in a string)
+- v-model: dynamicId and color are not required but will be returned
+- path: the path to your current position in the selector (not required)
 
 ### Example
 ![time selector](../public/docs/space%20selector.png)
 ### Code
 ```vue
 <template>
-  <sc-space-selector v-model="title" :root-element="element" :max-depth="2" :onopen="expand" ></sc-space-selector>
+  <sc-space-selector v-model="element" :path.sync="path" :max-depth="2" :onopen="expand" ></sc-space-selector>
 </template>
 
 <script>
 export default {
   data: () => ({
-    title: 'Selection'
+    element: { title: 'Selection', name: 'Liste', dynamicId: 0, color: '#f00' },
+    path: {},
   }),
-  computed: {
-    element() {
-      return { title: this.title, name: 'Liste' }
-    }
-  },
   methods: {
     expand() {
       return [

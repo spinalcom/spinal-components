@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import SpaceSelector from "@/components/SpaceSelector";
-import TimeSelector from "@/components/TimeSelector";
+import SpaceSelector from "../components/SpaceSelector";
+import TimeSelector from "../components/TimeSelector";
 
 export default {
   name: "spinal-navigator",

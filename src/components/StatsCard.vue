@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
+.stat-card {
   background-color: #f9f9f9;
 }
 

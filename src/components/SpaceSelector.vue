@@ -105,7 +105,7 @@
               ></div>
               <div
                 class="parent-link"
-                v-for="depth in item.level -1"
+                v-for="depth in item.level - 1"
                 :key="depth"
                 v-show="canDraw(item, depth)"
                 :style="{ 'margin-left': '-' + (depth * 20 + 11) + 'px' }"

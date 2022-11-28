@@ -34,9 +34,9 @@ export function gradiant(size: number) {
   }
   return colors;
 }
-
-export function barColors() {
-  return ["rgba(255,0,11,1)", "rgba(20,32,44,1)", "rgba(17,237,169,1)"];
+export function hexaToHSV(color: string) {
+  const { r, g, b } = hexaToRGB(color);
+  return RGBtoHSV(r, g, b);
 }
 
 export function HSVtoRGB(h: any, s: any, v: any) {
@@ -76,8 +76,26 @@ export function HSVtoRGB(h: any, s: any, v: any) {
   };
 }
 
-export function RGBtoHSV() {
- return 100;
+function RGBtoHSV(r:number, g:number, b:number) {
+  r /= 255, g /= 255, b /= 255;
+
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0;
+  const v = max, d = max - min;
+  const s = max == 0 ? 0 : d / max;
+
+
+  if (max != min) {
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+
+    h /= 6;
+  }
+
+  return { h, s, v };
 }
 
 export function singleColorGradiant(size: number, color: number) {
@@ -88,8 +106,8 @@ export function singleColorGradiant(size: number, color: number) {
   let v = 100;
 
   for (let i = 0; i < size; i++) {
-    const rgb = HSVtoRGB(color / 100, s / 100, v / 100);
-    colors.push(`rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 1)`);
+    const {r, g, b} = HSVtoRGB(color / 100, s / 100, v / 100);
+    colors.push(`rgba(${r}, ${g}, ${b}, 1)`);
     s -= step;
     v -= step;
   }
@@ -101,19 +119,15 @@ export function setColors(from: any[], to: any[]) {
     const found = from.find((e) => e.getDynamicId() === element.dynamicId);
     if (found) {
       const { r, g, b } = HSVtoRGB(found.getColor() / 100, 1, 1);
-      let red = r.toString(16);
-      red = red.length === 2 ? red : "0" + red;
-      let green = g.toString(16);
-      green = green.length === 2 ? green : "0" + green;
-      let blue = b.toString(16);
-      blue = blue.length === 2 ? blue : "0" + blue;
-      element.color = `#${red}${green}${blue}`;
+      element.color = RGBtoHexa(r, g, b);
     }
   }
   return to;
 }
 
 function hexaToRGB(color: string) {
+  if(color.length == 4)
+    color = color[0] + color[1] + color[1] + color[2] + color[2] + color[3] + color[3];
   let col = color[1] + color[2];
   const red = parseInt(col, 10)
   col = color[3] + color[4];
@@ -122,4 +136,14 @@ function hexaToRGB(color: string) {
   const blue = parseInt(col, 10)
 
   return { r: red, g: green, b: blue}
+}
+
+function RGBtoHexa(r: number, g: number, b: number) {
+  let red = r.toString(16);
+  red = red.length === 2 ? red : "0" + red;
+  let green = g.toString(16);
+  green = green.length === 2 ? green : "0" + green;
+  let blue = b.toString(16);
+  blue = blue.length === 2 ? blue : "0" + blue;
+  return `#${red}${green}${blue}`;
 }

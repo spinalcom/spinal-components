@@ -4,7 +4,7 @@
     <v-main v-if="loaded" style="position: absolute; width: 100%; bottom: 0; top: 0">
       <download-button :file-name="'fichier test'" :data="table" class="ma-2"></download-button>
       <div class="d-flex flex-row">
-        <pie-card :title="'Test'" :pie-chart-data="pie"></pie-card>
+        <pie-card :title="'Test'" :pie-chart-data="pie" :color="pieColor"></pie-card>
         <bar-card :title="'Test 2'" :labels="barLabels" :datasets="barDatas"></bar-card>
       </div>
       <div class="d-flex flex-row">
@@ -56,16 +56,14 @@
 </template>
 
 <script>
-import TimeSelector from "@/components/TimeSelector.vue";
-import PieCard from "@/components/PieCard.vue";
-import BarCard from "@/components/BarCard.vue";
-import StatsCard from "@/components/StatsCard.vue";
-import DownloadButton from "@/components/DownloadButton.vue";
-import PaginatedTable from "@/components/PaginatedTable.vue";
-import SpaceSelector from "@/components/SpaceSelector";
-import SpinalNavigator from "@/components/SpinalNavigator";
-import DoubleStatCard from "@/components/DoubleStatCard";
-import LoadingPage from "@/components/LoadingPage";
+import PieCard from "./components/PieCard.vue";
+import BarCard from "./components/BarCard.vue";
+import StatsCard from "./components/StatsCard.vue";
+import DownloadButton from "./components/DownloadButton.vue";
+import PaginatedTable from "./components/PaginatedTable.vue";
+import SpinalNavigator from "./components/SpinalNavigator";
+import DoubleStatCard from "./components/DoubleStatCard";
+import LoadingPage from "./components/LoadingPage";
 let i = 0;
 export default {
   name: 'App',
@@ -74,8 +72,6 @@ export default {
     LoadingPage,
     DoubleStatCard,
     SpinalNavigator,
-    //TimeSelector,
-    //SpaceSelector,
     PaginatedTable,
     DownloadButton,
     StatsCard,
@@ -90,8 +86,6 @@ export default {
       element: { name: "Liste", title: "Titre", dynamicId: 0, color: '#f00' },
       period: { name: "SEMAINE", value: "week" },
     },
-    el: { name: "Liste", title: "Titre", dynamicId: 0, color: '#f00' },
-    time: { name: "SEMAINE", value: "week" },
     pie: [
       { label: "oui", value: 75 },
       { label: "non", value: 65 },
@@ -126,6 +120,9 @@ export default {
     tableData() {
       return this.table;
     },
+    pieColor() {
+      return this.nav.element.color;
+    }
   },
 
   methods: {
@@ -140,8 +137,44 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => this.loaded = true, 5000)
+    setTimeout(() => this.loaded = true, 2000)
     setTimeout(() => this.table = [
+      {
+        a:0,
+        b:1,
+        c:10,
+        d:11
+      },
+      {
+        a:1,
+        b:0,
+        c:10,
+        d:11
+      },
+      {
+        a:0,
+        b:1,
+        c:11,
+        d:10
+      },
+      {
+        a:0,
+        b:1,
+        c:10,
+        d:11
+      },
+      {
+        a:1,
+        b:0,
+        c:10,
+        d:11
+      },
+      {
+        a:0,
+        b:1,
+        c:11,
+        d:10
+      },
       {
         a:0,
         b:1,

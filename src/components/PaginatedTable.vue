@@ -6,24 +6,19 @@
       </div>
       <div ref="desktopTable">
         <v-data-table
-          :loading="!loaded"
-          loadingText="Chargement des données"
+            item-key="name"
+            class="elevation-1 table-data"
+            loading-text="Chargement des données"
+            :loading="!loaded"
           :headers="headers"
           :items="tableData"
-          :page.sync="page"
           :height="dataHeight"
-          :items-per-page="10"
-          class="elevation-1 table-data"
           :footer-props="{
                     prevIcon: 'mdi-menu-left',
                     nextIcon: 'mdi-menu-right',
-                    itemsPerPageText: '',
                     showCurrentPage: true,
                     itemsPerPageAllText: 'Tout',
-                    itemsPerPageOptions: [5,10,15,-1],
-                    pageText: '',
                   }"
-          @page-count="pageCount = $event"
         >
           <v-progress-linear v-show="!loaded" slot="progress" color="accent" class="progress-bar" indeterminate></v-progress-linear>
           <template v-slot:no-data>
@@ -76,7 +71,7 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
+.table-card {
   background-color: #f9f9f9;
 }
 

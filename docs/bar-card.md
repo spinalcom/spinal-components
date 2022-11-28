@@ -1,4 +1,4 @@
-# Bar Card (_NOT USABLE_)
+# Bar Card
 
 ## Usage
 
@@ -12,7 +12,7 @@ These objects have as attributes:
 ### Code
 ```vue
 <template>
-  <sc-bar-card :title="'Activité de la semaine'" :labels="barLabels" :pie-chart-data="barChartData"></sc-bar-card>
+  <sc-bar-card :title="'Activité de la semaine'" :labels="barLabels" :datasets="barChartData"></sc-bar-card>
 </template>
 
 <script>

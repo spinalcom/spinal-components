@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
+.bar-card {
   background-color: #f9f9f9;
 }
 

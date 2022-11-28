@@ -1,7 +1,7 @@
 <template>
   <v-card class="pie-card ma-2 rounded-lg" elevation="5" outlined>
     <v-card-title class="card-title text-uppercase"
-    >{{ title }}
+    >{{ title + " " + color }}
     </v-card-title>
     <Pie
         :chart-data="pieData"
@@ -15,7 +15,7 @@
 <script>
 import { Pie } from 'vue-chartjs/legacy'
 import { Legend, ArcElement, Chart as ChartJS } from "chart.js";
-import { singleColorGradiant } from "@/colors";
+import { hexaToHSV, singleColorGradiant } from "../colors";
 
 ChartJS.register(ArcElement, Legend)
 
@@ -28,6 +28,7 @@ export default {
 
   data() {
     return {
+      pieId: 1,
       pieChartOptions: {
           responsive: true,
           maintainAspectRatio: false,
@@ -53,6 +54,9 @@ export default {
       type: Array,
       required: true
     },
+    color: {
+      type: String,
+    }
   },
 
   computed: {
@@ -75,7 +79,7 @@ export default {
         labels: sorted.map(t => t.label),
         datasets: [
           {
-            backgroundColor: singleColorGradiant(sorted.length, 100),
+            backgroundColor: singleColorGradiant(sorted.length, hexaToHSV(this.color).h),
             data: sorted.map(t => t.value),
           },
         ]
@@ -86,7 +90,7 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
+.pie-card {
   background-color: #f9f9f9;
 }
 

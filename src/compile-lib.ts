@@ -1,14 +1,14 @@
-import TimeSelector from "@/components/TimeSelector.vue";
-import SpaceSelector from "@/components/SpaceSelector.vue";
-import SpinalNavigator from "@/components/SpinalNavigator.vue";
-import PieCard from "@/components/PieCard.vue";
-import BarCard from "@/components/BarCard.vue";
-import DownloadButton from "@/components/DownloadButton.vue";
-import PaginatedTable from "@/components/PaginatedTable.vue";
-import StatsCard from "@/components/StatsCard.vue";
-import DoubleStatCard from "@/components/DoubleStatCard.vue";
-import LoadingPage from "@/components/LoadingPage.vue";
-import vuetify from "@/plugins/vuetify";
+import TimeSelector from "./components/TimeSelector.vue";
+import SpaceSelector from "./components/SpaceSelector.vue";
+import SpinalNavigator from "./components/SpinalNavigator.vue";
+import PieCard from "./components/PieCard.vue";
+import BarCard from "./components/BarCard.vue";
+import DownloadButton from "./components/DownloadButton.vue";
+import PaginatedTable from "./components/PaginatedTable.vue";
+import StatsCard from "./components/StatsCard.vue";
+import DoubleStatCard from "./components/DoubleStatCard.vue";
+import LoadingPage from "./components/LoadingPage.vue";
+import vuetify from "./plugins/vuetify";
 
 export default {
     install(Vue: any, options: any) {

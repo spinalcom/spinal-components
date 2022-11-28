@@ -9,25 +9,17 @@ This component use both the time and space selectors as one component.
 ### Code
 ```vue
 <template>
-  <sc-spinal-navigator v-model="navigator" :current_period="time" :current_element="element" :max-depth="2" :expandSelector="expand"></sc-spinal-navigator>
+  <sc-spinal-navigator v-model="navigator" :max-depth="2" :expandSelector="expand"></sc-spinal-navigator>
 </template>
 
 <script>
 export default {
   data: () => ({
     navigator: {
-      spatial: 'Selection',
-      time: { name: "SEMAINE", value: "week" }
+      element: { name: "Liste", title: "Selection" },
+      period: { name: "SEMAINE", value: "week" }
     }
   }),
-  computed: {
-    time() {
-      return this.navigator.time
-    },
-    element() {
-      return { title: this.navigator.spatial, name: 'Liste' }
-    }
-  },
   methods: {
     expand() {
       return [

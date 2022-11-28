@@ -1,4 +1,4 @@
-# Pie Card (_NOT USABLE_)
+# Pie Card
 
 ## Usage
 
@@ -9,7 +9,7 @@ The six biggest values will be represented in the chart and the rest will be sum
 ### Code
 ```vue
 <template>
-  <sc-pie-card :title="'Réponses les plus données'" :pie-chart-data="pieChartData"></sc-pie-card>
+  <sc-pie-card :title="'Réponses les plus données'" :pie-chart-data="pieChartData" :color="'#f00'"></sc-pie-card>
 </template>
 
 <script>
