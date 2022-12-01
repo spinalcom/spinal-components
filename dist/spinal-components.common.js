@@ -10218,13 +10218,13 @@ const VCardTitle = createSimpleFunctional('v-card__title');
   }
 });
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=07701a6b&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=2591d5c5&scoped=true&
 
 
 
-var PieCardvue_type_template_id_07701a6b_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title + " " + _vm.color)+" ")]),_c('Pie',{staticClass:"pie-height",attrs:{"chart-data":_vm.pieData,"chart-id":'2',"chart-options":_vm.pieChartOptions}})],1)
+var PieCardvue_type_template_id_2591d5c5_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('Pie',{staticClass:"pie-height",attrs:{"chart-data":_vm.pieData,"chart-id":'2',"chart-options":_vm.pieChartOptions}})],1)
 }
-var PieCardvue_type_template_id_07701a6b_scoped_true_staticRenderFns = []
+var PieCardvue_type_template_id_2591d5c5_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/chart.js/dist/chunks/helpers.segment.mjs
@@ -23963,7 +23963,7 @@ function HSVtoRGB(h, s, v) {
     };
 }
 function RGBtoHSV(r, g, b) {
-    r /= 255, g /= 255, b /= 255;
+    (r /= 255), (g /= 255), (b /= 255);
     var max = Math.max(r, g, b), min = Math.min(r, g, b);
     var h = 0;
     var v = max, d = max - min;
@@ -24015,13 +24015,20 @@ function setColors(from, to) {
 }
 function hexaToRGB(color) {
     if (color.length == 4)
-        color = color[0] + color[1] + color[1] + color[2] + color[2] + color[3] + color[3];
+        color =
+            color[0] +
+                color[1] +
+                color[1] +
+                color[2] +
+                color[2] +
+                color[3] +
+                color[3];
     var col = color[1] + color[2];
-    var red = parseInt(col, 10);
+    var red = parseInt(col, 16);
     col = color[3] + color[4];
-    var green = parseInt(col, 10);
+    var green = parseInt(col, 16);
     col = color[5] + color[6];
-    var blue = parseInt(col, 10);
+    var blue = parseInt(col, 16);
     return { r: red, g: green, b: blue };
 }
 function RGBtoHexa(r, g, b) {
@@ -24040,83 +24047,83 @@ function RGBtoHexa(r, g, b) {
 
 
 
-Chart.register(ArcElement, plugin_legend)
+Chart.register(ArcElement, plugin_legend);
 
 /* harmony default export */ var PieCardvue_type_script_lang_js_ = ({
   name: "pie-card",
 
   components: {
-    Pie: Pie
+    Pie: Pie,
   },
 
   data() {
     return {
       pieId: 1,
       pieChartOptions: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              position: "right",
-              labels: {
-                boxWidth: 20,
-                boxHeight: 20,
-              },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "right",
+            labels: {
+              boxWidth: 20,
+              boxHeight: 20,
             },
           },
+        },
       },
-    }
+    };
   },
 
   props: {
     title: {
       type: String,
-      default: "Pie Card"
+      default: "Pie Card",
     },
     pieChartData: {
       type: Array,
-      required: true
+      required: true,
     },
     color: {
       type: String,
-    }
+      default: "#f00",
+    },
   },
 
   computed: {
     pieData() {
-      const data = this.pieChartData;
-      data.sort((e1, e2) => e1.value - e2.value)
-          .reverse();
+      const data = [...this.pieChartData];
+      data.sort((e1, e2) => e1.value - e2.value).reverse();
       let sorted = [];
-      if(data.length > 7) {
+      if (data.length > 7) {
         for (let i = 0; i < 6; i++) sorted.push(data.shift());
         sorted.push({
           label: "ETC...",
-          value: data
-              .map(e => e.value)
-              .reduce((e1, e2) => e1 + e2, 0),
+          value: data.map((e) => e.value).reduce((e1, e2) => e1 + e2, 0),
         });
-      }
-      else sorted = data;
+      } else sorted = data;
       return {
-        labels: sorted.map(t => t.label),
+        labels: sorted.map((t) => t.label),
         datasets: [
           {
-            backgroundColor: singleColorGradiant(sorted.length, hexaToHSV(this.color).h),
-            data: sorted.map(t => t.value),
+            backgroundColor: singleColorGradiant(
+              sorted.length,
+              hexaToHSV(this.color).h * 100
+            ),
+            data: sorted.map((t) => t.value),
           },
-        ]
-      }
-    }
-  }
+        ],
+      };
+    },
+  },
 });
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PieCardvue_type_script_lang_js_ = (PieCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=07701a6b&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=2591d5c5&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=07701a6b&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=2591d5c5&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue
 
@@ -24129,11 +24136,11 @@ Chart.register(ArcElement, plugin_legend)
 
 var PieCard_component = normalizeComponent(
   components_PieCardvue_type_script_lang_js_,
-  PieCardvue_type_template_id_07701a6b_scoped_true_render,
-  PieCardvue_type_template_id_07701a6b_scoped_true_staticRenderFns,
+  PieCardvue_type_template_id_2591d5c5_scoped_true_render,
+  PieCardvue_type_template_id_2591d5c5_scoped_true_staticRenderFns,
   false,
   null,
-  "07701a6b",
+  "2591d5c5",
   null
   
 )

@@ -76,20 +76,27 @@ export function HSVtoRGB(h: any, s: any, v: any) {
   };
 }
 
-function RGBtoHSV(r:number, g:number, b:number) {
-  r /= 255, g /= 255, b /= 255;
+function RGBtoHSV(r: number, g: number, b: number) {
+  (r /= 255), (g /= 255), (b /= 255);
 
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
   let h = 0;
-  const v = max, d = max - min;
+  const v = max,
+    d = max - min;
   const s = max == 0 ? 0 : d / max;
-
 
   if (max != min) {
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
     }
 
     h /= 6;
@@ -106,7 +113,7 @@ export function singleColorGradiant(size: number, color: number) {
   let v = 100;
 
   for (let i = 0; i < size; i++) {
-    const {r, g, b} = HSVtoRGB(color / 100, s / 100, v / 100);
+    const { r, g, b } = HSVtoRGB(color / 100, s / 100, v / 100);
     colors.push(`rgba(${r}, ${g}, ${b}, 1)`);
     s -= step;
     v -= step;
@@ -126,16 +133,23 @@ export function setColors(from: any[], to: any[]) {
 }
 
 function hexaToRGB(color: string) {
-  if(color.length == 4)
-    color = color[0] + color[1] + color[1] + color[2] + color[2] + color[3] + color[3];
+  if (color.length == 4)
+    color =
+      color[0] +
+      color[1] +
+      color[1] +
+      color[2] +
+      color[2] +
+      color[3] +
+      color[3];
   let col = color[1] + color[2];
-  const red = parseInt(col, 10)
+  const red = parseInt(col, 16);
   col = color[3] + color[4];
-  const green = parseInt(col, 10)
+  const green = parseInt(col, 16);
   col = color[5] + color[6];
-  const blue = parseInt(col, 10)
+  const blue = parseInt(col, 16);
 
-  return { r: red, g: green, b: blue}
+  return { r: red, g: green, b: blue };
 }
 
 function RGBtoHexa(r: number, g: number, b: number) {
