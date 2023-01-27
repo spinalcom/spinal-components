@@ -1,21 +1,42 @@
 <template>
-  <v-card class="pie-card ma-2 rounded-lg" elevation="5" outlined>
-    <v-card-title class="card-title text-uppercase">{{ title }} </v-card-title>
-    <Pie
-      :chart-data="pieData"
-      :chart-id="'2'"
-      :chart-options="pieChartOptions"
-      class="pie-height"
-    />
+  <v-card
+    class="pie-card pa-1 rounded-lg d-flex flex-column"
+    elevation="5"
+    outlined
+  >
+    <v-card-title class="card-title text-uppercase pa-3 flex-shrink-1"
+      >{{ title }}
+    </v-card-title>
+    <div class="d-flex flex-row justify-center flex-grow-1 pb-3">
+      <div>
+        <Pie :data="pieData" :id="'2'" :options="pieChartOptions" />
+      </div>
+      <div id="pie-legend-container"></div>
+    </div>
   </v-card>
 </template>
 
 <script>
-import { Pie } from "vue-chartjs/legacy";
-import { Legend, ArcElement, Chart as ChartJS } from "chart.js";
+import { Pie } from "vue-chartjs";
+import { customBackgroundPlugin } from "../plugins/canvasPlugins";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  CategoryScale,
+} from "chart.js";
 import { hexaToHSV, singleColorGradiant } from "../colors";
 
-ChartJS.register(ArcElement, Legend);
+ChartJS.register(
+  ArcElement,
+  Title,
+  Legend,
+  Tooltip,
+  CategoryScale,
+  customBackgroundPlugin
+);
 
 export default {
   name: "pie-card",
@@ -28,15 +49,11 @@ export default {
     return {
       pieId: 1,
       pieChartOptions: {
-        responsive: true,
         maintainAspectRatio: false,
+        autopadding: false,
         plugins: {
           legend: {
-            position: "right",
-            labels: {
-              boxWidth: 20,
-              boxHeight: 20,
-            },
+            display: false,
           },
         },
       },
@@ -54,7 +71,7 @@ export default {
     },
     color: {
       type: String,
-      default: "#f00",
+      required: false,
     },
   },
 
@@ -70,14 +87,17 @@ export default {
           value: data.map((e) => e.value).reduce((e1, e2) => e1 + e2, 0),
         });
       } else sorted = data;
+      const tab = ["#14202c", "#00c4ff", 0, 0, 0, 0, 0].fill("#cadee2", 2, 7);
       return {
-        labels: sorted.map((t) => t.label),
+        labels: sorted.map((t) => `${t.value}: ${t.label}`),
         datasets: [
           {
-            backgroundColor: singleColorGradiant(
-              sorted.length,
-              hexaToHSV(this.color).h * 100
-            ),
+            backgroundColor: this.color
+              ? singleColorGradiant(
+                  sorted.length,
+                  hexaToHSV(this.color).h * 100
+                )
+              : tab.reverse(),
             data: sorted.map((t) => t.value),
           },
         ],
@@ -87,16 +107,20 @@ export default {
 };
 </script>
 
+<style>
+.v-application {
+  font-family: "Charlevoix Pro";
+}
+</style>
 <style scoped>
 .pie-card {
-  background-color: #f9f9f9;
+  background: #f9f9f9 0% 0% no-repeat padding-box;
 }
 
 .card-title {
-  height: 20%;
-}
-
-.pie-height {
-  height: 80%;
+  letter-spacing: 1.1px;
+  color: #214353;
+  opacity: 1;
+  font-size: 11px/13px;
 }
 </style>
