@@ -9,6 +9,7 @@ import StatsCard from "./components/StatsCard.vue";
 import DoubleStatCard from "./components/DoubleStatCard.vue";
 import LoadingPage from "./components/LoadingPage.vue";
 import vuetify from "./plugins/vuetify";
+import LineCard from "./components/LineCard.vue";
 
 export default {
     install(Vue: any, options: any) {
@@ -23,6 +24,6 @@ export default {
         Vue.component('sc-paginated-table', PaginatedTable)
         Vue.component('sc-stat-card', StatsCard)
         Vue.component('sc-double-stat-card', DoubleStatCard)
-        Vue.component('sc-line-card', DoubleStatCard)
+        Vue.component('sc-line-card', LineCard)
     }
 }

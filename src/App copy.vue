@@ -1,42 +1,94 @@
 <template>
-  <v-app style="">
+  <v-app id="application">
     <spinal-navigator
       class="ma-2 pa-1"
       v-model="nav"
       :path.sync="path"
       :max-depth="2"
       :expand-selector="onopen"
-    />
-    <download-button
-      :file-name="'fichier test'"
-      :data="table"
-      class="ma-2"
-    />
-    <bar-card
-      class="ma-2"
-      style="width: 95%; height: 400px"
-      :title="'Test 2'"
-      :labels="barLabels"
-      :datasets="barDatas"
-    />
-    <pie-card
-      class="ma-2"
-      :title="'Test'"
-      :pie-chart-data="pie"
-      :color="'#f00'"
-    />
-    <LineCard
-      class="ma-2"
-      style="width: 95%; height: 400px"
-      :title="'Test 2'"
-      :labels="lineLabels"
-      :datasets="lineDatas"
-    />
-    <stats-card
-      :value="80800"
-      :title="'parcourus'"
-      :color="'#956518'"
-    />
+    ></spinal-navigator>
+    <v-main
+      v-if="loaded"
+      style="position: absolute; width: 100%; bottom: 0; top: 0; height: 100%"
+    >
+      <download-button
+        :file-name="'fichier test'"
+        :data="table"
+        class="ma-2"
+      ></download-button>
+      <div class="d-flex flex-column">
+        <bar-card
+          class="ma-2"
+          style="width: 95%; height: 400px"
+          :title="'Test 2'"
+          :labels="barLabels"
+          :datasets="barDatas"
+        >
+        </bar-card>
+        <LineCard
+          class="ma-2"
+          style="width: 95%; height: 400px"
+          :title="'Test 2'"
+          :labels="lineLabels"
+          :datasets="lineDatas"
+        />
+        <pie-card
+          class="ma-2"
+          :title="'Test'"
+          :pie-chart-data="pie"
+          :color="'#f00'"
+        ></pie-card>
+      </div>
+      <!--<div class="d-flex flex-row">
+        <stats-card
+          :value="-255500"
+          :unit="'Km'"
+          :title="'parcourus'"
+          :subtitle="'Aujourd\'hui'"
+          :color="'#956518'"
+        ></stats-card>
+        <stats-card
+          :value="25"
+          :unit="'Km'"
+          :title="'parcourus'"
+          :subtitle="'Aujourd\'hui'"
+        ></stats-card>
+        <stats-card
+          :value="25"
+          :unit="'Km'"
+          :title="'parcourus'"
+          :subtitle="'Aujourd\'hui'"
+        ></stats-card>
+        <stats-card
+          :value="25"
+          :unit="'Km'"
+          :title="'parcourus'"
+          :subtitle="'Aujourd\'hui'"
+        ></stats-card>
+      </div>
+      <paginated-table
+        class="ma-2"
+        :table-data="tableData"
+        :height="tableHeight"
+      ></paginated-table>
+
+      <double-stat-card
+        style="width: 25%"
+        :first-value="25550"
+        :first-unit="'Km'"
+        :first-title="'parcourus'"
+        :first-subtitle="'Aujourd\'hui'"
+        :second-value="1000"
+        :second-unit="'Km'"
+        :second-title="'marchés'"
+        :second-type="'comparison'"
+        :second-compared="'4%'"
+        :second-subtitle="'par rapport à la distance totale'"
+        :second-color="'#125684'"
+      ></double-stat-card>
+      <ticket-card class="ma-2"></ticket-card>-->
+    </v-main>
+    <loading-page v-else></loading-page>
   </v-app>
 </template>
 
@@ -45,23 +97,23 @@ import PieCard from "./components/PieCard.vue";
 import BarCard from "./components/BarCard.vue";
 import StatsCard from "./components/StatsCard.vue";
 import DownloadButton from "./components/DownloadButton.vue";
-// import PaginatedTable from "./components/PaginatedTable.vue";
+import PaginatedTable from "./components/PaginatedTable.vue";
 import SpinalNavigator from "./components/SpinalNavigator";
-// import DoubleStatCard from "./components/DoubleStatCard";
-// import LoadingPage from "./components/LoadingPage";
-// import TicketCard from "./components/TicketCard";
+import DoubleStatCard from "./components/DoubleStatCard";
+import LoadingPage from "./components/LoadingPage";
+import TicketCard from "./components/TicketCard";
 import LineCard from "./components/LineCard";
 let i = 0;
 export default {
   name: "App",
 
   components: {
-    // LoadingPage,
+    LoadingPage,
     //DoubleStatCard,
     SpinalNavigator,
     //PaginatedTable,
     DownloadButton,
-    StatsCard,
+    // StatsCard,
     BarCard,
     PieCard,
     //TicketCard,
@@ -118,7 +170,7 @@ export default {
         pointRadius: 0, 
       },
       {
-        label: 'parcourus',
+        label: 'Km parcourus',
         borderColor: 'rgb(255, 187, 0, 1)',
         backgroundColor: 'rgb(255, 187, 0, .3)',
         data: [15, 12, 13, 10, 18, 8, 2],
@@ -236,8 +288,6 @@ export default {
   width: 70%;
 }
 .stat-card {
-  width: fit-content;
-  padding-left: 30px;
-  padding-right: 30px;
+  width: 25%;
 }
 </style>

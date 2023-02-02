@@ -15501,7 +15501,7 @@ class chart_DoughnutController extends DatasetController {
     }
 }
 
-class chart_LineController extends DatasetController {
+class LineController extends DatasetController {
     static id = 'line';
  static defaults = {
         datasetElementType: 'line',
@@ -16000,7 +16000,7 @@ __proto__: null,
 BarController: BarController,
 BubbleController: chart_BubbleController,
 DoughnutController: chart_DoughnutController,
-LineController: chart_LineController,
+LineController: LineController,
 PolarAreaController: chart_PolarAreaController,
 PieController: PieController,
 RadarController: chart_RadarController,
@@ -24994,7 +24994,7 @@ function createTypedChart(type, registerables) {
 }
 const Bar = /* #__PURE__ */ createTypedChart("bar", BarController);
 const Doughnut = /* #__PURE__ */ (/* unused pure expression or super */ null && (createTypedChart("doughnut", DoughnutController)));
-const Line = /* #__PURE__ */ (/* unused pure expression or super */ null && (createTypedChart("line", LineController)));
+const Line = /* #__PURE__ */ createTypedChart("line", LineController);
 const Pie = /* #__PURE__ */ createTypedChart("pie", PieController);
 const PolarArea = /* #__PURE__ */ (/* unused pure expression or super */ null && (createTypedChart("polarArea", PolarAreaController)));
 const Radar = /* #__PURE__ */ (/* unused pure expression or super */ null && (createTypedChart("radar", RadarController)));
@@ -33363,13 +33363,13 @@ function VGrid(name) {
 
 /* harmony default export */ var VFlex = (VGrid('flex'));
 //# sourceMappingURL=VFlex.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=19a3981d&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=0a240eb2&scoped=true&
 
 
 
-var StatsCardvue_type_template_id_19a3981d_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color})},[_vm._v(_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]),_vm._v(_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")])])],1)],1)
+var StatsCardvue_type_template_id_0a240eb2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color})},[_vm._v(" "+_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[(_vm.unit)?_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]):_vm._e(),_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):(_vm.subtitle)?_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")]):_vm._e()])],1)],1)
 }
-var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
+var StatsCardvue_type_template_id_0a240eb2_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=script&lang=js&
@@ -33388,7 +33388,7 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
     },
     unit: {
       type: String,
-      required: true
+      required: false
     },
     title: {
       type: String,
@@ -33399,7 +33399,7 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
     },
     subtitle: {
       type: String,
-      required: true
+      required: false
     },
     color: {
       type: String,
@@ -33422,10 +33422,10 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_StatsCardvue_type_script_lang_js_ = (StatsCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=19a3981d&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=0a240eb2&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=19a3981d&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=0a240eb2&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue
 
@@ -33438,11 +33438,11 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
 
 var StatsCard_component = normalizeComponent(
   components_StatsCardvue_type_script_lang_js_,
-  StatsCardvue_type_template_id_19a3981d_scoped_true_render,
-  StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns,
+  StatsCardvue_type_template_id_0a240eb2_scoped_true_render,
+  StatsCardvue_type_template_id_0a240eb2_scoped_true_staticRenderFns,
   false,
   null,
-  "19a3981d",
+  "0a240eb2",
   null
   
 )
@@ -33601,7 +33601,196 @@ var LoadingPage_component = normalizeComponent(
 external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
 /* harmony default export */ var vuetify = (new Vuetify({}));
 
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=3486d271&scoped=true&
+
+
+
+var LineCardvue_type_template_id_3486d271_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase flex-shrink-1"},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('LineChart',{attrs:{"data":_vm.lineChartData,"chart-id":'1',"options":_vm.lineChartOptions}})],1)],2)],1)
+}
+var LineCardvue_type_template_id_3486d271_scoped_true_staticRenderFns = []
+
+
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=script&lang=js&
+
+
+
+
+
+Chart.register(
+  plugin_title,
+  plugin_tooltip,
+  plugin_legend,
+  LineElement,
+  LinearScale,
+  CategoryScale,
+  PointElement,
+  index
+);
+
+/* harmony default export */ var LineCardvue_type_script_lang_js_ = ({
+  name: "line-card",
+
+  props: {
+    title: {
+      type: String,
+      default: "Line Card",
+    },
+
+    labels: {
+      type: Array,
+      required: true,
+    },
+
+    datasets: {
+      type: Array,
+      required: true,
+    },
+
+    scaleType: {
+      type: String,
+      default: "linear",
+    },
+
+    stacked: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  components: {
+    LineChart: Line,
+  },
+
+  computed: {
+    lineChartData() {
+      return {
+        labels: this.labels,
+        datasets: this.datasets,
+      };
+    },
+
+    lineChartOptions() {
+      return {
+        maintainAspectRatio: false,
+        borderWidth: 2,
+        tension: .3,
+        transitions: {
+          show: {
+            animations: {
+              y: {
+                from: 1000,
+              },
+            },
+          },
+          hide: {
+            animations: {
+              y: {
+                to: 1000,
+              },
+            },
+          },
+        },
+        scales: {
+          y: {
+            border: {
+              display: false,
+            },
+            type: this.scaleType,
+            stacked: this.stacked,
+            ticks: {
+              color: (item) => {
+                const max = (Math.floor((item.scale.max - 1) / 10) + 1) * 10;
+                item.scale.end = max;
+                return !item.tick.value || item.tick.value % Math.floor(max / 2)
+                  ? item.tick.value === item.scale.max
+                    ? "#214353"
+                    : "#f9f9f9"
+                  : "#214353";
+              },
+            },
+            grid: {
+              color: "#f9f9f9",
+            },
+          },
+          x: {
+            stacked: this.stacked,
+            border: {
+              display: false,
+            },
+            grid: {
+              display: false,
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            display: true,
+            align: "start",
+            labels: {
+              color: "#214353",
+              font: {
+                size: 20,
+              },
+              useBorderRadius: true,
+              borderRadius: 5,
+              boxWidth: 10,
+              boxHeight: 25,
+            },
+          },
+        },
+      };
+    },
+  },
+
+  created() {
+    const radius = 4;
+    const borderRadius = {
+      topLeft: radius,
+      topRight: radius,
+      bottomLeft: radius,
+      bottomRight: radius,
+    };
+    this.datasets.forEach((set) => {
+      set.borderSkipped = false;
+      set.borderRadius = borderRadius;
+      set.borderWidth = 1;
+      set.borderColor = "rgba(0,0,0,0)";
+    });
+
+    // Enregistrement du plugin de légende en HTML/CSS
+  },
+});
+
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_LineCardvue_type_script_lang_js_ = (LineCardvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=3486d271&prod&scoped=true&lang=css&
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=3486d271&prod&scoped=true&lang=css&
+
+;// CONCATENATED MODULE: ./src/components/LineCard.vue
+
+
+
+;
+
+
+/* normalize component */
+
+var LineCard_component = normalizeComponent(
+  components_LineCardvue_type_script_lang_js_,
+  LineCardvue_type_template_id_3486d271_scoped_true_render,
+  LineCardvue_type_template_id_3486d271_scoped_true_staticRenderFns,
+  false,
+  null,
+  "3486d271",
+  null
+  
+)
+
+/* harmony default export */ var LineCard = (LineCard_component.exports);
 ;// CONCATENATED MODULE: ./src/compile-lib.ts
+
 
 
 
@@ -33626,7 +33815,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
         Vue.component('sc-paginated-table', PaginatedTable);
         Vue.component('sc-stat-card', StatsCard);
         Vue.component('sc-double-stat-card', DoubleStatCard);
-        Vue.component('sc-line-card', DoubleStatCard);
+        Vue.component('sc-line-card', LineCard);
     }
 });
 
