@@ -33626,6 +33626,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
         Vue.component('sc-paginated-table', PaginatedTable);
         Vue.component('sc-stat-card', StatsCard);
         Vue.component('sc-double-stat-card', DoubleStatCard);
+        Vue.component('sc-line-card', DoubleStatCard);
     }
 });
 

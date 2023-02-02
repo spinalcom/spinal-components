@@ -23,5 +23,6 @@ export default {
         Vue.component('sc-paginated-table', PaginatedTable)
         Vue.component('sc-stat-card', StatsCard)
         Vue.component('sc-double-stat-card', DoubleStatCard)
+        Vue.component('sc-line-card', DoubleStatCard)
     }
 }

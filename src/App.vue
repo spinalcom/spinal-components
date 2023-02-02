@@ -25,6 +25,13 @@
           :datasets="barDatas"
         >
         </bar-card>
+        <LineCard
+          class="ma-2"
+          style="width: 95%; height: 400px"
+          :title="'Test 2'"
+          :labels="lineLabels"
+          :datasets="lineDatas"
+        />
         <pie-card
           class="ma-2"
           :title="'Test'"
@@ -95,6 +102,7 @@ import SpinalNavigator from "./components/SpinalNavigator";
 import DoubleStatCard from "./components/DoubleStatCard";
 import LoadingPage from "./components/LoadingPage";
 import TicketCard from "./components/TicketCard";
+import LineCard from "./components/LineCard"
 let i = 0;
 export default {
   name: "App",
@@ -109,6 +117,7 @@ export default {
     BarCard,
     PieCard,
     //TicketCard,
+    LineCard
   },
 
   data: () => ({
@@ -148,6 +157,25 @@ export default {
         label: "Km marchés",
         backgroundColor: "#ff0",
         data: [10, 6, 11, 8, 18, 7, 1],
+      },
+    ],
+    lineLabels: ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],
+    lineDatas: [
+      {
+        label: 'Km marchés',
+        borderColor: 'rgb(54, 162, 235, 1)',
+        backgroundColor: 'rgb(54, 162, 235, .5)',
+        data: [23, 6, 23, 8, 6, 1, 0],
+        fill: true,
+        pointRadius: 0, 
+      },
+      {
+        label: 'Km parcourus',
+        borderColor: 'rgb(255, 187, 0, 1)',
+        backgroundColor: 'rgb(255, 187, 0, .3)',
+        data: [15, 12, 13, 10, 18, 8, 2],
+        fill: true,
+        pointRadius: 0,
       },
     ],
     table: [],
