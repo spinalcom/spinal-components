@@ -9184,7 +9184,7 @@ const VIcon = mixins(binds_attrs, colorable, sizeable, themeable
 
 }));
 //# sourceMappingURL=VIcon.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=template&id=1ab4037e&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=template&id=1ab4037e&scoped=true&
 
 
 
@@ -9193,7 +9193,7 @@ var render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c(
 var staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=script&lang=js&
 
 
 /* harmony default export */ var TimeSelectorvue_type_script_lang_js_ = ({
@@ -9224,17 +9224,17 @@ var staticRenderFns = []
 
 ;// CONCATENATED MODULE: ./src/components/TimeSelector.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_TimeSelectorvue_type_script_lang_js_ = (TimeSelectorvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=style&index=0&id=1ab4037e&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=style&index=0&id=1ab4037e&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/TimeSelector.vue?vue&type=style&index=0&id=1ab4037e&prod&scoped=true&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=style&index=1&id=1ab4037e&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TimeSelector.vue?vue&type=style&index=1&id=1ab4037e&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/TimeSelector.vue?vue&type=style&index=1&id=1ab4037e&prod&scoped=true&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
@@ -9833,7 +9833,7 @@ const VBtn_baseMixins = mixins(components_VSheet, routable, positionable, sizeab
 
 }));
 //# sourceMappingURL=VBtn.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=template&id=79ddd4f2&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=template&id=79ddd4f2&scoped=true&
 
 
 
@@ -9849,7 +9849,7 @@ var SpaceSelectorvue_type_template_id_79ddd4f2_scoped_true_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/velocity-animate/velocity.js
 var velocity = __webpack_require__(641);
 var velocity_default = /*#__PURE__*/__webpack_require__.n(velocity);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/ExpandLoadCollapse.vue?vue&type=template&id=12ccb133&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/ExpandLoadCollapse.vue?vue&type=template&id=12ccb133&scoped=true&
 
 
 var ExpandLoadCollapsevue_type_template_id_12ccb133_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c('transition',{attrs:{"name":"smooth-load-start"}},[(_vm.rootButton===false)?_c(VIcon_VIcon,{staticClass:"rotate-disabled",class:{'rotate-enabled': _vm.root},staticStyle:{"position":"absolute","right":"14px","top":"-12px"}},[_vm._v("mdi-chevron-down")]):_vm._e()],1),_c('transition',{attrs:{"name":"smooth-load-end"}},[(_vm.rootButton===true)?_c('svg',{staticStyle:{"position":"absolute","right":"11px","top":"-14px","enable-background":"new 0 0 50 50"},attrs:{"version":"1.1","id":"loader-1","xmlns":"http://www.w3.org/2000/svg","xmlns:xlink":"http://www.w3.org/1999/xlink","x":"0px","y":"0px","width":"30px","height":"30px","viewBox":"0 0 50 50","xml:space":"preserve"}},[_c('path',{attrs:{"fill":"#000","d":"M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"}},[_c('animateTransform',{attrs:{"attributeType":"xml","attributeName":"transform","type":"rotate","from":"0 25 25","to":"360 25 25","dur":"0.6s","repeatCount":"indefinite"}})],1)]):_vm._e()])],1)
@@ -9857,7 +9857,7 @@ var ExpandLoadCollapsevue_type_template_id_12ccb133_scoped_true_render = functio
 var ExpandLoadCollapsevue_type_template_id_12ccb133_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/ExpandLoadCollapse.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/ExpandLoadCollapse.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var ExpandLoadCollapsevue_type_script_lang_js_ = ({
   props: {
@@ -9874,7 +9874,7 @@ var ExpandLoadCollapsevue_type_template_id_12ccb133_scoped_true_staticRenderFns 
 
 ;// CONCATENATED MODULE: ./src/components/ExpandLoadCollapse.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_ExpandLoadCollapsevue_type_script_lang_js_ = (ExpandLoadCollapsevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/ExpandLoadCollapse.vue?vue&type=style&index=0&id=12ccb133&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/ExpandLoadCollapse.vue?vue&type=style&index=0&id=12ccb133&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/ExpandLoadCollapse.vue?vue&type=style&index=0&id=12ccb133&prod&scoped=true&lang=css&
@@ -9900,7 +9900,7 @@ var ExpandLoadCollapse_component = normalizeComponent(
 )
 
 /* harmony default export */ var ExpandLoadCollapse = (ExpandLoadCollapse_component.exports);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=script&lang=js&
 
 
 
@@ -10094,12 +10094,12 @@ var ExpandLoadCollapse_component = normalizeComponent(
 
 ;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_SpaceSelectorvue_type_script_lang_js_ = (SpaceSelectorvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=0&id=79ddd4f2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=0&id=79ddd4f2&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=style&index=0&id=79ddd4f2&prod&scoped=true&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=1&id=79ddd4f2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=1&id=79ddd4f2&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=style&index=1&id=79ddd4f2&prod&scoped=true&lang=css&
@@ -10126,13 +10126,13 @@ var SpaceSelector_component = normalizeComponent(
 )
 
 /* harmony default export */ var SpaceSelector = (SpaceSelector_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpinalNavigator.vue?vue&type=template&id=a5c1310c&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpinalNavigator.vue?vue&type=template&id=a5c1310c&scoped=true&
 var SpinalNavigatorvue_type_template_id_a5c1310c_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c('space-selector',{staticClass:"d-inline",attrs:{"path":_vm.cur_path,"max-depth":_vm.maxDepth,"onopen":_vm.expandSelector},on:{"update:path":function($event){_vm.cur_path=$event}},model:{value:(_vm.navigator.element),callback:function ($$v) {_vm.$set(_vm.navigator, "element", $$v)},expression:"navigator.element"}}),_c('time-selector',{staticClass:"d-inline",model:{value:(_vm.navigator.period),callback:function ($$v) {_vm.$set(_vm.navigator, "period", $$v)},expression:"navigator.period"}})],1)
 }
 var SpinalNavigatorvue_type_template_id_a5c1310c_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpinalNavigator.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpinalNavigator.vue?vue&type=script&lang=js&
 
 
 
@@ -10218,7 +10218,7 @@ const VCardTitle = createSimpleFunctional('v-card__title');
   }
 });
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=2591d5c5&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=2591d5c5&scoped=true&
 
 
 
@@ -24041,7 +24041,7 @@ function RGBtoHexa(r, g, b) {
     return "#".concat(red).concat(green).concat(blue);
 }
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=script&lang=js&
 
 
 
@@ -24120,7 +24120,7 @@ Chart.register(ArcElement, plugin_legend);
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PieCardvue_type_script_lang_js_ = (PieCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=2591d5c5&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=2591d5c5&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=2591d5c5&prod&scoped=true&lang=css&
@@ -24146,7 +24146,7 @@ var PieCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=3a3c11bf&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=3a3c11bf&scoped=true&
 
 
 
@@ -24155,7 +24155,7 @@ var BarCardvue_type_template_id_3a3c11bf_scoped_true_render = function render(){
 var BarCardvue_type_template_id_3a3c11bf_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
 
 
 
@@ -24232,7 +24232,7 @@ Chart.register(plugin_legend, BarElement, CategoryScale, LinearScale, Logarithmi
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=3a3c11bf&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=3a3c11bf&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=3a3c11bf&prod&scoped=true&lang=css&
@@ -24258,7 +24258,7 @@ var BarCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var BarCard = (BarCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=template&id=35646c8e&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=template&id=35646c8e&scoped=true&
 
 
 
@@ -24268,7 +24268,7 @@ var DownloadButtonvue_type_template_id_35646c8e_scoped_true_render = function re
 var DownloadButtonvue_type_template_id_35646c8e_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var DownloadButtonvue_type_script_lang_js_ = ({
   name: "DownloadButton",
@@ -24320,7 +24320,7 @@ var DownloadButtonvue_type_template_id_35646c8e_scoped_true_staticRenderFns = []
 
 ;// CONCATENATED MODULE: ./src/components/DownloadButton.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_DownloadButtonvue_type_script_lang_js_ = (DownloadButtonvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=style&index=0&id=35646c8e&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=style&index=0&id=35646c8e&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/DownloadButton.vue?vue&type=style&index=0&id=35646c8e&prod&scoped=true&lang=css&
@@ -31930,7 +31930,7 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
 
 }));
 //# sourceMappingURL=VDataTable.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=template&id=3aacd3e2&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=template&id=3aacd3e2&scoped=true&
 
 
 
@@ -31945,7 +31945,7 @@ var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_render = function re
 var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var PaginatedTablevue_type_script_lang_js_ = ({
   name: "PaginatedTable",
@@ -31987,7 +31987,7 @@ var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_staticRenderFns = []
 
 ;// CONCATENATED MODULE: ./src/components/PaginatedTable.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PaginatedTablevue_type_script_lang_js_ = (PaginatedTablevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=style&index=0&id=3aacd3e2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=style&index=0&id=3aacd3e2&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/PaginatedTable.vue?vue&type=style&index=0&id=3aacd3e2&prod&scoped=true&lang=css&
@@ -32078,20 +32078,19 @@ function VGrid(name) {
 
 /* harmony default export */ var VFlex = (VGrid('flex'));
 //# sourceMappingURL=VFlex.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=19a3981d&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=7c2ca0d2&scoped=true&
 
 
 
-var StatsCardvue_type_template_id_19a3981d_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color})},[_vm._v(_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]),_vm._v(_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")])])],1)],1)
+var StatsCardvue_type_template_id_7c2ca0d2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color})},[_vm._v(" "+_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[(_vm.unit)?_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]):_vm._e(),_vm._v(" "+_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):(_vm.subtitle)?_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")]):_vm._e()])],1)],1)
 }
-var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
+var StatsCardvue_type_template_id_7c2ca0d2_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var StatsCardvue_type_script_lang_js_ = ({
   name: "StatsCard",
-
   props: {
     type: {
       type: String,
@@ -32103,7 +32102,7 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
     },
     unit: {
       type: String,
-      required: true
+      required: false
     },
     title: {
       type: String,
@@ -32114,14 +32113,13 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
     },
     subtitle: {
       type: String,
-      required: true
+      required: false
     },
     color: {
       type: String,
       default: '#14202c'
     }
   },
-
   methods: {
     shortNumberCall (n) {
       if(Math.abs(n)>=1000000000)
@@ -32137,10 +32135,10 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_StatsCardvue_type_script_lang_js_ = (StatsCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=19a3981d&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=7c2ca0d2&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=19a3981d&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=7c2ca0d2&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue
 
@@ -32153,17 +32151,17 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
 
 var StatsCard_component = normalizeComponent(
   components_StatsCardvue_type_script_lang_js_,
-  StatsCardvue_type_template_id_19a3981d_scoped_true_render,
-  StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns,
+  StatsCardvue_type_template_id_7c2ca0d2_scoped_true_render,
+  StatsCardvue_type_template_id_7c2ca0d2_scoped_true_staticRenderFns,
   false,
   null,
-  "19a3981d",
+  "7c2ca0d2",
   null
   
 )
 
 /* harmony default export */ var StatsCard = (StatsCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DoubleStatCard.vue?vue&type=template&id=3cecff2a&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DoubleStatCard.vue?vue&type=template&id=3cecff2a&scoped=true&
 
 
 
@@ -32172,7 +32170,7 @@ var DoubleStatCardvue_type_template_id_3cecff2a_scoped_true_render = function re
 var DoubleStatCardvue_type_template_id_3cecff2a_scoped_true_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DoubleStatCard.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DoubleStatCard.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var DoubleStatCardvue_type_script_lang_js_ = ({
   name: 'double-stat-card',
@@ -32247,7 +32245,7 @@ var DoubleStatCardvue_type_template_id_3cecff2a_scoped_true_staticRenderFns = []
 
 ;// CONCATENATED MODULE: ./src/components/DoubleStatCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_DoubleStatCardvue_type_script_lang_js_ = (DoubleStatCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DoubleStatCard.vue?vue&type=style&index=0&id=3cecff2a&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DoubleStatCard.vue?vue&type=style&index=0&id=3cecff2a&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./src/components/DoubleStatCard.vue?vue&type=style&index=0&id=3cecff2a&prod&scoped=true&lang=css&
@@ -32273,7 +32271,7 @@ var DoubleStatCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var DoubleStatCard = (DoubleStatCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LoadingPage.vue?vue&type=template&id=0f4720c8&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LoadingPage.vue?vue&type=template&id=0f4720c8&
 var LoadingPagevue_type_template_id_0f4720c8_render = function render(){var _vm=this,_c=_vm._self._c;return _vm._m(0)
 }
 var LoadingPagevue_type_template_id_0f4720c8_staticRenderFns = [function (){var _vm=this,_c=_vm._self._c;return _c('div',{staticClass:"center-screen"},[_c('img',{staticStyle:{"position":"fixed","top":"50%","left":"50%","transform":"translate(-50%, -50%)"},attrs:{"width":"auto","src":__webpack_require__(195),"height":"200"}})])
@@ -32282,7 +32280,7 @@ var LoadingPagevue_type_template_id_0f4720c8_staticRenderFns = [function (){var 
 
 ;// CONCATENATED MODULE: ./src/components/LoadingPage.vue?vue&type=template&id=0f4720c8&
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LoadingPage.vue?vue&type=script&lang=js&
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LoadingPage.vue?vue&type=script&lang=js&
 
 /* harmony default export */ var LoadingPagevue_type_script_lang_js_ = ({
   name: "loading-page"
