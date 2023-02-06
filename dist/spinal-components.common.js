@@ -14192,7 +14192,7 @@ function setInflateAmount(properties, {inflateAmount}, ratio) {
     ? ratio === 1 ? 0.33 : 0
     : inflateAmount;
 }
-class BarController extends DatasetController {
+class chart_BarController extends DatasetController {
   parsePrimitiveData(meta, data, start, count) {
     return parseArrayOrPrimitive(meta, data, start, count);
   }
@@ -14434,8 +14434,8 @@ class BarController extends DatasetController {
     }
   }
 }
-BarController.id = 'bar';
-BarController.defaults = {
+chart_BarController.id = 'bar';
+chart_BarController.defaults = {
   datasetElementType: false,
   dataElementType: 'bar',
   categoryPercentage: 0.8,
@@ -14448,7 +14448,7 @@ BarController.defaults = {
     }
   }
 };
-BarController.overrides = {
+chart_BarController.overrides = {
   scales: {
     _index_: {
       type: 'category',
@@ -15167,10 +15167,10 @@ chart_PolarAreaController.overrides = {
   }
 };
 
-class PieController extends chart_DoughnutController {
+class chart_PieController extends chart_DoughnutController {
 }
-PieController.id = 'pie';
-PieController.defaults = {
+chart_PieController.id = 'pie';
+chart_PieController.defaults = {
   cutout: 0,
   rotation: 0,
   circumference: 360,
@@ -16988,12 +16988,12 @@ chart_ScatterController.overrides = {
 
 var controllers = /*#__PURE__*/Object.freeze({
 __proto__: null,
-BarController: BarController,
+BarController: chart_BarController,
 BubbleController: chart_BubbleController,
 DoughnutController: chart_DoughnutController,
 LineController: chart_LineController,
 PolarAreaController: chart_PolarAreaController,
-PieController: PieController,
+PieController: chart_PieController,
 RadarController: chart_RadarController,
 ScatterController: chart_ScatterController
 });
@@ -23874,10 +23874,10 @@ function generateChart(chartId, chartType, chartController) {
         }
     };
 }
-/** @type Object */ const Bar = /* #__PURE__ */ generateChart("bar-chart", "bar", BarController);
+/** @type Object */ const Bar = /* #__PURE__ */ generateChart("bar-chart", "bar", chart_BarController);
 /** @type Object */ const Doughnut = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("doughnut-chart", "doughnut", DoughnutController)));
 /** @type Object */ const Line = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("line-chart", "line", LineController)));
-/** @type Object */ const Pie = /* #__PURE__ */ generateChart("pie-chart", "pie", PieController);
+/** @type Object */ const Pie = /* #__PURE__ */ generateChart("pie-chart", "pie", chart_PieController);
 /** @type Object */ const PolarArea = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("polar-chart", "polarArea", PolarAreaController)));
 /** @type Object */ const Radar = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("radar-chart", "radar", RadarController)));
 /** @type Object */ const Bubble = /* #__PURE__ */ (/* unused pure expression or super */ null && (generateChart("bubble-chart", "bubble", BubbleController)));
@@ -32314,7 +32314,437 @@ var LoadingPage_component = normalizeComponent(
 external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
 /* harmony default export */ var vuetify = (new Vuetify({}));
 
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=385f8f9c&scoped=true&
+
+
+
+var LineCardvue_type_template_id_385f8f9c_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase flex-shrink-1"},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('LineChart',{staticClass:"bar-height white",attrs:{"chart-data":_vm.lineChartData,"chart-id":'99',"chart-options":_vm.lineChartOptions}})],1)],2)],1)
+}
+var LineCardvue_type_template_id_385f8f9c_scoped_true_staticRenderFns = []
+
+
+;// CONCATENATED MODULE: ./node_modules/vue-chartjs/dist/index.js
+
+
+
+var dist_ChartEmits;
+(function(ChartEmits) {
+    ChartEmits["ChartRendered"] = "chart:rendered";
+    ChartEmits["ChartUpdated"] = "chart:updated";
+    ChartEmits["ChartDestroyed"] = "chart:destroyed";
+    ChartEmits["LabelsUpdated"] = "labels:updated";
+})(dist_ChartEmits || (dist_ChartEmits = {}));
+function dist_chartCreate(createChartFunction, chartData, chartOptions, context) {
+    createChartFunction(chartData, chartOptions);
+    if (context !== undefined) {
+        context.emit(dist_ChartEmits.ChartRendered);
+    }
+}
+function dist_chartUpdate(chart, context) {
+    chart.update();
+    if (context !== undefined) {
+        context.emit(dist_ChartEmits.ChartUpdated);
+    }
+}
+function dist_chartDestroy(chart, context) {
+    chart.destroy();
+    if (context !== undefined) {
+        context.emit(dist_ChartEmits.ChartDestroyed);
+    }
+}
+function dist_getChartData(data, datasetIdKey) {
+    const nextData = {
+        labels: typeof data.labels === "undefined" ? [] : [
+            ...data.labels
+        ],
+        datasets: []
+    };
+    dist_setChartDatasets(nextData, {
+        ...data
+    }, datasetIdKey);
+    return nextData;
+}
+function dist_setChartDatasets(oldData, newData, datasetIdKey) {
+    const addedDatasets = [];
+    oldData.datasets = newData.datasets.map((nextDataset)=>{
+        // given the new set, find it's current match
+        const currentDataset = oldData.datasets.find((dataset)=>dataset[datasetIdKey] === nextDataset[datasetIdKey]
+        );
+        // There is no original to update, so simply add new one
+        if (!currentDataset || !nextDataset.data || addedDatasets.includes(currentDataset)) {
+            return {
+                ...nextDataset
+            };
+        }
+        addedDatasets.push(currentDataset);
+        Object.assign(currentDataset, nextDataset);
+        return currentDataset;
+    });
+}
+function dist_setChartLabels(chart, labels, context) {
+    chart.data.labels = labels;
+    if (context !== undefined) {
+        context.emit(dist_ChartEmits.LabelsUpdated);
+    }
+}
+function dist_setChartOptions(chart, options) {
+    chart.options = {
+        ...options
+    };
+}
+function dist_compareData(newData, oldData) {
+    // Get new and old DataSet Labels
+    const newDatasetLabels = newData.datasets.map((dataset)=>{
+        return dataset.label;
+    });
+    const oldDatasetLabels = oldData.datasets.map((dataset)=>{
+        return dataset.label;
+    });
+    // Check if Labels are equal and if dataset length is equal
+    return oldData.datasets.length === newData.datasets.length && newDatasetLabels.every((value, index)=>value === oldDatasetLabels[index]
+    );
+}
+const dist_templateError = "Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components";
+const chartUpdateError = "Update ERROR: chart instance not found";
+
+const dist_generateChart = (chartId, chartType, chartController)=>{
+    return (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.defineComponent)({
+        props: {
+            chartData: {
+                type: Object,
+                required: true
+            },
+            chartOptions: {
+                type: Object,
+                default: ()=>{}
+            },
+            datasetIdKey: {
+                type: String,
+                default: "label"
+            },
+            chartId: {
+                type: String,
+                default: chartId
+            },
+            width: {
+                type: Number,
+                default: 400
+            },
+            height: {
+                type: Number,
+                default: 400
+            },
+            cssClasses: {
+                type: String,
+                default: ""
+            },
+            styles: {
+                type: Object,
+                default: ()=>{}
+            },
+            plugins: {
+                type: Array,
+                default: ()=>[]
+            }
+        },
+        setup (props, context) {
+            Chart.register(chartController);
+            const _chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.shallowRef)(null);
+            const canvasEl = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)(null);
+            function renderChart(data, options) {
+                if (_chart.value !== null) {
+                    dist_chartDestroy((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(_chart.value), context);
+                }
+                if (canvasEl.value === null) {
+                    throw new Error(dist_templateError);
+                } else {
+                    const chartData = dist_getChartData(data, props.datasetIdKey);
+                    const canvasEl2DContext = canvasEl.value.getContext("2d");
+                    if (canvasEl2DContext !== null) {
+                        _chart.value = new Chart(canvasEl2DContext, {
+                            type: chartType,
+                            data: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.isProxy)(data) ? new Proxy(chartData, {}) : chartData,
+                            options,
+                            plugins: props.plugins
+                        });
+                    }
+                }
+            }
+            function chartDataHandler(newValue, oldValue) {
+                const newData = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.isProxy)(newValue) ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(newValue) : {
+                    ...newValue
+                };
+                const oldData = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.isProxy)(oldValue) ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(oldValue) : {
+                    ...oldValue
+                };
+                if (Object.keys(oldData).length > 0) {
+                    const chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(_chart.value);
+                    const isEqualLabelsAndDatasetsLength = dist_compareData(newData, oldData);
+                    if (isEqualLabelsAndDatasetsLength && chart !== null) {
+                        dist_setChartDatasets(chart === null || chart === void 0 ? void 0 : chart.data, newData, props.datasetIdKey);
+                        if (newData.labels !== undefined) {
+                            dist_setChartLabels(chart, newData.labels, context);
+                        }
+                        updateChart();
+                    } else {
+                        if (chart !== null) {
+                            dist_chartDestroy(chart, context);
+                        }
+                        dist_chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                    }
+                } else {
+                    if (_chart.value !== null) {
+                        dist_chartDestroy((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(_chart.value), context);
+                    }
+                    dist_chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                }
+            }
+            function chartOptionsHandler(options) {
+                const chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(_chart.value);
+                if (chart !== null) {
+                    dist_setChartOptions(chart, options);
+                    updateChart();
+                } else {
+                    dist_chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                }
+            }
+            function updateChart() {
+                const chart = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(_chart.value);
+                if (chart !== null) {
+                    dist_chartUpdate(chart, context);
+                } else {
+                    console.error(chartUpdateError);
+                }
+            }
+            (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(()=>props.chartData
+            , (newValue, oldValue)=>chartDataHandler(newValue, oldValue)
+            , {
+                deep: true
+            });
+            (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(()=>props.chartOptions
+            , (newValue)=>chartOptionsHandler(newValue)
+            , {
+                deep: true
+            });
+            (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.onMounted)(()=>{
+                if ("datasets" in props.chartData && props.chartData.datasets.length > 0) {
+                    dist_chartCreate(renderChart, props.chartData, props.chartOptions, context);
+                }
+            });
+            (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.onBeforeUnmount)(()=>{
+                if (_chart.value !== null) {
+                    dist_chartDestroy((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toRaw)(_chart.value), context);
+                }
+            });
+            context.expose({
+                chart: _chart,
+                updateChart
+            });
+            return ()=>(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.h)("div", {
+                    style: props.styles,
+                    class: props.cssClasses
+                }, [
+                    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.h)("canvas", {
+                        id: props.chartId,
+                        width: props.width,
+                        height: props.height,
+                        ref: canvasEl
+                    })
+                ])
+            ;
+        }
+    });
+};
+const dist_Bar = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("bar-chart", "bar", BarController)));
+const dist_Doughnut = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("doughnut-chart", "doughnut", DoughnutController)));
+const dist_Line = /* #__PURE__ */ dist_generateChart("line-chart", "line", chart_LineController);
+const dist_Pie = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("pie-chart", "pie", PieController)));
+const dist_PolarArea = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("polar-chart", "polarArea", PolarAreaController)));
+const dist_Radar = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("radar-chart", "radar", RadarController)));
+const dist_Bubble = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("bubble-chart", "bubble", BubbleController)));
+const dist_Scatter = /* #__PURE__ */ (/* unused pure expression or super */ null && (dist_generateChart("scatter-chart", "scatter", ScatterController)));
+
+
+//# sourceMappingURL=index.js.map
+
+;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=script&lang=js&
+
+  
+  
+  Chart.register( plugin_title, plugin_tooltip, plugin_legend, LineElement, LinearScale, CategoryScale, PointElement, index );
+  /* harmony default export */ var LineCardvue_type_script_lang_js_ = ({
+    name: "line-card",
+    props: {
+      title: {
+        type: String,
+        default: "Line Card",
+      },
+      labels: {
+        type: Array,
+        required: true,
+      },
+      datasets: {
+        type: Array,
+        required: true,
+      },
+      scaleType: {
+        type: String,
+        default: "linear",
+      },
+      stacked: {
+        type: Boolean,
+        default: false,
+      },
+      optional: {
+        type: Object,
+        default: () => {return {unit: '', footer: 'Total'}},
+        required: false
+      }
+    },
+    components: {
+      LineChart: dist_Line,
+    },
+    computed: {
+      lineChartData() {
+        return {
+          labels: this.labels,
+          datasets: this.datasets,
+        };
+      },
+      lineChartOptions() {
+        return {
+          maintainAspectRatio: false,
+          borderWidth: 2,
+          tension: 0.1,
+          transitions: {
+            show: {
+              animations: {
+                y: {
+                  from: 1000,
+                },
+              },
+            },
+            hide: {
+              animations: {
+                y: {
+                  to: 1000,
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              stacked: false,
+              border: {
+                display: false,
+              },
+              type: this.scaleType,
+              ticks: {
+              color: (item) => {
+                const max = (Math.floor((item.scale.max - 1) / 10) + 1) * 10;
+                item.scale.end = max;
+                return !item.tick.value || item.tick.value % Math.floor(max / 2)
+                  ? item.tick.value === item.scale.max
+                    ? "#214353"
+                    : "#f9f9f9"
+                  : "#214353";
+              },
+            },
+              grid: {
+                color: "#f9f9f9",
+              },
+            },
+            x: {
+              stacked: this.stacked,
+              border: {
+                display: false,
+              },
+              grid: {
+                display: false,
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              display: true,
+              align: "start",
+              labels: {
+                color: "#214353",
+                font: {
+                  size: 12,
+                },
+                useBorderRadius: true,
+                borderRadius: 5,
+                boxWidth: 10,
+                boxHeight: 25,
+              },
+            },
+          },
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false,
+            callbacks: {
+              label: (tooltipItem, data) => {
+                return `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${this.optional.unit}`;
+              },
+              footer: (data) => {
+                let total = data.reduce((a, b) => a+b.raw, 0);
+                return `${this.optional.footer}: ${total} ${this.optional.unit}`;
+              },
+            }
+          },
+        };
+      },
+    },
+    created() {
+      const radius = 4;
+      const borderRadius = {
+        topLeft: radius,
+        topRight: radius,
+        bottomLeft: radius,
+        bottomRight: radius,
+      };
+      this.datasets.forEach((set) => {
+        set.borderSkipped = false;
+        set.borderRadius = borderRadius;
+        set.borderWidth = 1;
+        set.borderColor = "rgba(0,0,0,0)";
+      });
+      // Enregistrement du plugin de légende en HTML/CSS
+    },
+  });
+  
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_LineCardvue_type_script_lang_js_ = (LineCardvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=385f8f9c&prod&scoped=true&lang=css&
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=385f8f9c&prod&scoped=true&lang=css&
+
+;// CONCATENATED MODULE: ./src/components/LineCard.vue
+
+
+
+;
+
+
+/* normalize component */
+
+var LineCard_component = normalizeComponent(
+  components_LineCardvue_type_script_lang_js_,
+  LineCardvue_type_template_id_385f8f9c_scoped_true_render,
+  LineCardvue_type_template_id_385f8f9c_scoped_true_staticRenderFns,
+  false,
+  null,
+  "385f8f9c",
+  null
+  
+)
+
+/* harmony default export */ var LineCard = (LineCard_component.exports);
 ;// CONCATENATED MODULE: ./src/compile-lib.ts
+
 
 
 
@@ -32339,6 +32769,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
         Vue.component('sc-paginated-table', PaginatedTable);
         Vue.component('sc-stat-card', StatsCard);
         Vue.component('sc-double-stat-card', DoubleStatCard);
+        Vue.component('sc-line-card', LineCard);
     }
 });
 

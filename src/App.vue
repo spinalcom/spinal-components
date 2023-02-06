@@ -6,6 +6,14 @@
       <div class="d-flex flex-row">
         <pie-card :title="'Test'" :pie-chart-data="pie" :color="pieColor"></pie-card>
         <bar-card :title="'Test 2'" :labels="barLabels" :datasets="barDatas"></bar-card>
+        <LineCard
+          class="ma-2"
+          style="width: 95%; height: 400px"
+          :title="'CONSOMMATION D\’EAU'"
+          :labels="lineLabels"
+          :datasets="lineDatas"
+          :optional="lineOptions"
+        />
       </div>
       <div class="d-flex flex-row">
         <stats-card
@@ -30,7 +38,7 @@
         <stats-card
           :value="80800"
           :title="'parcourus'"
-    />
+        />
       </div>
       <paginated-table class="ma-2" :table-data="tableData" :height="tableHeight"></paginated-table>
 
@@ -62,6 +70,7 @@ import PaginatedTable from "./components/PaginatedTable.vue";
 import SpinalNavigator from "./components/SpinalNavigator";
 import DoubleStatCard from "./components/DoubleStatCard";
 import LoadingPage from "./components/LoadingPage";
+import LineCard from "./components/LineCard";
 let i = 0;
 export default {
   name: 'App',
@@ -75,13 +84,14 @@ export default {
     StatsCard,
     BarCard,
     PieCard,
+    LineCard,
   },
 
   data: () => ({
     loaded: false,
     path: {},
     nav: {
-      element: { name: "Liste", title: "Titre", dynamicId: 0, color: '#f00' },
+      element: { name: "Liste", title: "Titre", dynamicId: 0, color: '#233' },
       period: { name: "SEMAINE", value: "week" },
     },
     pie: [
@@ -108,6 +118,34 @@ export default {
         data: [10, 6, 11, 8, 18, 1, 0]
       }
     ],
+    lineLabels: ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],
+    lineDatas: [
+      {
+        label: 'Hydra',
+        borderColor: 'rgb(54, 162, 235, 1)',
+        backgroundColor: '#ff6384',
+        data: [23, 6, 23, 8, 6, 1, 0],
+        fill: true,
+        pointRadius: 0,
+      },
+      {
+        label: 'Mona',
+        borderColor: 'rgb(255, 187, 0, 1)',
+        backgroundColor: '#36a2eb',
+        data: [45, 12, 13, 10, 18, 8, 2],
+        fill: true,
+        pointRadius: 0,
+      },
+      {
+        label: 'Pemba',
+        borderColor: 'rgb(255, 187, 0, 1)',
+        backgroundColor: '#4bc0c0',
+        data: [23, 32, 42, 13, 11, 14, 24],
+        fill: true,
+        pointRadius: 0,
+      },
+    ],
+    lineOptions: {unit: 'L', footer: 'Consommation totale du patrimoine'},
     table: []
   }),
 
