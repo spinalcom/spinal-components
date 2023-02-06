@@ -4,7 +4,7 @@
       elevation="5"
       outlined
       >
-      <v-card-title class="card-title pa-3 text-uppercase flex-shrink-1">{{ title }}</v-card-title>
+      <v-card-title class="card-title pa-3 text-uppercase flex-shrink-1" style="height: fit-content !important">{{ title }}</v-card-title>
         <div class="d-flex flex-column flex-grow-1">
         <slot name="extras" class="flex-shrink-1"></slot>
         <div class="flex-grow-1">
@@ -13,6 +13,7 @@
               :chart-id="'99'"
               :chart-options="lineChartOptions"
               class="bar-height white"
+              style="height: 100% !important"
               />
         </div>
         </div>

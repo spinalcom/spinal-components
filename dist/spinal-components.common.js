@@ -32314,13 +32314,13 @@ var LoadingPage_component = normalizeComponent(
 external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
 /* harmony default export */ var vuetify = (new Vuetify({}));
 
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=385f8f9c&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=2764e84b&scoped=true&
 
 
 
-var LineCardvue_type_template_id_385f8f9c_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase flex-shrink-1"},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('LineChart',{staticClass:"bar-height white",attrs:{"chart-data":_vm.lineChartData,"chart-id":'99',"chart-options":_vm.lineChartOptions}})],1)],2)],1)
+var LineCardvue_type_template_id_2764e84b_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase flex-shrink-1",staticStyle:{"height":"fit-content !important"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('LineChart',{staticClass:"bar-height white",staticStyle:{"height":"100% !important"},attrs:{"chart-data":_vm.lineChartData,"chart-id":'99',"chart-options":_vm.lineChartOptions}})],1)],2)],1)
 }
-var LineCardvue_type_template_id_385f8f9c_scoped_true_staticRenderFns = []
+var LineCardvue_type_template_id_2764e84b_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/vue-chartjs/dist/index.js
@@ -32717,10 +32717,10 @@ const dist_Scatter = /* #__PURE__ */ (/* unused pure expression or super */ null
   
 ;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_LineCardvue_type_script_lang_js_ = (LineCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=385f8f9c&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/cli-service/node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=2764e84b&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=385f8f9c&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=2764e84b&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/LineCard.vue
 
@@ -32733,11 +32733,11 @@ const dist_Scatter = /* #__PURE__ */ (/* unused pure expression or super */ null
 
 var LineCard_component = normalizeComponent(
   components_LineCardvue_type_script_lang_js_,
-  LineCardvue_type_template_id_385f8f9c_scoped_true_render,
-  LineCardvue_type_template_id_385f8f9c_scoped_true_staticRenderFns,
+  LineCardvue_type_template_id_2764e84b_scoped_true_render,
+  LineCardvue_type_template_id_2764e84b_scoped_true_staticRenderFns,
   false,
   null,
-  "385f8f9c",
+  "2764e84b",
   null
   
 )
