@@ -28,11 +28,9 @@
             :subtitle="'Aujourd\'hui'"
         ></stats-card>
         <stats-card
-            :value="25"
-            :unit="'Km'"
-            :title="'parcourus'"
-            :subtitle="'Aujourd\'hui'"
-        ></stats-card>
+          :value="80800"
+          :title="'parcourus'"
+    />
       </div>
       <paginated-table class="ma-2" :table-data="tableData" :height="tableHeight"></paginated-table>
 
