@@ -72,12 +72,13 @@ export default {
   },
   computed: {
     lineChartData() {
+      let tempDatasets = this.datasets;
       for (let i = 0; i < this.datasets.length; i++) {
-        this.datasets[i]['fill'] = this.switchValue;
+        tempDatasets[i]['fill'] = this.switchValue;
       }
       return {
         labels: this.labels,
-        datasets: this.datasets,
+        datasets: tempDatasets,
       };
     },
     lineChartOptions() {
