@@ -13,7 +13,26 @@ export const customBackgroundPlugin = {
         width = chartArea.width / (chart.data.labels?.length || 1);
         ctx.fillStyle = options.color || "white";
         chart.data.labels?.forEach(() => {
-          ctx.roundRect(begin, top, width, height, 5);
+          ctx.moveTo(begin + 5, top);
+
+          ctx.lineTo(begin + width - 5, top);
+          ctx.arcTo(begin + width, top, begin + width, top + 5, 5);
+
+          ctx.lineTo(begin + width, top + height - 5);
+          ctx.arcTo(
+            begin + width,
+            top + height,
+            begin + width - 5,
+            top + height,
+            5
+          );
+
+          ctx.lineTo(begin + 5, top + height);
+          ctx.arcTo(begin, top + height, begin, top + height - 5, 5);
+
+          ctx.lineTo(begin, top + 5);
+          ctx.arcTo(begin, top, begin + 5, top, 5);
+
           ctx.fill();
           ctx.strokeStyle = "#f9f9f9";
           ctx.stroke();
@@ -57,14 +76,15 @@ export const customLegendPlugin = {
         const boxSpan = document.createElement("span");
         boxSpan.classList.add("mr-2");
         boxSpan.style.background = item.fillStyle;
-        boxSpan.style.height = "20px";
-        boxSpan.style.width = "10px";
+        boxSpan.style.height = "21px";
+        boxSpan.style.width = "9px";
         boxSpan.style.borderRadius = "5px";
 
         // Text
         const textContainer = document.createElement("p");
         textContainer.classList.add("ma-0", "pa-0");
         textContainer.style.textDecoration = item.hidden ? "line-through" : "";
+        textContainer.style.fontSize = "14px";
 
         const text = document.createTextNode(item.text);
         textContainer.appendChild(text);

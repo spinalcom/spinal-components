@@ -19,20 +19,20 @@
       <div class="d-flex flex-column">
         <bar-card
           class="ma-2"
-          style="width: 95%; height: 400px"
+          style="width: 95%; height: 200px"
           :title="'Test 2'"
           :labels="barLabels"
           :datasets="barDatas"
         >
         </bar-card>
         <pie-card
+          style="width: 100%"
           class="ma-2"
           :title="'Test'"
           :pie-chart-data="pie"
-          :color="'#f00'"
         ></pie-card>
       </div>
-      <!--<div class="d-flex flex-row">
+      <div class="d-flex flex-row">
         <stats-card
           :value="-255500"
           :unit="'Km'"
@@ -59,7 +59,7 @@
           :subtitle="'Aujourd\'hui'"
         ></stats-card>
       </div>
-      <paginated-table
+      <!--<paginated-table
         class="ma-2"
         :table-data="tableData"
         :height="tableHeight"
@@ -105,7 +105,7 @@ export default {
     SpinalNavigator,
     //PaginatedTable,
     DownloadButton,
-    //StatsCard,
+    StatsCard,
     BarCard,
     PieCard,
     //TicketCard,
@@ -119,12 +119,10 @@ export default {
       period: { name: "SEMAINE", value: "week" },
     },
     pie: [
-      { label: "oui", value: 75 },
-      { label: "non", value: 65 },
-      { label: "peut-être", value: 15 },
-      { label: "je ne sais pas", value: 42 },
-      { label: "joker", value: 52 },
       { label: "plus tard", value: 64 },
+      { label: "je m'en moque", value: 58 },
+      { label: "serieux ?", value: 60 },
+      { label: "Qui as dit ça ?", value: 69 },
       { label: "je m'en moque", value: 58 },
       { label: "serieux ?", value: 60 },
       { label: "Qui as dit ça ?", value: 69 },
@@ -141,12 +139,10 @@ export default {
     barDatas: [
       {
         label: "Km parcourus",
-        backgroundColor: "#153284",
-        data: [15, 12, 13, 10, 18, 8, 2],
+        data: [15, 12, 13, 10, 21, 8, 2],
       },
       {
         label: "Km marchés",
-        backgroundColor: "#ff0",
         data: [10, 6, 11, 8, 18, 7, 1],
       },
     ],
@@ -176,6 +172,20 @@ export default {
   },
 
   mounted() {
+    /*setInterval(() => {
+      this.barDatas = this.barDatas.map((b) => ({
+        label: b.label,
+        data: [
+          Math.random() * 20,
+          Math.random() * 20,
+          Math.random() * 20,
+          Math.random() * 20,
+          Math.random() * 20,
+          Math.random() * 20,
+          Math.random() * 20,
+        ],
+      }));
+    }, 1000);*/
     setTimeout(
       () =>
         (this.table = [

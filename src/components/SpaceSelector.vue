@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="glass" v-show="dropDown" @click="dropDown=false"></div>
+    <div class="glass" v-show="dropDown" @click="dropDown = false"></div>
     <v-card
       elevation="2"
       color="#14202C"
@@ -10,17 +10,14 @@
       style="border-radius: 10px !important; color: #bfbfbf"
     >
       <div
-        @click="dropDown = !dropDown"
+        @click="
+          dropDown = !dropDown;
+          dive();
+        "
         id="selected"
-        style="border-radius: 0px; height: 64px; background-color: #14202c;"
+        style="border-radius: 0px; height: 64px; background-color: #14202c"
       >
-        <p
-          style="
-            font-weight: 400;
-            padding: 4px;
-            font-size: 30px;
-          "
-        >
+        <p style="font-weight: 400; padding: 4px; font-size: 30px">
           <span class="text-uppercase">{{ title }}</span>
           <v-icon
             style="color: #bfbfbf; float: left; padding: 10px; font-size: 30px"
@@ -183,8 +180,8 @@ export default {
     },
     path: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   data: () => ({
     rootButton: false,
@@ -206,19 +203,26 @@ export default {
     },
     title() {
       return this.value.title.length > 20
-          ? this.value.title.substring(0, 19) + '...'
-          : this.value.title;
+        ? this.value.title.substring(0, 19) + "..."
+        : this.value.title;
     },
   },
   methods: {
     select(item) {
       this.dive(item);
-      if(item.level > 0) this.$emit("input", { name: this.value.name, title: item.name, dynamicId: item.dynamicId, color: item.color });
+      if (item.level > 0)
+        this.$emit("input", {
+          name: this.value.name,
+          title: item.name,
+          dynamicId: item.dynamicId,
+          color: item.color,
+        });
     },
     dive(item) {
-      /*this.path[item.level] = item.dynamicId;*/ this.$set(this.path, item.level, item.dynamicId)
-      for(let i = item.level + 1; i <= this.maxDepth; i++) /*this.path[i] = null;*/ this.$set(this.path, i, null)
-      this.$emit("update:path", this.path)
+      this.$set(this.path, item.level, item.dynamicId);
+      for (let i = item.level + 1; i <= this.maxDepth; i++)
+        this.$set(this.path, i, null);
+      this.$emit("update:path", this.path);
     },
     expandCollapse(item) {
       const nextDepth = item.level + 1;
@@ -241,34 +245,41 @@ export default {
       };
       item.isLastInGroup = false;
       if (!item.isOpen) {
-        const to_close = this.buildingStructure.filter(x => x.level === item.level && x.dynamicId !== item.dynamicId && x.isOpen)
-        to_close.forEach(x => {
-          const local_index = this.buildingStructure.indexOf(x)
+        const to_close = this.buildingStructure.filter(
+          (x) =>
+            x.level === item.level && x.dynamicId !== item.dynamicId && x.isOpen
+        );
+        to_close.forEach((x) => {
+          const local_index = this.buildingStructure.indexOf(x);
           this.buildingStructure[local_index].isLastInGroup = false;
           const elementByLevel = (i) => i.level <= x.level;
           const removeBlock = this.buildingStructure
-              .slice(local_index + 1, this.buildingStructure.length)
-              .findIndex(elementByLevel);
+            .slice(local_index + 1, this.buildingStructure.length)
+            .findIndex(elementByLevel);
 
           switch (removeBlock) {
             case 0:
               break;
             case -1:
               this.buildingStructure.splice(
-                  local_index + 1,
-                  this.buildingStructure.length
+                local_index + 1,
+                this.buildingStructure.length
               );
               break;
             default:
               this.buildingStructure.splice(local_index + 1, removeBlock);
               break;
           }
-          x.isOpen = !x.isOpen
-        })
+          x.isOpen = !x.isOpen;
+        });
         item.loading = true;
         this.onopen(item)
           .then((r) => {
-            this.buildingStructure.splice(this.buildingStructure.indexOf(item) + 1, 0, ...doCall(r));
+            this.buildingStructure.splice(
+              this.buildingStructure.indexOf(item) + 1,
+              0,
+              ...doCall(r)
+            );
             this.rootButton = false;
           })
           .then(() => (item.loading = false));

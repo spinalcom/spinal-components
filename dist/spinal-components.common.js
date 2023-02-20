@@ -9835,17 +9835,18 @@ const VBtn_baseMixins = mixins(components_VSheet, routable, positionable, sizeab
 
 }));
 //# sourceMappingURL=VBtn.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=template&id=79ddd4f2&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=template&id=ac5d5f0e&scoped=true&
 
 
 
 
-var SpaceSelectorvue_type_template_id_79ddd4f2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.dropDown),expression:"dropDown"}],staticClass:"glass",on:{"click":function($event){_vm.dropDown=false}}}),_c(VCard,{staticClass:"strech",class:{ drop: _vm.dropDown },staticStyle:{"border-radius":"10px !important","color":"#bfbfbf"},attrs:{"elevation":"2","color":"#14202C","width":"100%"}},[_c('div',{staticStyle:{"border-radius":"0px","height":"64px","background-color":"#14202c"},attrs:{"id":"selected"},on:{"click":function($event){_vm.dropDown = !_vm.dropDown}}},[_c('p',{staticStyle:{"font-weight":"400","padding":"4px","font-size":"30px"}},[_c('span',{staticClass:"text-uppercase"},[_vm._v(_vm._s(_vm.title))]),_c(VIcon_VIcon,{staticClass:"rotate-disabled",class:{ 'rotate-enabled': _vm.dropDown },staticStyle:{"color":"#bfbfbf","float":"left","padding":"10px","font-size":"30px"}},[_vm._v("mdi-chevron-down")])],1)]),_c('div',{staticClass:"card-list",class:{ 'fade-in': _vm.dropDown }},[_c('div',{staticStyle:{"margin-left":"10px","margin-right":"10px","height":"50px","background-color":"#14202c","border":"1px solid #bfbfbf","border-radius":"6px"},on:{"click":function($event){_vm.expand = !_vm.expand}}},[_c('div',{staticClass:"d-flex flex-row",staticStyle:{"cursor":"pointer","padding":"12px","margin-bottom":"0px"}},[_c('div',{staticStyle:{"width":"100%","cursor":"pointer","padding":"0px","margin-bottom":"0px"}},[_vm._v(" "+_vm._s(_vm.privateRootElement.name)+" ")]),_c(VBtn,{staticStyle:{"color":"#bfbfbf","float":"right","margin-top":"-12px","margin-right":"-11px","border-radius":"6px"},attrs:{"elevation":"0","fab":"","icon":"","raised":"","text":"","tile":"","disabled":_vm.rootButton},on:{"click":function($event){_vm.root = !_vm.root}}},[_c('expand-load-collapse',{attrs:{"rootButton":_vm.rootButton,"root":_vm.root}})],1)],1)]),_c('transition-group',{attrs:{"name":"fade","tag":"div","css":true},on:{"enter":_vm.enter,"leave":_vm.leave}},_vm._l((_vm.buildingStructure),function(item){return _c('div',{key:item.dynamicId},[_c('div',{staticClass:"first-nested-level card-hover fade",style:({
+var SpaceSelectorvue_type_template_id_ac5d5f0e_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.dropDown),expression:"dropDown"}],staticClass:"glass",on:{"click":function($event){_vm.dropDown = false}}}),_c(VCard,{staticClass:"strech",class:{ drop: _vm.dropDown },staticStyle:{"border-radius":"10px !important","color":"#bfbfbf"},attrs:{"elevation":"2","color":"#14202C","width":"100%"}},[_c('div',{staticStyle:{"border-radius":"0px","height":"64px","background-color":"#14202c"},attrs:{"id":"selected"},on:{"click":function($event){_vm.dropDown = !_vm.dropDown;
+        _vm.dive();}}},[_c('p',{staticStyle:{"font-weight":"400","padding":"4px","font-size":"30px"}},[_c('span',{staticClass:"text-uppercase"},[_vm._v(_vm._s(_vm.title))]),_c(VIcon_VIcon,{staticClass:"rotate-disabled",class:{ 'rotate-enabled': _vm.dropDown },staticStyle:{"color":"#bfbfbf","float":"left","padding":"10px","font-size":"30px"}},[_vm._v("mdi-chevron-down")])],1)]),_c('div',{staticClass:"card-list",class:{ 'fade-in': _vm.dropDown }},[_c('div',{staticStyle:{"margin-left":"10px","margin-right":"10px","height":"50px","background-color":"#14202c","border":"1px solid #bfbfbf","border-radius":"6px"},on:{"click":function($event){_vm.expand = !_vm.expand}}},[_c('div',{staticClass:"d-flex flex-row",staticStyle:{"cursor":"pointer","padding":"12px","margin-bottom":"0px"}},[_c('div',{staticStyle:{"width":"100%","cursor":"pointer","padding":"0px","margin-bottom":"0px"}},[_vm._v(" "+_vm._s(_vm.privateRootElement.name)+" ")]),_c(VBtn,{staticStyle:{"color":"#bfbfbf","float":"right","margin-top":"-12px","margin-right":"-11px","border-radius":"6px"},attrs:{"elevation":"0","fab":"","icon":"","raised":"","text":"","tile":"","disabled":_vm.rootButton},on:{"click":function($event){_vm.root = !_vm.root}}},[_c('expand-load-collapse',{attrs:{"rootButton":_vm.rootButton,"root":_vm.root}})],1)],1)]),_c('transition-group',{attrs:{"name":"fade","tag":"div","css":true},on:{"enter":_vm.enter,"leave":_vm.leave}},_vm._l((_vm.buildingStructure),function(item){return _c('div',{key:item.dynamicId},[_c('div',{staticClass:"first-nested-level card-hover fade",style:({
               'margin-bottom': _vm.checkLast(item),
               'margin-left': '' + ((item.level - 1) * 20 + 30) + 'px',
             }),on:{"click":function($event){return _vm.dive(item)}}},[_c('div',{staticClass:"first-nested-level-angle"}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(item.isFirst == undefined),expression:"item.isFirst == undefined"}],staticClass:"first-nested-level-angle-extend"}),_vm._l((item.level - 1),function(depth){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.canDraw(item, depth)),expression:"canDraw(item, depth)"}],key:depth,staticClass:"parent-link",style:({ 'margin-left': '-' + (depth * 20 + 11) + 'px' })})}),_c('div',{staticClass:"colored-square",style:({ 'background-color': item.color })}),_c('div',{staticClass:"d-flex flex-row",staticStyle:{"cursor":"pointer","padding":"12px","margin-bottom":"0px"}},[_c('div',{staticStyle:{"width":"100%","cursor":"pointer","padding-left":"12px","margin-bottom":"0px"},on:{"click":function($event){return _vm.select(item)}}},[_vm._v(" "+_vm._s(item.name)+" ")]),_c(VBtn,{directives:[{name:"show",rawName:"v-show",value:(item.level != _vm.maxDepth),expression:"item.level != maxDepth"}],staticStyle:{"color":"#bfbfbf","position":"absolute","right":"25px","margin-top":"-12px","margin-right":"-13px","border-radius":"6px"},attrs:{"elevation":"0","fab":"","icon":"","raised":"","text":"","tile":""},on:{"click":function($event){return _vm.expandCollapse(item)}}},[_c('expand-load-collapse',{attrs:{"rootButton":item.loading,"root":item.isOpen}})],1)],1)],2)])}),0)],1)])],1)
 }
-var SpaceSelectorvue_type_template_id_79ddd4f2_scoped_true_staticRenderFns = []
+var SpaceSelectorvue_type_template_id_ac5d5f0e_scoped_true_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/velocity-animate/velocity.js
@@ -9925,8 +9926,8 @@ var ExpandLoadCollapse_component = normalizeComponent(
     },
     path: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   data: () => ({
     rootButton: false,
@@ -9948,19 +9949,26 @@ var ExpandLoadCollapse_component = normalizeComponent(
     },
     title() {
       return this.value.title.length > 20
-          ? this.value.title.substring(0, 19) + '...'
-          : this.value.title;
+        ? this.value.title.substring(0, 19) + "..."
+        : this.value.title;
     },
   },
   methods: {
     select(item) {
       this.dive(item);
-      if(item.level > 0) this.$emit("input", { name: this.value.name, title: item.name, dynamicId: item.dynamicId, color: item.color });
+      if (item.level > 0)
+        this.$emit("input", {
+          name: this.value.name,
+          title: item.name,
+          dynamicId: item.dynamicId,
+          color: item.color,
+        });
     },
     dive(item) {
-      /*this.path[item.level] = item.dynamicId;*/ this.$set(this.path, item.level, item.dynamicId)
-      for(let i = item.level + 1; i <= this.maxDepth; i++) /*this.path[i] = null;*/ this.$set(this.path, i, null)
-      this.$emit("update:path", this.path)
+      this.$set(this.path, item.level, item.dynamicId);
+      for (let i = item.level + 1; i <= this.maxDepth; i++)
+        this.$set(this.path, i, null);
+      this.$emit("update:path", this.path);
     },
     expandCollapse(item) {
       const nextDepth = item.level + 1;
@@ -9983,34 +9991,41 @@ var ExpandLoadCollapse_component = normalizeComponent(
       };
       item.isLastInGroup = false;
       if (!item.isOpen) {
-        const to_close = this.buildingStructure.filter(x => x.level === item.level && x.dynamicId !== item.dynamicId && x.isOpen)
-        to_close.forEach(x => {
-          const local_index = this.buildingStructure.indexOf(x)
+        const to_close = this.buildingStructure.filter(
+          (x) =>
+            x.level === item.level && x.dynamicId !== item.dynamicId && x.isOpen
+        );
+        to_close.forEach((x) => {
+          const local_index = this.buildingStructure.indexOf(x);
           this.buildingStructure[local_index].isLastInGroup = false;
           const elementByLevel = (i) => i.level <= x.level;
           const removeBlock = this.buildingStructure
-              .slice(local_index + 1, this.buildingStructure.length)
-              .findIndex(elementByLevel);
+            .slice(local_index + 1, this.buildingStructure.length)
+            .findIndex(elementByLevel);
 
           switch (removeBlock) {
             case 0:
               break;
             case -1:
               this.buildingStructure.splice(
-                  local_index + 1,
-                  this.buildingStructure.length
+                local_index + 1,
+                this.buildingStructure.length
               );
               break;
             default:
               this.buildingStructure.splice(local_index + 1, removeBlock);
               break;
           }
-          x.isOpen = !x.isOpen
-        })
+          x.isOpen = !x.isOpen;
+        });
         item.loading = true;
         this.onopen(item)
           .then((r) => {
-            this.buildingStructure.splice(this.buildingStructure.indexOf(item) + 1, 0, ...doCall(r));
+            this.buildingStructure.splice(
+              this.buildingStructure.indexOf(item) + 1,
+              0,
+              ...doCall(r)
+            );
             this.rootButton = false;
           })
           .then(() => (item.loading = false));
@@ -10096,15 +10111,15 @@ var ExpandLoadCollapse_component = normalizeComponent(
 
 ;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_SpaceSelectorvue_type_script_lang_js_ = (SpaceSelectorvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=0&id=79ddd4f2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=0&id=ac5d5f0e&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=style&index=0&id=79ddd4f2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=style&index=0&id=ac5d5f0e&prod&scoped=true&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=1&id=79ddd4f2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/SpaceSelector.vue?vue&type=style&index=1&id=ac5d5f0e&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=style&index=1&id=79ddd4f2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue?vue&type=style&index=1&id=ac5d5f0e&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/SpaceSelector.vue
 
@@ -10118,11 +10133,11 @@ var ExpandLoadCollapse_component = normalizeComponent(
 
 var SpaceSelector_component = normalizeComponent(
   components_SpaceSelectorvue_type_script_lang_js_,
-  SpaceSelectorvue_type_template_id_79ddd4f2_scoped_true_render,
-  SpaceSelectorvue_type_template_id_79ddd4f2_scoped_true_staticRenderFns,
+  SpaceSelectorvue_type_template_id_ac5d5f0e_scoped_true_render,
+  SpaceSelectorvue_type_template_id_ac5d5f0e_scoped_true_staticRenderFns,
   false,
   null,
-  "79ddd4f2",
+  "ac5d5f0e",
   null
   
 )
@@ -10220,13 +10235,13 @@ const VCardTitle = createSimpleFunctional('v-card__title');
   }
 });
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=4d2fd9d0&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=8828b3f4&scoped=true&
 
 
 
-var PieCardvue_type_template_id_4d2fd9d0_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card pa-1 rounded-lg d-flex flex-column",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase pa-3 flex-shrink-1"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('div',{staticClass:"d-flex flex-row justify-center flex-grow-1 pb-3"},[_c('div',[_c('Pie',{attrs:{"data":_vm.pieData,"id":'2',"options":_vm.pieChartOptions}})],1),_c('div',{attrs:{"id":"pie-legend-container"}})])],1)
+var PieCardvue_type_template_id_8828b3f4_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"311px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase flex-shrink-1 pa-3"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('div',{staticClass:"d-flex flex-row justify-center flex-grow-1 pb-3"},[_c('div',[_c('Pie',{staticStyle:{"height":"100%"},attrs:{"data":_vm.pieData,"id":'2',"options":_vm.pieChartOptions}})],1),_c('div',{attrs:{"id":"pie-legend-container"}})])],1)
 }
-var PieCardvue_type_template_id_4d2fd9d0_scoped_true_staticRenderFns = []
+var PieCardvue_type_template_id_8828b3f4_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@kurkle/color/dist/color.esm.js
@@ -25002,7 +25017,26 @@ const customBackgroundPlugin = {
         width = chartArea.width / (chart.data.labels?.length || 1);
         ctx.fillStyle = options.color || "white";
         chart.data.labels?.forEach(() => {
-          ctx.roundRect(begin, top, width, height, 5);
+          ctx.moveTo(begin + 5, top);
+
+          ctx.lineTo(begin + width - 5, top);
+          ctx.arcTo(begin + width, top, begin + width, top + 5, 5);
+
+          ctx.lineTo(begin + width, top + height - 5);
+          ctx.arcTo(
+            begin + width,
+            top + height,
+            begin + width - 5,
+            top + height,
+            5
+          );
+
+          ctx.lineTo(begin + 5, top + height);
+          ctx.arcTo(begin, top + height, begin, top + height - 5, 5);
+
+          ctx.lineTo(begin, top + 5);
+          ctx.arcTo(begin, top, begin + 5, top, 5);
+
           ctx.fill();
           ctx.strokeStyle = "#f9f9f9";
           ctx.stroke();
@@ -25046,14 +25080,15 @@ const customLegendPlugin = {
         const boxSpan = document.createElement("span");
         boxSpan.classList.add("mr-2");
         boxSpan.style.background = item.fillStyle;
-        boxSpan.style.height = "20px";
-        boxSpan.style.width = "10px";
+        boxSpan.style.height = "21px";
+        boxSpan.style.width = "9px";
         boxSpan.style.borderRadius = "5px";
 
         // Text
         const textContainer = document.createElement("p");
         textContainer.classList.add("ma-0", "pa-0");
         textContainer.style.textDecoration = item.hidden ? "line-through" : "";
+        textContainer.style.fontSize = "14px";
 
         const text = document.createTextNode(item.text);
         textContainer.appendChild(text);
@@ -25090,6 +25125,29 @@ const customLegendPlugin = {
  * with this file. If not, see
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
+function defaultColor(size) {
+    switch (size) {
+        case 3:
+            return ["#ff000b", "#14202c", "#11eda9"];
+        case 4:
+            return ["#11eda9", "#ffe600", "#ffa400", "#ff000b"];
+        case 7:
+            return [
+                "#cadee2",
+                "#a2d9e8",
+                "#79d4ee",
+                "#51cef3",
+                "#28c9f9",
+                "#00c4ff",
+                "#14202c",
+            ];
+        default:
+            return gradiant(size).map(function (color) {
+                var col = HSVtoRGB(color / 100, 1, 1);
+                return RGBtoHexa(col.r, col.g, col.b);
+            });
+    }
+}
 function gradiant(size) {
     var colors = [];
     if (size > 0) {
@@ -25286,7 +25344,6 @@ Chart.register(
           value: data.map((e) => e.value).reduce((e1, e2) => e1 + e2, 0),
         });
       } else sorted = data;
-      const tab = ["#14202c", "#00c4ff", 0, 0, 0, 0, 0].fill("#cadee2", 2, 7);
       return {
         labels: sorted.map((t) => `${t.value}: ${t.label}`),
         datasets: [
@@ -25296,7 +25353,7 @@ Chart.register(
                   sorted.length,
                   hexaToHSV(this.color).h * 100
                 )
-              : tab.reverse(),
+              : defaultColor(7),
             data: sorted.map((t) => t.value),
           },
         ],
@@ -25307,15 +25364,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PieCardvue_type_script_lang_js_ = (PieCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=4d2fd9d0&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=8828b3f4&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=4d2fd9d0&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=8828b3f4&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=1&id=4d2fd9d0&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=1&id=8828b3f4&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=1&id=4d2fd9d0&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=1&id=8828b3f4&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue
 
@@ -25329,26 +25386,27 @@ Chart.register(
 
 var PieCard_component = normalizeComponent(
   components_PieCardvue_type_script_lang_js_,
-  PieCardvue_type_template_id_4d2fd9d0_scoped_true_render,
-  PieCardvue_type_template_id_4d2fd9d0_scoped_true_staticRenderFns,
+  PieCardvue_type_template_id_8828b3f4_scoped_true_render,
+  PieCardvue_type_template_id_8828b3f4_scoped_true_staticRenderFns,
   false,
   null,
-  "4d2fd9d0",
+  "8828b3f4",
   null
   
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=6c470b14&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=33248a6a&scoped=true&
 
 
 
-var BarCardvue_type_template_id_6c470b14_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase flex-shrink-1"},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+var BarCardvue_type_template_id_33248a6a_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-shrink-1 flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
 }
-var BarCardvue_type_template_id_6c470b14_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_33248a6a_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
+
 
 
 
@@ -25434,14 +25492,22 @@ Chart.register(
             type: this.scaleType,
             stacked: this.stacked,
             ticks: {
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
               color: (item) => {
-                const max = (Math.floor((item.scale.max - 1) / 10) + 1) * 10;
-                item.scale.end = max;
-                return !item.tick.value || item.tick.value % Math.floor(max / 2)
-                  ? item.tick.value === item.scale.max
-                    ? "#214353"
-                    : "#f9f9f9"
-                  : "#214353";
+                const step =
+                  item.scale.ticks[1].value - item.scale.ticks[0].value;
+                let mid = Math.floor(item.scale.max / 2);
+                while (mid % step) mid += 1;
+                switch (item.tick.value) {
+                  case item.scale.max:
+                  case mid:
+                    return "#214353";
+                  default:
+                    return "#f9f9f9";
+                }
               },
             },
             grid: {
@@ -25456,6 +25522,13 @@ Chart.register(
             grid: {
               display: false,
             },
+            ticks: {
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: "#214353",
+            },
           },
         },
         plugins: {
@@ -25465,12 +25538,14 @@ Chart.register(
             labels: {
               color: "#214353",
               font: {
-                size: 20,
+                family: "Charlevoix Pro",
+                size: 14,
+                letterSpacing: 0.7,
               },
               useBorderRadius: true,
               borderRadius: 5,
-              boxWidth: 10,
-              boxHeight: 25,
+              boxWidth: 9,
+              boxHeight: 21,
             },
           },
         },
@@ -25486,7 +25561,15 @@ Chart.register(
       bottomLeft: radius,
       bottomRight: radius,
     };
+    const colors =
+      this.datasets.length <= 3
+        ? defaultColor(3)
+        : gradiant(this.datasets.length).map((color) => {
+            const col = HSVtoRGB(color / 100, 1, 1);
+            return RGBtoHexa(col.r, col.g, col.b);
+          });
     this.datasets.forEach((set) => {
+      if (!set.backgroundColor) set.backgroundColor = colors.shift();
       set.borderSkipped = false;
       set.borderRadius = borderRadius;
       set.borderWidth = 1;
@@ -25495,14 +25578,40 @@ Chart.register(
 
     // Enregistrement du plugin de légende en HTML/CSS
   },
+
+  watch: {
+    datasets() {
+      const radius = 4;
+      const borderRadius = {
+        topLeft: radius,
+        topRight: radius,
+        bottomLeft: radius,
+        bottomRight: radius,
+      };
+      const colors =
+        this.datasets.length <= 3
+          ? defaultColor(3)
+          : gradiant(this.datasets.length).map((color) => {
+              const col = HSVtoRGB(color / 100, 1, 1);
+              return RGBtoHexa(col.r, col.g, col.b);
+            });
+      this.datasets.forEach((set) => {
+        if (!set.backgroundColor) set.backgroundColor = colors.shift();
+        set.borderSkipped = false;
+        set.borderRadius = borderRadius;
+        set.borderWidth = 1;
+        set.borderColor = "rgba(0,0,0,0)";
+      });
+    },
+  },
 });
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=6c470b14&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=33248a6a&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=6c470b14&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=33248a6a&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -25515,11 +25624,11 @@ Chart.register(
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_6c470b14_scoped_true_render,
-  BarCardvue_type_template_id_6c470b14_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_33248a6a_scoped_true_render,
+  BarCardvue_type_template_id_33248a6a_scoped_true_staticRenderFns,
   false,
   null,
-  "6c470b14",
+  "33248a6a",
   null
   
 )
@@ -33345,13 +33454,13 @@ function VGrid(name) {
 
 /* harmony default export */ var VFlex = (VGrid('flex'));
 //# sourceMappingURL=VFlex.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=19a3981d&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=template&id=8b163794&scoped=true&
 
 
 
-var StatsCardvue_type_template_id_19a3981d_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color})},[_vm._v(_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text"},[_c('div',[_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]),_vm._v(_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")])])],1)],1)
+var StatsCardvue_type_template_id_8b163794_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"stat-card ma-2 rounded-lg",attrs:{"elevation":"5","outlined":""}},[_c(VFlex,{staticClass:"d-flex flex-row fill-height"},[_c(VFlex,{staticClass:"d-flex flex-column justify-center text-center stat-value",style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.shortNumberCall(_vm.value))+" ")]),_c(VFlex,{staticClass:"d-flex flex-column justify-center justify-start stat-text",staticStyle:{"font-size":"14px"}},[_c('div',[_c('span',{style:({ color: _vm.color })},[_vm._v(_vm._s(_vm.unit + " "))]),_vm._v(_vm._s(_vm.title)+" ")]),(_vm.type === 'comparison')?_c('div',{staticClass:"stat-subtitle"},[_c('span',{staticClass:"black--text"},[_vm._v(_vm._s(_vm.compared + " "))]),_vm._v(_vm._s(_vm.subtitle)+" ")]):_c('div',{staticClass:"stat-subtitle orange--text text-uppercase"},[_c('div',{staticClass:"rounded-circle d-inline-block orange pa-1"}),_vm._v(" "+_vm._s(_vm.subtitle)+" ")])])],1)],1)
 }
-var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
+var StatsCardvue_type_template_id_8b163794_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=script&lang=js&
@@ -33362,52 +33471,50 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
   props: {
     type: {
       type: String,
-      default: 'date'
+      default: "date",
     },
     value: {
       type: Number,
-      required: true
+      required: true,
     },
     unit: {
       type: String,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      required: true
+      required: true,
     },
     compared: {
-      type: String
+      type: String,
     },
     subtitle: {
       type: String,
-      required: true
+      required: true,
     },
     color: {
       type: String,
-      default: '#14202c'
-    }
+      default: "#14202c",
+    },
   },
 
   methods: {
-    shortNumberCall (n) {
-      if(Math.abs(n)>=1000000000)
-        return Math.round(n/100000000) / 10+'B';
-      if(Math.abs(n)>=1000000)
-        return Math.round(n/100000) / 10+'M';
-      if(Math.abs(n)>=1000)
-        return Math.round(n/100) / 10+'K';
+    shortNumberCall(n) {
+      if (Math.abs(n) >= 1000000000)
+        return Math.round(n / 100000000) / 10 + "B";
+      if (Math.abs(n) >= 1000000) return Math.round(n / 100000) / 10 + "M";
+      if (Math.abs(n) >= 1000) return Math.round(n / 100) / 10 + "K";
       return n;
     },
-  }
+  },
 });
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_StatsCardvue_type_script_lang_js_ = (StatsCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=19a3981d&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/StatsCard.vue?vue&type=style&index=0&id=8b163794&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=19a3981d&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/StatsCard.vue?vue&type=style&index=0&id=8b163794&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/StatsCard.vue
 
@@ -33420,11 +33527,11 @@ var StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns = []
 
 var StatsCard_component = normalizeComponent(
   components_StatsCardvue_type_script_lang_js_,
-  StatsCardvue_type_template_id_19a3981d_scoped_true_render,
-  StatsCardvue_type_template_id_19a3981d_scoped_true_staticRenderFns,
+  StatsCardvue_type_template_id_8b163794_scoped_true_render,
+  StatsCardvue_type_template_id_8b163794_scoped_true_staticRenderFns,
   false,
   null,
-  "19a3981d",
+  "8b163794",
   null
   
 )
