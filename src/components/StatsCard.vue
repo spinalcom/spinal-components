@@ -4,21 +4,22 @@
       <v-flex
         class="d-flex flex-column justify-center text-center stat-value"
         :style="{ color: color }"
-        >{{ shortNumberCall(value) }}
-      </v-flex>
-      <v-flex
-        style="font-size: 14px"
-        class="d-flex flex-column justify-center justify-start stat-text"
       >
+        {{ shortNumberCall(value) }}
+      </v-flex>
+      <v-flex class="d-flex flex-column justify-center justify-start stat-text">
         <div>
-          <span :style="{ color: color }">{{ unit + "  " }}</span
-          >{{ title }}
+          <span v-if="unit" :style="{ color: color }">{{ unit + "  " }}</span>
+          {{ title }}
         </div>
         <div v-if="type === 'comparison'" class="stat-subtitle">
           <span class="black--text">{{ compared + " " }}</span
           >{{ subtitle }}
         </div>
-        <div v-else class="stat-subtitle orange--text text-uppercase">
+        <div
+          v-else-if="subtitle"
+          class="stat-subtitle orange--text text-uppercase"
+        >
           <div class="rounded-circle d-inline-block orange pa-1"></div>
           {{ subtitle }}
         </div>
@@ -30,7 +31,6 @@
 <script>
 export default {
   name: "StatsCard",
-
   props: {
     type: {
       type: String,
@@ -42,7 +42,7 @@ export default {
     },
     unit: {
       type: String,
-      required: true,
+      required: false,
     },
     title: {
       type: String,
@@ -53,14 +53,13 @@ export default {
     },
     subtitle: {
       type: String,
-      required: true,
+      required: false,
     },
     color: {
       type: String,
       default: "#14202c",
     },
   },
-
   methods: {
     shortNumberCall(n) {
       if (Math.abs(n) >= 1000000000)
@@ -77,15 +76,12 @@ export default {
 .stat-card {
   background-color: #f9f9f9;
 }
-
 .stat-value {
   font-size: 3em;
 }
-
 .stat-subtitle {
   font-size: 11px;
 }
-
 .stat-text {
   width: 60%;
   color: #949da6;

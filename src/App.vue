@@ -40,6 +40,7 @@
           :subtitle="'Aujourd\'hui'"
           :color="'#956518'"
         ></stats-card>
+        <LoadingCard class="pa-4" style="width: 25%" />
         <stats-card
           :value="25"
           :unit="'Km'"
@@ -264,10 +265,10 @@ export default {
 }
 
 .pie-card {
-  width: 30%;
+  width: 20%;
 }
 .bar-card {
-  width: 70%;
+  width: 40%;
 }
 .stat-card {
   width: 25%;
