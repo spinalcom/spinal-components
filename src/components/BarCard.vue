@@ -12,7 +12,7 @@
     >
     <div class="d-flex flex-column flex-grow-1">
       <slot name="extras" class="flex-shrink-1"></slot>
-      <div class="flex-grow-1">
+      <div class="flex-grow-1 flex-shrink-1" style="height: 0">
         <Bar :data="barChartData" :chart-id="'1'" :options="barChartOptions" />
       </div>
     </div>

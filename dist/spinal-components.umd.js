@@ -10253,13 +10253,13 @@ const VCardTitle = createSimpleFunctional('v-card__title');
   }
 });
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=24254db5&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=81080eee&scoped=true&
 
 
 
-var PieCardvue_type_template_id_24254db5_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"311px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase flex-shrink-1 pa-3"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('div',{staticClass:"d-flex flex-row justify-center flex-grow-1 pb-3"},[_c('div',[_c('Pie',{attrs:{"data":_vm.pieData,"id":'2',"options":_vm.pieChartOptions}})],1),_c('div',{attrs:{"id":"pie-legend-container"}})])],1)
+var PieCardvue_type_template_id_81080eee_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"311px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase flex-shrink-1 pa-3"},[_vm._v(_vm._s(_vm.title)+" ")]),_c('div',{staticClass:"d-flex flex-row justify-center flex-grow-1 pb-3"},[_c('div',{staticStyle:{"height":"243px"}},[_c('Pie',{attrs:{"data":_vm.pieData,"id":'2',"options":_vm.pieChartOptions}})],1),_c('div',{attrs:{"id":"pie-legend-container"}})])],1)
 }
-var PieCardvue_type_template_id_24254db5_scoped_true_staticRenderFns = []
+var PieCardvue_type_template_id_81080eee_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@kurkle/color/dist/color.esm.js
@@ -10855,7 +10855,7 @@ function index_esm(input) {
 
 ;// CONCATENATED MODULE: ./node_modules/chart.js/dist/chunks/helpers.segment.js
 /*!
- * Chart.js v4.2.0
+ * Chart.js v4.2.1
  * https://www.chartjs.org
  * (c) 2023 Chart.js Contributors
  * Released under the MIT License
@@ -13467,7 +13467,7 @@ function styleChanged(style, prevStyle) {
 
 ;// CONCATENATED MODULE: ./node_modules/chart.js/dist/chart.js
 /*!
- * Chart.js v4.2.0
+ * Chart.js v4.2.1
  * https://www.chartjs.org
  * (c) 2023 Chart.js Contributors
  * Released under the MIT License
@@ -17063,6 +17063,7 @@ function determineMaxTicks(scale) {
 
 const reverseAlign = (align)=>align === 'left' ? 'right' : align === 'right' ? 'left' : align;
 const offsetFromEdge = (scale, edge, offset)=>edge === 'top' || edge === 'left' ? scale[edge] + offset : scale[edge] - offset;
+const getTicksLimit = (ticksLength, maxTicksLimit)=>Math.min(maxTicksLimit || ticksLength, ticksLength);
  function sample(arr, numItems) {
     const result = [];
     const increment = arr.length / numItems;
@@ -17457,7 +17458,7 @@ class Scale extends Element {
     calculateLabelRotation() {
         const options = this.options;
         const tickOpts = options.ticks;
-        const numTicks = this.ticks.length;
+        const numTicks = getTicksLimit(this.ticks.length, options.ticks.maxTicksLimit);
         const minRotation = tickOpts.minRotation || 0;
         const maxRotation = tickOpts.maxRotation;
         let labelRotation = minRotation;
@@ -17615,18 +17616,19 @@ class Scale extends Element {
             if (sampleSize < ticks.length) {
                 ticks = sample(ticks, sampleSize);
             }
-            this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length);
+            this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length, this.options.ticks.maxTicksLimit);
         }
         return labelSizes;
     }
- _computeLabelSizes(ticks, length) {
+ _computeLabelSizes(ticks, length, maxTicksLimit) {
         const { ctx , _longestTextCache: caches  } = this;
         const widths = [];
         const heights = [];
+        const increment = Math.floor(length / getTicksLimit(length, maxTicksLimit));
         let widestLabelSize = 0;
         let highestLabelSize = 0;
         let i, j, jlen, label, tickFont, fontString, cache, lineHeight, width, height, nestedLabel;
-        for(i = 0; i < length; ++i){
+        for(i = 0; i < length; i += increment){
             label = ticks[i].label;
             tickFont = this._resolveTickFontOptions(i);
             ctx.font = fontString = tickFont.string;
@@ -18932,7 +18934,7 @@ function needContext(proxy, names) {
     return false;
 }
 
-var version = "4.2.0";
+var version = "4.2.1";
 
 const KNOWN_POSITIONS = [
     'top',
@@ -20096,8 +20098,7 @@ class ArcElement extends Element {
             'startAngle',
             'endAngle',
             'innerRadius',
-            'outerRadius',
-            'circumference'
+            'outerRadius'
         ], useFinalPosition);
         const { offset , spacing  } = this.options;
         const halfAngle = (startAngle + endAngle) / 2;
@@ -20871,6 +20872,9 @@ function cleanDecimatedDataset(dataset) {
         delete dataset._decimated;
         delete dataset._data;
         Object.defineProperty(dataset, 'data', {
+            configurable: true,
+            enumerable: true,
+            writable: true,
             value: data
         });
     }
@@ -25382,15 +25386,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PieCardvue_type_script_lang_js_ = (PieCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=24254db5&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=81080eee&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=24254db5&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=81080eee&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=1&id=24254db5&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=1&id=81080eee&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=1&id=24254db5&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=1&id=81080eee&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue
 
@@ -25404,23 +25408,23 @@ Chart.register(
 
 var PieCard_component = normalizeComponent(
   components_PieCardvue_type_script_lang_js_,
-  PieCardvue_type_template_id_24254db5_scoped_true_render,
-  PieCardvue_type_template_id_24254db5_scoped_true_staticRenderFns,
+  PieCardvue_type_template_id_81080eee_scoped_true_render,
+  PieCardvue_type_template_id_81080eee_scoped_true_staticRenderFns,
   false,
   null,
-  "24254db5",
+  "81080eee",
   null
   
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=72614a00&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=11d883d4&scoped=true&
 
 
 
-var BarCardvue_type_template_id_72614a00_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-shrink-1 flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1"},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+var BarCardvue_type_template_id_11d883d4_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-shrink-1 flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column flex-grow-1"},[_vm._t("extras"),_c('div',{staticClass:"flex-grow-1 flex-shrink-1",staticStyle:{"height":"0"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
 }
-var BarCardvue_type_template_id_72614a00_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_11d883d4_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -25626,10 +25630,10 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=72614a00&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=11d883d4&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=72614a00&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=11d883d4&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -25642,11 +25646,11 @@ Chart.register(
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_72614a00_scoped_true_render,
-  BarCardvue_type_template_id_72614a00_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_11d883d4_scoped_true_render,
+  BarCardvue_type_template_id_11d883d4_scoped_true_staticRenderFns,
   false,
   null,
-  "72614a00",
+  "11d883d4",
   null
   
 )
