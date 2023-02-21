@@ -22,6 +22,31 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
+export function defaultColor(size: number) {
+  switch (size) {
+    case 3:
+      return ["#ff000b", "#14202c", "#11eda9"];
+    case 4:
+      return ["#11eda9", "#ffe600", "#ffa400", "#ff000b"];
+    case 7:
+      return [
+        "#cadee2",
+        "#a2d9e8",
+        "#79d4ee",
+        "#51cef3",
+        "#28c9f9",
+        "#00c4ff",
+        "#14202c",
+      ];
+
+    default:
+      return gradiant(size).map((color) => {
+        const col = HSVtoRGB(color / 100, 1, 1);
+        return RGBtoHexa(col.r, col.g, col.b);
+      });
+  }
+}
+
 export function gradiant(size: number) {
   const colors = [];
   if (size > 0) {
@@ -152,7 +177,7 @@ function hexaToRGB(color: string) {
   return { r: red, g: green, b: blue };
 }
 
-function RGBtoHexa(r: number, g: number, b: number) {
+export function RGBtoHexa(r: number, g: number, b: number) {
   let red = r.toString(16);
   red = red.length === 2 ? red : "0" + red;
   let green = g.toString(16);
