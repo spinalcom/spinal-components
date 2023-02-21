@@ -40,7 +40,7 @@
           :subtitle="'Aujourd\'hui'"
           :color="'#956518'"
         ></stats-card>
-        <LoadingCard class="pa-4" style="width: 25%" />
+        <loading-card class="pa-4" style="width: 25%" />
         <stats-card
           :value="25"
           :unit="'Km'"
@@ -96,12 +96,15 @@ import SpinalNavigator from "./components/SpinalNavigator";
 import DoubleStatCard from "./components/DoubleStatCard";
 import LoadingPage from "./components/LoadingPage";
 import TicketCard from "./components/TicketCard";
+import LoadingCard from "./components/LoadingCard.vue";
+
 let i = 0;
 export default {
   name: "App",
 
   components: {
     LoadingPage,
+    LoadingCard,
     //DoubleStatCard,
     SpinalNavigator,
     //PaginatedTable,

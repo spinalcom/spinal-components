@@ -10,12 +10,7 @@
     </v-card-title>
     <div class="d-flex flex-row justify-center flex-grow-1 pb-3">
       <div>
-        <Pie
-          style="height: 100%"
-          :data="pieData"
-          :id="'2'"
-          :options="pieChartOptions"
-        />
+        <Pie :data="pieData" :id="'2'" :options="pieChartOptions" />
       </div>
       <div id="pie-legend-container"></div>
     </div>
