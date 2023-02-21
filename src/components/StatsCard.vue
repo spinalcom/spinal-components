@@ -63,7 +63,7 @@ export default {
         return Math.round(n/100000) / 10+'M';
       if(Math.abs(n)>=1000)
         return Math.round(n/100) / 10+'K';
-      return n;
+      return n.toFixed(1);
     },
   }
 }

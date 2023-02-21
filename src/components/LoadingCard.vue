@@ -1,5 +1,5 @@
 <template>
-    <v-card class="d-flex align-center justify-center rounded-lg" elevation="5" outlined style="width: 100%">
+    <v-card class="d-flex align-center justify-center rounded-lg" elevation="5" outlined>
         <v-progress-circular
           :size="50"
           color="#14202c"
