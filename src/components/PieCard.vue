@@ -4,15 +4,17 @@
     elevation="5"
     outlined
   >
-    <v-card-title class="card-title text-uppercase flex-shrink-1 pa-3"
+    <v-card-title
+      style="height: 56px"
+      class="card-title text-uppercase flex-shrink-1 pa-3"
       >{{ title }}
     </v-card-title>
     <div
-      class="d-flex flex-row justify-center flex-grow-1 pb-3"
-      style="max-height: 250px;"
+      style="height: calc(100% - 56%)"
+      class="d-flex flex-row flex-fill justify-center pb-3"
     >
-      <div>
-        <Pie :data="pieData" :options="pieChartOptions" ref="pieChart" />
+      <div style="aspect-ratio: 1/1">
+        <pie :data="pieData" :id="'2'" :options="pieChartOptions" />
       </div>
       <div id="pie-legend-container"></div>
     </div>
@@ -109,26 +111,6 @@ export default {
       };
     },
   },
-
-  mounted() {
-    this.renderChart();
-  },
-
-  methods: {
-    renderChart() {
-      // re-render the chart
-      this.$refs.pieChart.chartInstance.resize();
-    },
-  },
-
-  watch: {
-    "$el.clientWidth": function (val) {
-      this.renderChart();
-    },
-    "$el.clientHeight": function (val) {
-      this.renderChart();
-    },
-  },
 };
 </script>
 
@@ -136,4 +118,17 @@ export default {
 .v-application {
   font-family: "Charlevoix Pro";
 }
-</style
+</style>
+
+<style scoped>
+.pie-card {
+  background: #f9f9f9 0% 0% no-repeat padding-box;
+}
+
+.card-title {
+  letter-spacing: 1.1px;
+  color: #214353;
+  opacity: 1;
+  font-size: 20px;
+}
+</style>

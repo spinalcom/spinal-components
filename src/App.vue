@@ -18,13 +18,22 @@
       ></download-button>
       <div class="d-flex flex-column">
         <bar-card
+<<<<<<< HEAD
           class="ma-2 flex-grow-1"
           style="height: 400px"
+=======
+          class="ma-2"
+          style="width: 95%; height: 400px"
+>>>>>>> mamady
           :title="'Test 2'"
           :labels="barLabels"
           :datasets="barDatas"
         >
+          <template v-slot:extras>
+            <v-btn></v-btn>
+          </template>
         </bar-card>
+<<<<<<< HEAD
         <div class="d-flex flex-row">
           <pie-card
             class="ma-2 flex-grow-1"
@@ -37,6 +46,14 @@
             :pie-chart-data="pie"
           ></pie-card>
         </div>
+=======
+        <pie-card
+          style="width: 100%; height: 300px"
+          class="ma-2"
+          :title="'Test'"
+          :pie-chart-data="pie"
+        ></pie-card>
+>>>>>>> mamady
       </div>
       <div class="d-flex flex-row">
         <stats-card
