@@ -11,8 +11,8 @@
       >{{ title }}</v-card-title
     >
     <div class="d-flex flex-column flex-grow-1">
-      <slot name="extras" class="flex-shrink-1"></slot>
-      <div class="flex-grow-1 flex-shrink-1" style="height: 0">
+      <slot name="extras"></slot>
+      <div class="flex-grow-1" style="height: 0;">
         <Bar :data="barChartData" :chart-id="'1'" :options="barChartOptions" />
       </div>
     </div>
@@ -33,7 +33,7 @@ import {
   LogarithmicScale,
   Chart as ChartJS,
 } from "chart.js";
-import { defaultColor, gradiant, RGBtoHexa, HSVtoRGB } from "@/colors";
+import { defaultColor, gradiant, RGBtoHexa, HSVtoRGB } from "../colors";
 
 ChartJS.register(
   Legend,
@@ -229,7 +229,11 @@ export default {
   },
 };
 </script>
-
+<style>
+.v-application {
+  font-family: "Charlevoix Pro";
+}
+</style>
 <style scoped>
 .bar-card {
   background-color: #f9f9f9;
