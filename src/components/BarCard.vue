@@ -1,18 +1,18 @@
 <template>
   <v-card
     style="min-height: 220px !important"
-    class="bar-card pa-1 rounded-lg d-flex flex-shrink-1 flex-column"
+    class="bar-card pa-1 rounded-lg d-flex flex-column"
     elevation="5"
     outlined
   >
     <v-card-title
       style="font-size: 20px"
-      class="card-title pa-3 text-uppercase"
+      class="card-title pa-3 text-uppercase flex-shrink-1"
       >{{ title }}</v-card-title
     >
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column fill-height">
       <slot name="extras" class="flex-shrink-1"></slot>
-      <div class="flex-grow-1">
+      <div class="flex-fill">
         <Bar :data="barChartData" :chart-id="'1'" :options="barChartOptions" />
       </div>
     </div>
