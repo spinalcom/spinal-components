@@ -105,7 +105,6 @@ export default {
                 )
               : defaultColor(7),
             data: sorted.map((t) => t.value),
-            borderRadius: 10,
           },
         ],
       };
