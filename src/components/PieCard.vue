@@ -5,12 +5,17 @@
     elevation="5"
     outlined
   >
-    <v-card-title class="card-title text-uppercase flex-shrink-1 pa-3"
+    <v-card-title
+      style="height: 56px"
+      class="card-title text-uppercase flex-shrink-1 pa-3"
       >{{ title }}
     </v-card-title>
-    <div class="d-flex flex-row fill-height justify-center flex-grow-1 pb-3">
-      <div class="fill-height">
-        <Pie :data="pieData" :id="'2'" :options="pieChartOptions" />
+    <div
+      style="height: calc(100% - 56%)"
+      class="d-flex flex-row flex-fill justify-center pb-3"
+    >
+      <div style="aspect-ratio: 1/1">
+        <pie :data="pieData" :id="'2'" :options="pieChartOptions" />
       </div>
       <div id="pie-legend-container"></div>
     </div>

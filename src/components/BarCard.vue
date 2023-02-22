@@ -6,13 +6,13 @@
     outlined
   >
     <v-card-title
-      style="font-size: 20px"
-      class="card-title pa-3 text-uppercase flex-shrink-1"
+      style="font-size: 20px; height: 56px"
+      class="card-title pa-3 text-uppercase"
       >{{ title }}</v-card-title
     >
-    <div class="d-flex flex-column fill-height">
+    <div style="height: calc(100% - 56px)" class="d-flex flex-column">
       <slot name="extras" class="flex-shrink-1"></slot>
-      <div class="flex-fill">
+      <div style="height: 100%">
         <Bar :data="barChartData" :chart-id="'1'" :options="barChartOptions" />
       </div>
     </div>
