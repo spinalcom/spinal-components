@@ -19,14 +19,17 @@
       <div class="d-flex flex-column">
         <bar-card
           class="ma-2"
-          style="width: 95%; height: 200px"
+          style="width: 95%; height: 400px"
           :title="'Test 2'"
           :labels="barLabels"
           :datasets="barDatas"
         >
+          <template v-slot:extras>
+            <v-btn></v-btn>
+          </template>
         </bar-card>
         <pie-card
-          style="width: 100%"
+          style="width: 100%; height: 300px"
           class="ma-2"
           :title="'Test'"
           :pie-chart-data="pie"
