@@ -10,7 +10,7 @@
       >{{ title }}
     </v-card-title>
     <div
-      style="height: calc(100% - 56%)"
+      style="height: calc(100% - 56px)"
       class="d-flex flex-row flex-fill justify-center pb-3"
     >
       <div style="aspect-ratio: 1/1">

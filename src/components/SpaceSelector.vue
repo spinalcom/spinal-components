@@ -10,10 +10,7 @@
       style="border-radius: 10px !important; color: #bfbfbf"
     >
       <div
-        @click="
-          dropDown = !dropDown;
-          dive();
-        "
+        @click="dropDown = !dropDown"
         id="selected"
         style="border-radius: 0px; height: 64px; background-color: #14202c"
       >
