@@ -42,6 +42,7 @@
             style="cursor: pointer; padding: 12px; margin-bottom: 0px"
           >
             <div
+              @click="select(firstTile)"
               style="
                 width: 100%;
                 cursor: pointer;
@@ -49,7 +50,7 @@
                 margin-bottom: 0px;
               "
             >
-              {{ privateRootElement.name }}
+              {{ firstTile.name }}
             </div>
             <v-btn
               elevation="0"
@@ -164,6 +165,14 @@ export default {
     ExpandLoadCollapse,
   },
   props: {
+    list: {
+      type: Boolean,
+      default: false,
+    },
+    firstTile: {
+      type: Object,
+      default: () => ({ name: "Liste" }),
+    },
     onopen: {
       type: Function,
     },
@@ -199,21 +208,20 @@ export default {
       return el;
     },
     title() {
-      return this.value.title.length > 20
-        ? this.value.title.substring(0, 19) + "..."
-        : this.value.title;
+      return this.value.name.length > 20
+        ? this.value.name.substring(0, 19) + "..."
+        : this.value.name;
     },
   },
   methods: {
     select(item) {
       this.dive(item);
-      if (item.level > 0)
-        this.$emit("input", {
-          name: this.value.name,
-          title: item.name,
-          dynamicId: item.dynamicId,
-          color: item.color,
-        });
+      if (this.list && !item.level) return;
+      this.$emit("input", {
+        name: item.name,
+        dynamicId: item.dynamicId,
+        color: item.color,
+      });
     },
     dive(item) {
       this.$set(this.path, item.level, item.dynamicId);

@@ -6,11 +6,10 @@
       class="d-inline"
       :max-depth="maxDepth"
       :onopen="expandSelector"
+      :list="list"
+      :first-tile="firstTile"
     ></space-selector>
-    <time-selector
-      class="d-inline"
-      v-model="navigator.period"
-    ></time-selector>
+    <time-selector class="d-inline" v-model="navigator.period"></time-selector>
   </div>
 </template>
 
@@ -28,6 +27,14 @@ export default {
       type: Object,
       required: true,
     },
+    list: {
+      type: Boolean,
+      default: false,
+    },
+    firstTile: {
+      type: Object,
+      default: () => ({ name: "Liste" }),
+    },
     expandSelector: {
       type: Function,
       required: true,
@@ -38,24 +45,24 @@ export default {
     },
     path: {
       type: Object,
-      default: () =>({})
-    }
+      default: () => ({}),
+    },
   },
 
   data() {
     return {
       navigator: this.value,
-      cur_path: this.path
+      cur_path: this.path,
     };
   },
 
   watch: {
     navigator() {
-      this.$emit("input", this.navigator)
+      this.$emit("input", this.navigator);
     },
     cur_path() {
-      this.$emit("update:path", this.cur_path)
-    }
+      this.$emit("update:path", this.cur_path);
+    },
   },
 };
 </script>
