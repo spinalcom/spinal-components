@@ -18,9 +18,9 @@
     </v-card-title>
       <div class="d-flex flex-column flex-grow-1 flex-shrink-1" style="height:0">
           <LineChart
-            :chart-data="lineChartData"
+            :data="lineChartData"
             :chart-id="'99'"
-            :chart-options="lineChartOptions"
+            :options="lineChartOptions"
             class="bar-height"
             />
       </div>

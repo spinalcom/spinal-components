@@ -1,5 +1,5 @@
 <template>
-  <v-card class="stat-card ma-2 rounded-lg" elevation="5" outlined>
+  <v-card class="stat-card rounded-lg" elevation="5" outlined>
     <v-flex class="d-flex flex-row fill-height">
       <v-flex
         class="d-flex flex-column justify-center text-center stat-value"
@@ -66,7 +66,7 @@ export default {
         return Math.round(n / 100000000) / 10 + "B";
       if (Math.abs(n) >= 1000000) return Math.round(n / 100000) / 10 + "M";
       if (Math.abs(n) >= 1000) return Math.round(n / 100) / 10 + "K";
-      return n;
+      return n === Math.floor(n) ? n : n.toFixed(1);
     },
   },
 };

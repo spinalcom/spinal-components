@@ -33,7 +33,7 @@ import {
   LogarithmicScale,
   Chart as ChartJS,
 } from "chart.js";
-import { defaultColor, gradiant, RGBtoHexa, HSVtoRGB } from "@/colors";
+import { defaultColor, gradiant, RGBtoHexa, HSVtoRGB } from "../colors";
 
 ChartJS.register(
   Legend,
@@ -229,7 +229,11 @@ export default {
   },
 };
 </script>
-
+<style>
+.v-application {
+  font-family: "Charlevoix Pro";
+}
+</style>
 <style scoped>
 .bar-card {
   background-color: #f9f9f9;

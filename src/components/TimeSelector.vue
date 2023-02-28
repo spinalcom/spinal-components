@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="glass" v-show="dropDown" @click="dropDown=false"></div>
+    <div v-show="dropDown" @click="dropDown=false"></div>
     <v-card
       elevation="2"
       color="#14202C"

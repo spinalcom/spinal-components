@@ -1,6 +1,5 @@
 <template>
   <v-card
-    style="min-height: 311px !important"
     class="pie-card pa-1 rounded-lg d-flex flex-column"
     elevation="5"
     outlined
@@ -11,7 +10,7 @@
       >{{ title }}
     </v-card-title>
     <div
-      style="height: calc(100% - 56%)"
+      style="height: calc(100% - 56px)"
       class="d-flex flex-row flex-fill justify-center pb-3"
     >
       <div style="aspect-ratio: 1/1">
@@ -55,7 +54,9 @@ export default {
     return {
       pieId: 1,
       pieChartOptions: {
+        responsive: true,
         maintainAspectRatio: false,
+        cutout: 0,
         autopadding: false,
         plugins: {
           legend: {
@@ -117,13 +118,10 @@ export default {
   font-family: "Charlevoix Pro";
 }
 </style>
+
 <style scoped>
 .pie-card {
   background: #f9f9f9 0% 0% no-repeat padding-box;
-}
-
-.pie-height {
-  height: 99%;
 }
 
 .card-title {
