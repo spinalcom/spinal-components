@@ -33328,19 +33328,20 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
 
 }));
 //# sourceMappingURL=VDataTable.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=template&id=3aacd3e2&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=template&id=96f4aa80&scoped=true&
 
 
 
 
-var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"d-flex flex-column table-card pa-2 ma-2 rounded-lg",style:({ height: _vm.height }),attrs:{"elevation":"5","outlined":""}},[_c('div',{ref:"test"},[_c('div',{ref:"selected"},[_c('span',{staticClass:"card-header-text pt-8 pl-3"},[_vm._v(_vm._s(_vm.title))])]),_c('div',{ref:"desktopTable"},[_c(VDataTable,{staticClass:"elevation-1 table-data",attrs:{"item-key":"name","loading-text":"Chargement des données","loading":!_vm.loaded,"headers":_vm.headers,"items":_vm.tableData,"height":_vm.dataHeight,"footer-props":{
-                  prevIcon: 'mdi-menu-left',
-                  nextIcon: 'mdi-menu-right',
-                  showCurrentPage: true,
-                  itemsPerPageAllText: 'Tout',
-                }},scopedSlots:_vm._u([{key:"no-data",fn:function(){return [_vm._v(" Pas de données disponibles ")]},proxy:true}])},[_c(VProgressLinear,{directives:[{name:"show",rawName:"v-show",value:(!_vm.loaded),expression:"!loaded"}],staticClass:"progress-bar",attrs:{"slot":"progress","color":"accent","indeterminate":""},slot:"progress"})],1)],1)])])
+
+var PaginatedTablevue_type_template_id_96f4aa80_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"ma-2 d-flex flex-column table-card rounded-lg flex-grow-1",attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"text-uppercase ma-2",staticStyle:{"height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c(VDataTable,{staticClass:"elevation-1 table-data d-flex flex-column flex-grow-1 flex-shrink-1 justify-space-between ml-6 mr-6 mb-6",attrs:{"item-key":"name","loading-text":"Chargement des données","loading":!_vm.loaded,"fixed-header":"","headers":_vm.headers,"items":_vm.tableData,"custom-sort":_vm.customSort,"footer-props":{
+        prevIcon: 'mdi-menu-left',
+        nextIcon: 'mdi-menu-right',
+        showCurrentPage: true,
+        itemsPerPageAllText: 'Tout',
+      }},scopedSlots:_vm._u([{key:"no-data",fn:function(){return [_vm._v(" Pas de données disponibles ")]},proxy:true}])},[_c(VProgressLinear,{directives:[{name:"show",rawName:"v-show",value:(!_vm.loaded),expression:"!loaded"}],staticClass:"progress-bar",attrs:{"slot":"progress","color":"accent","indeterminate":""},slot:"progress"})],1)],2)],1)
 }
-var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_staticRenderFns = []
+var PaginatedTablevue_type_template_id_96f4aa80_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=script&lang=js&
@@ -33351,44 +33352,48 @@ var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_staticRenderFns = []
   props: {
     title: {
       type: String,
-      default: "Table Card"
+      default: "Table Card",
+    },
+
+    loaded: {
+      type: Boolean,
+      default: true,
     },
 
     tableData: {
       type: Array,
-      required: true
+      required: true,
     },
 
-    height: {
-      type: Number,
-      required: true,
-    }
+    customSort: {
+      type: Function,
+      required: false,
+    },
   },
 
-  data: () =>({
+  data: () => ({
     pageCount: 0,
     page: 1,
   }),
 
   computed: {
-    loaded() {
-      return this.tableData.length > 0
-    },
     headers() {
-      return this.loaded ? Object.keys(this.tableData[0]).map(e => ({ text: e[0].toUpperCase() + e.substring(1), value: e })) : []
+      return this.loaded
+        ? Object.keys(this.tableData[0]).map((e) => ({
+            text: e[0].toUpperCase() + e.substring(1),
+            value: e,
+          }))
+        : [];
     },
-    dataHeight() {
-      return this.height * 0.68;
-    }
-  }
+  },
 });
 
 ;// CONCATENATED MODULE: ./src/components/PaginatedTable.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PaginatedTablevue_type_script_lang_js_ = (PaginatedTablevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=style&index=0&id=3aacd3e2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PaginatedTable.vue?vue&type=style&index=0&id=96f4aa80&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PaginatedTable.vue?vue&type=style&index=0&id=3aacd3e2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/PaginatedTable.vue?vue&type=style&index=0&id=96f4aa80&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/PaginatedTable.vue
 
@@ -33401,11 +33406,11 @@ var PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_staticRenderFns = []
 
 var PaginatedTable_component = normalizeComponent(
   components_PaginatedTablevue_type_script_lang_js_,
-  PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_render,
-  PaginatedTablevue_type_template_id_3aacd3e2_scoped_true_staticRenderFns,
+  PaginatedTablevue_type_template_id_96f4aa80_scoped_true_render,
+  PaginatedTablevue_type_template_id_96f4aa80_scoped_true_staticRenderFns,
   false,
   null,
-  "3aacd3e2",
+  "96f4aa80",
   null
   
 )

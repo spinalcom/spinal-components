@@ -1,31 +1,39 @@
 <template>
-  <v-card class="d-flex flex-column table-card pa-2 ma-2 rounded-lg" elevation="5" :style="{ height: height }" outlined>
-    <div ref="test">
-      <div ref="selected">
-        <span class="card-header-text pt-8 pl-3">{{ title }}</span>
-      </div>
-      <div ref="desktopTable">
-        <v-data-table
-            item-key="name"
-            class="elevation-1 table-data"
-            loading-text="Chargement des données"
-            :loading="!loaded"
-          :headers="headers"
-          :items="tableData"
-          :height="dataHeight"
-          :footer-props="{
-                    prevIcon: 'mdi-menu-left',
-                    nextIcon: 'mdi-menu-right',
-                    showCurrentPage: true,
-                    itemsPerPageAllText: 'Tout',
-                  }"
-        >
-          <v-progress-linear v-show="!loaded" slot="progress" color="accent" class="progress-bar" indeterminate></v-progress-linear>
-          <template v-slot:no-data>
-            Pas de données disponibles
-          </template>
-        </v-data-table>
-      </div>
+  <v-card
+    class="ma-2 d-flex flex-column table-card rounded-lg flex-grow-1"
+    elevation="5"
+    outlined
+  >
+    <v-card-title style="height: 56px" class="text-uppercase ma-2">{{
+      title
+    }}</v-card-title>
+    <div style="height: calc(100% - 56px)" class="d-flex flex-column">
+      <slot name="extras" class="flex-shrink-1"></slot>
+      <v-data-table
+        item-key="name"
+        class="elevation-1 table-data d-flex flex-column flex-grow-1 flex-shrink-1 justify-space-between ml-6 mr-6 mb-6"
+        loading-text="Chargement des données"
+        :loading="!loaded"
+        fixed-header
+        :headers="headers"
+        :items="tableData"
+        :custom-sort="customSort"
+        :footer-props="{
+          prevIcon: 'mdi-menu-left',
+          nextIcon: 'mdi-menu-right',
+          showCurrentPage: true,
+          itemsPerPageAllText: 'Tout',
+        }"
+      >
+        <v-progress-linear
+          v-show="!loaded"
+          slot="progress"
+          color="accent"
+          class="progress-bar"
+          indeterminate
+        ></v-progress-linear>
+        <template v-slot:no-data> Pas de données disponibles </template>
+      </v-data-table>
     </div>
   </v-card>
 </template>
@@ -37,37 +45,41 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Table Card"
+      default: "Table Card",
+    },
+
+    loaded: {
+      type: Boolean,
+      default: true,
     },
 
     tableData: {
       type: Array,
-      required: true
+      required: true,
     },
 
-    height: {
-      type: Number,
-      required: true,
-    }
+    customSort: {
+      type: Function,
+      required: false,
+    },
   },
 
-  data: () =>({
+  data: () => ({
     pageCount: 0,
     page: 1,
   }),
 
   computed: {
-    loaded() {
-      return this.tableData.length > 0
-    },
     headers() {
-      return this.loaded ? Object.keys(this.tableData[0]).map(e => ({ text: e[0].toUpperCase() + e.substring(1), value: e })) : []
+      return this.loaded
+        ? Object.keys(this.tableData[0]).map((e) => ({
+            text: e[0].toUpperCase() + e.substring(1),
+            value: e,
+          }))
+        : [];
     },
-    dataHeight() {
-      return this.height * 0.68;
-    }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -108,7 +120,7 @@ export default {
   box-shadow: none;
   border: 1px solid #d7dee3;
   min-width: 50px;
-  border-radius: 8px ;
+  border-radius: 8px;
 }
 
 ::v-deep .theme--light.v-pagination .v-pagination__navigation {
@@ -131,7 +143,13 @@ export default {
   box-shadow: none !important;
   background-color: white !important;
 }
-::v-deep .theme--light.v-data-table > .v-data-table__wrapper > table > thead > tr:last-child > th {
+::v-deep
+  .theme--light.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > thead
+  > tr:last-child
+  > th {
   color: #546e7a;
 }
 
@@ -139,11 +157,12 @@ tr {
   background-color: transparent !important;
 }
 
-::v-deep .v-app-bar.v-app-bar--fixed{
+::v-deep .v-app-bar.v-app-bar--fixed {
   position: relative !important;
 }
 
-::v-deep .v-input--selection-controls .v-input__slot>.v-label, .v-input--selection-controls .v-radio>.v-label {
+::v-deep .v-input--selection-controls .v-input__slot > .v-label,
+.v-input--selection-controls .v-radio > .v-label {
   font-size: 12px;
   font-weight: 500;
   color: #677088;
