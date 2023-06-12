@@ -12,10 +12,12 @@
   "dependencies": {
     "@mdi/font": "^7.0.96",
     "@types/node": "^18.14.5",
+    "axios": "^1.4.0",
     "chart.js": "^4.2.0",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
     "spinal-env-viewer-plugin-excel-manager-service": "git+https://github.com/spinalcom/spinal-env-viewer-plugin-excel-manager-service.git",
+    "html2canvas": "^1.4.1",
     "velocity-animate": "^1.5.2",
     "vue": "^2.7.14",
     "vue-chartjs": "^5.2.0",

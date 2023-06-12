@@ -25820,13 +25820,13 @@ var PieCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=5cba884c&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=5884e1d2&scoped=true&
 
 
 
-var BarCardvue_type_template_id_5cba884c_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px","height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticStyle:{"height":"100%"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+var BarCardvue_type_template_id_5884e1d2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"elevation":"5","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px","height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticStyle:{"height":"100%"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
 }
-var BarCardvue_type_template_id_5cba884c_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_5884e1d2_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -26032,15 +26032,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=5cba884c&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=5884e1d2&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=5cba884c&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=5884e1d2&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=5cba884c&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=5884e1d2&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=5cba884c&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=5884e1d2&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -26054,24 +26054,24 @@ Chart.register(
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_5cba884c_scoped_true_render,
-  BarCardvue_type_template_id_5cba884c_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_5884e1d2_scoped_true_render,
+  BarCardvue_type_template_id_5884e1d2_scoped_true_staticRenderFns,
   false,
   null,
-  "5cba884c",
+  "5884e1d2",
   null
   
 )
 
 /* harmony default export */ var BarCard = (BarCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=template&id=3fb64365&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=template&id=6582dca6&scoped=true&
 
 
 
 
-var DownloadButtonvue_type_template_id_3fb64365_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c(VCard,{directives:[{def: directives_ripple,name:"ripple",rawName:"v-ripple"}],staticClass:"main-button card-colored outer-card",class:{ 'enter-button': _vm.hover },attrs:{"elevation":"8"},on:{"click":function($event){$event.preventDefault();return _vm.download.apply(null, arguments)},"mouseover":function($event){_vm.hover = true},"mouseleave":function($event){_vm.hover = false}}},[_c(VCard,{directives:[{def: directives_ripple,name:"ripple",rawName:"v-ripple"}],staticClass:"first-nested card-colored inner-card",class:{ inside: _vm.hover },attrs:{"elevation":"8"}},[_c(VIcon_VIcon,{class:{ inside: _vm.hover },staticStyle:{"color":"#bfbfbf","padding":"3px"}},[_vm._v("mdi-file-download")])],1)],1)],1)
+var DownloadButtonvue_type_template_id_6582dca6_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c(VCard,{directives:[{def: directives_ripple,name:"ripple",rawName:"v-ripple"}],staticClass:"main-button card-colored outer-card",class:{ 'enter-button': _vm.hover },attrs:{"disabled":_vm.disabled,"elevation":"8"},on:{"click":function($event){$event.preventDefault();return _vm.download.apply(null, arguments)},"mouseover":function($event){_vm.hover = true},"mouseleave":function($event){_vm.hover = false}}},[_c(VCard,{directives:[{def: directives_ripple,name:"ripple",rawName:"v-ripple"}],staticClass:"first-nested card-colored inner-card",class:{ inside: _vm.hover },attrs:{"elevation":"8"}},[_c(VIcon_VIcon,{class:{ inside: _vm.hover },staticStyle:{"color":"#bfbfbf","padding":"3px"}},[_vm._v("mdi-file-download")])],1)],1)],1)
 }
-var DownloadButtonvue_type_template_id_3fb64365_scoped_true_staticRenderFns = []
+var DownloadButtonvue_type_template_id_6582dca6_scoped_true_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/spinal-env-viewer-plugin-excel-manager-service/dist/index.js
@@ -26096,6 +26096,10 @@ var FileSaver_min_default = /*#__PURE__*/__webpack_require__.n(FileSaver_min);
     data: {
       type: Array,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     csv: {
       type: Boolean,
@@ -26161,10 +26165,10 @@ var FileSaver_min_default = /*#__PURE__*/__webpack_require__.n(FileSaver_min);
 
 ;// CONCATENATED MODULE: ./src/components/DownloadButton.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_DownloadButtonvue_type_script_lang_js_ = (DownloadButtonvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=style&index=0&id=3fb64365&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/DownloadButton.vue?vue&type=style&index=0&id=6582dca6&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/DownloadButton.vue?vue&type=style&index=0&id=3fb64365&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/DownloadButton.vue?vue&type=style&index=0&id=6582dca6&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/DownloadButton.vue
 
@@ -26177,11 +26181,11 @@ var FileSaver_min_default = /*#__PURE__*/__webpack_require__.n(FileSaver_min);
 
 var DownloadButton_component = normalizeComponent(
   components_DownloadButtonvue_type_script_lang_js_,
-  DownloadButtonvue_type_template_id_3fb64365_scoped_true_render,
-  DownloadButtonvue_type_template_id_3fb64365_scoped_true_staticRenderFns,
+  DownloadButtonvue_type_template_id_6582dca6_scoped_true_render,
+  DownloadButtonvue_type_template_id_6582dca6_scoped_true_staticRenderFns,
   false,
   null,
-  "3fb64365",
+  "6582dca6",
   null
   
 )

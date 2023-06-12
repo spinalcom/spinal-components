@@ -15215,29 +15215,32 @@ html[data-v-0350f68c] {
   opacity: 1;
   font-size: 20px;
 }
+html {
+  overflow: auto !important;
+}
 .v-application {
   font-family: Charlevoix Pro;
 }
-.bar-card[data-v-5cba884c] {
+.bar-card[data-v-5884e1d2] {
   background-color: #f9f9f9;
   font-family: Charlevoix Pro;
   font-size: 14px;
 }
-.card-title[data-v-5cba884c] {
+.card-title[data-v-5884e1d2] {
   letter-spacing: 1.1px;
   color: #214353;
   opacity: 1;
   font-size: 11px/13px;
 }
-.card-colored[data-v-3fb64365] {
+.card-colored[data-v-6582dca6] {
   background-color: #14202c;
 }
-.outer-card[data-v-3fb64365] {
+.outer-card[data-v-6582dca6] {
   border-radius: 10px;
   height: 52px;
   width: 52px;
 }
-.inner-card[data-v-3fb64365] {
+.inner-card[data-v-6582dca6] {
   border-radius: 10px;
   height: 32px;
   width: 32px;
@@ -15246,10 +15249,10 @@ html[data-v-0350f68c] {
   top: 10px;
   left: 10px;
 }
-.enter-button[data-v-3fb64365] {
+.enter-button[data-v-6582dca6] {
   cursor: pointer;
 }
-.inside[data-v-3fb64365] {
+.inside[data-v-6582dca6] {
   color: #fff !important;
 }
 .table-card[data-v-96f4aa80] {
