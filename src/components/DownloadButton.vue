@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-card
+      :disabled="disabled"
       @click.prevent="download"
       v-ripple
       class="main-button card-colored outer-card"
@@ -38,6 +39,10 @@ export default {
     data: {
       type: Array,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     csv: {
       type: Boolean,
