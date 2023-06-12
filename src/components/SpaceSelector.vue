@@ -2,7 +2,6 @@
   <div>
     <div v-show="dropDown" @click="dropDown = false"></div>
     <v-card
-      elevation="2"
       color="#14202C"
       class="strech"
       :class="{ drop: dropDown }"
@@ -53,7 +52,6 @@
               {{ firstTile.name }}
             </div>
             <v-btn
-              elevation="0"
               fab
               icon
               raised
@@ -125,7 +123,6 @@
                   {{ item.name }}
                 </div>
                 <v-btn
-                  elevation="0"
                   fab
                   icon
                   raised

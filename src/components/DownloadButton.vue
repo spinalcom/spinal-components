@@ -8,13 +8,11 @@
       :class="{ 'enter-button': hover }"
       @mouseover="hover = true"
       @mouseleave="hover = false"
-      elevation="8"
     >
       <v-card
         v-ripple
         class="first-nested card-colored inner-card"
         :class="{ inside: hover }"
-        elevation="8"
       >
         <v-icon :class="{ inside: hover }" style="color: #bfbfbf; padding: 3px"
           >mdi-file-download</v-icon

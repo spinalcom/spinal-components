@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div v-show="dropDown" @click="dropDown=false"></div>
+    <div v-show="dropDown" @click="dropDown = false"></div>
     <v-card
-      elevation="2"
       color="#14202C"
       class="strech shrink"
       :class="{ drop: dropDown }"
@@ -14,13 +13,7 @@
         id="selected"
         style="border-radius: 0px; height: 64px; background-color: #14202c"
       >
-        <p
-          style="
-            font-weight: 400;
-            padding: 4px;
-            font-size: 30px;
-          "
-        >
+        <p style="font-weight: 400; padding: 4px; font-size: 30px">
           {{ value.name }}
           <v-icon
             style="color: #bfbfbf; float: left; padding: 10px; font-size: 30px"
@@ -67,7 +60,6 @@
 </template>
 
 <script>
-
 export default {
   name: "time-selector",
   props: {
@@ -96,9 +88,6 @@ export default {
 </script>
 
 <style scoped>
-.root-drop-down {
-
-}
 .smooth-load-start-enter-active,
 .smooth-load-start-leave-active {
   transition: all 0.5s;
