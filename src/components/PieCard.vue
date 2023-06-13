@@ -1,9 +1,5 @@
 <template>
-  <v-card
-    class="pie-card pa-1 rounded-lg d-flex flex-column"
-    elevation="5"
-    outlined
-  >
+  <v-card class="pie-card pa-1 rounded-lg d-flex flex-column" outlined>
     <v-card-title
       style="height: 56px"
       class="card-title text-uppercase flex-shrink-1 pa-3"
@@ -52,7 +48,7 @@ export default {
 
   data() {
     return {
-      pieId: 1,
+      id: "bar-chart-id",
       pieChartOptions: {
         responsive: true,
         maintainAspectRatio: false,

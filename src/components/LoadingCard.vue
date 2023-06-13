@@ -1,19 +1,11 @@
 <template>
-  <v-card class="d-flex align-center justify-center rounded-lg" elevation="5" outlined>
-      <v-progress-circular
-        :size="50"
-        color="#14202c"
-        indeterminate
-        />
+  <v-card class="d-flex align-center justify-center rounded-lg" outlined>
+    <v-progress-circular :size="50" color="#14202c" indeterminate />
   </v-card>
 </template>
 
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

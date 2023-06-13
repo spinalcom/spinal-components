@@ -16,61 +16,64 @@
         :data="table"
         class="ma-2"
       ></download-button>
-      <ticket-card style="width: 20%" class="ma-5"></ticket-card>
-      <!--<div class="d-flex flex-column">
+      <!--<ticket-details
+        v-model="ticketDialog"
+        :detailedTicket="ticket"
+        :baseURL="'https://api-subsidio.spinalcom.com/api/v1/node/'"
+      ></ticket-details>-->
+      <!--<ticket-card style="width: 20%" class="ma-5"></ticket-card>-->
+      <!--<div class="d-flex flex-column" style="height: calc(100% - 70px)">
         <bar-card
           class="ma-2"
-          style="width: 95%; height: 400px"
+          style="height: 50%; width: 99%"
           :title="'Test 2'"
           :labels="barLabels"
           :datasets="barDatas"
         >
           <template v-slot:extras>
-            <v-btn></v-btn>
+            <v-btn> Pour afficher d'autres informations </v-btn>
           </template>
         </bar-card>
         <pie-card
-          style="width: 100%; height: 300px"
+          style="width: 40%; height: 300px"
           class="ma-2"
           :title="'Test'"
           :pie-chart-data="pie"
         ></pie-card>
-      </div>
-      <div class="d-flex flex-row">
-        <stats-card
-          :value="-255500"
-          :unit="'Km'"
-          :title="'parcourus'"
-          :subtitle="'Aujourd\'hui'"
-          :color="'#956518'"
-        ></stats-card>
-        <LoadingCard class="pa-4" style="width: 25%" />
-        <stats-card
-          :value="25"
-          :unit="'Km'"
-          :title="'parcourus'"
-          :subtitle="'Aujourd\'hui'"
-        ></stats-card>
-        <stats-card
-          :value="25"
-          :unit="'Km'"
-          :title="'parcourus'"
-          :subtitle="'Aujourd\'hui'"
-        ></stats-card>
-        <stats-card
-          :value="25"
-          :unit="'Km'"
-          :title="'parcourus'"
-          :subtitle="'Aujourd\'hui'"
-        ></stats-card>
-      </div>
-      <paginated-table
-        class="ma-2"
-        :table-data="tableData"
-        :height="tableHeight"
-      ></paginated-table>
+        <div class="d-flex flex-row">
+          <stats-card
+            :value="-255500"
+            :unit="'Km'"
+            :title="'parcourus'"
+            :subtitle="'Aujourd\'hui'"
+            :color="'#956518'"
+          ></stats-card>
+          <stats-card
+            :value="25"
+            :unit="'Km'"
+            :title="'parcourus'"
+            :subtitle="'Aujourd\'hui'"
+          ></stats-card>
+          <stats-card
+            :value="25"
+            :unit="'Km'"
+            :title="'parcourus'"
+            :subtitle="'Aujourd\'hui'"
+          ></stats-card>
+          <stats-card
+            :value="25"
+            :unit="'Km'"
+            :title="'parcourus'"
+            :subtitle="'Aujourd\'hui'"
+          ></stats-card>
+        </div>
+      </div>-->
+      <paginated-table class="ma-2" style="height: 50%" :table-data="tableData">
+        <template v-slot:extras>Ceci est du contenu supplémentaire</template>
+      </paginated-table>
 
-      <double-stat-card
+      <!--<double-stat-card
+        class="ml-2"
         style="width: 25%"
         :first-value="25550"
         :first-unit="'Km'"
@@ -83,8 +86,7 @@
         :second-compared="'4%'"
         :second-subtitle="'par rapport à la distance totale'"
         :second-color="'#125684'"
-      ></double-stat-card>
-      <ticket-card class="ma-2"></ticket-card>-->
+      ></double-stat-card>-->
     </v-main>
     <loading-page v-else></loading-page>
   </v-app>
@@ -100,6 +102,8 @@ import SpinalNavigator from "./components/SpinalNavigator";
 import DoubleStatCard from "./components/DoubleStatCard";
 import LoadingPage from "./components/LoadingPage";
 import TicketCard from "./components/TicketCard";
+import TicketDetails from "./components/TicketDetails";
+
 let i = 0;
 export default {
   name: "App",
@@ -108,40 +112,42 @@ export default {
     LoadingPage,
     //DoubleStatCard,
     SpinalNavigator,
-    //PaginatedTable,
+    PaginatedTable,
     DownloadButton,
+    //TicketDetails,
     //StatsCard,
     //BarCard,
     //PieCard,
-    TicketCard,
+    //TicketCard,
   },
 
   data: () => ({
     loaded: true,
     path: {},
+    ticketDialog: true,
     nav: {
       element: { name: "Liste", title: "Titre", dynamicId: 0, color: "#f00" },
       period: { name: "SEMAINE", value: "week" },
     },
     ticket: {
-      dynamicId: 4142128896,
-      staticId: "3926-cb81-46b0-1845705e630",
-      name: "AUTRES DEMANDES",
+      dynamicId: 123236448,
+      staticId: "SpinalNode-7c7beef2-bd8f-a86d-41f5-2f921dac4182-17c7f322bf3",
+      name: "TEST MB <> Autre - Autre - Hydra",
       type: "SpinalSystemServiceTicketTypeTicket",
       priority: 2,
-      creationDate: 1667907315248,
+      creationDate: 1634221566963,
       description:
-        "La table de la salle H2.59 bouge,\nIl faudrait la resserrer merci",
-      declarer_id: "Mission",
+        "User: Occupant Vinci \nDescription: TEST MB <> Autre - Autre - Hydra",
+      declarer_id: "",
       elementSelected: {
-        dynamicId: 123277360,
-        staticId: "SpinalNode-1652189a-86aa-3c0e-193d-5c3141c2dc18-17a86bca7e9",
-        name: "2",
+        dynamicId: 54224368,
+        staticId: "SpinalNode-c824cb4b-c2f5-211c-74ee-fa4ec7a86109-17a86bc2eb1",
+        name: "7",
         type: "geographicFloor",
       },
-      userName: "BELA NTE ANDREE",
-      gmaoId: 12080,
-      gmaoDateCreation: 1667906700000,
+      userName: "ARCHIPEL_MB MonBuilding",
+      gmaoId: 613,
+      gmaoDateCreation: 1634221560000,
       process: {
         dynamicId: 123241840,
         staticId: "SpinalNode-f0c265b3-8427-65d4-fcfa-08272214f922-17a86d5b02e",
@@ -149,47 +155,66 @@ export default {
         type: "SpinalServiceTicketProcess",
       },
       step: {
-        dynamicId: 4141029264,
-        staticId: "SpinalNode-c555dd16-534c-a698-0e7d-3646e9817e01-17a86d5b032",
-        name: "Réalisation partielle",
+        dynamicId: 123239200,
+        staticId: "SpinalNode-760725a5-29e4-cd6b-458b-2e4cb551cc95-17a86d5b032",
+        name: "Attente de lect.avant Execution",
         type: "SpinalSystemServiceTicketTypeStep",
-        color: "#00ffff",
-        order: 2,
+        color: "#0804ef",
+        order: 0,
       },
       workflowId: 64241104,
       workflowName: "Ticket Mission",
       annotation_list: [
         {
-          userName: "",
-          date: 1667907315252,
+          userName: "unknow",
+          date: 1634221566964,
           type: "text",
           message:
-            "La table de la salle H2.59 bouge,\nIl faudrait la resserrer merci",
+            "User: Occupant Vinci \nDescription: TEST MB <> Autre - Autre - Hydra",
+        },
+        {
+          userName: "admin",
+          date: 1682584656289,
+          type: "img",
+          message: "Capture d’écran du 2022-12-23 14-07-46.png",
+        },
+        {
+          userName: "admin",
+          date: 1683029618536,
+          type: "img",
+          message: "Capture d’écran du 2023-02-24 19-30-26.png",
+        },
+        {
+          userName: "admin",
+          date: 1683029641470,
+          type: "img",
+          message: "Capture d’écran du 2023-04-27 14-15-37.png",
         },
       ],
-      file_list: [],
+      file_list: [
+        {
+          dynamicId: 9672720672,
+          Name: "Capture d’écran du 2022-12-23 14-07-46.png",
+        },
+        {
+          dynamicId: 9672818112,
+          Name: "Capture d’écran du 2023-02-24 19-30-26.png",
+        },
+        {
+          dynamicId: 9672839200,
+          Name: "Capture d’écran du 2023-04-27 14-15-37.png",
+        },
+      ],
       log_list: [
         {
-          userName: "BELA NTE ANDREE",
-          date: 1667907315300,
+          date: 1634221566973,
           event: "created",
-          ticketStaticId: "3926-cb81-46b0-1845705e630",
-        },
-        {
-          userName: "BELA NTE ANDREE",
-          date: 1667907315303,
-          event:
-            "Backward from Attente de lect.avant Execution to Attente de réalisation",
-          ticketStaticId: "3926-cb81-46b0-1845705e630",
-        },
-        {
-          userName: "BELA NTE ANDREE",
-          date: 1668588621835,
-          event:
-            "Backward from Attente de réalisation to Réalisation partielle",
-          ticketStaticId: "3926-cb81-46b0-1845705e630",
+          ticketStaticId:
+            "SpinalNode-7c7beef2-bd8f-a86d-41f5-2f921dac4182-17c7f322bf3",
         },
       ],
+      buildingId: "e6b7-a12f-cc1d-1853a5dba9a",
+      buildingName: "BOS test",
     },
     pie: [
       { label: "plus tard", value: 64 },

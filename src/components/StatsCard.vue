@@ -1,5 +1,5 @@
 <template>
-  <v-card class="stat-card rounded-lg" elevation="5" outlined>
+  <v-card class="stat-card rounded-lg" outlined>
     <v-flex class="d-flex flex-row fill-height">
       <v-flex
         class="d-flex flex-column justify-center text-center stat-value"

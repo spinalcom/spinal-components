@@ -2,7 +2,6 @@
   <v-card
     style="min-height: 220px !important"
     class="bar-card pa-1 rounded-lg d-flex flex-column"
-    elevation="5"
     outlined
   >
     <v-card-title
@@ -198,8 +197,6 @@ export default {
       set.borderWidth = 1;
       set.borderColor = "rgba(0,0,0,0)";
     });
-
-    // Enregistrement du plugin de légende en HTML/CSS
   },
 
   watch: {
@@ -230,10 +227,6 @@ export default {
 };
 </script>
 <style>
-html {
-  overflow: auto !important;
-}
-
 .v-application {
   font-family: "Charlevoix Pro";
 }
