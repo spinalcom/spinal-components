@@ -435,15 +435,6 @@ export default {
     },
   },
 
-  async mounted() {
-    this.images = [];
-    for (const file of this.detailedTicket.file_list)
-      this.images.push({
-        name: file.Name,
-        src: await this.getFileAsync(file.dynamicId),
-      });
-  },
-
   watch: {
     async isDownloadable(v) {
       if (v) {
@@ -462,6 +453,16 @@ export default {
         mywindow.print();
         mywindow.close();
         this.PDFparts = [];
+      }
+    },
+    async value(v) {
+      if (v) {
+        this.images = [];
+        for (const file of this.detailedTicket.file_list)
+          this.images.push({
+            name: file.Name,
+            src: await this.getFileAsync(file.dynamicId),
+          });
       }
     },
   },

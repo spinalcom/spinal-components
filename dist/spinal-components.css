@@ -19329,12 +19329,12 @@ html[data-v-abad7c58] {
   transform: translate(-26px) !important;
 }
 #carousel-vide[data-v-0bfd7341] {
-  background-image: url(/img/No-Image-Placeholder.31647ed7.png);
+  background-image: url(./img/No-Image-Placeholder.31647ed7.png);
   background-color: #eee;
   background-size: contain;
   background-position: 50%;
 }
-.dialog-background[data-v-37b68d85] {
+.dialog-background[data-v-306efcda] {
   position: fixed;
   width: 3000px;
   top: 0;
@@ -19343,7 +19343,7 @@ html[data-v-abad7c58] {
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.dialog-box[data-v-37b68d85] {
+.dialog-box[data-v-306efcda] {
   position: absolute;
   width: 85%;
   height: calc(100% - 120px);

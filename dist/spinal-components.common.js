@@ -13011,7 +13011,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS
 
 /***/ }),
 
-/***/ 195:
+/***/ 992:
 /***/ (function(module) {
 
 "use strict";
@@ -41971,7 +41971,7 @@ var DoubleStatCard_component = normalizeComponent(
 ;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LoadingPage.vue?vue&type=template&id=0f4720c8&
 var LoadingPagevue_type_template_id_0f4720c8_render = function render(){var _vm=this,_c=_vm._self._c;return _vm._m(0)
 }
-var LoadingPagevue_type_template_id_0f4720c8_staticRenderFns = [function (){var _vm=this,_c=_vm._self._c;return _c('div',{staticClass:"center-screen"},[_c('img',{staticStyle:{"position":"fixed","top":"50%","left":"50%","transform":"translate(-50%, -50%)"},attrs:{"width":"auto","src":__webpack_require__(195),"height":"200"}})])
+var LoadingPagevue_type_template_id_0f4720c8_staticRenderFns = [function (){var _vm=this,_c=_vm._self._c;return _c('div',{staticClass:"center-screen"},[_c('img',{staticStyle:{"position":"fixed","top":"50%","left":"50%","transform":"translate(-50%, -50%)"},attrs:{"width":"auto","src":__webpack_require__(992),"height":"200"}})])
 }]
 
 
@@ -42758,7 +42758,7 @@ var CarouselComponent_component = normalizeComponent(
 
 /* harmony default export */ var VSpacer = (createSimpleFunctional('spacer', 'div', 'v-spacer'));
 //# sourceMappingURL=VSpacer.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TicketDetails.vue?vue&type=template&id=37b68d85&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TicketDetails.vue?vue&type=template&id=306efcda&scoped=true&
 
 
 
@@ -42770,7 +42770,7 @@ var CarouselComponent_component = normalizeComponent(
 
 
 
-var TicketDetailsvue_type_template_id_37b68d85_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.value),expression:"value"}],staticClass:"dialog-background",on:{"click":_vm.closePopUp}}),(_vm.detailedTicket)?_c(VCard,{directives:[{name:"show",rawName:"v-show",value:(_vm.value),expression:"value"}],staticClass:"dialog-box",attrs:{"elevation":"24"}},[_c(VCardTitle,{staticClass:"bold px-4"},[_c('div',{staticClass:"overflow-hidden",staticStyle:{"width":"calc(50% - 230px)"}},[_vm._v(" "+_vm._s(_vm.detailedTicket.name || "Nom")+" ")]),_c('div',{staticClass:"text-center",staticStyle:{"width":"460px"}},[_vm._v(" Créé le: "+_vm._s(_vm.dispDateCreation)+" Modifié le: "+_vm._s(_vm.dispDateModif)+" ")]),_c('div',{staticClass:"text-right",staticStyle:{"width":"calc(50% - 230px)"}},[_vm._v(" Priorité: "+_vm._s(_vm.detailedTicket.priority)+" ")])]),_c(VDivider),_c(VCardText,{staticClass:"d-flex flex-column overflow-y-auto overflow-x-hidden",staticStyle:{"height":"calc(100% - 130px)"}},[_c('div',{staticClass:"d-flex flex-row pb-4 justify-space-between",staticStyle:{"height":"60%"}},[_c('div',{staticClass:"d-flex flex-column",staticStyle:{"width":"40%"}},[_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-account")]),_vm._v(" Déclarant ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(" "+_vm._s(_vm.detailedTicket.userName || "Non défini")+" ")])]),_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-map-marker")]),_vm._v(" Espace ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(" "+_vm._s(_vm.detailedTicket.buildingName + " : " + _vm.detailedTicket.elementSelected.name)+" ")])]),_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-sitemap")]),_vm._v(" Workflow & Process ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(" "+_vm._s(_vm.detailedTicket.workflowName)+" | "+_vm._s(_vm.detailedTicket.process.name)+" ")])]),_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-step-forward")]),_vm._v(" Étape ")],1),_c('div',{staticClass:"pl-8"},[_c('div',{staticClass:"mr-1 rounded-circle ps-3 pt-3 d-inline-block",style:({
+var TicketDetailsvue_type_template_id_306efcda_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.value),expression:"value"}],staticClass:"dialog-background",on:{"click":_vm.closePopUp}}),(_vm.detailedTicket)?_c(VCard,{directives:[{name:"show",rawName:"v-show",value:(_vm.value),expression:"value"}],staticClass:"dialog-box",attrs:{"elevation":"24"}},[_c(VCardTitle,{staticClass:"bold px-4"},[_c('div',{staticClass:"overflow-hidden",staticStyle:{"width":"calc(50% - 230px)"}},[_vm._v(" "+_vm._s(_vm.detailedTicket.name || "Nom")+" ")]),_c('div',{staticClass:"text-center",staticStyle:{"width":"460px"}},[_vm._v(" Créé le: "+_vm._s(_vm.dispDateCreation)+" Modifié le: "+_vm._s(_vm.dispDateModif)+" ")]),_c('div',{staticClass:"text-right",staticStyle:{"width":"calc(50% - 230px)"}},[_vm._v(" Priorité: "+_vm._s(_vm.detailedTicket.priority)+" ")])]),_c(VDivider),_c(VCardText,{staticClass:"d-flex flex-column overflow-y-auto overflow-x-hidden",staticStyle:{"height":"calc(100% - 130px)"}},[_c('div',{staticClass:"d-flex flex-row pb-4 justify-space-between",staticStyle:{"height":"60%"}},[_c('div',{staticClass:"d-flex flex-column",staticStyle:{"width":"40%"}},[_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-account")]),_vm._v(" Déclarant ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(" "+_vm._s(_vm.detailedTicket.userName || "Non défini")+" ")])]),_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-map-marker")]),_vm._v(" Espace ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(" "+_vm._s(_vm.detailedTicket.buildingName + " : " + _vm.detailedTicket.elementSelected.name)+" ")])]),_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-sitemap")]),_vm._v(" Workflow & Process ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(" "+_vm._s(_vm.detailedTicket.workflowName)+" | "+_vm._s(_vm.detailedTicket.process.name)+" ")])]),_c('div',{staticClass:"mb-4"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-step-forward")]),_vm._v(" Étape ")],1),_c('div',{staticClass:"pl-8"},[_c('div',{staticClass:"mr-1 rounded-circle ps-3 pt-3 d-inline-block",style:({
                   background:
                     _vm.detailedTicket.step.color + ' no-repeat padding-box',
                 })}),_vm._v(" "+_vm._s(_vm.detailedTicket.step.name)+" ")])]),_c('div',{staticClass:"d-flex flex-column overflow-y-hidden"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-text-box")]),_vm._v(" Description ")],1),_c('div',{staticClass:"pl-8 overflow-y-auto"},[_vm._v(" "+_vm._s(_vm.detailedTicket.description)+" ")])])]),_c('carousel-component',{staticStyle:{"width":"59%"},attrs:{"image_list":_vm.images}})],1),_c('div',{staticClass:"d-flex flex-row justify-space-between",staticStyle:{"height":"40%"}},[_c('div',{staticClass:"text-center py-1",staticStyle:{"width":"49%"}},[_c('div',{staticClass:"py-2 font-weight-bold rounded-t-lg",staticStyle:{"background-color":"gray"}},[_vm._v(" LOGS ")]),_c(VDataTable,{staticStyle:{"border":"1px solid gray"},attrs:{"headers":_vm.logsHeaders,"items":_vm.logsValues,"items-per-page":5,"height":169,"fixed-header":"","footer-props":{
@@ -42781,7 +42781,7 @@ var TicketDetailsvue_type_template_id_37b68d85_scoped_true_render = function ren
             background: _vm.detailedTicket.step.color + ' no-repeat padding-box',
           })}),_vm._v(" "+_vm._s(_vm.detailedTicket.step.name)+" ")])]),_c('div',{staticClass:"downloadable"},[_c('div',{staticClass:"font-weight-bold"},[_c(VIcon_VIcon,[_vm._v("mdi-text-box")]),_vm._v(" Description ")],1),_c('div',{staticClass:"pl-8"},[_vm._v(_vm._s(_vm.detailedTicket.description))])]),_c('div',{staticClass:"my-4 downloadable"},[_c('div',{staticClass:"font-weight-bold"},[_vm._v("LOGS")]),_c(VSimpleTable,{staticClass:"text-left",scopedSlots:_vm._u([{key:"default",fn:function(){return [_c('thead',[_c('tr',_vm._l((_vm.logsHeaders),function(item){return _c('th',{key:item.value,staticStyle:{"border":"1px solid gray"}},[_vm._v(" "+_vm._s(item.text)+" ")])}),0)]),_c('tbody',_vm._l((_vm.logsValues),function(item,i){return _c('tr',{key:i},[_c('td',{staticStyle:{"border":"1px solid gray"}},[_vm._v(_vm._s(item.event))]),_c('td',{staticStyle:{"border":"1px solid gray"}},[_vm._v(_vm._s(item.date))])])}),0)]},proxy:true}],null,false,526986942)})],1),(_vm.detailedTicket.annotation_list.length > 0)?_c('div',{staticClass:"my-4 downloadable"},[_c('div',{staticClass:"font-weight-bold"},[_vm._v("ANNOTATIONS")]),_c(VSimpleTable,{staticClass:"text-left",scopedSlots:_vm._u([{key:"default",fn:function(){return [_c('thead',[_c('tr',_vm._l((_vm.annotationsHeaders),function(item){return _c('th',{key:item.value,staticStyle:{"border":"1px solid gray"}},[_vm._v(" "+_vm._s(item.text)+" ")])}),0)]),_c('tbody',_vm._l((_vm.annotationsValues),function(item,i){return _c('tr',{key:i},[_c('td',{staticStyle:{"border":"1px solid gray"}},[_vm._v(_vm._s(item.userName))]),_c('td',{staticStyle:{"border":"1px solid gray"}},[_vm._v(_vm._s(item.date))]),_c('td',{staticStyle:{"border":"1px solid gray"}},[_vm._v(_vm._s(item.message))])])}),0)]},proxy:true}],null,false,2907297020)})],1):_vm._e(),(_vm.detailedTicket.file_list.length > 0)?_c('div',{staticClass:"mt-4"},[_c('div',{staticClass:"font-weight-bold my-3 downloadable"},[_vm._v("PIÈCES JOINTES")]),_vm._l((_vm.images),function(image,i){return _c('img',{key:i,staticClass:"pa-3 downloadable",staticStyle:{"max-width":"100%","height":"auto"},attrs:{"src":image.src}})})],2):_vm._e()]):_vm._e()],1)
 }
-var TicketDetailsvue_type_template_id_37b68d85_scoped_true_staticRenderFns = []
+var TicketDetailsvue_type_template_id_306efcda_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/helpers/bind.js
@@ -46375,15 +46375,6 @@ var html2canvas_default = /*#__PURE__*/__webpack_require__.n(html2canvas);
     },
   },
 
-  async mounted() {
-    this.images = [];
-    for (const file of this.detailedTicket.file_list)
-      this.images.push({
-        name: file.Name,
-        src: await this.getFileAsync(file.dynamicId),
-      });
-  },
-
   watch: {
     async isDownloadable(v) {
       if (v) {
@@ -46404,15 +46395,25 @@ var html2canvas_default = /*#__PURE__*/__webpack_require__.n(html2canvas);
         this.PDFparts = [];
       }
     },
+    async value(v) {
+      if (v) {
+        this.images = [];
+        for (const file of this.detailedTicket.file_list)
+          this.images.push({
+            name: file.Name,
+            src: await this.getFileAsync(file.dynamicId),
+          });
+      }
+    },
   },
 });
 
 ;// CONCATENATED MODULE: ./src/components/TicketDetails.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_TicketDetailsvue_type_script_lang_js_ = (TicketDetailsvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TicketDetails.vue?vue&type=style&index=0&id=37b68d85&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/TicketDetails.vue?vue&type=style&index=0&id=306efcda&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/TicketDetails.vue?vue&type=style&index=0&id=37b68d85&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/TicketDetails.vue?vue&type=style&index=0&id=306efcda&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/TicketDetails.vue
 
@@ -46425,11 +46426,11 @@ var html2canvas_default = /*#__PURE__*/__webpack_require__.n(html2canvas);
 
 var TicketDetails_component = normalizeComponent(
   components_TicketDetailsvue_type_script_lang_js_,
-  TicketDetailsvue_type_template_id_37b68d85_scoped_true_render,
-  TicketDetailsvue_type_template_id_37b68d85_scoped_true_staticRenderFns,
+  TicketDetailsvue_type_template_id_306efcda_scoped_true_render,
+  TicketDetailsvue_type_template_id_306efcda_scoped_true_staticRenderFns,
   false,
   null,
-  "37b68d85",
+  "306efcda",
   null
   
 )
