@@ -18506,13 +18506,13 @@ const VCardTitle = createSimpleFunctional('v-card__title');
   }
 });
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=c7b167d6&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=template&id=4fd46da7&scoped=true&
 
 
 
-var PieCardvue_type_template_id_c7b167d6_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card pa-1 rounded-lg d-flex flex-column",attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase flex-shrink-1 pa-3",staticStyle:{"height":"56px"}},[_vm._v(_vm._s(_vm.title)+" ")]),_c('div',{staticClass:"d-flex flex-row flex-fill justify-center pb-3",staticStyle:{"height":"calc(100% - 56px)"}},[_c('div',{staticStyle:{"aspect-ratio":"1/1"}},[_c('pie',{attrs:{"data":_vm.pieData,"id":'2',"options":_vm.pieChartOptions}})],1),_c('div',{attrs:{"id":"pie-legend-container"}})])],1)
+var PieCardvue_type_template_id_4fd46da7_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"pie-card pa-1 rounded-lg d-flex flex-column",attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title text-uppercase flex-shrink-1 pa-3",staticStyle:{"height":"56px"}},[_vm._v(_vm._s(_vm.title)+" ")]),_c('div',{staticClass:"d-flex flex-row flex-fill justify-center pb-3",staticStyle:{"height":"calc(100% - 56px)"}},[_c('div',{staticStyle:{"aspect-ratio":"1/1"}},[_c('pie',{attrs:{"data":_vm.pieData,"id":"2","options":_vm.pieChartOptions}})],1),_c('div',{attrs:{"id":"pie-legend-container"}})])],1)
 }
-var PieCardvue_type_template_id_c7b167d6_scoped_true_staticRenderFns = []
+var PieCardvue_type_template_id_4fd46da7_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@kurkle/color/dist/color.esm.js
@@ -33335,6 +33335,7 @@ const customLegendPlugin = {
       if (chart.config.options.id === "bar-chart-id")
         chart.legend.left = chart.chartArea.left - 10;
     } else if (chart.config.type === "pie") {
+      console.log(chart);
       if (chart.config.options.id !== "pie-chart-id") return;
       const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
       while (legendContainer?.firstChild) legendContainer.firstChild?.remove();
@@ -33580,8 +33581,8 @@ Chart.register(
 
   data() {
     return {
-      id: "pie-chart-id",
       pieChartOptions: {
+        id: "pie-chart-id",
         responsive: true,
         maintainAspectRatio: false,
         cutout: 0,
@@ -33642,15 +33643,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_PieCardvue_type_script_lang_js_ = (PieCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=c7b167d6&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=0&id=4fd46da7&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=c7b167d6&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=0&id=4fd46da7&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=1&id=c7b167d6&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/PieCard.vue?vue&type=style&index=1&id=4fd46da7&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=1&id=c7b167d6&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/PieCard.vue?vue&type=style&index=1&id=4fd46da7&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/PieCard.vue
 
@@ -33664,11 +33665,11 @@ Chart.register(
 
 var PieCard_component = normalizeComponent(
   components_PieCardvue_type_script_lang_js_,
-  PieCardvue_type_template_id_c7b167d6_scoped_true_render,
-  PieCardvue_type_template_id_c7b167d6_scoped_true_staticRenderFns,
+  PieCardvue_type_template_id_4fd46da7_scoped_true_render,
+  PieCardvue_type_template_id_4fd46da7_scoped_true_staticRenderFns,
   false,
   null,
-  "c7b167d6",
+  "4fd46da7",
   null
   
 )
