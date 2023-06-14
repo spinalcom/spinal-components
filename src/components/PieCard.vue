@@ -48,7 +48,7 @@ export default {
 
   data() {
     return {
-      id: "bar-chart-id",
+      id: "pie-chart-id",
       pieChartOptions: {
         responsive: true,
         maintainAspectRatio: false,

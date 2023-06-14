@@ -1,8 +1,7 @@
-import { Chart, ChartOptions } from "chart.js";
-
 export const customBackgroundPlugin = {
   id: "customCanvasBackgroundColor",
   beforeDraw: (chart, args, options) => {
+    if (chart.config.options.id !== "bar-chart-id") return;
     const { ctx, chartArea } = chart;
     ctx.save();
     let begin = chartArea.left;
