@@ -88,6 +88,7 @@ export default {
 
     barChartOptions() {
       return {
+        id: "bar-chart-id",
         maintainAspectRatio: false,
         barThickness: 20,
         transitions: {

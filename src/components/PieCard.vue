@@ -10,7 +10,7 @@
       class="d-flex flex-row flex-fill justify-center pb-3"
     >
       <div style="aspect-ratio: 1/1">
-        <pie :data="pieData" :id="'2'" :options="pieChartOptions" />
+        <pie :data="pieData" id="2" :options="pieChartOptions" />
       </div>
       <div id="pie-legend-container"></div>
     </div>
@@ -48,8 +48,8 @@ export default {
 
   data() {
     return {
-      id: "bar-chart-id",
       pieChartOptions: {
+        id: "pie-chart-id",
         responsive: true,
         maintainAspectRatio: false,
         cutout: 0,

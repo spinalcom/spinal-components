@@ -22,25 +22,25 @@
         :baseURL="'https://api-subsidio.spinalcom.com/api/v1/node/'"
       ></ticket-details>-->
       <!--<ticket-card style="width: 20%" class="ma-5"></ticket-card>-->
-      <!--<div class="d-flex flex-column" style="height: calc(100% - 70px)">
-        <bar-card
-          class="ma-2"
-          style="height: 50%; width: 99%"
-          :title="'Test 2'"
-          :labels="barLabels"
-          :datasets="barDatas"
-        >
-          <template v-slot:extras>
-            <v-btn> Pour afficher d'autres informations </v-btn>
-          </template>
-        </bar-card>
-        <pie-card
-          style="width: 40%; height: 300px"
-          class="ma-2"
-          :title="'Test'"
-          :pie-chart-data="pie"
-        ></pie-card>
-        <div class="d-flex flex-row">
+      <!--<div class="d-flex flex-column" style="height: calc(100% - 70px)">-->
+      <bar-card
+        class="ma-2"
+        style="height: 50%; width: 99%"
+        :title="'Test 2'"
+        :labels="barLabels"
+        :datasets="barDatas"
+      >
+        <template v-slot:extras>
+          <v-btn> Pour afficher d'autres informations </v-btn>
+        </template>
+      </bar-card>
+      <pie-card
+        style="width: 40%; height: 300px"
+        class="ma-2"
+        :title="'Test'"
+        :pie-chart-data="pie"
+      ></pie-card>
+      <!--<div class="d-flex flex-row">
           <stats-card
             :value="-255500"
             :unit="'Km'"
@@ -116,8 +116,8 @@ export default {
     DownloadButton,
     //TicketDetails,
     //StatsCard,
-    //BarCard,
-    //PieCard,
+    BarCard,
+    PieCard,
     //TicketCard,
   },
 

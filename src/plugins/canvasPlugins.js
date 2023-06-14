@@ -1,8 +1,7 @@
-import { Chart, ChartOptions } from "chart.js";
-
 export const customBackgroundPlugin = {
   id: "customCanvasBackgroundColor",
   beforeDraw: (chart, args, options) => {
+    if (chart.config.options.id !== "bar-chart-id") return;
     const { ctx, chartArea } = chart;
     ctx.save();
     let begin = chartArea.left;
@@ -57,6 +56,7 @@ export const customLegendPlugin = {
       if (chart.config.options.id === "bar-chart-id")
         chart.legend.left = chart.chartArea.left - 10;
     } else if (chart.config.type === "pie") {
+      console.log(chart);
       if (chart.config.options.id !== "pie-chart-id") return;
       const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
       while (legendContainer?.firstChild) legendContainer.firstChild?.remove();
