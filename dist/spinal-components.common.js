@@ -33317,7 +33317,6 @@ const customLegendPlugin = {
       if (chart.config.options.id === "bar-chart-id")
         chart.legend.left = chart.chartArea.left - 10;
     } else if (chart.config.type === "pie") {
-      console.log(chart);
       if (chart.config.options.id !== "pie-chart-id") return;
       const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
       while (legendContainer?.firstChild) legendContainer.firstChild?.remove();
