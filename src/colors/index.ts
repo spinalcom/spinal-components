@@ -130,19 +130,36 @@ function RGBtoHSV(r: number, g: number, b: number) {
   return { h, s, v };
 }
 
-export function singleColorGradiant(size: number, color: number) {
+export function singleColorGradiant(
+  size: number,
+  color: { h: number; s: number; v: number }
+) {
   if (size === 0) return [];
+  let { h, s, v } = color;
+  h *= 100;
+  s *= 100;
+  v *= 100;
   const colors = [];
-  const step = Math.round(100 / size);
-  let s = 100;
-  let v = 100;
+  const sStep = s / size;
 
-  for (let i = 0; i < size; i++) {
-    const { r, g, b } = HSVtoRGB(color / 100, s / 100, v / 100);
-    colors.push(`rgba(${r}, ${g}, ${b}, 1)`);
-    s -= step;
-    v -= step;
+  if (v > 50) {
+    const vStep = v / size;
+    for (let i = 0; i < size; i++) {
+      const { r, g, b } = HSVtoRGB(h / 100, s / 100, v / 100);
+      colors.push(`rgba(${r}, ${g}, ${b}, 1)`);
+      v -= vStep;
+      s -= sStep;
+    }
+  } else {
+    const vStep = (100 - v) / size;
+    for (let i = 0; i < size; i++) {
+      const { r, g, b } = HSVtoRGB(h / 100, s / 100, v / 100);
+      colors.push(`rgba(${r}, ${g}, ${b}, 1)`);
+      v += vStep;
+      s -= sStep;
+    }
   }
+
   return colors.reverse();
 }
 

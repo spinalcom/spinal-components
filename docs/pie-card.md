@@ -6,10 +6,18 @@ The component needs a title (Pie Card by default) and an array of { label, value
 The six biggest values will be represented in the chart and the rest will be summed in a single object labeled ETC...
 
 ### Example
+
+![pie card](../public/docs/pie%20card.png)
+
 ### Code
+
 ```vue
 <template>
-  <sc-pie-card :title="'Réponses les plus données'" :pie-chart-data="pieChartData" :color="'#f00'"></sc-pie-card>
+  <sc-pie-card
+    :title="'Réponses les plus données'"
+    :pie-chart-data="pieChartData"
+    :color="'#f00'"
+  ></sc-pie-card>
 </template>
 
 <script>
@@ -24,11 +32,11 @@ export default {
       { label: "plus tard", value: 64 },
       { label: "je m'en moque", value: 58 },
       { label: "serieux ?", value: 60 },
-      { label: "Qui as dit ça ?", value: 69 }
-    ]
-  })
-}
+      { label: "Qui as dit ça ?", value: 69 },
+    ],
+  }),
+};
 </script>
 ```
 
-[< stat card](stad-card.md) | [Home](documentation.md) | [bar card >](bar-card.md)
+[< double stat card](double-stat-card.md) | [Home](documentation.md) | [bar card >](bar-card.md)

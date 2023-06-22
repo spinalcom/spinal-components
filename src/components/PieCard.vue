@@ -95,10 +95,7 @@ export default {
         datasets: [
           {
             backgroundColor: this.color
-              ? singleColorGradiant(
-                  sorted.length,
-                  hexaToHSV(this.color).h * 100
-                )
+              ? singleColorGradiant(sorted.length, hexaToHSV(this.color))
               : defaultColor(7),
             data: sorted.map((t) => t.value),
           },
