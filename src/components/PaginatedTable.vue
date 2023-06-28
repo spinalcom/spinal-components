@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-flex flex-column table-card rounded-lg flex-grow-1" outlined>
+  <v-card class="d-flex flex-column table-card rounded-lg" outlined>
     <v-card-title style="height: 56px" class="text-uppercase ma-2">{{
       title
     }}</v-card-title>
@@ -79,9 +79,10 @@ export default {
       const headers = Object.keys(this.tableData[0]);
       return this.loaded
         ? this.headerOptions
-          ? this.headerOptions.array.forEach((h, i) => {
+          ? this.headerOptions.map((h, i) => {
               h.value = headers[i];
               h.text = h.text || headers[i];
+              return h;
             })
           : headers.map((e) => ({
               text: e[0].toUpperCase() + e.substring(1),

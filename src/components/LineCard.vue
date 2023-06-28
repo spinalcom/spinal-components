@@ -162,17 +162,6 @@ export default {
               display: false,
             },
             type: this.scaleType,
-            ticks: {
-              // color: (item) => {
-              //   const max = (Math.floor((item.scale.max - 1) / 10) + 1) * 10;
-              //   item.scale.end = max;
-              //   return !item.tick.value || item.tick.value % Math.floor(max / 2)
-              //     ? item.tick.value === item.scale.max
-              //       ? "#214353"
-              //       : "#f9f9f9"
-              //     : "#214353";
-              // },
-            },
             grid: {
               color: "#f0f0f0",
             },

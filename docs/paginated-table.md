@@ -7,6 +7,7 @@ This component needs for props:
 - title: displayed at the top of the table (Table cards by default)
 - tabla-data: an array of objects
 - loaded: the table will display a loading bar if false (true by default)
+- header-option: headers props of [vuetify data table](https://v2.vuetifyjs.com/en/components/data-tables/#usage) value excluded and text not required
 - custom-sort: a function to customize array sorting (not required) taking three parameters
   - items: values to be sorted
   - index: array containing the name of the column to be sorted at index[0]
@@ -24,6 +25,7 @@ This component needs for props:
     :title="'Avengers'"
     :table-data="tablaData"
     :custom-sort="customSort"
+    :header-options="tableHeader"
   >
     <template v-slot:extras><!-- Put in here whatever your want --><template>
   </sc-paginated-table>
@@ -32,6 +34,13 @@ This component needs for props:
 <script>
 export default {
   data: () => ({
+    tableHeader: [
+      { width: "40%" },
+      { width: "15%" },
+      { width: "15%" },
+      { width: "15%" },
+      { width: "15%" },
+    ],
     tablaData: [
       {
         nom: "Hulk",
@@ -107,4 +116,4 @@ export default {
 </script>
 ```
 
-[< download button](download-button.md) | [Home](documentation.md) | [stat card >](stad-card.md)
+[< download button](download-button.md) | [Home](documentation.md) | [stat card >](stat-card.md)
