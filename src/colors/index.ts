@@ -64,6 +64,11 @@ export function hexaToHSV(color: string) {
   return RGBtoHSV(r, g, b);
 }
 
+export function hexaToHSL(color: string) {
+  const { r, g, b } = hexaToRGB(color);
+  return RGBtoHSL(r, g, b);
+}
+
 export function HSVtoRGB(h: any, s: any, v: any) {
   let r, g, b;
   if (arguments.length === 1) {
@@ -128,6 +133,37 @@ function RGBtoHSV(r: number, g: number, b: number) {
   }
 
   return { h, s, v };
+}
+
+function RGBtoHSL(r: number, g: number, b: number) {
+  (r /= 255), (g /= 255), (b /= 255);
+
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h = 0,
+    s;
+  const l = (max + min) / 2;
+
+  if (max != min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+
+    h /= 6;
+  }
+
+  return { h, s, l };
 }
 
 export function singleColorGradiant(

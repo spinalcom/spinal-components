@@ -15215,9 +15215,6 @@ html[data-v-abad7c58] {
   opacity: 1;
   font-size: 20px;
 }
-.v-application {
-  font-family: Charlevoix Pro;
-}
 .bar-card[data-v-3c62121a] {
   background-color: #f9f9f9;
   font-family: Charlevoix Pro;
@@ -15229,27 +15226,23 @@ html[data-v-abad7c58] {
   opacity: 1;
   font-size: 11px/13px;
 }
-.card-colored[data-v-e21bc3b4] {
+.card-colored[data-v-6d05365b] {
   background-color: #14202c;
 }
-.outer-card[data-v-e21bc3b4] {
-  border-radius: 10px;
-  height: 52px;
-  width: 52px;
+.outer-card[data-v-6d05365b] {
+  height: 60px;
+  width: 60px;
 }
-.inner-card[data-v-e21bc3b4] {
-  border-radius: 10px;
-  height: 32px;
-  width: 32px;
+.inner-card[data-v-6d05365b] {
+  height: 40px;
+  width: 40px;
   border: 1px solid #bfbfbf;
   position: absolute;
-  top: 10px;
-  left: 10px;
 }
-.enter-button[data-v-e21bc3b4] {
+.enter-button[data-v-6d05365b] {
   cursor: pointer;
 }
-.inside[data-v-e21bc3b4] {
+.inside[data-v-6d05365b] {
   color: #fff !important;
 }
 .v-data-table[data-v-a69be248] {
@@ -19334,7 +19327,7 @@ html[data-v-abad7c58] {
   background-size: contain;
   background-position: 50%;
 }
-.dialog-background[data-v-306efcda] {
+.dialog-background[data-v-0caf1e20] {
   position: fixed;
   width: 3000px;
   top: 0;
@@ -19343,10 +19336,24 @@ html[data-v-abad7c58] {
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.dialog-box[data-v-306efcda] {
+.dialog-box[data-v-0caf1e20] {
   position: absolute;
   width: 85%;
   height: calc(100% - 120px);
   top: 70px;
   left: 7.5%;
+}
+.v-application {
+  font-family: Charlevoix Pro;
+}
+.bar-card[data-v-051e9a80] {
+  background-color: #f9f9f9;
+  font-family: Charlevoix Pro;
+  font-size: 14px;
+}
+.card-title[data-v-051e9a80] {
+  letter-spacing: 1.1px;
+  color: #214353;
+  opacity: 1;
+  font-size: 11px/13px;
 }

@@ -1,20 +1,19 @@
 <template>
   <div>
     <v-card
-      :disabled="disabled"
       @click.prevent="download"
       v-ripple
-      class="main-button card-colored outer-card"
+      class="d-flex align-center justify-center card-colored outer-card rounded-lg"
       :class="{ 'enter-button': hover }"
       @mouseover="hover = true"
       @mouseleave="hover = false"
     >
       <v-card
         v-ripple
-        class="first-nested card-colored inner-card"
+        class="d-flex justify-center first-nested card-colored inner-card rounded-lg"
         :class="{ inside: hover }"
       >
-        <v-icon :class="{ inside: hover }" style="color: #bfbfbf; padding: 3px"
+        <v-icon :class="{ inside: hover }" style="color: #bfbfbf"
           >mdi-file-download</v-icon
         >
       </v-card>
@@ -110,18 +109,14 @@ export default {
   background-color: #14202c;
 }
 .outer-card {
-  border-radius: 10px;
-  height: 52px;
-  width: 52px;
+  height: 60px;
+  width: 60px;
 }
 .inner-card {
-  border-radius: 10px;
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
   border: 1px solid #bfbfbf;
   position: absolute;
-  top: 10px;
-  left: 10px;
 }
 .enter-button {
   cursor: pointer;

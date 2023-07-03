@@ -13,6 +13,7 @@ import LineCard from "./components/LineCard.vue";
 import LoadingCard from "./components/LoadingCard.vue";
 import CarouselComponent from "./components/CarouselComponent.vue";
 import TicketDetails from "./components/TicketDetails.vue";
+import PredictiveBarCard from "./components/PredictiveBarCard.vue";
 
 export default {
   install(Vue: any, options: any) {
@@ -31,5 +32,6 @@ export default {
     Vue.component("sc-loading-card", LoadingCard);
     Vue.component("sc-carousel", CarouselComponent);
     Vue.component("sc-ticket-detail", TicketDetails);
+    Vue.component("sc-estimation-card", PredictiveBarCard);
   },
 };
