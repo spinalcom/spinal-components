@@ -493,7 +493,8 @@ export default {
           await Promise.all(
             this.detailedTicket.file_list.map(async (file) => {
               try {
-                return await this.getFileAsync(file.dynamicId);
+                const img = await this.getFileAsync(file.dynamicId);
+                return { name: file.Name, src: img };
               } catch {
                 return undefined;
               }

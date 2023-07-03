@@ -3,17 +3,17 @@
     <v-card
       @click.prevent="download"
       v-ripple
-      class="d-flex align-center justify-center card-colored outer-card rounded-lg"
+      class="d-flex align-center justify-center card-colored outer-card"
       :class="{ 'enter-button': hover }"
       @mouseover="hover = true"
       @mouseleave="hover = false"
     >
       <v-card
         v-ripple
-        class="d-flex justify-center first-nested card-colored inner-card rounded-lg"
+        class="d-flex justify-center first-nested card-colored inner-card"
         :class="{ inside: hover }"
       >
-        <v-icon :class="{ inside: hover }" style="color: #bfbfbf"
+        <v-icon :class="{ inside: hover }" style="color: #f5f5f5"
           >mdi-file-download</v-icon
         >
       </v-card>
@@ -106,6 +106,7 @@ export default {
 
 <style scoped>
 .card-colored {
+  border-radius: 10px;
   background-color: #14202c;
 }
 .outer-card {

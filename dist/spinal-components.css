@@ -15226,23 +15226,24 @@ html[data-v-abad7c58] {
   opacity: 1;
   font-size: 11px/13px;
 }
-.card-colored[data-v-6d05365b] {
+.card-colored[data-v-130f7479] {
+  border-radius: 10px;
   background-color: #14202c;
 }
-.outer-card[data-v-6d05365b] {
+.outer-card[data-v-130f7479] {
   height: 60px;
   width: 60px;
 }
-.inner-card[data-v-6d05365b] {
+.inner-card[data-v-130f7479] {
   height: 40px;
   width: 40px;
   border: 1px solid #bfbfbf;
   position: absolute;
 }
-.enter-button[data-v-6d05365b] {
+.enter-button[data-v-130f7479] {
   cursor: pointer;
 }
-.inside[data-v-6d05365b] {
+.inside[data-v-130f7479] {
   color: #fff !important;
 }
 .v-data-table[data-v-a69be248] {
@@ -19327,7 +19328,7 @@ html[data-v-abad7c58] {
   background-size: contain;
   background-position: 50%;
 }
-.dialog-background[data-v-0caf1e20] {
+.dialog-background[data-v-430c4e06] {
   position: fixed;
   width: 3000px;
   top: 0;
@@ -19336,7 +19337,7 @@ html[data-v-abad7c58] {
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.dialog-box[data-v-0caf1e20] {
+.dialog-box[data-v-430c4e06] {
   position: absolute;
   width: 85%;
   height: calc(100% - 120px);
