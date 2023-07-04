@@ -40,4 +40,4 @@ export default {
 </script>
 ```
 
-[< ticket details](ticket-details.md) | [Home](documentation.md)
+[< ticket details](ticket-details.md) | [Home](documentation.md) | [estimation card >](estimation-card.md)

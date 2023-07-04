@@ -228,6 +228,9 @@ export default {
 };
 </script>
 <style>
+html {
+  overflow-y: auto !important;
+}
 .v-application {
   font-family: "Charlevoix Pro";
 }

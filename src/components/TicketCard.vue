@@ -44,7 +44,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #card-layout {
   aspect-ratio: 234/238;
   border: 1px solid #f9f9f9;

@@ -106,12 +106,6 @@ export default {
 };
 </script>
 
-<style>
-.v-application {
-  font-family: "Charlevoix Pro";
-}
-</style>
-
 <style scoped>
 .pie-card {
   background: #f9f9f9 0% 0% no-repeat padding-box;

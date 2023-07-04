@@ -449,7 +449,7 @@ export default {
     },
   },
 
-  mounted() {
+  async mounted() {
     const { loader } = this.$refs;
     const size =
       loader.clientWidth < loader.clientHeight
@@ -464,6 +464,21 @@ export default {
           : loader.clientHeight;
       this.loader_size = size * 0.4;
     };
+
+    if (this.detailedTicket)
+      this.images = (
+        await Promise.all(
+          this.detailedTicket.file_list.map(async (file) => {
+            try {
+              const img = await this.getFileAsync(file.dynamicId);
+              return { name: file.Name, src: img };
+            } catch {
+              return undefined;
+            }
+          })
+        )
+      ).filter((i) => i);
+    this.images_loaded = true;
   },
 
   watch: {
