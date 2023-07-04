@@ -1,94 +1,14 @@
 <template>
   <v-app id="application">
-    <spinal-navigator
-      class="ma-2 pa-1"
-      v-model="nav"
-      :path.sync="path"
-      :max-depth="2"
-      :expand-selector="onopen"
-    ></spinal-navigator>
-    <v-main
-      v-if="loaded"
-      style="position: absolute; width: 100%; bottom: 0; top: 0; height: 100%"
-    >
-      <download-button
-        :file-name="'Avengers'"
-        :data="table"
-        class="ma-2"
-      ></download-button>
-      <!--<ticket-details
-        v-model="ticketDialog"
-        :detailedTicket="ticket"
-        :baseURL="'https://api-subsidio.spinalcom.com/api/v1/node/'"
-      ></ticket-details>-->
-      <!--<ticket-card style="width: 20%" class="ma-5"></ticket-card>-->
-      <!--<div class="d-flex flex-column" style="height: calc(100% - 70px)">-->
-      <bar-card
-        class="ma-2"
-        style="height: 50%; width: 99%"
-        :title="'Test 2'"
-        :labels="barLabels"
-        :datasets="barDatas"
-      >
-        <template v-slot:extras>
-          <v-btn> Pour afficher d'autres informations </v-btn>
-        </template>
-      </bar-card>
-      <pie-card
-        style="width: 40%; height: 300px"
-        class="ma-2"
-        :title="'Test'"
-        :pie-chart-data="pie"
-      ></pie-card>
-      <!--<div class="d-flex flex-row">
-          <stats-card
-            :value="-255500"
-            :unit="'Km'"
-            :title="'parcourus'"
-            :subtitle="'Aujourd\'hui'"
-            :color="'#956518'"
-          ></stats-card>
-          <stats-card
-            :value="25"
-            :unit="'Km'"
-            :title="'parcourus'"
-            :subtitle="'Aujourd\'hui'"
-          ></stats-card>
-          <stats-card
-            :value="25"
-            :unit="'Km'"
-            :title="'parcourus'"
-            :subtitle="'Aujourd\'hui'"
-          ></stats-card>
-          <stats-card
-            :value="25"
-            :unit="'Km'"
-            :title="'parcourus'"
-            :subtitle="'Aujourd\'hui'"
-          ></stats-card>
-        </div>
-      </div>-->
-      <paginated-table class="ma-2" style="height: 50%" :table-data="tableData">
-        <template v-slot:extras>Ceci est du contenu supplémentaire</template>
-      </paginated-table>
-
-      <!--<double-stat-card
-        class="ml-2"
-        style="width: 25%"
-        :first-value="25550"
-        :first-unit="'Km'"
-        :first-title="'parcourus'"
-        :first-subtitle="'Aujourd\'hui'"
-        :second-value="1000"
-        :second-unit="'Km'"
-        :second-title="'marchés'"
-        :second-type="'comparison'"
-        :second-compared="'4%'"
-        :second-subtitle="'par rapport à la distance totale'"
-        :second-color="'#125684'"
-      ></double-stat-card>-->
-    </v-main>
-    <loading-page v-else></loading-page>
+    <estimation-bar-card
+      class="ma-10"
+      title="Affluence"
+      :estimations="estimationData"
+      :labels="estimationData.map((e, i) => i + 'h')"
+      :step="6"
+      currentLabel="16h"
+      :currentValue="14"
+    ></estimation-bar-card>
   </v-app>
 </template>
 
@@ -103,25 +23,21 @@ import DoubleStatCard from "./components/DoubleStatCard";
 import LoadingPage from "./components/LoadingPage";
 import TicketCard from "./components/TicketCard";
 import TicketDetails from "./components/TicketDetails";
+import EstimationBarCard from "./components/EstimationBarCard.vue";
 
 let i = 0;
 export default {
   name: "App",
 
   components: {
-    LoadingPage,
-    //DoubleStatCard,
-    SpinalNavigator,
-    PaginatedTable,
-    DownloadButton,
-    //TicketDetails,
-    //StatsCard,
-    BarCard,
-    PieCard,
-    //TicketCard,
+    EstimationBarCard,
   },
 
   data: () => ({
+    estimationData: [
+      0, 0, 0, 0, 2, 3, 5, 7, 8, 15, 20, 23, 24, 25, 25, 22, 19, 16, 17, 13, 6,
+      0, 0,
+    ],
     loaded: true,
     path: {},
     ticketDialog: true,

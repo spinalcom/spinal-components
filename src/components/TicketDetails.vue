@@ -92,9 +92,21 @@
           </div>
           <!--carousel-->
           <carousel-component
+            v-if="images_loaded"
             style="width: 59%"
             :image_list="images"
           ></carousel-component>
+          <div
+            ref="loader"
+            v-else
+            style="width: 59%; background-color: #eee"
+            class="d-flex align-center justify-center"
+          >
+            <v-progress-circular
+              indeterminate
+              :size="loader_size"
+            ></v-progress-circular>
+          </div>
         </div>
         <!--Tableaux-->
         <div style="height: 40%" class="d-flex flex-row justify-space-between">
@@ -348,9 +360,11 @@ export default {
   },
 
   data: () => ({
+    images_loaded: false,
     images: undefined,
     showPDF: false,
     PDFparts: [],
+    loader_size: 100,
   }),
 
   computed: {
@@ -435,6 +449,38 @@ export default {
     },
   },
 
+  async mounted() {
+    const { loader } = this.$refs;
+    const size =
+      loader.clientWidth < loader.clientHeight
+        ? loader.clientWidth
+        : loader.clientHeight;
+    this.loader_size = size * 0.4;
+
+    window.onresize = () => {
+      const size =
+        loader.clientWidth < loader.clientHeight
+          ? loader.clientWidth
+          : loader.clientHeight;
+      this.loader_size = size * 0.4;
+    };
+
+    if (this.detailedTicket)
+      this.images = (
+        await Promise.all(
+          this.detailedTicket.file_list.map(async (file) => {
+            try {
+              const img = await this.getFileAsync(file.dynamicId);
+              return { name: file.Name, src: img };
+            } catch {
+              return undefined;
+            }
+          })
+        )
+      ).filter((i) => i);
+    this.images_loaded = true;
+  },
+
   watch: {
     async isDownloadable(v) {
       if (v) {
@@ -457,12 +503,20 @@ export default {
     },
     async value(v) {
       if (v) {
-        this.images = [];
-        for (const file of this.detailedTicket.file_list)
-          this.images.push({
-            name: file.Name,
-            src: await this.getFileAsync(file.dynamicId),
-          });
+        this.images_loaded = false;
+        this.images = (
+          await Promise.all(
+            this.detailedTicket.file_list.map(async (file) => {
+              try {
+                const img = await this.getFileAsync(file.dynamicId);
+                return { name: file.Name, src: img };
+              } catch {
+                return undefined;
+              }
+            })
+          )
+        ).filter((i) => i);
+        this.images_loaded = true;
       }
     },
   },
