@@ -1,7 +1,7 @@
 <template>
   <v-card
     id="prediction"
-    style="min-height: 220px !important"
+    style="min-height: 185px !important"
     class="bar-card pa-1 rounded-lg d-flex flex-column"
     outlined
   >

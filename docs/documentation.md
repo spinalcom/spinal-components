@@ -35,4 +35,5 @@ declare module "spinal-components";
 - [Bar Card](bar-card.md)
 - [Ticket Details](ticket-details.md)
 - [Carousel](carousel.md)
-- [Estimation](estimation-card.md)
+- [Estimation Card](estimation-card.md)
+- [Capacity Table](capacity-table.md)

@@ -1,4 +1,4 @@
-# Time Selector
+# Estimation Card
 
 ## Usage
 
@@ -43,4 +43,4 @@ export default {
 </script>
 ```
 
-[< carousel](carousel.md) | [Home](documentation.md)
+[< carousel](carousel.md) | [Home](documentation.md) | [capacity table](capacity-table.md)

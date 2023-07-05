@@ -6,7 +6,7 @@ This component use both the time and space selectors as one component.
 
 ### Example
 
-![time selector](../public/docs/spinal%20navigator.png)
+![spinal navigator](../public/docs/spinal%20navigator.png)
 
 ### Code
 

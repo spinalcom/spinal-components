@@ -1,14 +1,6 @@
 <template>
   <v-app id="application">
-    <estimation-bar-card
-      class="ma-10"
-      title="Affluence"
-      :estimations="estimationData"
-      :labels="estimationData.map((e, i) => i + 'h')"
-      :step="6"
-      currentLabel="16h"
-      :currentValue="14"
-    ></estimation-bar-card>
+    <capacity-table class="ma-5" :values="capacities"></capacity-table>
   </v-app>
 </template>
 
@@ -24,13 +16,15 @@ import LoadingPage from "./components/LoadingPage";
 import TicketCard from "./components/TicketCard";
 import TicketDetails from "./components/TicketDetails";
 import EstimationBarCard from "./components/EstimationBarCard.vue";
+import CapacityTable from "./components/CapacityTable.vue";
+import LineCard from "./components/LineCard.vue";
 
 let i = 0;
 export default {
   name: "App",
 
   components: {
-    EstimationBarCard,
+    CapacityTable,
   },
 
   data: () => ({
@@ -202,6 +196,32 @@ export default {
         "vitesse (%)": 72,
         "agilité (%)": 82,
         "technique (%)": 90,
+      },
+    ],
+    capacities: [
+      {
+        title: "Taux 1",
+        color: "hsl(0, 100%, 50%)",
+        percentage: "50%",
+        count: "6/12",
+      },
+      {
+        title: "Taux 2",
+        color: "rgb(0,255,0)",
+        percentage: "40%",
+        count: "6/15",
+      },
+      {
+        title: "Taux 3",
+        color: "#00f",
+        percentage: "75%",
+        count: "15/20",
+      },
+      {
+        title: "Taux 4",
+        color: "purple",
+        percentage: "33%",
+        count: "3/9",
       },
     ],
   }),

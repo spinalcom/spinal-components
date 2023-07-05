@@ -15,7 +15,7 @@ The notable props for this component are:
 
 ### Example
 
-![time selector](../public/docs/space%20selector.png)
+![space selector](../public/docs/space%20selector.png)
 
 ### Code
 

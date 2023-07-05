@@ -1,4 +1,4 @@
-# Ticket Details
+# Carousel
 
 ## Usage
 

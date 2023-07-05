@@ -46503,13 +46503,13 @@ var TicketDetails_component = normalizeComponent(
 )
 
 /* harmony default export */ var TicketDetails = (TicketDetails_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/EstimationBarCard.vue?vue&type=template&id=37ab5c92&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/EstimationBarCard.vue?vue&type=template&id=59781d35&scoped=true&
 
 
 
-var EstimationBarCardvue_type_template_id_37ab5c92_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"id":"prediction","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px","height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],1)
+var EstimationBarCardvue_type_template_id_59781d35_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"185px !important"},attrs:{"id":"prediction","outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px","height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],1)
 }
-var EstimationBarCardvue_type_template_id_37ab5c92_scoped_true_staticRenderFns = []
+var EstimationBarCardvue_type_template_id_59781d35_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/EstimationBarCard.vue?vue&type=script&lang=js&
@@ -46638,10 +46638,10 @@ Chart.register(BarElement, CategoryScale, LinearScale, LogarithmicScale);
 
 ;// CONCATENATED MODULE: ./src/components/EstimationBarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_EstimationBarCardvue_type_script_lang_js_ = (EstimationBarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/EstimationBarCard.vue?vue&type=style&index=0&id=37ab5c92&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/EstimationBarCard.vue?vue&type=style&index=0&id=59781d35&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/EstimationBarCard.vue?vue&type=style&index=0&id=37ab5c92&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/EstimationBarCard.vue?vue&type=style&index=0&id=59781d35&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/EstimationBarCard.vue
 
@@ -46654,17 +46654,141 @@ Chart.register(BarElement, CategoryScale, LinearScale, LogarithmicScale);
 
 var EstimationBarCard_component = normalizeComponent(
   components_EstimationBarCardvue_type_script_lang_js_,
-  EstimationBarCardvue_type_template_id_37ab5c92_scoped_true_render,
-  EstimationBarCardvue_type_template_id_37ab5c92_scoped_true_staticRenderFns,
+  EstimationBarCardvue_type_template_id_59781d35_scoped_true_render,
+  EstimationBarCardvue_type_template_id_59781d35_scoped_true_staticRenderFns,
   false,
   null,
-  "37ab5c92",
+  "59781d35",
   null
   
 )
 
 /* harmony default export */ var EstimationBarCard = (EstimationBarCard_component.exports);
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/CapacityTable.vue?vue&type=template&id=be8e9ea0&scoped=true&
+
+
+
+
+var CapacityTablevue_type_template_id_be8e9ea0_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"185px !important","min-width":"270px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px","height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex justify-space-around flex-grow-1 align-center"},[(_vm.totalPages > 1)?_c('div',{staticClass:"arrow-container-left d-flex align-center",on:{"click":_vm.previousPage}},[_c('div',{staticClass:"round"},[_c(VIcon_VIcon,{staticClass:"arrow-icon"},[_vm._v("mdi-chevron-left")])],1)]):_vm._e(),_c('div',{ref:"carousel",class:[
+        _vm.values.length >= _vm.item_per_page
+          ? 'carrousel-container'
+          : 'carrousel-container2',
+        _vm.animate === 'right'
+          ? 'container-animation-right'
+          : _vm.animate === 'left'
+          ? 'container-animation-left'
+          : '',
+        _vm.paginatedItems.length === _vm.item_per_page
+          ? 'justify-space-between'
+          : '',
+      ]},_vm._l((_vm.paginatedItems),function(item,i){return _c('div',{key:i,staticClass:"item",staticStyle:{"width":"220px"}},[_c('div',[_c('div',{staticClass:"title_capactity_card ml-1"},[_vm._v(_vm._s(item.title))]),_c('div',{staticStyle:{"height":"45px","font-size":"36px","font-weight":"500"}},[_vm._v(" "+_vm._s(item.percentage)+" ")]),_c('div',{staticStyle:{"display":"flex","align-items":"center"}},[_c('div',{staticClass:"rounded_square mr-1 ml-1",style:({ backgroundColor: item.color })}),_c('div',{staticStyle:{"font-size":"22px"}},[_vm._v(_vm._s(item.count))])])])])}),0),(_vm.totalPages > 1)?_c('div',{staticClass:"arrow-container-right d-flex align-center",on:{"click":_vm.nextPage}},[_c('div',{staticClass:"round"},[_c(VIcon_VIcon,{staticClass:"arrow-icon",attrs:{"width":"32"}},[_vm._v("mdi-chevron-right")])],1)]):_vm._e()])],1)
+}
+var CapacityTablevue_type_template_id_be8e9ea0_scoped_true_staticRenderFns = []
+
+
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/CapacityTable.vue?vue&type=script&lang=js&
+
+/* harmony default export */ var CapacityTablevue_type_script_lang_js_ = ({
+  name: "capacity-table",
+  props: {
+    title: {
+      type: String,
+      default: "Capacity Table",
+    },
+    values: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {
+      currentPage: 0,
+      animate: "",
+      item_per_page: 7,
+    };
+  },
+  methods: {
+    //animation previous page
+    previousPage() {
+      this.animate = "left";
+      this.currentPage =
+        (this.totalPages - 1 - this.currentPage) % this.totalPages;
+      setTimeout(() => {
+        this.animate = "";
+      }, 500);
+    },
+    //animation next page
+    nextPage() {
+      this.animate = "right";
+      this.currentPage = (this.currentPage + 1) % this.totalPages;
+      setTimeout(() => {
+        this.animate = "";
+      }, 600);
+    },
+  },
+
+  computed: {
+    paginatedItems() {
+      if (this.values.length) {
+        const startIndex = this.currentPage * this.item_per_page;
+        const endIndex = startIndex + this.item_per_page;
+        return this.values.slice(startIndex, endIndex);
+      } else {
+        return [
+          {
+            title: "Pas de donnée",
+            color: "red",
+            percentage: "0%",
+            count: "0/0",
+          },
+        ];
+      }
+    },
+    totalPages() {
+      return Math.ceil(this.values.length / this.item_per_page) || 1;
+    },
+  },
+
+  mounted() {
+    const { carousel } = this.$refs;
+    this.item_per_page = Math.floor(carousel.clientWidth / 220 + 0.5);
+    window.onresize = () => {
+      const { carousel } = this.$refs;
+      this.item_per_page = Math.floor(carousel.clientWidth / 220 + 0.5);
+    };
+  },
+});
+
+;// CONCATENATED MODULE: ./src/components/CapacityTable.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_CapacityTablevue_type_script_lang_js_ = (CapacityTablevue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/CapacityTable.vue?vue&type=style&index=0&id=be8e9ea0&prod&scoped=true&lang=css&
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./src/components/CapacityTable.vue?vue&type=style&index=0&id=be8e9ea0&prod&scoped=true&lang=css&
+
+;// CONCATENATED MODULE: ./src/components/CapacityTable.vue
+
+
+
+;
+
+
+/* normalize component */
+
+var CapacityTable_component = normalizeComponent(
+  components_CapacityTablevue_type_script_lang_js_,
+  CapacityTablevue_type_template_id_be8e9ea0_scoped_true_render,
+  CapacityTablevue_type_template_id_be8e9ea0_scoped_true_staticRenderFns,
+  false,
+  null,
+  "be8e9ea0",
+  null
+  
+)
+
+/* harmony default export */ var CapacityTable = (CapacityTable_component.exports);
 ;// CONCATENATED MODULE: ./src/compile-lib.ts
+
 
 
 
@@ -46699,6 +46823,7 @@ var EstimationBarCard_component = normalizeComponent(
         Vue.component("sc-carousel", CarouselComponent);
         Vue.component("sc-ticket-detail", TicketDetails);
         Vue.component("sc-estimation-card", EstimationBarCard);
+        Vue.component("sc-capacity-table", CapacityTable);
     },
 });
 
