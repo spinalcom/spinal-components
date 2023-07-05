@@ -14,6 +14,7 @@ import LoadingCard from "./components/LoadingCard.vue";
 import CarouselComponent from "./components/CarouselComponent.vue";
 import TicketDetails from "./components/TicketDetails.vue";
 import EstimationBarCard from "./components/EstimationBarCard.vue";
+import CapacityTable from "./components/CapacityTable.vue";
 
 export default {
   install(Vue: any, options: any) {
@@ -33,5 +34,6 @@ export default {
     Vue.component("sc-carousel", CarouselComponent);
     Vue.component("sc-ticket-detail", TicketDetails);
     Vue.component("sc-estimation-card", EstimationBarCard);
+    Vue.component("sc-capacity-table", CapacityTable);
   },
 };
