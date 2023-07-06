@@ -110,12 +110,12 @@ export default {
   background-color: #14202c;
 }
 .outer-card {
-  height: 60px;
-  width: 60px;
+  height: 59px;
+  width: 59px;
 }
 .inner-card {
-  height: 40px;
-  width: 40px;
+  height: 39px;
+  width: 39px;
   border: 1px solid #bfbfbf;
   position: absolute;
 }

@@ -51,7 +51,7 @@
     <div class="d-flex flex-column flex-grow-1 flex-shrink-1" style="height: 0">
       <LineChart
         :data="lineChartData"
-        :chart-id="'99'"
+        :chart-id="'2'"
         :options="lineChartOptions"
         class="bar-height"
       />
@@ -61,6 +61,7 @@
 
 <script>
 import { Line as LineChart } from "vue-chartjs";
+import { customBackgroundPlugin } from "../plugins/canvasPlugins";
 import {
   Chart as ChartJS,
   Title,
@@ -72,6 +73,8 @@ import {
   PointElement,
   Filler,
 } from "chart.js";
+import { defaultColor, gradiant, HSVtoRGB, RGBtoHexa } from "../colors";
+
 ChartJS.register(
   Title,
   Tooltip,
@@ -80,8 +83,10 @@ ChartJS.register(
   LinearScale,
   CategoryScale,
   PointElement,
-  Filler
+  Filler,
+  customBackgroundPlugin
 );
+
 export default {
   name: "line-card",
   props: {
@@ -89,7 +94,11 @@ export default {
       type: String,
       default: "Line Card",
     },
-    switchval: {
+    step: {
+      type: Number,
+      default: 1,
+    },
+    fill: {
       type: Boolean,
       default: false,
     },
@@ -120,25 +129,31 @@ export default {
       required: false,
     },
   },
+
   components: {
     LineChart,
   },
+
+  data: () => ({
+    switchValue: false,
+  }),
+
   computed: {
     lineChartData() {
-      let tempDatasets = this.datasets;
-      for (let i = 0; i < this.datasets.length; i++) {
-        tempDatasets[i]["fill"] = this.switchValue;
-      }
       return {
         labels: this.labels,
-        datasets: tempDatasets,
+        datasets: this.datasets,
       };
     },
     lineChartOptions() {
       return {
+        id: "line-chart-id",
+        pointStyle: false,
+        fill: this.fill && this.switchValue,
+        labelStep: this.step,
         maintainAspectRatio: false,
         borderWidth: 2,
-        tension: 0.2,
+        tension: 0.3,
         transitions: {
           show: {
             animations: {
@@ -163,43 +178,63 @@ export default {
             },
             type: this.scaleType,
             grid: {
-              color: "#f0f0f0",
+              color: "#f9f9f9",
+              lineWidth: 2,
+            },
+            ticks: {
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: "#214353",
             },
           },
           x: {
-            stacked: this.stacked,
+            stacked: this.switchValue,
             border: {
               display: false,
             },
             grid: {
-              color: "#f0f0f0",
+              display: false,
+            },
+            ticks: {
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: (e) =>
+                e.index % this.step ||
+                [0, this.labels.length - 1].includes(e.index)
+                  ? "#f9f9f9"
+                  : "#214353",
             },
           },
         },
         plugins: {
           legend: {
             display: true,
-            align: "center",
+            align: "start",
             labels: {
               color: "#214353",
               font: {
-                size: 12,
+                family: "Charlevoix Pro",
+                size: 14,
+                letterSpacing: 0.7,
               },
               useBorderRadius: true,
               borderRadius: 5,
-              boxWidth: 10,
-              boxHeight: 25,
+              boxWidth: 9,
+              boxHeight: 21,
             },
           },
         },
         interaction: {
           mode: "nearest",
-          axis: "x",
+          axis: "xy",
           intersect: false,
           callbacks: {
-            label: (tooltipItem, data) => {
-              return `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${this.optional.unit}`;
-            },
+            label: (tooltipItem) =>
+              `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${this.optional.unit}`,
             footer: (data) => {
               let total = data.reduce((a, b) => a + b.raw, 0);
               return `${this.optional.footer}: ${total} ${this.optional.unit}`;
@@ -209,26 +244,37 @@ export default {
       };
     },
   },
+
   created() {
-    const radius = 4;
-    const borderRadius = {
-      topLeft: radius,
-      topRight: radius,
-      bottomLeft: radius,
-      bottomRight: radius,
-    };
+    this.switchValue = this.stacked;
+    const colors =
+      this.datasets.length <= 3
+        ? defaultColor(3)
+        : gradiant(this.datasets.length).map((color) => {
+            const col = HSVtoRGB(color / 100, 1, 1);
+            return RGBtoHexa(col.r, col.g, col.b);
+          });
     this.datasets.forEach((set) => {
-      set.borderSkipped = false;
-      set.borderRadius = borderRadius;
-      set.borderWidth = 1;
-      // set.borderColor = '#14202c';
+      set.borderColor = set.color || colors.shift();
+      set.backgroundColor = set.borderColor;
     });
     // Enregistrement du plugin de légende en HTML/CSS
   },
-  data() {
-    return {
-      switchValue: this.stacked,
-    };
+
+  watch: {
+    datasets() {
+      const colors =
+        this.datasets.length <= 3
+          ? defaultColor(3)
+          : gradiant(this.datasets.length).map((color) => {
+              const col = HSVtoRGB(color / 100, 1, 1);
+              return RGBtoHexa(col.r, col.g, col.b);
+            });
+      this.datasets.forEach((set) => {
+        set.borderColor = set.color || colors.shift();
+        set.backgroundColor = set.borderColor;
+      });
+    },
   },
 };
 </script>
