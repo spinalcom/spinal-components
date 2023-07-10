@@ -153,11 +153,14 @@ export default {
               display: false,
             },
             ticks: {
+              callback: (v, i) => {
+                if (!(v % this.step)) return this.labels[i];
+              },
               font: {
                 family: "Charlevoix Pro",
                 size: 11,
               },
-              color: (e) => (e.index % this.step ? "#f9f9f9" : "#214353"),
+              color: "#214353",
             },
           },
         },

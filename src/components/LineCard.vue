@@ -73,7 +73,13 @@ import {
   PointElement,
   Filler,
 } from "chart.js";
-import { defaultColor, gradiant, HSVtoRGB, RGBtoHexa } from "../colors";
+import {
+  defaultColor,
+  gradiant,
+  hexaToRGB,
+  HSVtoRGB,
+  RGBtoHexa,
+} from "../colors";
 
 ChartJS.register(
   Title,
@@ -198,15 +204,15 @@ export default {
               display: false,
             },
             ticks: {
+              callback: (v, i) => {
+                if (!(v % this.step || [0, this.labels.length - 1].includes(i)))
+                  return this.labels[i];
+              },
               font: {
                 family: "Charlevoix Pro",
                 size: 11,
               },
-              color: (e) =>
-                e.index % this.step ||
-                [0, this.labels.length - 1].includes(e.index)
-                  ? "#f9f9f9"
-                  : "#214353",
+              color: "#214353",
             },
           },
         },
@@ -239,6 +245,10 @@ export default {
               let total = data.reduce((a, b) => a + b.raw, 0);
               return `${this.optional.footer}: ${total} ${this.optional.unit}`;
             },
+            labelColor: (context, i) => ({
+              borderColor: "rgba(0,0,0,0)",
+              backgroundColor: context.dataset.borderColor,
+            }),
           },
         },
       };
@@ -255,8 +265,9 @@ export default {
             return RGBtoHexa(col.r, col.g, col.b);
           });
     this.datasets.forEach((set) => {
-      set.borderColor = set.color || colors.shift();
-      set.backgroundColor = set.borderColor;
+      set.borderColor = set.borderColor || colors.shift();
+      const { r, g, b } = hexaToRGB(set.borderColor);
+      set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
     // Enregistrement du plugin de légende en HTML/CSS
   },
@@ -271,8 +282,9 @@ export default {
               return RGBtoHexa(col.r, col.g, col.b);
             });
       this.datasets.forEach((set) => {
-        set.borderColor = set.color || colors.shift();
-        set.backgroundColor = set.borderColor;
+        set.borderColor = set.boederColor || colors.shift();
+        const { r, g, b } = hexaToRGB(set.borderColor);
+        set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
     },
   },

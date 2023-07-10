@@ -66,6 +66,12 @@ export const customLegendPlugin = {
     if (["bar", "line"].includes(chart.config.type) && chart.legend) {
       if (["bar-chart-id", "line-chart-id"].includes(chart.config.options.id))
         chart.legend.left = chart.chartArea.left - 10;
+      if (chart.config.options.id === "line-chart-id") {
+        chart.legend.legendItems.forEach((b) => {
+          b.fillStyle = b.strokeStyle;
+          b.strokeStyle = "rgba(0,0,0,0)";
+        });
+      }
     } else if (chart.config.type === "pie") {
       if (chart.config.options.id !== "pie-chart-id") return;
       const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
