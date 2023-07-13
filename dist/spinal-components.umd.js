@@ -42525,16 +42525,16 @@ const Touch = {
   }
 }));
 //# sourceMappingURL=VSwitch.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=144d153b&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=a1d584ac&scoped=true&
 
 
 
 
 
 
-var LineCardvue_type_template_id_144d153b_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column flex-grow-1",attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase flex-shrink-1 justify-space-between",staticStyle:{"height":"fit-content !important"}},[_c('p',{staticClass:"mb-0"},[_vm._v(" "+_vm._s(_vm.title)+" "),_c('b',[_vm._v(_vm._s(_vm.titleDetails))])]),_c('div',{staticClass:"d-flex align-center mln6",staticStyle:{"position":"absolute","right":"calc(50% - 55px)"}},[_c(VIcon_VIcon,{staticClass:"pr-3",attrs:{"icon":"","size":"default"}},[_vm._v("mdi-chart-line")]),_c(VSwitch,{staticStyle:{"margin-top":"1px","padding":"0px","height":"24px"},attrs:{"inset":"","color":"blue-grey","dense":""},on:{"click":function($event){return _vm.$emit('stack', _vm.switchValue)}},model:{value:(_vm.switchValue),callback:function ($$v) {_vm.switchValue=$$v},expression:"switchValue"}}),_c(VIcon_VIcon,{attrs:{"icon":"","size":"default"}},[_vm._v("mdi-layers-triple")])],1),(_vm.next && _vm.prev)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")]),_vm._v(" "+_vm._s(_vm.prev))],1),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_vm._v(_vm._s(_vm.next)),_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column flex-grow-1 flex-shrink-1",staticStyle:{"height":"0"}},[_c('LineChart',{staticClass:"bar-height",attrs:{"data":_vm.lineChartData,"chart-id":'2',"options":_vm.lineChartOptions}})],1)],1)
+var LineCardvue_type_template_id_a1d584ac_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column flex-grow-1",attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(" "+_vm._s(_vm.title)+" "),_c('b',[_vm._v(_vm._s(_vm.titleDetails))])]),_c('div',{staticClass:"d-flex align-center ml-n6",staticStyle:{"position":"absolute","right":"calc(50% - 55px)"}},[(_vm.switchEnabled)?_c('div',{staticClass:"d-flex flex-row justify-space-between"},[_c(VIcon_VIcon,{staticClass:"pr-3",attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchFalseIcon))]),_c(VSwitch,{attrs:{"value":_vm.switchValue,"inset":"","color":"blue-grey","dense":""},on:{"click":function($event){return _vm.switchClicked()}}}),_c(VIcon_VIcon,{attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchTrueIcon))])],1):_vm._e()]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column flex-grow-1 flex-shrink-1",staticStyle:{"height":"0"}},[_c('LineChart',{staticClass:"bar-height",attrs:{"data":_vm.lineChartData,"chart-id":'2',"options":_vm.lineChartOptions}})],1)],1)
 }
-var LineCardvue_type_template_id_144d153b_scoped_true_staticRenderFns = []
+var LineCardvue_type_template_id_a1d584ac_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=script&lang=js&
@@ -42567,13 +42567,32 @@ Chart.register(
       type: Number,
       default: 1,
     },
+    navEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchValue: {
+      type: Boolean,
+      default: false,
+    },
+    switchFalseIcon: {
+      type: String,
+      default: "mdi-chart-line",
+    },
+    switchTrueIcon: {
+      type: String,
+      default: "mdi-layers-triple",
+    },
     fill: {
       type: Boolean,
       default: false,
     },
     titleDetails: { type: String, required: false },
-    next: { type: String, required: false },
-    prev: { type: String, required: false },
+    navText: { type: String, default: "" },
     labels: {
       type: Array,
       required: true,
@@ -42592,9 +42611,6 @@ Chart.register(
     },
     optional: {
       type: Object,
-      default: () => {
-        return { unit: "", footer: "Total" };
-      },
       required: false,
     },
   },
@@ -42602,10 +42618,6 @@ Chart.register(
   components: {
     LineChart: Line,
   },
-
-  data: () => ({
-    switchValue: false,
-  }),
 
   computed: {
     lineChartData() {
@@ -42618,7 +42630,7 @@ Chart.register(
       return {
         id: "line-chart-id",
         pointStyle: false,
-        fill: this.fill && this.switchValue,
+        fill: this.fill && this.stacked,
         labelStep: this.step,
         maintainAspectRatio: false,
         borderWidth: 2,
@@ -42651,6 +42663,7 @@ Chart.register(
               lineWidth: 2,
             },
             ticks: {
+              callback: (val) => `${val}${this.optional?.unit || ""}`,
               font: {
                 family: "Charlevoix Pro",
                 size: 11,
@@ -42703,12 +42716,16 @@ Chart.register(
           intersect: false,
           callbacks: {
             label: (tooltipItem) =>
-              `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${this.optional.unit}`,
+              `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${
+                this.optional?.unit || ""
+              }`,
             footer: (data) => {
               let total = data.reduce((a, b) => a + b.raw, 0);
-              return `${this.optional.footer}: ${total} ${this.optional.unit}`;
+              return `${this.optional?.footer || "Total"}: ${total} ${
+                this.optional?.unit || ""
+              }`;
             },
-            labelColor: (context, i) => ({
+            labelColor: (context) => ({
               borderColor: "rgba(0,0,0,0)",
               backgroundColor: context.dataset.borderColor,
             }),
@@ -42719,7 +42736,6 @@ Chart.register(
   },
 
   created() {
-    this.switchValue = this.stacked;
     const colors =
       this.datasets.length <= 3
         ? defaultColor(3)
@@ -42733,6 +42749,12 @@ Chart.register(
       set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
     // Enregistrement du plugin de légende en HTML/CSS
+  },
+
+  methods: {
+    switchClicked() {
+      this.$emit("update:switchValue", !this.switchValue);
+    },
   },
 
   watch: {
@@ -42750,15 +42772,18 @@ Chart.register(
         set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
     },
+    /*switchVal(value) {
+      this.$emit("udate:switchValue", value);
+    },*/
   },
 });
 
 ;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_LineCardvue_type_script_lang_js_ = (LineCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=144d153b&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=a1d584ac&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=144d153b&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=a1d584ac&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/LineCard.vue
 
@@ -42771,11 +42796,11 @@ Chart.register(
 
 var LineCard_component = normalizeComponent(
   components_LineCardvue_type_script_lang_js_,
-  LineCardvue_type_template_id_144d153b_scoped_true_render,
-  LineCardvue_type_template_id_144d153b_scoped_true_staticRenderFns,
+  LineCardvue_type_template_id_a1d584ac_scoped_true_render,
+  LineCardvue_type_template_id_a1d584ac_scoped_true_staticRenderFns,
   false,
   null,
-  "144d153b",
+  "a1d584ac",
   null
   
 )

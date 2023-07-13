@@ -4,28 +4,31 @@
     outlined
   >
     <v-card-title
-      class="card-title pa-3 text-uppercase flex-shrink-1 justify-space-between"
-      style="height: fit-content !important"
+      style="font-size: 20px; height: 56px"
+      class="card-title pa-3 text-uppercase justify-space-between"
     >
-      <p class="mb-0">
+      <p>
         {{ title }} <b>{{ titleDetails }}</b>
       </p>
       <div
-        class="d-flex align-center mln6"
+        class="d-flex align-center ml-n6"
         style="position: absolute; right: calc(50% - 55px)"
       >
-        <v-icon icon class="pr-3" size="default">mdi-chart-line</v-icon>
-        <v-switch
-          @click="$emit('stack', switchValue)"
-          style="margin-top: 1px; padding: 0px; height: 24px"
-          v-model="switchValue"
-          inset
-          color="blue-grey"
-          dense
-        />
-        <v-icon icon size="default">mdi-layers-triple</v-icon>
+        <div v-if="switchEnabled" class="d-flex flex-row justify-space-between">
+          <v-icon icon class="pr-3" size="default">{{
+            switchFalseIcon
+          }}</v-icon>
+          <v-switch
+            :value="switchValue"
+            @click="switchClicked()"
+            inset
+            color="blue-grey"
+            dense
+          />
+          <v-icon icon size="default">{{ switchTrueIcon }}</v-icon>
+        </div>
       </div>
-      <div v-if="next && prev" style="height: 40px">
+      <div v-if="navEnabled" style="height: 40px">
         <v-btn
           @click="$emit('nav', -1)"
           style="
@@ -34,8 +37,10 @@
             min-width: 36px !important;
             box-shadow: none;
           "
-          ><v-icon icon>mdi-chevron-left</v-icon> {{ prev }}</v-btn
         >
+          <v-icon icon>mdi-chevron-left</v-icon>
+        </v-btn>
+        {{ navText }}
         <v-btn
           @click="$emit('nav', +1)"
           style="
@@ -44,8 +49,9 @@
             min-width: 36px !important;
             box-shadow: none;
           "
-          >{{ next }}<v-icon icon>mdi-chevron-right</v-icon></v-btn
         >
+          <v-icon icon>mdi-chevron-right</v-icon>
+        </v-btn>
       </div>
     </v-card-title>
     <div class="d-flex flex-column flex-grow-1 flex-shrink-1" style="height: 0">
@@ -104,13 +110,32 @@ export default {
       type: Number,
       default: 1,
     },
+    navEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchValue: {
+      type: Boolean,
+      default: false,
+    },
+    switchFalseIcon: {
+      type: String,
+      default: "mdi-chart-line",
+    },
+    switchTrueIcon: {
+      type: String,
+      default: "mdi-layers-triple",
+    },
     fill: {
       type: Boolean,
       default: false,
     },
     titleDetails: { type: String, required: false },
-    next: { type: String, required: false },
-    prev: { type: String, required: false },
+    navText: { type: String, default: "" },
     labels: {
       type: Array,
       required: true,
@@ -129,9 +154,6 @@ export default {
     },
     optional: {
       type: Object,
-      default: () => {
-        return { unit: "", footer: "Total" };
-      },
       required: false,
     },
   },
@@ -139,10 +161,6 @@ export default {
   components: {
     LineChart,
   },
-
-  data: () => ({
-    switchValue: false,
-  }),
 
   computed: {
     lineChartData() {
@@ -155,7 +173,7 @@ export default {
       return {
         id: "line-chart-id",
         pointStyle: false,
-        fill: this.fill && this.switchValue,
+        fill: this.fill && this.stacked,
         labelStep: this.step,
         maintainAspectRatio: false,
         borderWidth: 2,
@@ -188,6 +206,7 @@ export default {
               lineWidth: 2,
             },
             ticks: {
+              callback: (val) => `${val}${this.optional?.unit || ""}`,
               font: {
                 family: "Charlevoix Pro",
                 size: 11,
@@ -240,12 +259,16 @@ export default {
           intersect: false,
           callbacks: {
             label: (tooltipItem) =>
-              `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${this.optional.unit}`,
+              `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${
+                this.optional?.unit || ""
+              }`,
             footer: (data) => {
               let total = data.reduce((a, b) => a + b.raw, 0);
-              return `${this.optional.footer}: ${total} ${this.optional.unit}`;
+              return `${this.optional?.footer || "Total"}: ${total} ${
+                this.optional?.unit || ""
+              }`;
             },
-            labelColor: (context, i) => ({
+            labelColor: (context) => ({
               borderColor: "rgba(0,0,0,0)",
               backgroundColor: context.dataset.borderColor,
             }),
@@ -256,7 +279,6 @@ export default {
   },
 
   created() {
-    this.switchValue = this.stacked;
     const colors =
       this.datasets.length <= 3
         ? defaultColor(3)
@@ -270,6 +292,12 @@ export default {
       set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
     // Enregistrement du plugin de légende en HTML/CSS
+  },
+
+  methods: {
+    switchClicked() {
+      this.$emit("update:switchValue", !this.switchValue);
+    },
   },
 
   watch: {
