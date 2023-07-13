@@ -196,7 +196,7 @@ export default {
         },
         scales: {
           y: {
-            stacked: this.switchValue,
+            stacked: this.stacked,
             border: {
               display: false,
             },
@@ -215,7 +215,7 @@ export default {
             },
           },
           x: {
-            stacked: this.switchValue,
+            stacked: this.stacked,
             border: {
               display: false,
             },
