@@ -210,7 +210,7 @@ export function setColors(from: any[], to: any[]) {
   return to;
 }
 
-function hexaToRGB(color: string) {
+export function hexaToRGB(color: string) {
   if (color.length == 4)
     color =
       color[0] +

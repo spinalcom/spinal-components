@@ -4,28 +4,31 @@
     outlined
   >
     <v-card-title
-      class="card-title pa-3 text-uppercase flex-shrink-1 justify-space-between"
-      style="height: fit-content !important"
+      style="font-size: 20px; height: 56px"
+      class="card-title pa-3 text-uppercase justify-space-between"
     >
-      <p class="mb-0">
+      <p>
         {{ title }} <b>{{ titleDetails }}</b>
       </p>
       <div
-        class="d-flex align-center mln6"
+        class="d-flex align-center ml-n6"
         style="position: absolute; right: calc(50% - 55px)"
       >
-        <v-icon icon class="pr-3" size="default">mdi-chart-line</v-icon>
-        <v-switch
-          @click="$emit('stack', switchValue)"
-          style="margin-top: 1px; padding: 0px; height: 24px"
-          v-model="switchValue"
-          inset
-          color="blue-grey"
-          dense
-        />
-        <v-icon icon size="default">mdi-layers-triple</v-icon>
+        <div v-if="switchEnabled" class="d-flex flex-row justify-space-between">
+          <v-icon icon class="pr-3" size="default">{{
+            switchFalseIcon
+          }}</v-icon>
+          <v-switch
+            :value="switchValue"
+            @click="switchClicked()"
+            inset
+            color="blue-grey"
+            dense
+          />
+          <v-icon icon size="default">{{ switchTrueIcon }}</v-icon>
+        </div>
       </div>
-      <div v-if="next && prev" style="height: 40px">
+      <div v-if="navEnabled" style="height: 40px">
         <v-btn
           @click="$emit('nav', -1)"
           style="
@@ -34,8 +37,10 @@
             min-width: 36px !important;
             box-shadow: none;
           "
-          ><v-icon icon>mdi-chevron-left</v-icon> {{ prev }}</v-btn
         >
+          <v-icon icon>mdi-chevron-left</v-icon>
+        </v-btn>
+        {{ navText }}
         <v-btn
           @click="$emit('nav', +1)"
           style="
@@ -44,14 +49,15 @@
             min-width: 36px !important;
             box-shadow: none;
           "
-          >{{ next }}<v-icon icon>mdi-chevron-right</v-icon></v-btn
         >
+          <v-icon icon>mdi-chevron-right</v-icon>
+        </v-btn>
       </div>
     </v-card-title>
     <div class="d-flex flex-column flex-grow-1 flex-shrink-1" style="height: 0">
       <LineChart
         :data="lineChartData"
-        :chart-id="'99'"
+        :chart-id="'2'"
         :options="lineChartOptions"
         class="bar-height"
       />
@@ -61,6 +67,7 @@
 
 <script>
 import { Line as LineChart } from "vue-chartjs";
+import { customBackgroundPlugin } from "../plugins/canvasPlugins";
 import {
   Chart as ChartJS,
   Title,
@@ -72,6 +79,14 @@ import {
   PointElement,
   Filler,
 } from "chart.js";
+import {
+  defaultColor,
+  gradiant,
+  hexaToRGB,
+  HSVtoRGB,
+  RGBtoHexa,
+} from "../colors";
+
 ChartJS.register(
   Title,
   Tooltip,
@@ -80,8 +95,10 @@ ChartJS.register(
   LinearScale,
   CategoryScale,
   PointElement,
-  Filler
+  Filler,
+  customBackgroundPlugin
 );
+
 export default {
   name: "line-card",
   props: {
@@ -89,13 +106,36 @@ export default {
       type: String,
       default: "Line Card",
     },
-    switchval: {
+    step: {
+      type: Number,
+      default: 1,
+    },
+    navEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchValue: {
+      type: Boolean,
+      default: false,
+    },
+    switchFalseIcon: {
+      type: String,
+      default: "mdi-chart-line",
+    },
+    switchTrueIcon: {
+      type: String,
+      default: "mdi-layers-triple",
+    },
+    fill: {
       type: Boolean,
       default: false,
     },
     titleDetails: { type: String, required: false },
-    next: { type: String, required: false },
-    prev: { type: String, required: false },
+    navText: { type: String, default: "" },
     labels: {
       type: Array,
       required: true,
@@ -114,31 +154,30 @@ export default {
     },
     optional: {
       type: Object,
-      default: () => {
-        return { unit: "", footer: "Total" };
-      },
       required: false,
     },
   },
+
   components: {
     LineChart,
   },
+
   computed: {
     lineChartData() {
-      let tempDatasets = this.datasets;
-      for (let i = 0; i < this.datasets.length; i++) {
-        tempDatasets[i]["fill"] = this.switchValue;
-      }
       return {
         labels: this.labels,
-        datasets: tempDatasets,
+        datasets: this.datasets,
       };
     },
     lineChartOptions() {
       return {
+        id: "line-chart-id",
+        pointStyle: false,
+        fill: this.fill && this.stacked,
+        labelStep: this.step,
         maintainAspectRatio: false,
         borderWidth: 2,
-        tension: 0.2,
+        tension: 0.3,
         transitions: {
           show: {
             animations: {
@@ -157,13 +196,22 @@ export default {
         },
         scales: {
           y: {
-            stacked: this.switchValue,
+            stacked: this.stacked,
             border: {
               display: false,
             },
             type: this.scaleType,
             grid: {
-              color: "#f0f0f0",
+              color: "#f9f9f9",
+              lineWidth: 2,
+            },
+            ticks: {
+              callback: (val) => `${val}${this.optional?.unit || ""}`,
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: "#214353",
             },
           },
           x: {
@@ -172,63 +220,101 @@ export default {
               display: false,
             },
             grid: {
-              color: "#f0f0f0",
+              display: false,
+            },
+            ticks: {
+              callback: (v, i) => {
+                if (!(v % this.step || [0, this.labels.length - 1].includes(i)))
+                  return this.labels[i];
+              },
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: "#214353",
             },
           },
         },
         plugins: {
           legend: {
             display: true,
-            align: "center",
+            align: "start",
             labels: {
               color: "#214353",
               font: {
-                size: 12,
+                family: "Charlevoix Pro",
+                size: 14,
+                letterSpacing: 0.7,
               },
               useBorderRadius: true,
               borderRadius: 5,
-              boxWidth: 10,
-              boxHeight: 25,
+              boxWidth: 9,
+              boxHeight: 21,
             },
           },
         },
         interaction: {
           mode: "nearest",
-          axis: "x",
+          axis: "xy",
           intersect: false,
           callbacks: {
-            label: (tooltipItem, data) => {
-              return `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${this.optional.unit}`;
-            },
+            label: (tooltipItem) =>
+              `${tooltipItem.dataset.label}: ${tooltipItem.raw} ${
+                this.optional?.unit || ""
+              }`,
             footer: (data) => {
               let total = data.reduce((a, b) => a + b.raw, 0);
-              return `${this.optional.footer}: ${total} ${this.optional.unit}`;
+              return `${this.optional?.footer || "Total"}: ${total} ${
+                this.optional?.unit || ""
+              }`;
             },
+            labelColor: (context) => ({
+              borderColor: "rgba(0,0,0,0)",
+              backgroundColor: context.dataset.borderColor,
+            }),
           },
         },
       };
     },
   },
+
   created() {
-    const radius = 4;
-    const borderRadius = {
-      topLeft: radius,
-      topRight: radius,
-      bottomLeft: radius,
-      bottomRight: radius,
-    };
+    const colors =
+      this.datasets.length <= 3
+        ? defaultColor(3)
+        : gradiant(this.datasets.length).map((color) => {
+            const col = HSVtoRGB(color / 100, 1, 1);
+            return RGBtoHexa(col.r, col.g, col.b);
+          });
     this.datasets.forEach((set) => {
-      set.borderSkipped = false;
-      set.borderRadius = borderRadius;
-      set.borderWidth = 1;
-      // set.borderColor = '#14202c';
+      set.borderColor = set.borderColor || colors.shift();
+      const { r, g, b } = hexaToRGB(set.borderColor);
+      set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
     // Enregistrement du plugin de légende en HTML/CSS
   },
-  data() {
-    return {
-      switchValue: this.stacked,
-    };
+
+  methods: {
+    switchClicked() {
+      this.$emit("update:switchValue", !this.switchValue);
+    },
+  },
+
+  watch: {
+    datasets() {
+      const colors =
+        this.datasets.length <= 3
+          ? defaultColor(3)
+          : gradiant(this.datasets.length).map((color) => {
+              const col = HSVtoRGB(color / 100, 1, 1);
+              return RGBtoHexa(col.r, col.g, col.b);
+            });
+      this.datasets.forEach((set) => {
+        set.borderColor = set.boederColor || colors.shift();
+        const { r, g, b } = hexaToRGB(set.borderColor);
+        set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
+      });
+    },
   },
 };
 </script>

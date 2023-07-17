@@ -53,6 +53,11 @@ export default {
       default: "Bar Card",
     },
 
+    step: {
+      type: Number,
+      default: 1,
+    },
+
     labels: {
       type: Array,
       required: true,
@@ -89,6 +94,7 @@ export default {
     barChartOptions() {
       return {
         id: "bar-chart-id",
+        labelStep: this.step,
         maintainAspectRatio: false,
         barThickness: 20,
         transitions: {
@@ -135,6 +141,7 @@ export default {
             },
             grid: {
               color: "#f9f9f9",
+              lineWidth: 2,
             },
           },
           x: {
@@ -146,6 +153,9 @@ export default {
               display: false,
             },
             ticks: {
+              callback: (v, i) => {
+                if (!(v % this.step)) return this.labels[i];
+              },
               font: {
                 family: "Charlevoix Pro",
                 size: 11,

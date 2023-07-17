@@ -1,21 +1,32 @@
 export const customBackgroundPlugin = {
   id: "customCanvasBackgroundColor",
   beforeDraw: (chart, args, options) => {
-    if (chart.config.options.id !== "bar-chart-id") return;
+    const { id, labelStep } = chart.config.options;
+    if (!["bar-chart-id", "line-chart-id"].includes(id)) return;
     const { ctx, chartArea } = chart;
     ctx.save();
+    ctx.lineWidth = 2;
     let begin = chartArea.left;
     const { top, height } = chartArea;
+    const backPart =
+      chart.config.type === "bar"
+        ? chart.data.labels?.length
+        : chart.data.labels?.length - 1;
+    const decWidth = chartArea.width / (backPart || 1);
+    ctx.fillStyle = options.color || "white";
     let width;
     switch (chart.config.type) {
       case "bar":
-        width = chartArea.width / (chart.data.labels?.length || 1);
-        ctx.fillStyle = options.color || "white";
-        chart.data.labels?.forEach(() => {
+      case "line":
+        chart.data.labels?.forEach((e, i) => {
+          if (i === backPart || i % labelStep) return;
+          if (i + labelStep > backPart) {
+            width = decWidth * (backPart % labelStep);
+          } else width = decWidth * labelStep;
           ctx.moveTo(begin + 5, top);
 
           ctx.lineTo(begin + width - 5, top);
-          ctx.arcTo(begin + width, top, begin + width, top + 5, 5);
+          ctx.arcTo(begin + width, top, begin + width, top + 5, 15);
 
           ctx.lineTo(begin + width, top + height - 5);
           ctx.arcTo(
@@ -23,14 +34,14 @@ export const customBackgroundPlugin = {
             top + height,
             begin + width - 5,
             top + height,
-            5
+            15
           );
 
           ctx.lineTo(begin + 5, top + height);
-          ctx.arcTo(begin, top + height, begin, top + height - 5, 5);
+          ctx.arcTo(begin, top + height, begin, top + height - 5, 15);
 
           ctx.lineTo(begin, top + 5);
-          ctx.arcTo(begin, top, begin + 5, top, 5);
+          ctx.arcTo(begin, top, begin + 5, top, 15);
 
           ctx.fill();
           ctx.strokeStyle = "#f9f9f9";
@@ -52,9 +63,15 @@ export const customBackgroundPlugin = {
 export const customLegendPlugin = {
   id: "htmlLegend",
   afterUpdate: (chart, args, options) => {
-    if (chart.config.type === "bar" && chart.legend) {
-      if (chart.config.options.id === "bar-chart-id")
+    if (["bar", "line"].includes(chart.config.type) && chart.legend) {
+      if (["bar-chart-id", "line-chart-id"].includes(chart.config.options.id))
         chart.legend.left = chart.chartArea.left - 10;
+      if (chart.config.options.id === "line-chart-id") {
+        chart.legend.legendItems.forEach((b) => {
+          b.fillStyle = b.strokeStyle;
+          b.strokeStyle = "rgba(0,0,0,0)";
+        });
+      }
     } else if (chart.config.type === "pie") {
       if (chart.config.options.id !== "pie-chart-id") return;
       const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
