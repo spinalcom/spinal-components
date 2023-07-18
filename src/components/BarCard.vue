@@ -200,12 +200,13 @@ export default {
             type: this.scaleType,
             stacked: this.stacked,
             ticks: {
+              display: this.lineDatasets.length,
               callback: (val, i, tab) => {
                 return [
                   tab.length - 1,
                   Math.round((tab.length - 1) / 2),
                 ].includes(i)
-                  ? `${val}${this.units?.bar || ""}`
+                  ? `${val}${this.units?.line || ""}`
                   : "";
               },
               font: {
