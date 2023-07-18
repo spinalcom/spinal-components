@@ -310,7 +310,7 @@ export default {
               return RGBtoHexa(col.r, col.g, col.b);
             });
       this.datasets.forEach((set) => {
-        set.borderColor = set.boederColor || colors.shift();
+        set.borderColor = set.borderColor || colors.shift();
         const { r, g, b } = hexaToRGB(set.borderColor);
         set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
