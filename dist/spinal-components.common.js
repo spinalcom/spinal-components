@@ -33323,16 +33323,16 @@ const customBackgroundPlugin = {
 
 const customLegendPlugin = {
   id: "htmlLegend",
-  afterUpdate: (chart, args, options) => {
+  afterUpdate: (chart) => {
     if (["bar", "line"].includes(chart.config.type) && chart.legend) {
       if (["bar-chart-id", "line-chart-id"].includes(chart.config.options.id))
         chart.legend.left = chart.chartArea.left - 10;
-      if (chart.config.options.id === "line-chart-id") {
-        chart.legend.legendItems.forEach((b) => {
+      chart.legend.legendItems.forEach((b) => {
+        if (b.strokeStyle != "rgba(0,0,0,0)") {
           b.fillStyle = b.strokeStyle;
           b.strokeStyle = "rgba(0,0,0,0)";
-        });
-      }
+        }
+      });
     } else if (chart.config.type === "pie") {
       if (chart.config.options.id !== "pie-chart-id") return;
       const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
@@ -33705,13 +33705,15 @@ var PieCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=15ef0f28&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=6e66068a&scoped=true&
 
 
 
-var BarCardvue_type_template_id_15ef0f28_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase",staticStyle:{"font-size":"20px","height":"56px"}},[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticStyle:{"height":"100%"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+
+
+var BarCardvue_type_template_id_6e66068a_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(_vm._s(_vm.title))]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticStyle:{"height":"100%"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
 }
-var BarCardvue_type_template_id_15ef0f28_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_6e66068a_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -33740,6 +33742,16 @@ Chart.register(
       default: "Bar Card",
     },
 
+    navEnabled: {
+      type: Boolean,
+      default: false,
+    },
+
+    navText: {
+      type: String,
+      default: "",
+    },
+
     step: {
       type: Number,
       default: 1,
@@ -33755,6 +33767,11 @@ Chart.register(
       required: true,
     },
 
+    lineDatasets: {
+      type: Array,
+      default: () => [],
+    },
+
     scaleType: {
       type: String,
       default: "linear",
@@ -33763,6 +33780,11 @@ Chart.register(
     stacked: {
       type: Boolean,
       default: false,
+    },
+
+    units: {
+      type: Object,
+      required: false,
     },
   },
 
@@ -33774,7 +33796,7 @@ Chart.register(
     barChartData() {
       return {
         labels: this.labels,
-        datasets: this.datasets,
+        datasets: this.datasets.concat(this.lineDatasets),
       };
     },
 
@@ -33808,27 +33830,49 @@ Chart.register(
             type: this.scaleType,
             stacked: this.stacked,
             ticks: {
+              callback: (val, i, tab) => {
+                return [
+                  tab.length - 1,
+                  Math.round((tab.length - 1) / 2),
+                ].includes(i)
+                  ? `${val}${this.units?.bar || ""}`
+                  : "";
+              },
               font: {
                 family: "Charlevoix Pro",
                 size: 11,
               },
-              color: (item) => {
-                const step =
-                  item.scale.ticks[1].value - item.scale.ticks[0].value;
-                let mid = Math.floor(item.scale.max / 2);
-                while (mid % step) mid += 1;
-                switch (item.tick.value) {
-                  case item.scale.max:
-                  case mid:
-                    return "#214353";
-                  default:
-                    return "#f9f9f9";
-                }
-              },
+              color: "#214353",
             },
             grid: {
               color: "#f9f9f9",
               lineWidth: 2,
+            },
+          },
+          y2: {
+            position: "right",
+            border: {
+              display: false,
+            },
+            type: this.scaleType,
+            stacked: this.stacked,
+            ticks: {
+              callback: (val, i, tab) => {
+                return [
+                  tab.length - 1,
+                  Math.round((tab.length - 1) / 2),
+                ].includes(i)
+                  ? `${val}${this.units?.bar || ""}`
+                  : "";
+              },
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: "#214353",
+            },
+            grid: {
+              display: false,
             },
           },
           x: {
@@ -33869,6 +33913,25 @@ Chart.register(
             },
           },
         },
+        interaction: {
+          mode: "nearest",
+          axis: "xy",
+          intersect: false,
+          callbacks: {
+            label: (tooltipItem) => {
+              return `${tooltipItem.dataset.label}: ${tooltipItem.raw}${
+                this.units?.[tooltipItem.dataset.type] || ""
+              }`;
+            },
+            labelColor: (context) => {
+              if (context.dataset.type === "line")
+                return {
+                  borderColor: "rgba(0,0,0,0)",
+                  backgroundColor: context.dataset.borderColor,
+                };
+            },
+          },
+        },
       };
     },
   },
@@ -33882,18 +33945,32 @@ Chart.register(
       bottomRight: radius,
     };
     const colors =
-      this.datasets.length <= 3
+      this.datasets.length + this.lineDatasets.length <= 3
         ? defaultColor(3)
-        : gradiant(this.datasets.length).map((color) => {
-            const col = HSVtoRGB(color / 100, 1, 1);
-            return RGBtoHexa(col.r, col.g, col.b);
-          });
+        : gradiant(this.datasets.length + this.lineDatasets.length).map(
+            (color) => {
+              const col = HSVtoRGB(color / 100, 1, 1);
+              return RGBtoHexa(col.r, col.g, col.b);
+            }
+          );
     this.datasets.forEach((set) => {
       if (!set.backgroundColor) set.backgroundColor = colors.shift();
+      set.type = "bar";
+      set.order = 2;
       set.borderSkipped = false;
       set.borderRadius = borderRadius;
       set.borderWidth = 1;
       set.borderColor = "rgba(0,0,0,0)";
+    });
+    this.lineDatasets.forEach((set) => {
+      set.type = "line";
+      set.pointStyle = false;
+      set.tension = 0.3;
+      set.order = 1;
+      set.yAxisID = "y2";
+      set.borderColor = set.borderColor || colors.shift();
+      const { r, g, b } = hexaToRGB(set.borderColor);
+      set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
   },
 
@@ -33907,18 +33984,32 @@ Chart.register(
         bottomRight: radius,
       };
       const colors =
-        this.datasets.length <= 3
+        this.datasets.length + this.lineDatasets.length <= 3
           ? defaultColor(3)
-          : gradiant(this.datasets.length).map((color) => {
-              const col = HSVtoRGB(color / 100, 1, 1);
-              return RGBtoHexa(col.r, col.g, col.b);
-            });
+          : gradiant(this.datasets.length + this.lineDatasets.length).map(
+              (color) => {
+                const col = HSVtoRGB(color / 100, 1, 1);
+                return RGBtoHexa(col.r, col.g, col.b);
+              }
+            );
       this.datasets.forEach((set) => {
         if (!set.backgroundColor) set.backgroundColor = colors.shift();
+        set.type = "bar";
+        set.order = 2;
         set.borderSkipped = false;
         set.borderRadius = borderRadius;
         set.borderWidth = 1;
         set.borderColor = "rgba(0,0,0,0)";
+      });
+      this.lineDatasets.forEach((set) => {
+        set.type = "line";
+        set.pointStyle = false;
+        set.tension = 0.3;
+        set.order = 1;
+        set.yAxisID = "y2";
+        set.borderColor = set.borderColor || colors.shift();
+        const { r, g, b } = hexaToRGB(set.borderColor);
+        set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
     },
   },
@@ -33926,15 +34017,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=15ef0f28&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=6e66068a&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=15ef0f28&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=6e66068a&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=15ef0f28&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=6e66068a&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=15ef0f28&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=6e66068a&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -33948,11 +34039,11 @@ Chart.register(
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_15ef0f28_scoped_true_render,
-  BarCardvue_type_template_id_15ef0f28_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_6e66068a_scoped_true_render,
+  BarCardvue_type_template_id_6e66068a_scoped_true_staticRenderFns,
   false,
   null,
-  "15ef0f28",
+  "6e66068a",
   null
   
 )

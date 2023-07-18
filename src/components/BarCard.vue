@@ -6,8 +6,34 @@
   >
     <v-card-title
       style="font-size: 20px; height: 56px"
-      class="card-title pa-3 text-uppercase"
-      >{{ title }}</v-card-title
+      class="card-title pa-3 text-uppercase justify-space-between"
+    >
+      <p>{{ title }}</p>
+      <div v-if="navEnabled" style="height: 40px">
+        <v-btn
+          @click="$emit('nav', -1)"
+          style="
+            font-size: 14px !important;
+            border-radius: 10px;
+            min-width: 36px !important;
+            box-shadow: none;
+          "
+        >
+          <v-icon icon>mdi-chevron-left</v-icon>
+        </v-btn>
+        {{ navText }}
+        <v-btn
+          @click="$emit('nav', +1)"
+          style="
+            font-size: 14px !important;
+            border-radius: 10px;
+            min-width: 36px !important;
+            box-shadow: none;
+          "
+        >
+          <v-icon icon>mdi-chevron-right</v-icon>
+        </v-btn>
+      </div></v-card-title
     >
     <div style="height: calc(100% - 56px)" class="d-flex flex-column">
       <slot name="extras" class="flex-shrink-1"></slot>
@@ -32,7 +58,13 @@ import {
   LogarithmicScale,
   Chart as ChartJS,
 } from "chart.js";
-import { defaultColor, gradiant, RGBtoHexa, HSVtoRGB } from "../colors";
+import {
+  defaultColor,
+  gradiant,
+  RGBtoHexa,
+  HSVtoRGB,
+  hexaToRGB,
+} from "../colors";
 
 ChartJS.register(
   Legend,
@@ -53,6 +85,16 @@ export default {
       default: "Bar Card",
     },
 
+    navEnabled: {
+      type: Boolean,
+      default: false,
+    },
+
+    navText: {
+      type: String,
+      default: "",
+    },
+
     step: {
       type: Number,
       default: 1,
@@ -68,6 +110,11 @@ export default {
       required: true,
     },
 
+    lineDatasets: {
+      type: Array,
+      default: () => [],
+    },
+
     scaleType: {
       type: String,
       default: "linear",
@@ -76,6 +123,11 @@ export default {
     stacked: {
       type: Boolean,
       default: false,
+    },
+
+    units: {
+      type: Object,
+      required: false,
     },
   },
 
@@ -87,7 +139,7 @@ export default {
     barChartData() {
       return {
         labels: this.labels,
-        datasets: this.datasets,
+        datasets: this.datasets.concat(this.lineDatasets),
       };
     },
 
@@ -121,27 +173,49 @@ export default {
             type: this.scaleType,
             stacked: this.stacked,
             ticks: {
+              callback: (val, i, tab) => {
+                return [
+                  tab.length - 1,
+                  Math.round((tab.length - 1) / 2),
+                ].includes(i)
+                  ? `${val}${this.units?.bar || ""}`
+                  : "";
+              },
               font: {
                 family: "Charlevoix Pro",
                 size: 11,
               },
-              color: (item) => {
-                const step =
-                  item.scale.ticks[1].value - item.scale.ticks[0].value;
-                let mid = Math.floor(item.scale.max / 2);
-                while (mid % step) mid += 1;
-                switch (item.tick.value) {
-                  case item.scale.max:
-                  case mid:
-                    return "#214353";
-                  default:
-                    return "#f9f9f9";
-                }
-              },
+              color: "#214353",
             },
             grid: {
               color: "#f9f9f9",
               lineWidth: 2,
+            },
+          },
+          y2: {
+            position: "right",
+            border: {
+              display: false,
+            },
+            type: this.scaleType,
+            stacked: this.stacked,
+            ticks: {
+              callback: (val, i, tab) => {
+                return [
+                  tab.length - 1,
+                  Math.round((tab.length - 1) / 2),
+                ].includes(i)
+                  ? `${val}${this.units?.bar || ""}`
+                  : "";
+              },
+              font: {
+                family: "Charlevoix Pro",
+                size: 11,
+              },
+              color: "#214353",
+            },
+            grid: {
+              display: false,
             },
           },
           x: {
@@ -182,6 +256,25 @@ export default {
             },
           },
         },
+        interaction: {
+          mode: "nearest",
+          axis: "xy",
+          intersect: false,
+          callbacks: {
+            label: (tooltipItem) => {
+              return `${tooltipItem.dataset.label}: ${tooltipItem.raw}${
+                this.units?.[tooltipItem.dataset.type] || ""
+              }`;
+            },
+            labelColor: (context) => {
+              if (context.dataset.type === "line")
+                return {
+                  borderColor: "rgba(0,0,0,0)",
+                  backgroundColor: context.dataset.borderColor,
+                };
+            },
+          },
+        },
       };
     },
   },
@@ -195,18 +288,32 @@ export default {
       bottomRight: radius,
     };
     const colors =
-      this.datasets.length <= 3
+      this.datasets.length + this.lineDatasets.length <= 3
         ? defaultColor(3)
-        : gradiant(this.datasets.length).map((color) => {
-            const col = HSVtoRGB(color / 100, 1, 1);
-            return RGBtoHexa(col.r, col.g, col.b);
-          });
+        : gradiant(this.datasets.length + this.lineDatasets.length).map(
+            (color) => {
+              const col = HSVtoRGB(color / 100, 1, 1);
+              return RGBtoHexa(col.r, col.g, col.b);
+            }
+          );
     this.datasets.forEach((set) => {
       if (!set.backgroundColor) set.backgroundColor = colors.shift();
+      set.type = "bar";
+      set.order = 2;
       set.borderSkipped = false;
       set.borderRadius = borderRadius;
       set.borderWidth = 1;
       set.borderColor = "rgba(0,0,0,0)";
+    });
+    this.lineDatasets.forEach((set) => {
+      set.type = "line";
+      set.pointStyle = false;
+      set.tension = 0.3;
+      set.order = 1;
+      set.yAxisID = "y2";
+      set.borderColor = set.borderColor || colors.shift();
+      const { r, g, b } = hexaToRGB(set.borderColor);
+      set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
   },
 
@@ -220,18 +327,32 @@ export default {
         bottomRight: radius,
       };
       const colors =
-        this.datasets.length <= 3
+        this.datasets.length + this.lineDatasets.length <= 3
           ? defaultColor(3)
-          : gradiant(this.datasets.length).map((color) => {
-              const col = HSVtoRGB(color / 100, 1, 1);
-              return RGBtoHexa(col.r, col.g, col.b);
-            });
+          : gradiant(this.datasets.length + this.lineDatasets.length).map(
+              (color) => {
+                const col = HSVtoRGB(color / 100, 1, 1);
+                return RGBtoHexa(col.r, col.g, col.b);
+              }
+            );
       this.datasets.forEach((set) => {
         if (!set.backgroundColor) set.backgroundColor = colors.shift();
+        set.type = "bar";
+        set.order = 2;
         set.borderSkipped = false;
         set.borderRadius = borderRadius;
         set.borderWidth = 1;
         set.borderColor = "rgba(0,0,0,0)";
+      });
+      this.lineDatasets.forEach((set) => {
+        set.type = "line";
+        set.pointStyle = false;
+        set.tension = 0.3;
+        set.order = 1;
+        set.yAxisID = "y2";
+        set.borderColor = set.borderColor || colors.shift();
+        const { r, g, b } = hexaToRGB(set.borderColor);
+        set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
     },
   },
