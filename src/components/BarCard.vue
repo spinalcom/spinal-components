@@ -147,6 +147,7 @@ export default {
       return {
         id: "bar-chart-id",
         labelStep: this.step,
+        spanGaps: true,
         maintainAspectRatio: false,
         barThickness: 20,
         transitions: {

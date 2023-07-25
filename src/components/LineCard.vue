@@ -173,6 +173,7 @@ export default {
       return {
         id: "line-chart-id",
         pointStyle: false,
+        spanGaps: true,
         fill: this.fill && this.stacked,
         labelStep: this.step,
         maintainAspectRatio: false,
