@@ -1,6 +1,34 @@
 <template>
   <v-app id="application">
-    <capacity-table class="ma-5" :values="capacities"></capacity-table>
+    <div class="ma-5 d-flex flex-column" style="height: 100%">
+      <line-card
+        style="height: 49%"
+        fill
+        nav-enabled
+        switch-enabled
+        :stacked="stacked"
+        nav-text="navigation"
+        switch-false-icon="1"
+        switch-true-icon="mdi-percent"
+        :switch-value.sync="switchVal"
+        point-style
+        :labels="
+          Array(7)
+            .fill(0)
+            .map((e, h) => h)
+        "
+        :datasets="lineDatas"
+      ></line-card>
+      <bar-card
+        style="height: 49%; width: 100%"
+        :labels="barLabels"
+        :datasets="barDatas"
+        :line-datasets="barLineDatas"
+        nav-enabled
+        nav-text="navigation"
+        :units="{ line: 'h' }"
+      ></bar-card>
+    </div>
   </v-app>
 </template>
 
@@ -24,13 +52,14 @@ export default {
   name: "App",
 
   components: {
-    CapacityTable,
+    LineCard,
+    BarCard,
   },
 
   data: () => ({
     estimationData: [
       0, 0, 0, 0, 2, 3, 5, 7, 8, 15, 20, 23, 24, 25, 25, 22, 19, 16, 17, 13, 6,
-      0, 0,
+      0, 0, 1,
     ],
     loaded: true,
     path: {},
@@ -146,12 +175,28 @@ export default {
     ],
     barDatas: [
       {
+        label: "Km marchés",
+        data: [10, 6, 11, 8, 18, 7, 1],
+      },
+    ],
+    barLineDatas: [
+      {
         label: "Km parcourus",
-        data: [15, 12, 13, 10, 21, 8, 2],
+        data: [15, 12, 13, 10, 21, NaN, 2],
+      },
+    ],
+    lineDatas: [
+      {
+        label: "Km parcourus",
+        data: [15, 12, null, 10, null, null, 2],
       },
       {
         label: "Km marchés",
         data: [10, 6, 11, 8, 18, 7, 1],
+      },
+      {
+        label: "Km marchés",
+        data: [5, 7, 10, 15, 20, 6, 3],
       },
     ],
     table: [
@@ -224,6 +269,7 @@ export default {
         count: "3/9",
       },
     ],
+    switchVal: false,
   }),
 
   computed: {
@@ -235,6 +281,9 @@ export default {
     },
     pieColor() {
       return this.nav.element.color;
+    },
+    stacked() {
+      return this.switchVal;
     },
   },
 

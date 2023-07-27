@@ -65,6 +65,7 @@ export const customLegendPlugin = {
   afterUpdate: (chart) => {
     if (["bar", "line"].includes(chart.config.type) && chart.legend) {
       if (["bar-chart-id", "line-chart-id"].includes(chart.config.options.id)) {
+        //console.log(chart);
         chart.legend.left = chart.chartArea.left - 10;
         chart.legend.legendItems.forEach((b) => {
           if (b.strokeStyle != "rgba(0,0,0,0)") {
