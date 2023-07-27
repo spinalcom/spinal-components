@@ -156,10 +156,6 @@ export default {
       type: Object,
       required: false,
     },
-    pointStyle: {
-      type: Boolean,
-      default: false,
-    },
   },
 
   components: {
@@ -176,7 +172,7 @@ export default {
     lineChartOptions() {
       return {
         id: "line-chart-id",
-        pointStyle: this.pointStyle,
+        pointStyle: false,
         spanGaps: true,
         fill: this.fill && this.stacked,
         labelStep: this.step,
@@ -293,7 +289,6 @@ export default {
           });
     this.datasets.forEach((set) => {
       set.borderColor = set.borderColor || colors.shift();
-      set.pointBackgroundColor = set.borderColor;
       const { r, g, b } = hexaToRGB(set.borderColor);
       set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
@@ -317,7 +312,6 @@ export default {
             });
       this.datasets.forEach((set) => {
         set.borderColor = set.borderColor || colors.shift();
-        set.pointBackgroundColor = set.borderColor;
         const { r, g, b } = hexaToRGB(set.borderColor);
         set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
