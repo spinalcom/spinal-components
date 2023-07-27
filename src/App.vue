@@ -11,7 +11,6 @@
         switch-false-icon="1"
         switch-true-icon="mdi-percent"
         :switch-value.sync="switchVal"
-        point-style
         :labels="
           Array(7)
             .fill(0)
