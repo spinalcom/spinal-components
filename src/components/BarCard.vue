@@ -129,6 +129,11 @@ export default {
       type: Object,
       required: false,
     },
+
+    linePoint: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   components: {
@@ -309,11 +314,12 @@ export default {
     });
     this.lineDatasets.forEach((set) => {
       set.type = "line";
-      set.pointStyle = false;
       set.tension = 0.3;
       set.order = 1;
       set.yAxisID = "y2";
       set.borderColor = set.borderColor || colors.shift();
+      set.pointBackgroundColor = set.borderColor;
+      set.pointStyle = this.linePoint;
       const { r, g, b } = hexaToRGB(set.borderColor);
       set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
@@ -348,11 +354,12 @@ export default {
       });
       this.lineDatasets.forEach((set) => {
         set.type = "line";
-        set.pointStyle = false;
         set.tension = 0.3;
         set.order = 1;
         set.yAxisID = "y2";
         set.borderColor = set.borderColor || colors.shift();
+        set.pointBackgroundColor = set.borderColor;
+        set.pointStyle = this.linePoint;
         const { r, g, b } = hexaToRGB(set.borderColor);
         set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
