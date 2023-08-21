@@ -37,7 +37,12 @@
     >
     <div style="height: calc(100% - 56px)" class="d-flex flex-column">
       <slot name="extras" class="flex-shrink-1"></slot>
-      <div style="height: 100%">
+      <div
+        id="bar-legend-container"
+        class="d-flex flex-row justify-space-between"
+        style="height: 21px"
+      ></div>
+      <div style="height: calc(100% - 21px)">
         <Bar :data="barChartData" :chart-id="'1'" :options="barChartOptions" />
       </div>
     </div>
@@ -247,7 +252,7 @@ export default {
         },
         plugins: {
           legend: {
-            display: true,
+            display: false,
             align: "start",
             labels: {
               color: "#214353",

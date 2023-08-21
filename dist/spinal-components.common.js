@@ -33324,56 +33324,179 @@ const customBackgroundPlugin = {
 const customLegendPlugin = {
   id: "htmlLegend",
   afterUpdate: (chart) => {
-    if (["bar", "line"].includes(chart.config.type) && chart.legend) {
-      if (["bar-chart-id", "line-chart-id"].includes(chart.config.options.id)) {
-        //console.log(chart);
-        chart.legend.left = chart.chartArea.left - 10;
-        chart.legend.legendItems.forEach((b) => {
-          if (b.strokeStyle != "rgba(0,0,0,0)") {
+    switch (chart.config.type) {
+      case "bar":
+        if (chart.config.options.id === "bar-chart-id") {
+          const legendContainer = document.querySelector(
+            "#bar-legend-container"
+          );
+          const { chartArea } = chart;
+          legendContainer.style.marginLeft = `${chartArea.left}px`;
+          legendContainer.style.width = `${chartArea.width}px`;
+          while (legendContainer?.firstChild)
+            legendContainer.firstChild?.remove();
+          const rightBox = document.createElement("div");
+          const leftBox = document.createElement("div");
+          [rightBox, leftBox].forEach((box) => {
+            box.classList.add("d-flex", "flex-row");
+          });
+
+          const items = chart.config.data.datasets;
+          const itemsBis =
+            chart.options.plugins?.legend?.labels?.generateLabels(chart);
+          itemsBis.forEach((b) => {
+            if (b.strokeStyle != "rgba(0,0,0,0)") {
+              b.fillStyle = b.strokeStyle;
+              b.strokeStyle = "rgba(0,0,0,0)";
+            }
+          });
+          const [leftIems, rightItems] = [[], []];
+          items.forEach((i) => {
+            if (i.yAxisID === "y2")
+              rightItems.push(itemsBis.find((it) => it.text === i.label));
+            else leftIems.push(itemsBis.find((it) => it.text === i.label));
+          });
+
+          // left legend
+          for (const item of leftIems) {
+            const li = document.createElement("li");
+            li.classList.add("d-flex", "flex-row", "mr-3");
+            li.style.cursor = "pointer";
+            li.style.color = item.fontColor;
+
+            li.onclick = () => {
+              chart.setDatasetVisibility(
+                item.datasetIndex,
+                !chart.isDatasetVisible(item.datasetIndex)
+              );
+              chart.update();
+            };
+
+            // Color box
+            const boxSpan = document.createElement("span");
+            boxSpan.classList.add("mr-2");
+            boxSpan.style.background = item.fillStyle;
+            boxSpan.style.height = "21px";
+            boxSpan.style.width = "9px";
+            boxSpan.style.border = item.strokeStyle;
+            boxSpan.style.borderRadius = `${item.borderRadius}px`;
+
+            // Text
+            const textContainer = document.createElement("p");
+            textContainer.classList.add("ma-0", "pa-0");
+            textContainer.style.textDecoration = item.hidden
+              ? "line-through"
+              : "";
+            textContainer.style.fontSize = "14px";
+
+            const text = document.createTextNode(item.text);
+            textContainer.appendChild(text);
+
+            li.appendChild(boxSpan);
+            li.appendChild(textContainer);
+            leftBox.appendChild(li);
+          }
+
+          // right legend
+          for (const item of rightItems) {
+            const li = document.createElement("li");
+            li.classList.add("d-flex", "flex-row", "ml-3");
+            li.style.cursor = "pointer";
+            li.style.color = item.fontColor;
+
+            li.onclick = () => {
+              chart.setDatasetVisibility(
+                item.datasetIndex,
+                !chart.isDatasetVisible(item.datasetIndex)
+              );
+              chart.update();
+            };
+
+            // Color box
+            const boxSpan = document.createElement("span");
+            boxSpan.classList.add("mr-2");
+            boxSpan.style.background = item.fillStyle;
+            boxSpan.style.height = "21px";
+            boxSpan.style.width = "9px";
+            boxSpan.style.border = item.strokeStyle;
+            boxSpan.style.borderRadius = `${item.borderRadius}px`;
+
+            // Text
+            const textContainer = document.createElement("p");
+            textContainer.classList.add("ma-0", "pa-0");
+            textContainer.style.textDecoration = item.hidden
+              ? "line-through"
+              : "";
+            textContainer.style.fontSize = "14px";
+
+            const text = document.createTextNode(item.text);
+            textContainer.appendChild(text);
+
+            li.appendChild(boxSpan);
+            li.appendChild(textContainer);
+            rightBox.appendChild(li);
+          }
+          legendContainer?.appendChild(leftBox);
+          legendContainer?.appendChild(rightBox);
+        }
+        break;
+      case "line":
+        if (chart.config.options.id === "line-chart-id") {
+          chart.legend.left = chart.chartArea.left - 10;
+          chart.legend.legendItems.forEach((b) => {
             b.fillStyle = b.strokeStyle;
             b.strokeStyle = "rgba(0,0,0,0)";
+          });
+        }
+        break;
+      case "pie":
+      case "doughnut":
+        if (chart.config.options.id === "pie-chart-id") {
+          const legendContainer =
+            chart.canvas.parentElement?.parentNode?.lastChild;
+          while (legendContainer?.firstChild)
+            legendContainer.firstChild?.remove();
+          const items =
+            chart.options.plugins?.legend?.labels?.generateLabels(chart);
+
+          for (const item of items) {
+            const li = document.createElement("li");
+            li.classList.add("d-flex", "flex-row", "ma-3");
+            li.style.cursor = "pointer";
+            li.style.color = "#214353";
+
+            li.onclick = () => {
+              chart.toggleDataVisibility(item.index);
+              chart.update();
+            };
+
+            // Color box
+            const boxSpan = document.createElement("span");
+            boxSpan.classList.add("mr-2");
+            boxSpan.style.background = item.fillStyle;
+            boxSpan.style.height = "21px";
+            boxSpan.style.width = "9px";
+            boxSpan.style.borderRadius = "5px";
+
+            // Text
+            const textContainer = document.createElement("p");
+            textContainer.classList.add("ma-0", "pa-0");
+            textContainer.style.textDecoration = item.hidden
+              ? "line-through"
+              : "";
+            textContainer.style.fontSize = "14px";
+
+            const text = document.createTextNode(item.text);
+            textContainer.appendChild(text);
+
+            li.appendChild(boxSpan);
+            li.appendChild(textContainer);
+            legendContainer?.appendChild(li);
           }
-        });
-      }
-    } else if (chart.config.type === "pie") {
-      if (chart.config.options.id !== "pie-chart-id") return;
-      const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
-      while (legendContainer?.firstChild) legendContainer.firstChild?.remove();
-      const items =
-        chart.options.plugins?.legend?.labels?.generateLabels(chart);
-
-      for (const item of items) {
-        const li = document.createElement("li");
-        li.classList.add("d-flex", "flex-row", "ma-3");
-        li.style.cursor = "pointer";
-        li.style.color = "#214353";
-
-        li.onclick = () => {
-          chart.toggleDataVisibility(item.index);
-          chart.update();
-        };
-
-        // Color box
-        const boxSpan = document.createElement("span");
-        boxSpan.classList.add("mr-2");
-        boxSpan.style.background = item.fillStyle;
-        boxSpan.style.height = "21px";
-        boxSpan.style.width = "9px";
-        boxSpan.style.borderRadius = "5px";
-
-        // Text
-        const textContainer = document.createElement("p");
-        textContainer.classList.add("ma-0", "pa-0");
-        textContainer.style.textDecoration = item.hidden ? "line-through" : "";
-        textContainer.style.fontSize = "14px";
-
-        const text = document.createTextNode(item.text);
-        textContainer.appendChild(text);
-
-        li.appendChild(boxSpan);
-        li.appendChild(textContainer);
-        legendContainer?.appendChild(li);
-      }
+        }
+        break;
+      default:
+        break;
     }
   },
 };
@@ -33707,15 +33830,15 @@ var PieCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=0d59efd2&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=8d4a3d18&scoped=true&
 
 
 
 
 
-var BarCardvue_type_template_id_0d59efd2_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(_vm._s(_vm.title))]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticStyle:{"height":"100%"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+var BarCardvue_type_template_id_8d4a3d18_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(_vm._s(_vm.title))]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticClass:"d-flex flex-row justify-space-between",staticStyle:{"height":"21px"},attrs:{"id":"bar-legend-container"}}),_c('div',{staticStyle:{"height":"calc(100% - 21px)"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
 }
-var BarCardvue_type_template_id_0d59efd2_scoped_true_staticRenderFns = []
+var BarCardvue_type_template_id_8d4a3d18_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -33906,7 +34029,7 @@ Chart.register(
         },
         plugins: {
           legend: {
-            display: true,
+            display: false,
             align: "start",
             labels: {
               color: "#214353",
@@ -34028,15 +34151,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=0d59efd2&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=8d4a3d18&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=0d59efd2&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=8d4a3d18&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=0d59efd2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=8d4a3d18&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=0d59efd2&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=8d4a3d18&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -34050,11 +34173,11 @@ Chart.register(
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_0d59efd2_scoped_true_render,
-  BarCardvue_type_template_id_0d59efd2_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_8d4a3d18_scoped_true_render,
+  BarCardvue_type_template_id_8d4a3d18_scoped_true_staticRenderFns,
   false,
   null,
-  "0d59efd2",
+  "8d4a3d18",
   null
   
 )

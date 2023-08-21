@@ -63,56 +63,179 @@ export const customBackgroundPlugin = {
 export const customLegendPlugin = {
   id: "htmlLegend",
   afterUpdate: (chart) => {
-    if (["bar", "line"].includes(chart.config.type) && chart.legend) {
-      if (["bar-chart-id", "line-chart-id"].includes(chart.config.options.id)) {
-        //console.log(chart);
-        chart.legend.left = chart.chartArea.left - 10;
-        chart.legend.legendItems.forEach((b) => {
-          if (b.strokeStyle != "rgba(0,0,0,0)") {
+    switch (chart.config.type) {
+      case "bar":
+        if (chart.config.options.id === "bar-chart-id") {
+          const legendContainer = document.querySelector(
+            "#bar-legend-container"
+          );
+          const { chartArea } = chart;
+          legendContainer.style.marginLeft = `${chartArea.left}px`;
+          legendContainer.style.width = `${chartArea.width}px`;
+          while (legendContainer?.firstChild)
+            legendContainer.firstChild?.remove();
+          const rightBox = document.createElement("div");
+          const leftBox = document.createElement("div");
+          [rightBox, leftBox].forEach((box) => {
+            box.classList.add("d-flex", "flex-row");
+          });
+
+          const items = chart.config.data.datasets;
+          const itemsBis =
+            chart.options.plugins?.legend?.labels?.generateLabels(chart);
+          itemsBis.forEach((b) => {
+            if (b.strokeStyle != "rgba(0,0,0,0)") {
+              b.fillStyle = b.strokeStyle;
+              b.strokeStyle = "rgba(0,0,0,0)";
+            }
+          });
+          const [leftIems, rightItems] = [[], []];
+          items.forEach((i) => {
+            if (i.yAxisID === "y2")
+              rightItems.push(itemsBis.find((it) => it.text === i.label));
+            else leftIems.push(itemsBis.find((it) => it.text === i.label));
+          });
+
+          // left legend
+          for (const item of leftIems) {
+            const li = document.createElement("li");
+            li.classList.add("d-flex", "flex-row", "mr-3");
+            li.style.cursor = "pointer";
+            li.style.color = item.fontColor;
+
+            li.onclick = () => {
+              chart.setDatasetVisibility(
+                item.datasetIndex,
+                !chart.isDatasetVisible(item.datasetIndex)
+              );
+              chart.update();
+            };
+
+            // Color box
+            const boxSpan = document.createElement("span");
+            boxSpan.classList.add("mr-2");
+            boxSpan.style.background = item.fillStyle;
+            boxSpan.style.height = "21px";
+            boxSpan.style.width = "9px";
+            boxSpan.style.border = item.strokeStyle;
+            boxSpan.style.borderRadius = `${item.borderRadius}px`;
+
+            // Text
+            const textContainer = document.createElement("p");
+            textContainer.classList.add("ma-0", "pa-0");
+            textContainer.style.textDecoration = item.hidden
+              ? "line-through"
+              : "";
+            textContainer.style.fontSize = "14px";
+
+            const text = document.createTextNode(item.text);
+            textContainer.appendChild(text);
+
+            li.appendChild(boxSpan);
+            li.appendChild(textContainer);
+            leftBox.appendChild(li);
+          }
+
+          // right legend
+          for (const item of rightItems) {
+            const li = document.createElement("li");
+            li.classList.add("d-flex", "flex-row", "ml-3");
+            li.style.cursor = "pointer";
+            li.style.color = item.fontColor;
+
+            li.onclick = () => {
+              chart.setDatasetVisibility(
+                item.datasetIndex,
+                !chart.isDatasetVisible(item.datasetIndex)
+              );
+              chart.update();
+            };
+
+            // Color box
+            const boxSpan = document.createElement("span");
+            boxSpan.classList.add("mr-2");
+            boxSpan.style.background = item.fillStyle;
+            boxSpan.style.height = "21px";
+            boxSpan.style.width = "9px";
+            boxSpan.style.border = item.strokeStyle;
+            boxSpan.style.borderRadius = `${item.borderRadius}px`;
+
+            // Text
+            const textContainer = document.createElement("p");
+            textContainer.classList.add("ma-0", "pa-0");
+            textContainer.style.textDecoration = item.hidden
+              ? "line-through"
+              : "";
+            textContainer.style.fontSize = "14px";
+
+            const text = document.createTextNode(item.text);
+            textContainer.appendChild(text);
+
+            li.appendChild(boxSpan);
+            li.appendChild(textContainer);
+            rightBox.appendChild(li);
+          }
+          legendContainer?.appendChild(leftBox);
+          legendContainer?.appendChild(rightBox);
+        }
+        break;
+      case "line":
+        if (chart.config.options.id === "line-chart-id") {
+          chart.legend.left = chart.chartArea.left - 10;
+          chart.legend.legendItems.forEach((b) => {
             b.fillStyle = b.strokeStyle;
             b.strokeStyle = "rgba(0,0,0,0)";
+          });
+        }
+        break;
+      case "pie":
+      case "doughnut":
+        if (chart.config.options.id === "pie-chart-id") {
+          const legendContainer =
+            chart.canvas.parentElement?.parentNode?.lastChild;
+          while (legendContainer?.firstChild)
+            legendContainer.firstChild?.remove();
+          const items =
+            chart.options.plugins?.legend?.labels?.generateLabels(chart);
+
+          for (const item of items) {
+            const li = document.createElement("li");
+            li.classList.add("d-flex", "flex-row", "ma-3");
+            li.style.cursor = "pointer";
+            li.style.color = "#214353";
+
+            li.onclick = () => {
+              chart.toggleDataVisibility(item.index);
+              chart.update();
+            };
+
+            // Color box
+            const boxSpan = document.createElement("span");
+            boxSpan.classList.add("mr-2");
+            boxSpan.style.background = item.fillStyle;
+            boxSpan.style.height = "21px";
+            boxSpan.style.width = "9px";
+            boxSpan.style.borderRadius = "5px";
+
+            // Text
+            const textContainer = document.createElement("p");
+            textContainer.classList.add("ma-0", "pa-0");
+            textContainer.style.textDecoration = item.hidden
+              ? "line-through"
+              : "";
+            textContainer.style.fontSize = "14px";
+
+            const text = document.createTextNode(item.text);
+            textContainer.appendChild(text);
+
+            li.appendChild(boxSpan);
+            li.appendChild(textContainer);
+            legendContainer?.appendChild(li);
           }
-        });
-      }
-    } else if (chart.config.type === "pie") {
-      if (chart.config.options.id !== "pie-chart-id") return;
-      const legendContainer = chart.canvas.parentElement?.parentNode?.lastChild;
-      while (legendContainer?.firstChild) legendContainer.firstChild?.remove();
-      const items =
-        chart.options.plugins?.legend?.labels?.generateLabels(chart);
-
-      for (const item of items) {
-        const li = document.createElement("li");
-        li.classList.add("d-flex", "flex-row", "ma-3");
-        li.style.cursor = "pointer";
-        li.style.color = "#214353";
-
-        li.onclick = () => {
-          chart.toggleDataVisibility(item.index);
-          chart.update();
-        };
-
-        // Color box
-        const boxSpan = document.createElement("span");
-        boxSpan.classList.add("mr-2");
-        boxSpan.style.background = item.fillStyle;
-        boxSpan.style.height = "21px";
-        boxSpan.style.width = "9px";
-        boxSpan.style.borderRadius = "5px";
-
-        // Text
-        const textContainer = document.createElement("p");
-        textContainer.classList.add("ma-0", "pa-0");
-        textContainer.style.textDecoration = item.hidden ? "line-through" : "";
-        textContainer.style.fontSize = "14px";
-
-        const text = document.createTextNode(item.text);
-        textContainer.appendChild(text);
-
-        li.appendChild(boxSpan);
-        li.appendChild(textContainer);
-        legendContainer?.appendChild(li);
-      }
+        }
+        break;
+      default:
+        break;
     }
   },
 };

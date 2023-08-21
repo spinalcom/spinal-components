@@ -1,25 +1,11 @@
 <template>
   <v-app id="application">
-    <div class="ma-5 d-flex flex-column" style="height: 100%">
-      <line-card
-        style="height: 49%"
-        fill
-        nav-enabled
-        switch-enabled
-        :stacked="stacked"
-        nav-text="navigation"
-        switch-false-icon="1"
-        switch-true-icon="mdi-percent"
-        :switch-value.sync="switchVal"
-        :labels="
-          Array(7)
-            .fill(0)
-            .map((e, h) => h)
-        "
-        :datasets="lineDatas"
-      ></line-card>
+    <div
+      class="ma-5 d-flex flex-column justify-space-between"
+      style="height: 100%"
+    >
       <bar-card
-        style="height: 49%; width: 100%"
+        style="height: calc(50% - 4px); width: 100%"
         :labels="barLabels"
         :datasets="barDatas"
         :line-datasets="barLineDatas"
@@ -27,6 +13,17 @@
         nav-text="navigation"
         :units="{ line: 'h' }"
       ></bar-card>
+      <div
+        class="d-flex flex-row justify-space-between"
+        style="height: calc(50% - 4px); width: 100%"
+      >
+        <pie-card :pieChartData="pie" style="width: calc(40% - 4px)"></pie-card>
+        <line-card
+          :datasets="lineDatas"
+          :labels="barLabels"
+          style="width: calc(60% - 4px)"
+        ></line-card>
+      </div>
     </div>
   </v-app>
 </template>
@@ -51,8 +48,9 @@ export default {
   name: "App",
 
   components: {
-    LineCard,
     BarCard,
+    PieCard,
+    LineCard,
   },
 
   data: () => ({
@@ -159,9 +157,9 @@ export default {
       { label: "je m'en moque", value: 58 },
       { label: "serieux ?", value: 60 },
       { label: "Qui as dit ça ?", value: 69 },
-      { label: "je m'en moque", value: 58 },
-      { label: "serieux ?", value: 60 },
-      { label: "Qui as dit ça ?", value: 69 },
+      { label: "je m'en moque", value: 85 },
+      { label: "serieux ?", value: 50 },
+      { label: "Qui as dit ça ?", value: 66 },
     ],
     barLabels: [
       "Lundi",
@@ -177,11 +175,19 @@ export default {
         label: "Km marchés",
         data: [10, 6, 11, 8, 18, 7, 1],
       },
+      {
+        label: "Km en velo",
+        data: [5, 6, 2, 2, 3, 9, 1],
+      },
     ],
     barLineDatas: [
       {
         label: "Km parcourus",
         data: [15, 12, 13, 10, 21, NaN, 2],
+      },
+      {
+        label: "Km marchées",
+        data: [10, 6, 11, 8, 18, 7, 1],
       },
     ],
     lineDatas: [
