@@ -10,6 +10,7 @@
         :datasets="barDatas"
         :line-datasets="barLineDatas"
         nav-enabled
+        switch-enabled
         nav-text="navigation"
         :units="{ line: 'h' }"
       ></bar-card>

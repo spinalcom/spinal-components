@@ -33848,15 +33848,1161 @@ var PieCard_component = normalizeComponent(
 )
 
 /* harmony default export */ var PieCard = (PieCard_component.exports);
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=8d4a3d18&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/styles/components/_selection-controls.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSwitch/VSwitch.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VInput/VInput.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VIcon/index.js
+
+
+/* harmony default export */ var components_VIcon = (VIcon_VIcon);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VLabel/VLabel.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VLabel/VLabel.js
+// Styles
+ // Mixins
+
+
+
+ // Helpers
+
+
+
+/* @vue/component */
+
+/* harmony default export */ var VLabel = (mixins(themeable).extend({
+  name: 'v-label',
+  functional: true,
+  props: {
+    absolute: Boolean,
+    color: {
+      type: String,
+      default: 'primary'
+    },
+    disabled: Boolean,
+    focused: Boolean,
+    for: String,
+    left: {
+      type: [Number, String],
+      default: 0
+    },
+    right: {
+      type: [Number, String],
+      default: 'auto'
+    },
+    value: Boolean
+  },
+
+  render(h, ctx) {
+    const {
+      children,
+      listeners,
+      props,
+      data
+    } = ctx;
+    const newData = mergeData({
+      staticClass: 'v-label',
+      class: {
+        'v-label--active': props.value,
+        'v-label--is-disabled': props.disabled,
+        ...functionalThemeClasses(ctx)
+      },
+      attrs: {
+        for: props.for,
+        'aria-hidden': !props.for
+      },
+      on: listeners,
+      style: {
+        left: convertToUnit(props.left),
+        right: convertToUnit(props.right),
+        position: props.absolute ? 'absolute' : 'relative'
+      },
+      ref: 'label'
+    }, data);
+    return h('label', colorable.options.methods.setTextColor(props.focused && props.color, newData), children);
+  }
+
+}));
+//# sourceMappingURL=VLabel.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VLabel/index.js
+
+
+/* harmony default export */ var components_VLabel = (VLabel);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VMessages/VMessages.sass
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VMessages/VMessages.js
+// Styles
+ // Mixins
+
+
+
+ // Utilities
+
+
+/* @vue/component */
+
+/* harmony default export */ var VMessages = (mixins(colorable, themeable).extend({
+  name: 'v-messages',
+  props: {
+    value: {
+      type: Array,
+      default: () => []
+    }
+  },
+  methods: {
+    genChildren() {
+      return this.$createElement('transition-group', {
+        staticClass: 'v-messages__wrapper',
+        attrs: {
+          name: 'message-transition',
+          tag: 'div'
+        }
+      }, this.value.map(this.genMessage));
+    },
+
+    genMessage(message, key) {
+      return this.$createElement('div', {
+        staticClass: 'v-messages__message',
+        key
+      }, getSlot(this, 'default', {
+        message,
+        key
+      }) || [message]);
+    }
+
+  },
+
+  render(h) {
+    return h('div', this.setTextColor(this.color, {
+      staticClass: 'v-messages',
+      class: this.themeClasses
+    }), [this.genChildren()]);
+  }
+
+}));
+//# sourceMappingURL=VMessages.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VMessages/index.js
+
+
+/* harmony default export */ var components_VMessages = (VMessages);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/validatable/index.js
+// Mixins
+
+
+ // Utilities
 
 
 
 
+const validatable_baseMixins = mixins(colorable, inject('form'), themeable);
+/* @vue/component */
 
-var BarCardvue_type_template_id_8d4a3d18_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(_vm._s(_vm.title))]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticClass:"d-flex flex-row justify-space-between",staticStyle:{"height":"21px"},attrs:{"id":"bar-legend-container"}}),_c('div',{staticStyle:{"height":"calc(100% - 21px)"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+/* harmony default export */ var validatable = (validatable_baseMixins.extend({
+  name: 'validatable',
+  props: {
+    disabled: Boolean,
+    error: Boolean,
+    errorCount: {
+      type: [Number, String],
+      default: 1
+    },
+    errorMessages: {
+      type: [String, Array],
+      default: () => []
+    },
+    messages: {
+      type: [String, Array],
+      default: () => []
+    },
+    readonly: Boolean,
+    rules: {
+      type: Array,
+      default: () => []
+    },
+    success: Boolean,
+    successMessages: {
+      type: [String, Array],
+      default: () => []
+    },
+    validateOnBlur: Boolean,
+    value: {
+      required: false
+    }
+  },
+
+  data() {
+    return {
+      errorBucket: [],
+      hasColor: false,
+      hasFocused: false,
+      hasInput: false,
+      isFocused: false,
+      isResetting: false,
+      lazyValue: this.value,
+      valid: false
+    };
+  },
+
+  computed: {
+    computedColor() {
+      if (this.isDisabled) return undefined;
+      if (this.color) return this.color; // It's assumed that if the input is on a
+      // dark background, the user will want to
+      // have a white color. If the entire app
+      // is setup to be dark, then they will
+      // like want to use their primary color
+
+      if (this.isDark && !this.appIsDark) return 'white';else return 'primary';
+    },
+
+    hasError() {
+      return this.internalErrorMessages.length > 0 || this.errorBucket.length > 0 || this.error;
+    },
+
+    // TODO: Add logic that allows the user to enable based
+    // upon a good validation
+    hasSuccess() {
+      return this.internalSuccessMessages.length > 0 || this.success;
+    },
+
+    externalError() {
+      return this.internalErrorMessages.length > 0 || this.error;
+    },
+
+    hasMessages() {
+      return this.validationTarget.length > 0;
+    },
+
+    hasState() {
+      if (this.isDisabled) return false;
+      return this.hasSuccess || this.shouldValidate && this.hasError;
+    },
+
+    internalErrorMessages() {
+      return this.genInternalMessages(this.errorMessages);
+    },
+
+    internalMessages() {
+      return this.genInternalMessages(this.messages);
+    },
+
+    internalSuccessMessages() {
+      return this.genInternalMessages(this.successMessages);
+    },
+
+    internalValue: {
+      get() {
+        return this.lazyValue;
+      },
+
+      set(val) {
+        this.lazyValue = val;
+        this.$emit('input', val);
+      }
+
+    },
+
+    isDisabled() {
+      return this.disabled || !!this.form && this.form.disabled;
+    },
+
+    isInteractive() {
+      return !this.isDisabled && !this.isReadonly;
+    },
+
+    isReadonly() {
+      return this.readonly || !!this.form && this.form.readonly;
+    },
+
+    shouldValidate() {
+      if (this.externalError) return true;
+      if (this.isResetting) return false;
+      return this.validateOnBlur ? this.hasFocused && !this.isFocused : this.hasInput || this.hasFocused;
+    },
+
+    validations() {
+      return this.validationTarget.slice(0, Number(this.errorCount));
+    },
+
+    validationState() {
+      if (this.isDisabled) return undefined;
+      if (this.hasError && this.shouldValidate) return 'error';
+      if (this.hasSuccess) return 'success';
+      if (this.hasColor) return this.computedColor;
+      return undefined;
+    },
+
+    validationTarget() {
+      if (this.internalErrorMessages.length > 0) {
+        return this.internalErrorMessages;
+      } else if (this.successMessages && this.successMessages.length > 0) {
+        return this.internalSuccessMessages;
+      } else if (this.messages && this.messages.length > 0) {
+        return this.internalMessages;
+      } else if (this.shouldValidate) {
+        return this.errorBucket;
+      } else return [];
+    }
+
+  },
+  watch: {
+    rules: {
+      handler(newVal, oldVal) {
+        if (deepEqual(newVal, oldVal)) return;
+        this.validate();
+      },
+
+      deep: true
+    },
+
+    internalValue() {
+      // If it's the first time we're setting input,
+      // mark it with hasInput
+      this.hasInput = true;
+      this.validateOnBlur || this.$nextTick(this.validate);
+    },
+
+    isFocused(val) {
+      // Should not check validation
+      // if disabled
+      if (!val && !this.isDisabled) {
+        this.hasFocused = true;
+        this.validateOnBlur && this.$nextTick(this.validate);
+      }
+    },
+
+    isResetting() {
+      setTimeout(() => {
+        this.hasInput = false;
+        this.hasFocused = false;
+        this.isResetting = false;
+        this.validate();
+      }, 0);
+    },
+
+    hasError(val) {
+      if (this.shouldValidate) {
+        this.$emit('update:error', val);
+      }
+    },
+
+    value(val) {
+      this.lazyValue = val;
+    }
+
+  },
+
+  beforeMount() {
+    this.validate();
+  },
+
+  created() {
+    this.form && this.form.register(this);
+  },
+
+  beforeDestroy() {
+    this.form && this.form.unregister(this);
+  },
+
+  methods: {
+    genInternalMessages(messages) {
+      if (!messages) return [];else if (Array.isArray(messages)) return messages;else return [messages];
+    },
+
+    /** @public */
+    reset() {
+      this.isResetting = true;
+      this.internalValue = Array.isArray(this.internalValue) ? [] : null;
+    },
+
+    /** @public */
+    resetValidation() {
+      this.isResetting = true;
+    },
+
+    /** @public */
+    validate(force = false, value) {
+      const errorBucket = [];
+      value = value || this.internalValue;
+      if (force) this.hasInput = this.hasFocused = true;
+
+      for (let index = 0; index < this.rules.length; index++) {
+        const rule = this.rules[index];
+        const valid = typeof rule === 'function' ? rule(value) : rule;
+
+        if (valid === false || typeof valid === 'string') {
+          errorBucket.push(valid || '');
+        } else if (typeof valid !== 'boolean') {
+          consoleError(`Rules should return a string or boolean, received '${typeof valid}' instead`, this);
+        }
+      }
+
+      this.errorBucket = errorBucket;
+      this.valid = errorBucket.length === 0;
+      return this.valid;
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VInput/VInput.js
+// Styles
+ // Components
+
+
+
+ // Mixins
+
+
+ // Utilities
+
+
+
+
+const VInput_baseMixins = mixins(binds_attrs, validatable);
+/* @vue/component */
+
+/* harmony default export */ var VInput = (VInput_baseMixins.extend().extend({
+  name: 'v-input',
+  inheritAttrs: false,
+  props: {
+    appendIcon: String,
+    backgroundColor: {
+      type: String,
+      default: ''
+    },
+    dense: Boolean,
+    height: [Number, String],
+    hideDetails: [Boolean, String],
+    hideSpinButtons: Boolean,
+    hint: String,
+    id: String,
+    label: String,
+    loading: Boolean,
+    persistentHint: Boolean,
+    prependIcon: String,
+    value: null
+  },
+
+  data() {
+    return {
+      lazyValue: this.value,
+      hasMouseDown: false
+    };
+  },
+
+  computed: {
+    classes() {
+      return {
+        'v-input--has-state': this.hasState,
+        'v-input--hide-details': !this.showDetails,
+        'v-input--is-label-active': this.isLabelActive,
+        'v-input--is-dirty': this.isDirty,
+        'v-input--is-disabled': this.isDisabled,
+        'v-input--is-focused': this.isFocused,
+        // <v-switch loading>.loading === '' so we can't just cast to boolean
+        'v-input--is-loading': this.loading !== false && this.loading != null,
+        'v-input--is-readonly': this.isReadonly,
+        'v-input--dense': this.dense,
+        'v-input--hide-spin-buttons': this.hideSpinButtons,
+        ...this.themeClasses
+      };
+    },
+
+    computedId() {
+      return this.id || `input-${this._uid}`;
+    },
+
+    hasDetails() {
+      return this.messagesToDisplay.length > 0;
+    },
+
+    hasHint() {
+      return !this.hasMessages && !!this.hint && (this.persistentHint || this.isFocused);
+    },
+
+    hasLabel() {
+      return !!(this.$slots.label || this.label);
+    },
+
+    // Proxy for `lazyValue`
+    // This allows an input
+    // to function without
+    // a provided model
+    internalValue: {
+      get() {
+        return this.lazyValue;
+      },
+
+      set(val) {
+        this.lazyValue = val;
+        this.$emit(this.$_modelEvent, val);
+      }
+
+    },
+
+    isDirty() {
+      return !!this.lazyValue;
+    },
+
+    isLabelActive() {
+      return this.isDirty;
+    },
+
+    messagesToDisplay() {
+      if (this.hasHint) return [this.hint];
+      if (!this.hasMessages) return [];
+      return this.validations.map(validation => {
+        if (typeof validation === 'string') return validation;
+        const validationResult = validation(this.internalValue);
+        return typeof validationResult === 'string' ? validationResult : '';
+      }).filter(message => message !== '');
+    },
+
+    showDetails() {
+      return this.hideDetails === false || this.hideDetails === 'auto' && this.hasDetails;
+    }
+
+  },
+  watch: {
+    value(val) {
+      this.lazyValue = val;
+    }
+
+  },
+
+  beforeCreate() {
+    // v-radio-group needs to emit a different event
+    // https://github.com/vuetifyjs/vuetify/issues/4752
+    this.$_modelEvent = this.$options.model && this.$options.model.event || 'input';
+  },
+
+  methods: {
+    genContent() {
+      return [this.genPrependSlot(), this.genControl(), this.genAppendSlot()];
+    },
+
+    genControl() {
+      return this.$createElement('div', {
+        staticClass: 'v-input__control',
+        attrs: {
+          title: this.attrs$.title
+        }
+      }, [this.genInputSlot(), this.genMessages()]);
+    },
+
+    genDefaultSlot() {
+      return [this.genLabel(), this.$slots.default];
+    },
+
+    genIcon(type, cb, extraData = {}) {
+      const icon = this[`${type}Icon`];
+      const eventName = `click:${kebabCase(type)}`;
+      const hasListener = !!(this.listeners$[eventName] || cb);
+      const data = mergeData({
+        attrs: {
+          'aria-label': hasListener ? kebabCase(type).split('-')[0] + ' icon' : undefined,
+          color: this.validationState,
+          dark: this.dark,
+          disabled: this.isDisabled,
+          light: this.light,
+          tabindex: type === 'clear' ? -1 : undefined
+        },
+        on: !hasListener ? undefined : {
+          click: e => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.$emit(eventName, e);
+            cb && cb(e);
+          },
+          // Container has g event that will
+          // trigger menu open if enclosed
+          mouseup: e => {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+      }, extraData);
+      return this.$createElement('div', {
+        staticClass: `v-input__icon`,
+        class: type ? `v-input__icon--${kebabCase(type)}` : undefined
+      }, [this.$createElement(components_VIcon, data, icon)]);
+    },
+
+    genInputSlot() {
+      return this.$createElement('div', this.setBackgroundColor(this.backgroundColor, {
+        staticClass: 'v-input__slot',
+        style: {
+          height: convertToUnit(this.height)
+        },
+        on: {
+          click: this.onClick,
+          mousedown: this.onMouseDown,
+          mouseup: this.onMouseUp
+        },
+        ref: 'input-slot'
+      }), [this.genDefaultSlot()]);
+    },
+
+    genLabel() {
+      if (!this.hasLabel) return null;
+      return this.$createElement(components_VLabel, {
+        props: {
+          color: this.validationState,
+          dark: this.dark,
+          disabled: this.isDisabled,
+          focused: this.hasState,
+          for: this.computedId,
+          light: this.light
+        }
+      }, this.$slots.label || this.label);
+    },
+
+    genMessages() {
+      if (!this.showDetails) return null;
+      return this.$createElement(components_VMessages, {
+        props: {
+          color: this.hasHint ? '' : this.validationState,
+          dark: this.dark,
+          light: this.light,
+          value: this.messagesToDisplay
+        },
+        attrs: {
+          role: this.hasMessages ? 'alert' : null
+        },
+        scopedSlots: {
+          default: props => getSlot(this, 'message', props)
+        }
+      });
+    },
+
+    genSlot(type, location, slot) {
+      if (!slot.length) return null;
+      const ref = `${type}-${location}`;
+      return this.$createElement('div', {
+        staticClass: `v-input__${ref}`,
+        ref
+      }, slot);
+    },
+
+    genPrependSlot() {
+      const slot = [];
+
+      if (this.$slots.prepend) {
+        slot.push(this.$slots.prepend);
+      } else if (this.prependIcon) {
+        slot.push(this.genIcon('prepend'));
+      }
+
+      return this.genSlot('prepend', 'outer', slot);
+    },
+
+    genAppendSlot() {
+      const slot = []; // Append icon for text field was really
+      // an appended inner icon, v-text-field
+      // will overwrite this method in order to obtain
+      // backwards compat
+
+      if (this.$slots.append) {
+        slot.push(this.$slots.append);
+      } else if (this.appendIcon) {
+        slot.push(this.genIcon('append'));
+      }
+
+      return this.genSlot('append', 'outer', slot);
+    },
+
+    onClick(e) {
+      this.$emit('click', e);
+    },
+
+    onMouseDown(e) {
+      this.hasMouseDown = true;
+      this.$emit('mousedown', e);
+    },
+
+    onMouseUp(e) {
+      this.hasMouseDown = false;
+      this.$emit('mouseup', e);
+    }
+
+  },
+
+  render(h) {
+    return h('div', this.setTextColor(this.validationState, {
+      staticClass: 'v-input',
+      class: this.classes
+    }), this.genContent());
+  }
+
+}));
+//# sourceMappingURL=VInput.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VInput/index.js
+
+
+/* harmony default export */ var components_VInput = (VInput);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/rippleable/index.js
+// Directives
+ // Types
+
+
+/* harmony default export */ var rippleable = (external_commonjs_vue_commonjs2_vue_root_Vue_default().extend({
+  name: 'rippleable',
+  directives: {
+    ripple: directives_ripple
+  },
+  props: {
+    ripple: {
+      type: [Boolean, Object],
+      default: true
+    }
+  },
+  methods: {
+    genRipple(data = {}) {
+      if (!this.ripple) return null;
+      data.staticClass = 'v-input--selection-controls__ripple';
+      data.directives = data.directives || [];
+      data.directives.push({
+        name: 'ripple',
+        value: {
+          center: true
+        }
+      });
+      return this.$createElement('div', data);
+    }
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/comparable/index.js
+
+
+/* harmony default export */ var comparable = (external_commonjs_vue_commonjs2_vue_root_Vue_default().extend({
+  name: 'comparable',
+  props: {
+    valueComparator: {
+      type: Function,
+      default: deepEqual
+    }
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/selectable/index.js
+// Components
+ // Mixins
+
+
+ // Utilities
+
+
+function prevent(e) {
+  e.preventDefault();
 }
-var BarCardvue_type_template_id_8d4a3d18_scoped_true_staticRenderFns = []
+/* @vue/component */
+
+/* harmony default export */ var selectable = (mixins(components_VInput, rippleable, comparable).extend({
+  name: 'selectable',
+  model: {
+    prop: 'inputValue',
+    event: 'change'
+  },
+  props: {
+    id: String,
+    inputValue: null,
+    falseValue: null,
+    trueValue: null,
+    multiple: {
+      type: Boolean,
+      default: null
+    },
+    label: String
+  },
+
+  data() {
+    return {
+      hasColor: this.inputValue,
+      lazyValue: this.inputValue
+    };
+  },
+
+  computed: {
+    computedColor() {
+      if (!this.isActive) return undefined;
+      if (this.color) return this.color;
+      if (this.isDark && !this.appIsDark) return 'white';
+      return 'primary';
+    },
+
+    isMultiple() {
+      return this.multiple === true || this.multiple === null && Array.isArray(this.internalValue);
+    },
+
+    isActive() {
+      const value = this.value;
+      const input = this.internalValue;
+
+      if (this.isMultiple) {
+        if (!Array.isArray(input)) return false;
+        return input.some(item => this.valueComparator(item, value));
+      }
+
+      if (this.trueValue === undefined || this.falseValue === undefined) {
+        return value ? this.valueComparator(value, input) : Boolean(input);
+      }
+
+      return this.valueComparator(input, this.trueValue);
+    },
+
+    isDirty() {
+      return this.isActive;
+    },
+
+    rippleState() {
+      return !this.isDisabled && !this.validationState ? undefined : this.validationState;
+    }
+
+  },
+  watch: {
+    inputValue(val) {
+      this.lazyValue = val;
+      this.hasColor = val;
+    }
+
+  },
+  methods: {
+    genLabel() {
+      const label = components_VInput.options.methods.genLabel.call(this);
+      if (!label) return label;
+      label.data.on = {
+        // Label shouldn't cause the input to focus
+        click: prevent
+      };
+      return label;
+    },
+
+    genInput(type, attrs) {
+      return this.$createElement('input', {
+        attrs: Object.assign({
+          'aria-checked': this.isActive.toString(),
+          disabled: this.isDisabled,
+          id: this.computedId,
+          role: type,
+          type
+        }, attrs),
+        domProps: {
+          value: this.value,
+          checked: this.isActive
+        },
+        on: {
+          blur: this.onBlur,
+          change: this.onChange,
+          focus: this.onFocus,
+          keydown: this.onKeydown,
+          click: prevent
+        },
+        ref: 'input'
+      });
+    },
+
+    onClick(e) {
+      this.onChange();
+      this.$emit('click', e);
+    },
+
+    onChange() {
+      if (!this.isInteractive) return;
+      const value = this.value;
+      let input = this.internalValue;
+
+      if (this.isMultiple) {
+        if (!Array.isArray(input)) {
+          input = [];
+        }
+
+        const length = input.length;
+        input = input.filter(item => !this.valueComparator(item, value));
+
+        if (input.length === length) {
+          input.push(value);
+        }
+      } else if (this.trueValue !== undefined && this.falseValue !== undefined) {
+        input = this.valueComparator(input, this.trueValue) ? this.falseValue : this.trueValue;
+      } else if (value) {
+        input = this.valueComparator(input, value) ? null : value;
+      } else {
+        input = !input;
+      }
+
+      this.validate(true, input);
+      this.internalValue = input;
+      this.hasColor = input;
+    },
+
+    onFocus(e) {
+      this.isFocused = true;
+      this.$emit('focus', e);
+    },
+
+    onBlur(e) {
+      this.isFocused = false;
+      this.$emit('blur', e);
+    },
+
+    /** @abstract */
+    onKeydown(e) {}
+
+  }
+}));
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/directives/touch/index.js
+
+
+const handleGesture = wrapper => {
+  const {
+    touchstartX,
+    touchendX,
+    touchstartY,
+    touchendY
+  } = wrapper;
+  const dirRatio = 0.5;
+  const minDistance = 16;
+  wrapper.offsetX = touchendX - touchstartX;
+  wrapper.offsetY = touchendY - touchstartY;
+
+  if (Math.abs(wrapper.offsetY) < dirRatio * Math.abs(wrapper.offsetX)) {
+    wrapper.left && touchendX < touchstartX - minDistance && wrapper.left(wrapper);
+    wrapper.right && touchendX > touchstartX + minDistance && wrapper.right(wrapper);
+  }
+
+  if (Math.abs(wrapper.offsetX) < dirRatio * Math.abs(wrapper.offsetY)) {
+    wrapper.up && touchendY < touchstartY - minDistance && wrapper.up(wrapper);
+    wrapper.down && touchendY > touchstartY + minDistance && wrapper.down(wrapper);
+  }
+};
+
+function touchstart(event, wrapper) {
+  const touch = event.changedTouches[0];
+  wrapper.touchstartX = touch.clientX;
+  wrapper.touchstartY = touch.clientY;
+  wrapper.start && wrapper.start(Object.assign(event, wrapper));
+}
+
+function touchend(event, wrapper) {
+  const touch = event.changedTouches[0];
+  wrapper.touchendX = touch.clientX;
+  wrapper.touchendY = touch.clientY;
+  wrapper.end && wrapper.end(Object.assign(event, wrapper));
+  handleGesture(wrapper);
+}
+
+function touchmove(event, wrapper) {
+  const touch = event.changedTouches[0];
+  wrapper.touchmoveX = touch.clientX;
+  wrapper.touchmoveY = touch.clientY;
+  wrapper.move && wrapper.move(Object.assign(event, wrapper));
+}
+
+function createHandlers(value) {
+  const wrapper = {
+    touchstartX: 0,
+    touchstartY: 0,
+    touchendX: 0,
+    touchendY: 0,
+    touchmoveX: 0,
+    touchmoveY: 0,
+    offsetX: 0,
+    offsetY: 0,
+    left: value.left,
+    right: value.right,
+    up: value.up,
+    down: value.down,
+    start: value.start,
+    move: value.move,
+    end: value.end
+  };
+  return {
+    touchstart: e => touchstart(e, wrapper),
+    touchend: e => touchend(e, wrapper),
+    touchmove: e => touchmove(e, wrapper)
+  };
+}
+
+function touch_inserted(el, binding, vnode) {
+  const value = binding.value;
+  const target = value.parent ? el.parentElement : el;
+  const options = value.options || {
+    passive: true
+  }; // Needed to pass unit tests
+
+  if (!target) return;
+  const handlers = createHandlers(binding.value);
+  target._touchHandlers = Object(target._touchHandlers);
+  target._touchHandlers[vnode.context._uid] = handlers;
+  keys(handlers).forEach(eventName => {
+    target.addEventListener(eventName, handlers[eventName], options);
+  });
+}
+
+function touch_unbind(el, binding, vnode) {
+  const target = binding.value.parent ? el.parentElement : el;
+  if (!target || !target._touchHandlers) return;
+  const handlers = target._touchHandlers[vnode.context._uid];
+  keys(handlers).forEach(eventName => {
+    target.removeEventListener(eventName, handlers[eventName]);
+  });
+  delete target._touchHandlers[vnode.context._uid];
+}
+
+const Touch = {
+  inserted: touch_inserted,
+  unbind: touch_unbind
+};
+/* harmony default export */ var touch = (Touch);
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSwitch/VSwitch.js
+// Styles
+
+ // Mixins
+
+
+ // Directives
+
+ // Components
+
+
+ // Helpers
+
+
+/* @vue/component */
+
+/* harmony default export */ var VSwitch = (selectable.extend({
+  name: 'v-switch',
+  directives: {
+    Touch: touch
+  },
+  props: {
+    inset: Boolean,
+    loading: {
+      type: [Boolean, String],
+      default: false
+    },
+    flat: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classes() {
+      return { ...components_VInput.options.computed.classes.call(this),
+        'v-input--selection-controls v-input--switch': true,
+        'v-input--switch--flat': this.flat,
+        'v-input--switch--inset': this.inset
+      };
+    },
+
+    attrs() {
+      return {
+        'aria-checked': String(this.isActive),
+        'aria-disabled': String(this.isDisabled),
+        role: 'switch'
+      };
+    },
+
+    // Do not return undefined if disabled,
+    // according to spec, should still show
+    // a color when disabled and active
+    validationState() {
+      if (this.hasError && this.shouldValidate) return 'error';
+      if (this.hasSuccess) return 'success';
+      if (this.hasColor !== null) return this.computedColor;
+      return undefined;
+    },
+
+    switchData() {
+      return this.setTextColor(this.loading ? undefined : this.validationState, {
+        class: this.themeClasses
+      });
+    }
+
+  },
+  methods: {
+    genDefaultSlot() {
+      return [this.genSwitch(), this.genLabel()];
+    },
+
+    genSwitch() {
+      const {
+        title,
+        ...switchAttrs
+      } = this.attrs$;
+      return this.$createElement('div', {
+        staticClass: 'v-input--selection-controls__input'
+      }, [this.genInput('checkbox', { ...this.attrs,
+        ...switchAttrs
+      }), this.genRipple(this.setTextColor(this.validationState, {
+        directives: [{
+          name: 'touch',
+          value: {
+            left: this.onSwipeLeft,
+            right: this.onSwipeRight
+          }
+        }]
+      })), this.$createElement('div', {
+        staticClass: 'v-input--switch__track',
+        ...this.switchData
+      }), this.$createElement('div', {
+        staticClass: 'v-input--switch__thumb',
+        ...this.switchData
+      }, [this.genProgress()])]);
+    },
+
+    genProgress() {
+      return this.$createElement(VFabTransition, {}, [this.loading === false ? null : this.$slots.progress || this.$createElement(VProgressCircular, {
+        props: {
+          color: this.loading === true || this.loading === '' ? this.color || 'primary' : this.loading,
+          size: 16,
+          width: 2,
+          indeterminate: true
+        }
+      })]);
+    },
+
+    onSwipeLeft() {
+      if (this.isActive) this.onChange();
+    },
+
+    onSwipeRight() {
+      if (!this.isActive) this.onChange();
+    },
+
+    onKeydown(e) {
+      if (e.keyCode === keyCodes.left && this.isActive || e.keyCode === keyCodes.right && !this.isActive) this.onChange();
+    }
+
+  }
+}));
+//# sourceMappingURL=VSwitch.js.map
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=template&id=1b808ec4&scoped=true&
+
+
+
+
+
+
+var BarCardvue_type_template_id_1b808ec4_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"bar-card pa-1 rounded-lg d-flex flex-column",staticStyle:{"min-height":"220px !important"},attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(_vm._s(_vm.title))]),_c('div',{staticClass:"d-flex align-center ml-n6",staticStyle:{"position":"absolute","right":"calc(50% - 55px)"}},[(_vm.switchEnabled)?_c('div',{staticClass:"d-flex flex-row justify-space-between"},[_c(VIcon_VIcon,{staticClass:"pr-3",attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchFalseIcon))]),_c(VSwitch,{attrs:{"value":_vm.switchValue,"inset":"","color":"blue-grey","dense":""},on:{"click":function($event){return _vm.switchClicked()}}}),_c(VIcon_VIcon,{attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchTrueIcon))])],1):_vm._e()]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column",staticStyle:{"height":"calc(100% - 56px)"}},[_vm._t("extras"),_c('div',{staticClass:"d-flex flex-row justify-space-between",staticStyle:{"height":"21px"},attrs:{"id":"bar-legend-container"}}),_c('div',{staticStyle:{"height":"calc(100% - 21px)"}},[_c('Bar',{attrs:{"data":_vm.barChartData,"chart-id":'1',"options":_vm.barChartOptions}})],1)],2)],1)
+}
+var BarCardvue_type_template_id_1b808ec4_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=script&lang=js&
@@ -33893,6 +35039,22 @@ Chart.register(
     navText: {
       type: String,
       default: "",
+    },
+    switchEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchValue: {
+      type: Boolean,
+      default: false,
+    },
+    switchFalseIcon: {
+      type: String,
+      default: "mdi-thumb-down",
+    },
+    switchTrueIcon: {
+      type: String,
+      default: "mdi-thumb-up",
     },
 
     step: {
@@ -34086,6 +35248,12 @@ Chart.register(
     },
   },
 
+  methods: {
+    switchClicked() {
+      this.$emit("update:switchValue", !this.switchValue);
+    },
+  },
+
   created() {
     const radius = 4;
     const borderRadius = {
@@ -34169,15 +35337,15 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_BarCardvue_type_script_lang_js_ = (BarCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=8d4a3d18&prod&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=0&id=1b808ec4&prod&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=8d4a3d18&prod&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=0&id=1b808ec4&prod&lang=css&
 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=8d4a3d18&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/BarCard.vue?vue&type=style&index=1&id=1b808ec4&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=8d4a3d18&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/BarCard.vue?vue&type=style&index=1&id=1b808ec4&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/BarCard.vue
 
@@ -34191,11 +35359,11 @@ Chart.register(
 
 var BarCard_component = normalizeComponent(
   components_BarCardvue_type_script_lang_js_,
-  BarCardvue_type_template_id_8d4a3d18_scoped_true_render,
-  BarCardvue_type_template_id_8d4a3d18_scoped_true_staticRenderFns,
+  BarCardvue_type_template_id_1b808ec4_scoped_true_render,
+  BarCardvue_type_template_id_1b808ec4_scoped_true_staticRenderFns,
   false,
   null,
-  "8d4a3d18",
+  "1b808ec4",
   null
   
 )
@@ -34772,11 +35940,6 @@ var DownloadButton_component = normalizeComponent(
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VChip/VChip.sass
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VIcon/index.js
-
-
-/* harmony default export */ var components_VIcon = (VIcon_VIcon);
-//# sourceMappingURL=index.js.map
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VChip/VChip.js
 // Styles
 
@@ -37288,19 +38451,6 @@ const VListGroup_baseMixins = mixins(binds_attrs, bootable, colorable, inject('l
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VItemGroup/VItemGroup.sass
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/comparable/index.js
-
-
-/* harmony default export */ var comparable = (external_commonjs_vue_commonjs2_vue_root_Vue_default().extend({
-  name: 'comparable',
-  props: {
-    valueComparator: {
-      type: Function,
-      default: deepEqual
-    }
-  }
-}));
-//# sourceMappingURL=index.js.map
 ;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VItemGroup/VItemGroup.js
 // Styles
  // Mixins
@@ -37932,699 +39082,6 @@ const VListItemSubtitle = createSimpleFunctional('v-list-item__subtitle', 'div')
 
 }));
 //# sourceMappingURL=VSelectList.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VInput/VInput.sass
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VLabel/VLabel.sass
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VLabel/VLabel.js
-// Styles
- // Mixins
-
-
-
- // Helpers
-
-
-
-/* @vue/component */
-
-/* harmony default export */ var VLabel = (mixins(themeable).extend({
-  name: 'v-label',
-  functional: true,
-  props: {
-    absolute: Boolean,
-    color: {
-      type: String,
-      default: 'primary'
-    },
-    disabled: Boolean,
-    focused: Boolean,
-    for: String,
-    left: {
-      type: [Number, String],
-      default: 0
-    },
-    right: {
-      type: [Number, String],
-      default: 'auto'
-    },
-    value: Boolean
-  },
-
-  render(h, ctx) {
-    const {
-      children,
-      listeners,
-      props,
-      data
-    } = ctx;
-    const newData = mergeData({
-      staticClass: 'v-label',
-      class: {
-        'v-label--active': props.value,
-        'v-label--is-disabled': props.disabled,
-        ...functionalThemeClasses(ctx)
-      },
-      attrs: {
-        for: props.for,
-        'aria-hidden': !props.for
-      },
-      on: listeners,
-      style: {
-        left: convertToUnit(props.left),
-        right: convertToUnit(props.right),
-        position: props.absolute ? 'absolute' : 'relative'
-      },
-      ref: 'label'
-    }, data);
-    return h('label', colorable.options.methods.setTextColor(props.focused && props.color, newData), children);
-  }
-
-}));
-//# sourceMappingURL=VLabel.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VLabel/index.js
-
-
-/* harmony default export */ var components_VLabel = (VLabel);
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VMessages/VMessages.sass
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VMessages/VMessages.js
-// Styles
- // Mixins
-
-
-
- // Utilities
-
-
-/* @vue/component */
-
-/* harmony default export */ var VMessages = (mixins(colorable, themeable).extend({
-  name: 'v-messages',
-  props: {
-    value: {
-      type: Array,
-      default: () => []
-    }
-  },
-  methods: {
-    genChildren() {
-      return this.$createElement('transition-group', {
-        staticClass: 'v-messages__wrapper',
-        attrs: {
-          name: 'message-transition',
-          tag: 'div'
-        }
-      }, this.value.map(this.genMessage));
-    },
-
-    genMessage(message, key) {
-      return this.$createElement('div', {
-        staticClass: 'v-messages__message',
-        key
-      }, getSlot(this, 'default', {
-        message,
-        key
-      }) || [message]);
-    }
-
-  },
-
-  render(h) {
-    return h('div', this.setTextColor(this.color, {
-      staticClass: 'v-messages',
-      class: this.themeClasses
-    }), [this.genChildren()]);
-  }
-
-}));
-//# sourceMappingURL=VMessages.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VMessages/index.js
-
-
-/* harmony default export */ var components_VMessages = (VMessages);
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/validatable/index.js
-// Mixins
-
-
- // Utilities
-
-
-
-
-const validatable_baseMixins = mixins(colorable, inject('form'), themeable);
-/* @vue/component */
-
-/* harmony default export */ var validatable = (validatable_baseMixins.extend({
-  name: 'validatable',
-  props: {
-    disabled: Boolean,
-    error: Boolean,
-    errorCount: {
-      type: [Number, String],
-      default: 1
-    },
-    errorMessages: {
-      type: [String, Array],
-      default: () => []
-    },
-    messages: {
-      type: [String, Array],
-      default: () => []
-    },
-    readonly: Boolean,
-    rules: {
-      type: Array,
-      default: () => []
-    },
-    success: Boolean,
-    successMessages: {
-      type: [String, Array],
-      default: () => []
-    },
-    validateOnBlur: Boolean,
-    value: {
-      required: false
-    }
-  },
-
-  data() {
-    return {
-      errorBucket: [],
-      hasColor: false,
-      hasFocused: false,
-      hasInput: false,
-      isFocused: false,
-      isResetting: false,
-      lazyValue: this.value,
-      valid: false
-    };
-  },
-
-  computed: {
-    computedColor() {
-      if (this.isDisabled) return undefined;
-      if (this.color) return this.color; // It's assumed that if the input is on a
-      // dark background, the user will want to
-      // have a white color. If the entire app
-      // is setup to be dark, then they will
-      // like want to use their primary color
-
-      if (this.isDark && !this.appIsDark) return 'white';else return 'primary';
-    },
-
-    hasError() {
-      return this.internalErrorMessages.length > 0 || this.errorBucket.length > 0 || this.error;
-    },
-
-    // TODO: Add logic that allows the user to enable based
-    // upon a good validation
-    hasSuccess() {
-      return this.internalSuccessMessages.length > 0 || this.success;
-    },
-
-    externalError() {
-      return this.internalErrorMessages.length > 0 || this.error;
-    },
-
-    hasMessages() {
-      return this.validationTarget.length > 0;
-    },
-
-    hasState() {
-      if (this.isDisabled) return false;
-      return this.hasSuccess || this.shouldValidate && this.hasError;
-    },
-
-    internalErrorMessages() {
-      return this.genInternalMessages(this.errorMessages);
-    },
-
-    internalMessages() {
-      return this.genInternalMessages(this.messages);
-    },
-
-    internalSuccessMessages() {
-      return this.genInternalMessages(this.successMessages);
-    },
-
-    internalValue: {
-      get() {
-        return this.lazyValue;
-      },
-
-      set(val) {
-        this.lazyValue = val;
-        this.$emit('input', val);
-      }
-
-    },
-
-    isDisabled() {
-      return this.disabled || !!this.form && this.form.disabled;
-    },
-
-    isInteractive() {
-      return !this.isDisabled && !this.isReadonly;
-    },
-
-    isReadonly() {
-      return this.readonly || !!this.form && this.form.readonly;
-    },
-
-    shouldValidate() {
-      if (this.externalError) return true;
-      if (this.isResetting) return false;
-      return this.validateOnBlur ? this.hasFocused && !this.isFocused : this.hasInput || this.hasFocused;
-    },
-
-    validations() {
-      return this.validationTarget.slice(0, Number(this.errorCount));
-    },
-
-    validationState() {
-      if (this.isDisabled) return undefined;
-      if (this.hasError && this.shouldValidate) return 'error';
-      if (this.hasSuccess) return 'success';
-      if (this.hasColor) return this.computedColor;
-      return undefined;
-    },
-
-    validationTarget() {
-      if (this.internalErrorMessages.length > 0) {
-        return this.internalErrorMessages;
-      } else if (this.successMessages && this.successMessages.length > 0) {
-        return this.internalSuccessMessages;
-      } else if (this.messages && this.messages.length > 0) {
-        return this.internalMessages;
-      } else if (this.shouldValidate) {
-        return this.errorBucket;
-      } else return [];
-    }
-
-  },
-  watch: {
-    rules: {
-      handler(newVal, oldVal) {
-        if (deepEqual(newVal, oldVal)) return;
-        this.validate();
-      },
-
-      deep: true
-    },
-
-    internalValue() {
-      // If it's the first time we're setting input,
-      // mark it with hasInput
-      this.hasInput = true;
-      this.validateOnBlur || this.$nextTick(this.validate);
-    },
-
-    isFocused(val) {
-      // Should not check validation
-      // if disabled
-      if (!val && !this.isDisabled) {
-        this.hasFocused = true;
-        this.validateOnBlur && this.$nextTick(this.validate);
-      }
-    },
-
-    isResetting() {
-      setTimeout(() => {
-        this.hasInput = false;
-        this.hasFocused = false;
-        this.isResetting = false;
-        this.validate();
-      }, 0);
-    },
-
-    hasError(val) {
-      if (this.shouldValidate) {
-        this.$emit('update:error', val);
-      }
-    },
-
-    value(val) {
-      this.lazyValue = val;
-    }
-
-  },
-
-  beforeMount() {
-    this.validate();
-  },
-
-  created() {
-    this.form && this.form.register(this);
-  },
-
-  beforeDestroy() {
-    this.form && this.form.unregister(this);
-  },
-
-  methods: {
-    genInternalMessages(messages) {
-      if (!messages) return [];else if (Array.isArray(messages)) return messages;else return [messages];
-    },
-
-    /** @public */
-    reset() {
-      this.isResetting = true;
-      this.internalValue = Array.isArray(this.internalValue) ? [] : null;
-    },
-
-    /** @public */
-    resetValidation() {
-      this.isResetting = true;
-    },
-
-    /** @public */
-    validate(force = false, value) {
-      const errorBucket = [];
-      value = value || this.internalValue;
-      if (force) this.hasInput = this.hasFocused = true;
-
-      for (let index = 0; index < this.rules.length; index++) {
-        const rule = this.rules[index];
-        const valid = typeof rule === 'function' ? rule(value) : rule;
-
-        if (valid === false || typeof valid === 'string') {
-          errorBucket.push(valid || '');
-        } else if (typeof valid !== 'boolean') {
-          consoleError(`Rules should return a string or boolean, received '${typeof valid}' instead`, this);
-        }
-      }
-
-      this.errorBucket = errorBucket;
-      this.valid = errorBucket.length === 0;
-      return this.valid;
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VInput/VInput.js
-// Styles
- // Components
-
-
-
- // Mixins
-
-
- // Utilities
-
-
-
-
-const VInput_baseMixins = mixins(binds_attrs, validatable);
-/* @vue/component */
-
-/* harmony default export */ var VInput = (VInput_baseMixins.extend().extend({
-  name: 'v-input',
-  inheritAttrs: false,
-  props: {
-    appendIcon: String,
-    backgroundColor: {
-      type: String,
-      default: ''
-    },
-    dense: Boolean,
-    height: [Number, String],
-    hideDetails: [Boolean, String],
-    hideSpinButtons: Boolean,
-    hint: String,
-    id: String,
-    label: String,
-    loading: Boolean,
-    persistentHint: Boolean,
-    prependIcon: String,
-    value: null
-  },
-
-  data() {
-    return {
-      lazyValue: this.value,
-      hasMouseDown: false
-    };
-  },
-
-  computed: {
-    classes() {
-      return {
-        'v-input--has-state': this.hasState,
-        'v-input--hide-details': !this.showDetails,
-        'v-input--is-label-active': this.isLabelActive,
-        'v-input--is-dirty': this.isDirty,
-        'v-input--is-disabled': this.isDisabled,
-        'v-input--is-focused': this.isFocused,
-        // <v-switch loading>.loading === '' so we can't just cast to boolean
-        'v-input--is-loading': this.loading !== false && this.loading != null,
-        'v-input--is-readonly': this.isReadonly,
-        'v-input--dense': this.dense,
-        'v-input--hide-spin-buttons': this.hideSpinButtons,
-        ...this.themeClasses
-      };
-    },
-
-    computedId() {
-      return this.id || `input-${this._uid}`;
-    },
-
-    hasDetails() {
-      return this.messagesToDisplay.length > 0;
-    },
-
-    hasHint() {
-      return !this.hasMessages && !!this.hint && (this.persistentHint || this.isFocused);
-    },
-
-    hasLabel() {
-      return !!(this.$slots.label || this.label);
-    },
-
-    // Proxy for `lazyValue`
-    // This allows an input
-    // to function without
-    // a provided model
-    internalValue: {
-      get() {
-        return this.lazyValue;
-      },
-
-      set(val) {
-        this.lazyValue = val;
-        this.$emit(this.$_modelEvent, val);
-      }
-
-    },
-
-    isDirty() {
-      return !!this.lazyValue;
-    },
-
-    isLabelActive() {
-      return this.isDirty;
-    },
-
-    messagesToDisplay() {
-      if (this.hasHint) return [this.hint];
-      if (!this.hasMessages) return [];
-      return this.validations.map(validation => {
-        if (typeof validation === 'string') return validation;
-        const validationResult = validation(this.internalValue);
-        return typeof validationResult === 'string' ? validationResult : '';
-      }).filter(message => message !== '');
-    },
-
-    showDetails() {
-      return this.hideDetails === false || this.hideDetails === 'auto' && this.hasDetails;
-    }
-
-  },
-  watch: {
-    value(val) {
-      this.lazyValue = val;
-    }
-
-  },
-
-  beforeCreate() {
-    // v-radio-group needs to emit a different event
-    // https://github.com/vuetifyjs/vuetify/issues/4752
-    this.$_modelEvent = this.$options.model && this.$options.model.event || 'input';
-  },
-
-  methods: {
-    genContent() {
-      return [this.genPrependSlot(), this.genControl(), this.genAppendSlot()];
-    },
-
-    genControl() {
-      return this.$createElement('div', {
-        staticClass: 'v-input__control',
-        attrs: {
-          title: this.attrs$.title
-        }
-      }, [this.genInputSlot(), this.genMessages()]);
-    },
-
-    genDefaultSlot() {
-      return [this.genLabel(), this.$slots.default];
-    },
-
-    genIcon(type, cb, extraData = {}) {
-      const icon = this[`${type}Icon`];
-      const eventName = `click:${kebabCase(type)}`;
-      const hasListener = !!(this.listeners$[eventName] || cb);
-      const data = mergeData({
-        attrs: {
-          'aria-label': hasListener ? kebabCase(type).split('-')[0] + ' icon' : undefined,
-          color: this.validationState,
-          dark: this.dark,
-          disabled: this.isDisabled,
-          light: this.light,
-          tabindex: type === 'clear' ? -1 : undefined
-        },
-        on: !hasListener ? undefined : {
-          click: e => {
-            e.preventDefault();
-            e.stopPropagation();
-            this.$emit(eventName, e);
-            cb && cb(e);
-          },
-          // Container has g event that will
-          // trigger menu open if enclosed
-          mouseup: e => {
-            e.preventDefault();
-            e.stopPropagation();
-          }
-        }
-      }, extraData);
-      return this.$createElement('div', {
-        staticClass: `v-input__icon`,
-        class: type ? `v-input__icon--${kebabCase(type)}` : undefined
-      }, [this.$createElement(components_VIcon, data, icon)]);
-    },
-
-    genInputSlot() {
-      return this.$createElement('div', this.setBackgroundColor(this.backgroundColor, {
-        staticClass: 'v-input__slot',
-        style: {
-          height: convertToUnit(this.height)
-        },
-        on: {
-          click: this.onClick,
-          mousedown: this.onMouseDown,
-          mouseup: this.onMouseUp
-        },
-        ref: 'input-slot'
-      }), [this.genDefaultSlot()]);
-    },
-
-    genLabel() {
-      if (!this.hasLabel) return null;
-      return this.$createElement(components_VLabel, {
-        props: {
-          color: this.validationState,
-          dark: this.dark,
-          disabled: this.isDisabled,
-          focused: this.hasState,
-          for: this.computedId,
-          light: this.light
-        }
-      }, this.$slots.label || this.label);
-    },
-
-    genMessages() {
-      if (!this.showDetails) return null;
-      return this.$createElement(components_VMessages, {
-        props: {
-          color: this.hasHint ? '' : this.validationState,
-          dark: this.dark,
-          light: this.light,
-          value: this.messagesToDisplay
-        },
-        attrs: {
-          role: this.hasMessages ? 'alert' : null
-        },
-        scopedSlots: {
-          default: props => getSlot(this, 'message', props)
-        }
-      });
-    },
-
-    genSlot(type, location, slot) {
-      if (!slot.length) return null;
-      const ref = `${type}-${location}`;
-      return this.$createElement('div', {
-        staticClass: `v-input__${ref}`,
-        ref
-      }, slot);
-    },
-
-    genPrependSlot() {
-      const slot = [];
-
-      if (this.$slots.prepend) {
-        slot.push(this.$slots.prepend);
-      } else if (this.prependIcon) {
-        slot.push(this.genIcon('prepend'));
-      }
-
-      return this.genSlot('prepend', 'outer', slot);
-    },
-
-    genAppendSlot() {
-      const slot = []; // Append icon for text field was really
-      // an appended inner icon, v-text-field
-      // will overwrite this method in order to obtain
-      // backwards compat
-
-      if (this.$slots.append) {
-        slot.push(this.$slots.append);
-      } else if (this.appendIcon) {
-        slot.push(this.genIcon('append'));
-      }
-
-      return this.genSlot('append', 'outer', slot);
-    },
-
-    onClick(e) {
-      this.$emit('click', e);
-    },
-
-    onMouseDown(e) {
-      this.hasMouseDown = true;
-      this.$emit('mousedown', e);
-    },
-
-    onMouseUp(e) {
-      this.hasMouseDown = false;
-      this.$emit('mouseup', e);
-    }
-
-  },
-
-  render(h) {
-    return h('div', this.setTextColor(this.validationState, {
-      staticClass: 'v-input',
-      class: this.classes
-    }), this.genContent());
-  }
-
-}));
-//# sourceMappingURL=VInput.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VInput/index.js
-
-
-/* harmony default export */ var components_VInput = (VInput);
-//# sourceMappingURL=index.js.map
 ;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VCounter/VCounter.sass
 // extracted by mini-css-extract-plugin
 
@@ -42316,440 +42773,6 @@ var LoadingPage_component = normalizeComponent(
 external_commonjs_vue_commonjs2_vue_root_Vue_default().use(Vuetify);
 /* harmony default export */ var vuetify = (new Vuetify({}));
 
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/styles/components/_selection-controls.sass
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/src/components/VSwitch/VSwitch.sass
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/rippleable/index.js
-// Directives
- // Types
-
-
-/* harmony default export */ var rippleable = (external_commonjs_vue_commonjs2_vue_root_Vue_default().extend({
-  name: 'rippleable',
-  directives: {
-    ripple: directives_ripple
-  },
-  props: {
-    ripple: {
-      type: [Boolean, Object],
-      default: true
-    }
-  },
-  methods: {
-    genRipple(data = {}) {
-      if (!this.ripple) return null;
-      data.staticClass = 'v-input--selection-controls__ripple';
-      data.directives = data.directives || [];
-      data.directives.push({
-        name: 'ripple',
-        value: {
-          center: true
-        }
-      });
-      return this.$createElement('div', data);
-    }
-
-  }
-}));
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/mixins/selectable/index.js
-// Components
- // Mixins
-
-
- // Utilities
-
-
-function prevent(e) {
-  e.preventDefault();
-}
-/* @vue/component */
-
-/* harmony default export */ var selectable = (mixins(components_VInput, rippleable, comparable).extend({
-  name: 'selectable',
-  model: {
-    prop: 'inputValue',
-    event: 'change'
-  },
-  props: {
-    id: String,
-    inputValue: null,
-    falseValue: null,
-    trueValue: null,
-    multiple: {
-      type: Boolean,
-      default: null
-    },
-    label: String
-  },
-
-  data() {
-    return {
-      hasColor: this.inputValue,
-      lazyValue: this.inputValue
-    };
-  },
-
-  computed: {
-    computedColor() {
-      if (!this.isActive) return undefined;
-      if (this.color) return this.color;
-      if (this.isDark && !this.appIsDark) return 'white';
-      return 'primary';
-    },
-
-    isMultiple() {
-      return this.multiple === true || this.multiple === null && Array.isArray(this.internalValue);
-    },
-
-    isActive() {
-      const value = this.value;
-      const input = this.internalValue;
-
-      if (this.isMultiple) {
-        if (!Array.isArray(input)) return false;
-        return input.some(item => this.valueComparator(item, value));
-      }
-
-      if (this.trueValue === undefined || this.falseValue === undefined) {
-        return value ? this.valueComparator(value, input) : Boolean(input);
-      }
-
-      return this.valueComparator(input, this.trueValue);
-    },
-
-    isDirty() {
-      return this.isActive;
-    },
-
-    rippleState() {
-      return !this.isDisabled && !this.validationState ? undefined : this.validationState;
-    }
-
-  },
-  watch: {
-    inputValue(val) {
-      this.lazyValue = val;
-      this.hasColor = val;
-    }
-
-  },
-  methods: {
-    genLabel() {
-      const label = components_VInput.options.methods.genLabel.call(this);
-      if (!label) return label;
-      label.data.on = {
-        // Label shouldn't cause the input to focus
-        click: prevent
-      };
-      return label;
-    },
-
-    genInput(type, attrs) {
-      return this.$createElement('input', {
-        attrs: Object.assign({
-          'aria-checked': this.isActive.toString(),
-          disabled: this.isDisabled,
-          id: this.computedId,
-          role: type,
-          type
-        }, attrs),
-        domProps: {
-          value: this.value,
-          checked: this.isActive
-        },
-        on: {
-          blur: this.onBlur,
-          change: this.onChange,
-          focus: this.onFocus,
-          keydown: this.onKeydown,
-          click: prevent
-        },
-        ref: 'input'
-      });
-    },
-
-    onClick(e) {
-      this.onChange();
-      this.$emit('click', e);
-    },
-
-    onChange() {
-      if (!this.isInteractive) return;
-      const value = this.value;
-      let input = this.internalValue;
-
-      if (this.isMultiple) {
-        if (!Array.isArray(input)) {
-          input = [];
-        }
-
-        const length = input.length;
-        input = input.filter(item => !this.valueComparator(item, value));
-
-        if (input.length === length) {
-          input.push(value);
-        }
-      } else if (this.trueValue !== undefined && this.falseValue !== undefined) {
-        input = this.valueComparator(input, this.trueValue) ? this.falseValue : this.trueValue;
-      } else if (value) {
-        input = this.valueComparator(input, value) ? null : value;
-      } else {
-        input = !input;
-      }
-
-      this.validate(true, input);
-      this.internalValue = input;
-      this.hasColor = input;
-    },
-
-    onFocus(e) {
-      this.isFocused = true;
-      this.$emit('focus', e);
-    },
-
-    onBlur(e) {
-      this.isFocused = false;
-      this.$emit('blur', e);
-    },
-
-    /** @abstract */
-    onKeydown(e) {}
-
-  }
-}));
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/directives/touch/index.js
-
-
-const handleGesture = wrapper => {
-  const {
-    touchstartX,
-    touchendX,
-    touchstartY,
-    touchendY
-  } = wrapper;
-  const dirRatio = 0.5;
-  const minDistance = 16;
-  wrapper.offsetX = touchendX - touchstartX;
-  wrapper.offsetY = touchendY - touchstartY;
-
-  if (Math.abs(wrapper.offsetY) < dirRatio * Math.abs(wrapper.offsetX)) {
-    wrapper.left && touchendX < touchstartX - minDistance && wrapper.left(wrapper);
-    wrapper.right && touchendX > touchstartX + minDistance && wrapper.right(wrapper);
-  }
-
-  if (Math.abs(wrapper.offsetX) < dirRatio * Math.abs(wrapper.offsetY)) {
-    wrapper.up && touchendY < touchstartY - minDistance && wrapper.up(wrapper);
-    wrapper.down && touchendY > touchstartY + minDistance && wrapper.down(wrapper);
-  }
-};
-
-function touchstart(event, wrapper) {
-  const touch = event.changedTouches[0];
-  wrapper.touchstartX = touch.clientX;
-  wrapper.touchstartY = touch.clientY;
-  wrapper.start && wrapper.start(Object.assign(event, wrapper));
-}
-
-function touchend(event, wrapper) {
-  const touch = event.changedTouches[0];
-  wrapper.touchendX = touch.clientX;
-  wrapper.touchendY = touch.clientY;
-  wrapper.end && wrapper.end(Object.assign(event, wrapper));
-  handleGesture(wrapper);
-}
-
-function touchmove(event, wrapper) {
-  const touch = event.changedTouches[0];
-  wrapper.touchmoveX = touch.clientX;
-  wrapper.touchmoveY = touch.clientY;
-  wrapper.move && wrapper.move(Object.assign(event, wrapper));
-}
-
-function createHandlers(value) {
-  const wrapper = {
-    touchstartX: 0,
-    touchstartY: 0,
-    touchendX: 0,
-    touchendY: 0,
-    touchmoveX: 0,
-    touchmoveY: 0,
-    offsetX: 0,
-    offsetY: 0,
-    left: value.left,
-    right: value.right,
-    up: value.up,
-    down: value.down,
-    start: value.start,
-    move: value.move,
-    end: value.end
-  };
-  return {
-    touchstart: e => touchstart(e, wrapper),
-    touchend: e => touchend(e, wrapper),
-    touchmove: e => touchmove(e, wrapper)
-  };
-}
-
-function touch_inserted(el, binding, vnode) {
-  const value = binding.value;
-  const target = value.parent ? el.parentElement : el;
-  const options = value.options || {
-    passive: true
-  }; // Needed to pass unit tests
-
-  if (!target) return;
-  const handlers = createHandlers(binding.value);
-  target._touchHandlers = Object(target._touchHandlers);
-  target._touchHandlers[vnode.context._uid] = handlers;
-  keys(handlers).forEach(eventName => {
-    target.addEventListener(eventName, handlers[eventName], options);
-  });
-}
-
-function touch_unbind(el, binding, vnode) {
-  const target = binding.value.parent ? el.parentElement : el;
-  if (!target || !target._touchHandlers) return;
-  const handlers = target._touchHandlers[vnode.context._uid];
-  keys(handlers).forEach(eventName => {
-    target.removeEventListener(eventName, handlers[eventName]);
-  });
-  delete target._touchHandlers[vnode.context._uid];
-}
-
-const Touch = {
-  inserted: touch_inserted,
-  unbind: touch_unbind
-};
-/* harmony default export */ var touch = (Touch);
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VSwitch/VSwitch.js
-// Styles
-
- // Mixins
-
-
- // Directives
-
- // Components
-
-
- // Helpers
-
-
-/* @vue/component */
-
-/* harmony default export */ var VSwitch = (selectable.extend({
-  name: 'v-switch',
-  directives: {
-    Touch: touch
-  },
-  props: {
-    inset: Boolean,
-    loading: {
-      type: [Boolean, String],
-      default: false
-    },
-    flat: {
-      type: Boolean,
-      default: false
-    }
-  },
-  computed: {
-    classes() {
-      return { ...components_VInput.options.computed.classes.call(this),
-        'v-input--selection-controls v-input--switch': true,
-        'v-input--switch--flat': this.flat,
-        'v-input--switch--inset': this.inset
-      };
-    },
-
-    attrs() {
-      return {
-        'aria-checked': String(this.isActive),
-        'aria-disabled': String(this.isDisabled),
-        role: 'switch'
-      };
-    },
-
-    // Do not return undefined if disabled,
-    // according to spec, should still show
-    // a color when disabled and active
-    validationState() {
-      if (this.hasError && this.shouldValidate) return 'error';
-      if (this.hasSuccess) return 'success';
-      if (this.hasColor !== null) return this.computedColor;
-      return undefined;
-    },
-
-    switchData() {
-      return this.setTextColor(this.loading ? undefined : this.validationState, {
-        class: this.themeClasses
-      });
-    }
-
-  },
-  methods: {
-    genDefaultSlot() {
-      return [this.genSwitch(), this.genLabel()];
-    },
-
-    genSwitch() {
-      const {
-        title,
-        ...switchAttrs
-      } = this.attrs$;
-      return this.$createElement('div', {
-        staticClass: 'v-input--selection-controls__input'
-      }, [this.genInput('checkbox', { ...this.attrs,
-        ...switchAttrs
-      }), this.genRipple(this.setTextColor(this.validationState, {
-        directives: [{
-          name: 'touch',
-          value: {
-            left: this.onSwipeLeft,
-            right: this.onSwipeRight
-          }
-        }]
-      })), this.$createElement('div', {
-        staticClass: 'v-input--switch__track',
-        ...this.switchData
-      }), this.$createElement('div', {
-        staticClass: 'v-input--switch__thumb',
-        ...this.switchData
-      }, [this.genProgress()])]);
-    },
-
-    genProgress() {
-      return this.$createElement(VFabTransition, {}, [this.loading === false ? null : this.$slots.progress || this.$createElement(VProgressCircular, {
-        props: {
-          color: this.loading === true || this.loading === '' ? this.color || 'primary' : this.loading,
-          size: 16,
-          width: 2,
-          indeterminate: true
-        }
-      })]);
-    },
-
-    onSwipeLeft() {
-      if (this.isActive) this.onChange();
-    },
-
-    onSwipeRight() {
-      if (!this.isActive) this.onChange();
-    },
-
-    onKeydown(e) {
-      if (e.keyCode === keyCodes.left && this.isActive || e.keyCode === keyCodes.right && !this.isActive) this.onChange();
-    }
-
-  }
-}));
-//# sourceMappingURL=VSwitch.js.map
 ;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=2e21195c&scoped=true&
 
 

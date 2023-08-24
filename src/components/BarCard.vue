@@ -9,6 +9,24 @@
       class="card-title pa-3 text-uppercase justify-space-between"
     >
       <p>{{ title }}</p>
+      <div
+        class="d-flex align-center ml-n6"
+        style="position: absolute; right: calc(50% - 55px)"
+      >
+        <div v-if="switchEnabled" class="d-flex flex-row justify-space-between">
+          <v-icon icon class="pr-3" size="default">{{
+            switchFalseIcon
+          }}</v-icon>
+          <v-switch
+            :value="switchValue"
+            @click="switchClicked()"
+            inset
+            color="blue-grey"
+            dense
+          />
+          <v-icon icon size="default">{{ switchTrueIcon }}</v-icon>
+        </div>
+      </div>
       <div v-if="navEnabled" style="height: 40px">
         <v-btn
           @click="$emit('nav', -1)"
@@ -98,6 +116,22 @@ export default {
     navText: {
       type: String,
       default: "",
+    },
+    switchEnabled: {
+      type: Boolean,
+      default: false,
+    },
+    switchValue: {
+      type: Boolean,
+      default: false,
+    },
+    switchFalseIcon: {
+      type: String,
+      default: "mdi-thumb-down",
+    },
+    switchTrueIcon: {
+      type: String,
+      default: "mdi-thumb-up",
     },
 
     step: {
@@ -288,6 +322,12 @@ export default {
           },
         },
       };
+    },
+  },
+
+  methods: {
+    switchClicked() {
+      this.$emit("update:switchValue", !this.switchValue);
     },
   },
 
