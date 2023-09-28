@@ -169,6 +169,11 @@ export default {
       required: false,
     },
 
+    tooltipCallbacks: {
+      type: Object,
+      default: () => ({}),
+    },
+
     linePoint: {
       type: Boolean,
       default: false,
@@ -223,7 +228,7 @@ export default {
                   tab.length - 1,
                   Math.round((tab.length - 1) / 2),
                 ].includes(i)
-                  ? `${val}${this.units?.bar || ""}`
+                  ? `${val}${this.units?.left || ""}`
                   : "";
               },
               font: {
@@ -251,7 +256,7 @@ export default {
                   tab.length - 1,
                   Math.round((tab.length - 1) / 2),
                 ].includes(i)
-                  ? `${val}${this.units?.line || ""}`
+                  ? `${val}${this.units?.right || ""}`
                   : "";
               },
               font: {
@@ -309,7 +314,9 @@ export default {
           callbacks: {
             label: (tooltipItem) => {
               return `${tooltipItem.dataset.label}: ${tooltipItem.raw}${
-                this.units?.[tooltipItem.dataset.type] || ""
+                this.units?.[
+                  tooltipItem.dataset.type === "bar" ? "left" : "right"
+                ] || ""
               }`;
             },
             labelColor: (context) => {
@@ -319,6 +326,7 @@ export default {
                   backgroundColor: context.dataset.borderColor,
                 };
             },
+            ...this.tooltipCallbacks,
           },
         },
       };
