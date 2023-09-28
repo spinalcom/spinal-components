@@ -42758,16 +42758,16 @@ const Touch = {
   }
 }));
 //# sourceMappingURL=VSwitch.js.map
-;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=2e21195c&scoped=true&
+;// CONCATENATED MODULE: ./node_modules/vuetify-loader/lib/loader.js??ruleSet[1].rules[0].use!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=template&id=a938e4ae&scoped=true&
 
 
 
 
 
 
-var LineCardvue_type_template_id_2e21195c_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column flex-grow-1",attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(" "+_vm._s(_vm.title)+" "),_c('b',[_vm._v(_vm._s(_vm.titleDetails))])]),_c('div',{staticClass:"d-flex align-center ml-n6",staticStyle:{"position":"absolute","right":"calc(50% - 55px)"}},[(_vm.switchEnabled)?_c('div',{staticClass:"d-flex flex-row justify-space-between"},[_c(VIcon_VIcon,{staticClass:"pr-3",attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchFalseIcon))]),_c(VSwitch,{attrs:{"value":_vm.switchValue,"inset":"","color":"blue-grey","dense":""},on:{"click":function($event){return _vm.switchClicked()}}}),_c(VIcon_VIcon,{attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchTrueIcon))])],1):_vm._e()]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column flex-grow-1 flex-shrink-1",staticStyle:{"height":"0"}},[_c('LineChart',{staticClass:"bar-height",attrs:{"data":_vm.lineChartData,"chart-id":'2',"options":_vm.lineChartOptions}})],1)],1)
+var LineCardvue_type_template_id_a938e4ae_scoped_true_render = function render(){var _vm=this,_c=_vm._self._c;return _c(VCard,{staticClass:"line-card pa-1 rounded-lg d-flex flex-column flex-grow-1",attrs:{"outlined":""}},[_c(VCardTitle,{staticClass:"card-title pa-3 text-uppercase justify-space-between",staticStyle:{"font-size":"20px","height":"56px"}},[_c('p',[_vm._v(" "+_vm._s(_vm.title)+" "),_c('b',[_vm._v(_vm._s(_vm.titleDetails))])]),_c('div',{staticClass:"d-flex align-center ml-n6",staticStyle:{"position":"absolute","right":"calc(50% - 55px)"}},[(_vm.switchEnabled)?_c('div',{staticClass:"d-flex flex-row justify-space-between"},[_c(VIcon_VIcon,{staticClass:"pr-3",attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchFalseIcon))]),_c(VSwitch,{attrs:{"value":_vm.switchValue,"inset":"","color":"blue-grey","dense":""},on:{"click":function($event){return _vm.switchClicked()}}}),_c(VIcon_VIcon,{attrs:{"icon":"","size":"default"}},[_vm._v(_vm._s(_vm.switchTrueIcon))])],1):_vm._e()]),(_vm.navEnabled)?_c('div',{staticStyle:{"height":"40px"}},[_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', -1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-left")])],1),_vm._v(" "+_vm._s(_vm.navText)+" "),_c(VBtn,{staticStyle:{"font-size":"14px !important","border-radius":"10px","min-width":"36px !important","box-shadow":"none"},on:{"click":function($event){return _vm.$emit('nav', +1)}}},[_c(VIcon_VIcon,{attrs:{"icon":""}},[_vm._v("mdi-chevron-right")])],1)],1):_vm._e()]),_c('div',{staticClass:"d-flex flex-column flex-grow-1 flex-shrink-1",staticStyle:{"height":"0"}},[_c('LineChart',{staticClass:"bar-height",attrs:{"data":_vm.lineChartData,"chart-id":'2',"options":_vm.lineChartOptions}})],1)],1)
 }
-var LineCardvue_type_template_id_2e21195c_scoped_true_staticRenderFns = []
+var LineCardvue_type_template_id_a938e4ae_scoped_true_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=script&lang=js&
@@ -42845,6 +42845,10 @@ Chart.register(
     optional: {
       type: Object,
       required: false,
+    },
+    tooltipCallbacks: {
+      type: Object,
+      default: () => ({}),
     },
     pointStyle: {
       type: Boolean,
@@ -42967,6 +42971,7 @@ Chart.register(
               borderColor: "rgba(0,0,0,0)",
               backgroundColor: context.dataset.borderColor,
             }),
+            ...this.tooltipCallbacks,
           },
         },
       };
@@ -43017,10 +43022,10 @@ Chart.register(
 
 ;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_LineCardvue_type_script_lang_js_ = (LineCardvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=2e21195c&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-55.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-55.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-55.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LineCard.vue?vue&type=style&index=0&id=a938e4ae&prod&scoped=true&lang=css&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=2e21195c&prod&scoped=true&lang=css&
+;// CONCATENATED MODULE: ./src/components/LineCard.vue?vue&type=style&index=0&id=a938e4ae&prod&scoped=true&lang=css&
 
 ;// CONCATENATED MODULE: ./src/components/LineCard.vue
 
@@ -43033,11 +43038,11 @@ Chart.register(
 
 var LineCard_component = normalizeComponent(
   components_LineCardvue_type_script_lang_js_,
-  LineCardvue_type_template_id_2e21195c_scoped_true_render,
-  LineCardvue_type_template_id_2e21195c_scoped_true_staticRenderFns,
+  LineCardvue_type_template_id_a938e4ae_scoped_true_render,
+  LineCardvue_type_template_id_a938e4ae_scoped_true_staticRenderFns,
   false,
   null,
-  "2e21195c",
+  "a938e4ae",
   null
   
 )

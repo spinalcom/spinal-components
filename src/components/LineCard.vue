@@ -156,6 +156,10 @@ export default {
       type: Object,
       required: false,
     },
+    tooltipCallbacks: {
+      type: Object,
+      default: () => ({}),
+    },
     pointStyle: {
       type: Boolean,
       default: false,
@@ -277,6 +281,7 @@ export default {
               borderColor: "rgba(0,0,0,0)",
               backgroundColor: context.dataset.borderColor,
             }),
+            ...this.tooltipCallbacks,
           },
         },
       };
