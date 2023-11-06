@@ -316,7 +316,9 @@ export default {
           callbacks: {
             label: (tooltipItem) => {
               return `${tooltipItem.dataset.label}: ${
-                tooltipItem.raw.y || tooltipItem.raw
+                tooltipItem.raw.y || tooltipItem.raw.y === 0
+                  ? tooltipItem.raw.y
+                  : tooltipItem.raw
               }${
                 this.units?.[
                   tooltipItem.dataset.type === "bar" ? "left" : "right"
@@ -372,7 +374,7 @@ export default {
     this.secondDatasets.forEach((set) => {
       set.type = set.type || "line";
       set.pointStyle = set.type === "scatter";
-      set.backgroundColor = colors.shift();
+      set.backgroundColor = set.backgroundColor || colors.shift();
       if ("line" === set.type) {
         set.pointStyle = this.linePoint;
         set.tension = 0.3;
@@ -415,7 +417,7 @@ export default {
       this.secondDatasets.forEach((set) => {
         set.type = set.type || "line";
         set.pointStyle = set.type === "scatter";
-        set.backgroundColor = colors.shift();
+        set.backgroundColor = set.backgroundColor || colors.shift();
         if ("line" === set.type) {
           set.pointStyle = this.linePoint;
           set.tension = 0.3;
