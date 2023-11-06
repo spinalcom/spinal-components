@@ -76,6 +76,7 @@ import {
 import {
   Legend,
   BarElement,
+  PointElement,
   LinearScale,
   CategoryScale,
   LogarithmicScale,
@@ -92,6 +93,7 @@ import {
 ChartJS.register(
   Legend,
   BarElement,
+  PointElement,
   CategoryScale,
   LinearScale,
   LogarithmicScale,
@@ -149,7 +151,7 @@ export default {
       required: true,
     },
 
-    lineDatasets: {
+    secondDatasets: {
       type: Array,
       default: () => [],
     },
@@ -188,7 +190,7 @@ export default {
     barChartData() {
       return {
         labels: this.labels,
-        datasets: this.datasets.concat(this.lineDatasets),
+        datasets: this.datasets.concat(this.secondDatasets),
       };
     },
 
@@ -250,7 +252,7 @@ export default {
             type: this.scaleType,
             stacked: this.stacked,
             ticks: {
-              display: this.lineDatasets.length,
+              display: this.secondDatasets.length,
               callback: (val, i, tab) => {
                 return [
                   tab.length - 1,
@@ -313,7 +315,9 @@ export default {
           intersect: false,
           callbacks: {
             label: (tooltipItem) => {
-              return `${tooltipItem.dataset.label}: ${tooltipItem.raw}${
+              return `${tooltipItem.dataset.label}: ${
+                tooltipItem.raw.y || tooltipItem.raw
+              }${
                 this.units?.[
                   tooltipItem.dataset.type === "bar" ? "left" : "right"
                 ] || ""
@@ -348,9 +352,9 @@ export default {
       bottomRight: radius,
     };
     const colors =
-      this.datasets.length + this.lineDatasets.length <= 3
+      this.datasets.length + this.secondDatasets.length <= 3
         ? defaultColor(3)
-        : gradiant(this.datasets.length + this.lineDatasets.length).map(
+        : gradiant(this.datasets.length + this.secondDatasets.length).map(
             (color) => {
               const col = HSVtoRGB(color / 100, 1, 1);
               return RGBtoHexa(col.r, col.g, col.b);
@@ -365,16 +369,19 @@ export default {
       set.borderWidth = 1;
       set.borderColor = "rgba(0,0,0,0)";
     });
-    this.lineDatasets.forEach((set) => {
-      set.type = "line";
-      set.pointStyle = this.linePoint;
-      set.tension = 0.3;
+    this.secondDatasets.forEach((set) => {
+      set.type = set.type || "line";
+      set.pointStyle = set.type === "scatter";
+      set.backgroundColor = colors.shift();
+      if ("line" === set.type) {
+        set.pointStyle = this.linePoint;
+        set.tension = 0.3;
+        set.borderColor = set.borderColor || set.backgroundColor;
+        const { r, g, b } = hexaToRGB(set.borderColor);
+        set.backgroundColor = `rgba(${r},${g},${b},0.3)`;
+      }
       set.order = 1;
       set.yAxisID = "y2";
-      set.borderColor = set.borderColor || colors.shift();
-      set.pointBackgroundColor = set.borderColor;
-      const { r, g, b } = hexaToRGB(set.borderColor);
-      set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
     });
   },
 
@@ -388,9 +395,9 @@ export default {
         bottomRight: radius,
       };
       const colors =
-        this.datasets.length + this.lineDatasets.length <= 3
+        this.datasets.length + this.secondDatasets.length <= 3
           ? defaultColor(3)
-          : gradiant(this.datasets.length + this.lineDatasets.length).map(
+          : gradiant(this.datasets.length + this.secondDatasets.length).map(
               (color) => {
                 const col = HSVtoRGB(color / 100, 1, 1);
                 return RGBtoHexa(col.r, col.g, col.b);
@@ -405,16 +412,19 @@ export default {
         set.borderWidth = 1;
         set.borderColor = "rgba(0,0,0,0)";
       });
-      this.lineDatasets.forEach((set) => {
-        set.type = "line";
-        set.pointStyle = this.linePoint;
-        set.tension = 0.3;
+      this.secondDatasets.forEach((set) => {
+        set.type = set.type || "line";
+        set.pointStyle = set.type === "scatter";
+        set.backgroundColor = colors.shift();
+        if ("line" === set.type) {
+          set.pointStyle = this.linePoint;
+          set.tension = 0.3;
+          set.borderColor = set.borderColor || set.backgroundColor;
+          const { r, g, b } = hexaToRGB(set.borderColor);
+          set.backgroundColor = `rgba(${r},${g},${b},0.3)`;
+        }
         set.order = 1;
         set.yAxisID = "y2";
-        set.borderColor = set.borderColor || colors.shift();
-        set.pointBackgroundColor = set.borderColor;
-        const { r, g, b } = hexaToRGB(set.borderColor);
-        set.backgroundColor = set.backgroundColor || `rgba(${r},${g},${b},0.3)`;
       });
     },
   },

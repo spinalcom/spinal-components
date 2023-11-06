@@ -83,14 +83,14 @@ export const customLegendPlugin = {
           const items = chart.config.data.datasets;
           const itemsBis =
             chart.options.plugins?.legend?.labels?.generateLabels(chart);
-          itemsBis.forEach((b) => {
-            if (b.strokeStyle != "rgba(0,0,0,0)") {
-              b.fillStyle = b.strokeStyle;
-              b.strokeStyle = "rgba(0,0,0,0)";
-            }
-          });
+
           const [leftIems, rightItems] = [[], []];
           items.forEach((i) => {
+            if (i.type === "line") {
+              const item = itemsBis.find((it) => it.text === i.label);
+              item.fillStyle = item.strokeStyle;
+              item.strokeStyle = "rgba(0,0,0,0)";
+            }
             if (i.yAxisID === "y2")
               rightItems.push(itemsBis.find((it) => it.text === i.label));
             else leftIems.push(itemsBis.find((it) => it.text === i.label));
@@ -234,6 +234,7 @@ export const customLegendPlugin = {
           }
         }
         break;
+      case "scatter":
       default:
         break;
     }

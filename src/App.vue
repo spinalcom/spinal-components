@@ -8,11 +8,11 @@
         style="height: calc(50% - 4px); width: 100%"
         :labels="barLabels"
         :datasets="barDatas"
-        :line-datasets="barLineDatas"
+        :second-datasets="barLineDatas"
         nav-enabled
         switch-enabled
         nav-text="navigation"
-        :units="{ line: 'h' }"
+        :units="{ right: 'h' }"
       ></bar-card>
       <div
         class="d-flex flex-row justify-space-between"
@@ -181,16 +181,6 @@ export default {
         data: [5, 6, 2, 2, 3, 9, 1],
       },
     ],
-    barLineDatas: [
-      {
-        label: "Km parcourus",
-        data: [15, 12, 13, 10, 21, NaN, 2],
-      },
-      {
-        label: "Km marchées",
-        data: [10, 6, 11, 8, 18, 7, 1],
-      },
-    ],
     lineDatas: [
       {
         label: "Km parcourus",
@@ -290,6 +280,26 @@ export default {
     },
     stacked() {
       return this.switchVal;
+    },
+
+    barLineDatas() {
+      return [
+        {
+          label: "Km parcourus",
+          data: [15, 12, 13, 10, 21, 2, 5],
+        },
+        {
+          label: "Km marchées",
+          data: [10, 6, 11, 8, 18, 7, 1, 9],
+        },
+      ].map((d) => ({
+        ...d,
+        data: d.data.map((e, i) => ({
+          x: e.x || this.barLabels[i],
+          y: e.y || e,
+        })),
+        type: "scatter",
+      }));
     },
   },
 
