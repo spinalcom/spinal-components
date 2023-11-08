@@ -180,6 +180,16 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    leftTicks: {
+      type: Object,
+      default: () => ({}),
+    },
+
+    rightTicks: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 
   components: {
@@ -238,6 +248,7 @@ export default {
                 size: 11,
               },
               color: "#214353",
+              ...this.leftTicks,
             },
             grid: {
               color: "#f9f9f9",
@@ -266,6 +277,7 @@ export default {
                 size: 11,
               },
               color: "#214353",
+              ...this.rightTicks,
             },
             grid: {
               display: false,
